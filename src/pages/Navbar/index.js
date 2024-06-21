@@ -58,6 +58,7 @@ const Navbar = () => {
               handleRegisterClick();
             }}
             title={"Register"}
+            hoverColor={"white"}
           />
           <FormButton width="160px" title={"Discover Music"} />
         </NavBtn>

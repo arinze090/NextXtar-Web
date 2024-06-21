@@ -47,6 +47,6 @@ export const TransparentFormBtn = styled.button`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    color: #fff;
+    color: ${({ hoverColor }) => (hoverColor ? hoverColor : "#000")};
   }
 `;

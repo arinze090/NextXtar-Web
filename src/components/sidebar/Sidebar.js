@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
@@ -59,7 +61,7 @@ const SidebarProfileSection = styled.div`
   display: flex;
   align-content: center;
   align-items: center;
-  padding-right: 10;
+  padding-right: 30px;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -67,6 +69,8 @@ const SidebarProfileSection = styled.div`
 `;
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -102,6 +106,9 @@ const Sidebar = () => {
                     />
                   }
                   title={"Upload"}
+                  onClick={() => {
+                    navigate("/upload");
+                  }}
                 />
               </UploadBtn>
 

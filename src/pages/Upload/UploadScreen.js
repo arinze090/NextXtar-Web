@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 import UploadCard from "../../components/cards/UploadCard";
 
 const Container = styled.div`
@@ -17,6 +19,8 @@ const Container = styled.div`
 `;
 
 const UploadScreen = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <UploadCard
@@ -24,7 +28,7 @@ const UploadScreen = () => {
         description="Distribute your songs across multiple platforms"
         formats="MP3"
         onUploadBtnClick={() => {
-          console.log("dgfg");
+          navigate("/upload-music");
         }}
         uploadBtnTitle={"Upload"}
       />
@@ -33,7 +37,7 @@ const UploadScreen = () => {
         description="Distribute your video via our YouTube channel, with YouTube content ID"
         formats="MP4"
         onUploadBtnClick={() => {
-          console.log("dgfg");
+          navigate("/upload-video");
         }}
         uploadBtnTitle={"Upload"}
       />

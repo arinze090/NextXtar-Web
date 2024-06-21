@@ -9,6 +9,7 @@ import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
 import FormTextArea from "../../components/form/FormTextArea";
 import UploadSection from "../../components/upload/UploadSection";
+import HeaderTitle from "../../components/common/HeaderTitle";
 
 const Container = styled.div`
   display: flex;

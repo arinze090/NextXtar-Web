@@ -9,6 +9,7 @@ function TransparentBtn({
   color,
   marginTop,
   btnIcon,
+  hoverColor,
 }) {
   return (
     <div style={{ marginTop: marginTop }}>
@@ -17,6 +18,7 @@ function TransparentBtn({
         marginLeft={marginLeft}
         onClick={onClick}
         color={color}
+        hoverColor={hoverColor}
       >
         {btnIcon ? btnIcon : null}
 
