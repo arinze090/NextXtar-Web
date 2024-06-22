@@ -7,7 +7,7 @@ import FormButton from "../../components/form/FormButton";
 
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: 130vh;
   justify-content: center;
   align-items: center;
   background-color: #fff;
@@ -18,13 +18,13 @@ const Container = styled.div`
   @media screen and (max-width: 768px) {
     padding-top: 0px;
     margin-bottom: 20px;
-    height: 70vh;
+    height: 130vh;
   }
 `;
 
 const FormContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #f2f2f2;

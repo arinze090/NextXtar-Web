@@ -39,7 +39,14 @@ function PayPalPayment() {
         width={"100%"}
       />
 
-      <FormButton title={"Submit"} marginTop={10} />
+      <div
+        style={{
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
+        <FormButton title={"Submit"} marginTop={40} marginLeft={"0px"} />
+      </div>
     </Container>
   );
 }

@@ -347,6 +347,7 @@ const UploadTracks = () => {
                 title={"Previous"}
                 color={"black"}
                 onClick={handleBack}
+                marginLeft={"0px"}
               />
               <FormButton title={"Next"} onClick={handleNext} />
             </div>

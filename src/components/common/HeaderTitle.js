@@ -30,6 +30,11 @@ const TitleOverlay = styled.div`
   padding: 1rem;
   font-size: 2.5rem;
   font-weight: 700;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 `;
 
 function HeaderTitle({ title, imgSrc, imgAlt }) {

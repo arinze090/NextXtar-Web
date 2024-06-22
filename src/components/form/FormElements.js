@@ -25,6 +25,12 @@ export const FormBtn = styled.button`
   //     background: #fff;
   //     color: #808080;
   //   }
+
+  @media screen and (max-width: 768px) {
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "100px")};
+    margin-left: ${({ mobileMarginLeft }) =>
+      mobileMarginLeft ? mobileMarginLeft : "0"};
+  }
 `;
 
 export const TransparentFormBtn = styled.button`
@@ -48,5 +54,11 @@ export const TransparentFormBtn = styled.button`
   &:hover {
     transition: all 0.2s ease-in-out;
     color: ${({ hoverColor }) => (hoverColor ? hoverColor : "#000")};
+  }
+
+  @media screen and (max-width: 768px) {
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "90px")};
+    margin-left: ${({ mobileMarginLeft }) =>
+      mobileMarginLeft ? mobileMarginLeft : "0"};
   }
 `;

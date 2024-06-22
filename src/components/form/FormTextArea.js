@@ -36,7 +36,7 @@ function FormTextArea({
         onChange={onChange}
         placeholder={placeholder}
         style={{
-          width: "98%",
+          // width: "98%",
           padding: "0.75rem",
           fontSize: "1rem",
           borderColor: "gray",

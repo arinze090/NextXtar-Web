@@ -18,6 +18,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     // background: red;
     flex-direction: column;
+    padding: 1rem;
   }
 `;
 
@@ -152,7 +153,19 @@ function InternationalPayment() {
         />
       </RowContent>
 
-      <FormButton title={"Submit"} marginTop={40} width={"323px"} />
+      <div
+        style={{
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
+        <FormButton
+          title={"Submit"}
+          marginTop={40}
+          // width={"323px"}
+          marginLeft={"0px"}
+        />
+      </div>
     </Container>
   );
 }
