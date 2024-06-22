@@ -10,6 +10,7 @@ function TransparentBtn({
   marginTop,
   btnIcon,
   hoverColor,
+  mobileWidth,
 }) {
   return (
     <div style={{ marginTop: marginTop }}>
@@ -19,6 +20,7 @@ function TransparentBtn({
         onClick={onClick}
         color={color}
         hoverColor={hoverColor}
+        mobileWidth={mobileWidth}
       >
         {btnIcon ? btnIcon : null}
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { IoMdArrowDropright } from "react-icons/io";
+import TransparentBtn from "../form/TransparentBtn";
 
 const ItemContainer = styled.div`
   display: flex;
@@ -27,22 +27,29 @@ const Label = styled.span`
   margin-left: 1rem;
   font-size: 1rem;
   color: #333;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
 `;
 
-const ArrowIcon = styled(IoMdArrowDropright)`
-  color: #333;
-`;
-
-function ListCard({ icon: Icon, label, onClick }) {
+function NotificationsCard({ label, onClick }) {
   return (
-    <ItemContainer onClick={onClick}>
+    <ItemContainer>
       <IconContainer>
-        <Icon size={20} />
         <Label>{label}</Label>
       </IconContainer>
-      <ArrowIcon size={20} />
+      <TransparentBtn
+        color={"black"}
+        title={"View"}
+        marginTop={"0px"}
+        marginLeft={"0px"}
+        mobileWidth={"90%"}
+        onClick={onClick}
+      />
     </ItemContainer>
   );
 }
 
-export default ListCard;
+export default NotificationsCard;

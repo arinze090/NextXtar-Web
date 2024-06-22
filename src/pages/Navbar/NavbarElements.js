@@ -1,4 +1,6 @@
 import { FaBars } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,10 +14,14 @@ export const Nav = styled.nav`
   z-index: 12;
   width: 100%;
   transition: background 0.3s ease-in-out;
+
+  @media screen and (max-width: 768px) {
+    height: 55px;
+  }
 `;
 
 export const NavLink = styled(Link)`
-  color: #fff;
+  color: #000;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -23,12 +29,12 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
   &.active {
-    color: #fff;
+    color: #000;
   }
 `;
 
 export const Bars = styled(FaBars)`
-  display: none;
+  display: ${({ isOpen }) => (isOpen ? "none" : "block")};
   color: #808080;
   @media screen and (max-width: 768px) {
     display: block;
@@ -36,7 +42,21 @@ export const Bars = styled(FaBars)`
     top: 0;
     right: 0;
     transform: translate(-100%, 75%);
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+`;
+
+export const Times = styled(IoMdClose)`
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  color: #808080;
+  @media screen and (max-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 75%);
+    font-size: 1.4rem;
     cursor: pointer;
   }
 `;
@@ -86,4 +106,16 @@ export const NavBtnLink = styled(Link)`
     background: #fff;
     color: #808080;
   }
+`;
+
+export const Sidebar = styled.div`
+  position: fixed;
+  top: 0;
+  left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  transition: left 0.3s ease;
+  justify-content: center;
+  padding-top: 20px;
 `;

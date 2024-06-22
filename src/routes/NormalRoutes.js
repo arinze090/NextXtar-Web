@@ -14,6 +14,10 @@ import UserVerification from "../pages/Auth/UserVerification";
 import ResetPassword from "../pages/Auth/ResetPassword";
 import ContactUs from "../pages/Home/ContactUs";
 import Footer from "../pages/Footer";
+import StreamingPlatforms from "../pages/Home/StreamingPlatforms";
+import FAQs from "../pages/Support/FAQs";
+import PrivacyPolicy from "../pages/Support/PrivacyPolicy";
+import AboutUs from "../pages/Home/AboutUs";
 
 function NormalRoutes() {
   return (
@@ -34,7 +38,13 @@ function NormalRoutes() {
         <Route path="/user-verififcation" element={<UserVerification />} />
         <Route path="/reset-password" element={<ResetPassword />} />
 
+        {/*  Support section */}
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/about-us" element={<AboutUs />} />
+
+        <Route path="/streaming-platforms" element={<StreamingPlatforms />} />
+        <Route path="/faqs" element={<FAQs />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
     </Router>

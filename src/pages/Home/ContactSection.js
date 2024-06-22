@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 import contactImage from "../../assets/contactImage.png";
 import TransparentBtn from "../../components/form/TransparentBtn";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 10rem;
   background-color: #f9f9f9;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
     justify-content: center;
+    padding: 1rem;
   }
 `;
 
@@ -35,9 +38,8 @@ const TextWrapper = styled.div`
   justify-content: center;
   text-align: center;
 
-  @media (min-width: 768px) {
-    text-align: left;
-    padding-left: 2rem;
+  @media (max-width: 768px) {
+    text-align: center;
   }
 `;
 
@@ -46,12 +48,22 @@ const Heading = styled.h2`
   margin-bottom: 1rem;
   color: #000;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 28px;
+  }
 `;
 
 const Paragraph = styled.p`
   font-size: 24px;
   color: #434343;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 18px;
+  }
 `;
 
 const Button = styled.a`
@@ -70,6 +82,8 @@ const Button = styled.a`
 `;
 
 const ContactSection = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <ImageWrapper>
@@ -82,8 +96,16 @@ const ContactSection = () => {
           subscribe on all our social media platforms by visiting our contact
           page.
         </Paragraph>
-        <Button href="/contact">Visit Our Contact Page</Button>
-        <TransparentBtn title={"Visit Our Contact Page"} />
+        <TransparentBtn
+          title={"Visit Our Contact Page"}
+          color={"black"}
+          hoverColor={"black"}
+          width={"100%"}
+          marginLeft={"0px"}
+          onClick={() => {
+            navigate("/contact-us");
+          }}
+        />
       </TextWrapper>
     </Container>
   );

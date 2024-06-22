@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { FaDollarSign, FaPaypal } from "react-icons/fa";
-import { SiWise } from "react-icons/si";
-import ListCard from "../../components/cards/ListCard";
+
 import HeaderTitle from "../../components/common/HeaderTitle";
 
 const Container = styled.div`

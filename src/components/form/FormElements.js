@@ -27,7 +27,7 @@ export const FormBtn = styled.button`
   //   }
 
   @media screen and (max-width: 768px) {
-    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "100px")};
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "100%")};
     margin-left: ${({ mobileMarginLeft }) =>
       mobileMarginLeft ? mobileMarginLeft : "0"};
   }
@@ -57,7 +57,7 @@ export const TransparentFormBtn = styled.button`
   }
 
   @media screen and (max-width: 768px) {
-    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "90px")};
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "100%")};
     margin-left: ${({ mobileMarginLeft }) =>
       mobileMarginLeft ? mobileMarginLeft : "0"};
   }

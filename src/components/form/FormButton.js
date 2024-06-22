@@ -11,6 +11,7 @@ function FormButton({
   loading,
   btnIcon,
   errorMessage,
+  mobileWidth,
 }) {
   return (
     <div
@@ -19,6 +20,10 @@ function FormButton({
         justifyContent: "center",
         display: "flex",
         flexDirection: "column",
+        // backgroundColor: "red",
+        // width: "100%",
+        // alignContent: "center",
+        // alignItems: "center",
       }}
     >
       {errorMessage && (
@@ -29,6 +34,7 @@ function FormButton({
         marginLeft={marginLeft}
         onClick={onClick}
         disabled={loading}
+        mobileWidth={mobileWidth}
       >
         {btnIcon ? btnIcon : null}
         {loading ? "Loading ..." : title}

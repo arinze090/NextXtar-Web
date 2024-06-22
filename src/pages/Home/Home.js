@@ -1,14 +1,21 @@
 import React from "react";
-import NextXtarCarousel from "../../components/carousel/NextXtarCarousel";
 import ContactSection from "./ContactSection";
+import Carousel from "./CarouselSection";
+import DownloadSection from "./DownloadSection";
 
 function Home() {
   return (
     <>
-      <NextXtarCarousel />
+      <Carousel />
       <img
         src={require("../../assets/Frame1.png")}
-        alt="djf"
+        alt="Frame1"
+        style={{ width: "100%" }}
+      />
+      <DownloadSection />
+      <img
+        src={require("../../assets/newsletter.png")}
+        alt="newsletter"
         style={{ width: "100%" }}
       />
       <ContactSection />

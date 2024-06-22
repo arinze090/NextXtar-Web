@@ -29,7 +29,7 @@ const Container = styled.div`
   @media screen and (max-width: 768px) {
     padding-top: 70px;
     margin-bottom: 0px;
-    height: 70vh;
+    height: auto;
   }
 `;
 
@@ -75,6 +75,12 @@ const FormSection = styled.div`
   flex: 1;
   padding: 2rem;
   margin-bottom: 6rem;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 2.5rem;
+    padding: 1rem;
+    justify-content: center;
+  }
 `;
 
 const Title = styled.h2`
@@ -84,6 +90,11 @@ const Title = styled.h2`
 
 const Subtitle = styled.p`
   margin-bottom: 5rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.7rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 function ResetPassword() {

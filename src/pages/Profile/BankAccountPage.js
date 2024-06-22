@@ -24,7 +24,7 @@ const items = [
     label: "PayPal Payment",
     navigateTo: "/paypal-payment",
   },
-  { icon: SiWise, label: "Wise Payment", navigateTo: "/" },
+  { icon: SiWise, label: "Wise Payment", navigateTo: "/wise-payment" },
 ];
 
 function BankAccountPage() {

@@ -9,7 +9,6 @@ import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
 import FormTextArea from "../../components/form/FormTextArea";
 import UploadSection from "../../components/upload/UploadSection";
-import HeaderTitle from "../../components/common/HeaderTitle";
 
 const Container = styled.div`
   display: flex;
@@ -46,15 +45,24 @@ const Subtitle = styled.p`
 `;
 
 const UploadContainer = styled.div`
-  // max-width: 1200px;
-  // margin: auto;
-  // padding: 2rem;
-  // background: green;
-  justify-content: center;
-  align-items: stretch;
-  padding: 40px;
-  flex-wrap: wrap;
-  // width: 80%;
+  // // max-width: 1200px;
+  // // margin: auto;
+  // // padding: 2rem;
+  // // background: green;
+  // justify-content: center;
+  // align-items: stretch;
+  // padding: 40px;
+  // flex-wrap: wrap;
+  // // width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const formSelectOptions = [

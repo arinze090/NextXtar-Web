@@ -32,19 +32,25 @@ const Container = styled.div`
   align-content: center;
 
   @media screen and (max-width: 768px) {
-    padding-top: 230px;
-    margin-bottom: 190px;
+    padding-top: 70px;
+    margin-bottom: 30px;
+    height: auto;
   }
 `;
 
 const FormContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    margin: 20px;
+    width: 100%;
+  }
 `;
 
 const ImageSection = styled.div`
@@ -78,6 +84,11 @@ const Logo = styled.img`
 const FormSection = styled.div`
   flex: 1;
   padding: 2rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+    width: 100px;
+  }
 `;
 
 const Title = styled.h2`
@@ -122,6 +133,7 @@ const RowContent = styled.div`
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    width: 100%;
   }
 `;
 
@@ -398,7 +410,7 @@ function ArtistRegister() {
               setAboutYourselfError("");
             }}
             errorMessage={aboutYourselfError}
-            width={"98%"}
+            width={"100%"}
           />
 
           <FormSelect

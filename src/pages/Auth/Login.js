@@ -16,7 +16,7 @@ import { getUser, setUserToken } from "../../redux/features/user/userSlice";
 
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;
@@ -27,18 +27,22 @@ const Container = styled.div`
   @media screen and (max-width: 768px) {
     padding-top: 70px;
     margin-bottom: 0px;
-    height: 70vh;
+    height: auto;
   }
 `;
 
 const FormContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    margin: 20px;
+  }
 `;
 
 const ImageSection = styled.div`
@@ -72,11 +76,19 @@ const Logo = styled.img`
 const FormSection = styled.div`
   flex: 1;
   padding: 2rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 5rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const CheckboxGroup = styled.div`
@@ -91,6 +103,12 @@ const CheckboxGroup = styled.div`
   label {
     font-size: 0.9rem;
   }
+
+  @media screen and (max-width: 768px) {
+    label {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 const Link = styled.a`
@@ -101,6 +119,19 @@ const Link = styled.a`
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 0.5rem;
+  }
+`;
+
+const ForgetPasswordLink = styled.p`
+  color: grey;
+  cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem; /* Adjust font size for smaller screens */
   }
 `;
 
@@ -218,15 +249,14 @@ function Login() {
               <label htmlFor="terms">Remember me</label>
             </CheckboxGroup>
 
-            <p
+            <ForgetPasswordLink
               onClick={() => {
                 console.log("clicked");
                 navigate("/forget-password");
               }}
-              style={{ color: "grey", cursor: "pointer" }}
             >
               Forget Password ?
-            </p>
+            </ForgetPasswordLink>
           </div>
 
           <FormButton
