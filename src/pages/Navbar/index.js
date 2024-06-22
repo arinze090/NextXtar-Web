@@ -91,7 +91,7 @@ const Navbar = () => {
               <TransparentBtn
                 onClick={handleRegisterClick}
                 title={"Register"}
-                hoverColor={"black"}
+                hoverColor={"white"}
                 color={"black"}
               />
             </li>

@@ -34,7 +34,8 @@ export const NavLink = styled(Link)`
 `;
 
 export const Bars = styled(FaBars)`
-  display: ${({ isOpen }) => (isOpen ? "none" : "block")};
+  // display: ${({ isOpen }) => (isOpen ? "none" : "block")};
+  display: none;
   color: #808080;
   @media screen and (max-width: 768px) {
     display: block;
