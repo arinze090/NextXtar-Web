@@ -78,7 +78,7 @@ function AddProject() {
           setProjectDescError("");
         }}
         errorMessage={projectDescError}
-        width={"98%"}
+        width={"100%"}
       />
 
       <FormTextArea
@@ -92,7 +92,7 @@ function AddProject() {
           setProjectSponsorError("");
         }}
         errorMessage={projectSponsorError}
-        width={"98%"}
+        width={"100%"}
       />
 
       <UploadCard
