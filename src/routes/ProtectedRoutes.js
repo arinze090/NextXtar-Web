@@ -29,6 +29,8 @@ import PrivacyPolicy from "../pages/Support/PrivacyPolicy";
 import WisePayment from "../pages/Profile/WisePayment";
 import News from "../pages/Home/News";
 import AboutUs from "../pages/Home/AboutUs";
+import EarnPoints from "../pages/Profile/EarnPoints";
+import Discover from "../pages/Home/Discover";
 
 function ProtectedRoutes() {
   return (
@@ -37,6 +39,8 @@ function ProtectedRoutes() {
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/discover" element={<Discover />} />
 
         <Route path="/upload" element={<UploadScreen />} />
         <Route path="/upload-music" element={<UploadMusic />} />
@@ -68,6 +72,7 @@ function ProtectedRoutes() {
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/news" element={<News />} />
+        <Route path="/earn-points" element={<EarnPoints />} />
 
         {/*  Support section */}
         <Route path="/contact-us" element={<ContactUs />} />

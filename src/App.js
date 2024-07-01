@@ -11,7 +11,7 @@ function App() {
   const loggedInUser = state?.user?.user;
   console.log("loggedInUser", loggedInUser);
 
-  return <>{!loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}</>;
+  return <>{loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}</>;
 }
 
 export default App;
