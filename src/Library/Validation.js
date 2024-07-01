@@ -64,13 +64,13 @@ export const customValidator = (text, lengthy, min) => {
   return true;
 };
 
-export const emailValidator = (text) => {
-  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-  if (!reg.test(text)) {
-    return false;
-  }
-  return true;
-};
+// export const emailValidator = (text) => {
+//   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+//   if (!reg.test(text)) {
+//     return false;
+//   }
+//   return true;
+// };
 
 export const nameValidator = (text) => {
   let regName = /^[a-zA-Z0-9 ]+$/;
@@ -87,18 +87,18 @@ export const nameValidator = (text) => {
   return boolv;
 };
 
-export const phoneValidator = (text) => {
-  let regName = /^[0-9\+]+$/;
-  let boolv = true;
-  if (!regName.test(text)) {
-    boolv = false;
-  } else if (text?.length < 6) {
-    boolv = false;
-  } else {
-    boolv = true;
-  }
-  return boolv;
-};
+// export const phoneValidator = (text) => {
+//   let regName = /^[0-9\+]+$/;
+//   let boolv = true;
+//   if (!regName.test(text)) {
+//     boolv = false;
+//   } else if (text?.length < 6) {
+//     boolv = false;
+//   } else {
+//     boolv = true;
+//   }
+//   return boolv;
+// };
 
 export const checkPasswordMatch = (newPassword, confirmPassword) => {
   if (newPassword === confirmPassword) {
