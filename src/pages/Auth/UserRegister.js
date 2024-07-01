@@ -204,8 +204,8 @@ function UserRegister() {
       !gender &&
       !nameValidator(firstName) &&
       !nameValidator(lastName) &&
-      !emailValidator(email) &&
-      !phoneValidator(phoneNumber) &&
+      !email &&
+      !phoneNumber &&
       !username &&
       !country
     ) {
