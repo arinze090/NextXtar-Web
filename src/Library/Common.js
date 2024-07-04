@@ -5,6 +5,11 @@ export const truncateText = (text, maxLetters) => {
   return text;
 };
 
+export function stripHTML(html) {
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return doc.body.textContent || "";
+}
+
 // Function to Obscure Email Using Asterisks
 export const obscureEmail = (emilString) => {
   var splitEmail = emilString?.split("@");

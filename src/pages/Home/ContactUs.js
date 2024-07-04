@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import FormInput from "../../components/form/FormInput";
@@ -34,7 +34,8 @@ const FormContainer = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url(${require("../../assets/2.jpg")}) no-repeat center center;
+  background: url(${require("../../assets/contactUs.png")}) no-repeat center
+    center;
   background-size: cover;
   position: relative;
 
@@ -58,6 +59,12 @@ const Logo = styled.img`
   top: 20px;
   left: 20px;
   z-index: 1;
+  width: 90%;
+  height: 20%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FormSection = styled.div`
@@ -96,8 +103,21 @@ const Subtitle = styled.p`
 `;
 
 function ContactUs() {
-  const login = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const sendMessage = () => {
+    setLoading(true);
     console.log("reddd");
+    setFullName("");
+    setEmail("");
+    setMessage("");
+    setSubject("");
+    setLoading(false);
   };
 
   return (
@@ -121,16 +141,20 @@ function ContactUs() {
               inputId={"full-name"}
               inputPlaceholder={"Full Name"}
               formTitle={"Full Name"}
-              value={""}
-              onChange={""}
+              value={fullName}
+              onChange={(e) => {
+                setFullName(e.target.value);
+              }}
             />
             <FormInput
               type={"email"}
               inputId={"email"}
               inputPlaceholder={"Email Address"}
               formTitle={"Email Address"}
-              value={""}
-              onChange={""}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
 
             <FormInput
@@ -138,16 +162,20 @@ function ContactUs() {
               inputId={"subject"}
               inputPlaceholder={"Subject"}
               formTitle={"Subject"}
-              value={""}
-              onChange={""}
+              value={subject}
+              onChange={(e) => {
+                setSubject(e.target.value);
+              }}
             />
 
             <FormTextArea
               formTitle={"Message"}
               placeholder={"Message"}
               row={5}
-              onChange={""}
-              value={""}
+              value={message}
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
             />
 
             <div
@@ -159,9 +187,10 @@ function ContactUs() {
               <FormButton
                 title={"Submit"}
                 width={"100%"}
-                onClick={login}
+                onClick={sendMessage}
                 marginLeft={"0px"}
                 marginTop={20}
+                loading={loading}
               />
             </div>
 

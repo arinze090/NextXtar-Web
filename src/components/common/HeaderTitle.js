@@ -13,7 +13,7 @@ const ImageContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 216px;
-  object-fit: cover;
+  object-fit: fill;
 `;
 
 const TitleOverlay = styled.div`
@@ -40,7 +40,10 @@ const TitleOverlay = styled.div`
 function HeaderTitle({ title, imgSrc, imgAlt }) {
   return (
     <ImageContainer>
-      <Image src={imgSrc} alt={imgAlt} />
+      <Image
+        src={require("../../assets/singnifySplashLogo.png")}
+        alt={imgAlt}
+      />
       <TitleOverlay>{title}</TitleOverlay>
     </ImageContainer>
   );

@@ -100,6 +100,9 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  const loggedInUser = state?.user?.user;
 
   function logout() {
     dispatch(signOutUser());
@@ -157,8 +160,8 @@ const Sidebar = () => {
                 }}
               >
                 <img
-                  src={require("../../assets/1.jpg")}
-                  alt=""
+                  src={loggedInUser?.Picture}
+                  alt="ProfilePicture"
                   style={{
                     borderRadius: 50,
                     width: 40,
@@ -181,7 +184,7 @@ const Sidebar = () => {
                       fontWeight: "700",
                     }}
                   >
-                    Arinze
+                    {loggedInUser?.Username}
                   </h5>
                   <p
                     style={{
@@ -190,7 +193,9 @@ const Sidebar = () => {
                       fontSize: 12,
                     }}
                   >
-                    Music lover
+                    {parseInt(loggedInUser?.IsArtist)
+                      ? "Artist"
+                      : "Music lover"}
                   </p>
                 </div>
               </div>
@@ -223,7 +228,9 @@ const Sidebar = () => {
             </div>
 
             {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return (
+                <SubMenu item={item} key={index} closeSidebar={showSidebar} />
+              );
             })}
             <SidebarLink to={"/"} onClick={logout}>
               <div

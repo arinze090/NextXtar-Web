@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { stripHTML } from "../../Library/Common";
 
 const CardContainer = styled.div`
   background: white;
@@ -69,13 +70,15 @@ function NewsCard({ title, imgSrc, description, date }) {
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => setIsReadMore(!isReadMore);
 
+  const showJustTextFromHTML = stripHTML(description);
+
   return (
     <CardContainer>
       <CardHeader>{title}</CardHeader>
       <CardImage src={imgSrc} alt={title} />
       <CardContent>
-        {isReadMore ? description.slice(0, 100) : description}
-        {description.length > 20 && (
+        {isReadMore ? showJustTextFromHTML.slice(0, 100) : showJustTextFromHTML}
+        {showJustTextFromHTML.length > 20 && (
           <ReadMoreButton onClick={toggleReadMore}>
             {isReadMore ? "...read more" : "show less"}
           </ReadMoreButton>

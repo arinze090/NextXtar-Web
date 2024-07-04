@@ -4,22 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import FormInput from "../../components/form/FormInput";
 import FormTextArea from "../../components/form/FormTextArea";
 import PasswordInput from "../../components/form/PasswordInput";
 import FormSelect from "../../components/form/FormSelect";
 import FormButton from "../../components/form/FormButton";
-import axiosInstance from "../../utils/api-client";
 import { getUser, setUserToken } from "../../redux/features/user/userSlice";
 import { API_KEY } from "../../utils/devKeys";
-import {
-  phoneValidator,
-  nameValidator,
-  emailValidator,
-  checkPassword,
-} from "../../Library/Validation";
+import { nameValidator, checkPassword } from "../../Library/Validation";
 import { listOfCountries } from "../../data/dummyData";
+import { baseURL } from "../../utils/api-client";
 
 const Container = styled.div`
   display: flex;
@@ -55,7 +51,8 @@ const FormContainer = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url(${require("../../assets/1.jpg")}) no-repeat center center;
+  background: url(${require("../../assets/artistRegister.png")}) no-repeat
+    center center;
   background-size: cover;
   position: relative;
 
@@ -196,23 +193,21 @@ function ArtistRegister() {
   ];
 
   const registerArtist = async () => {
-    const registerData = {
-      is_artist: 1,
-      uname: username,
-      email: email,
-      password: password,
-      first_name: firstName,
-      last_name: lastName,
-      gender: gender,
-      phone: phoneNumber,
-      country: country,
-      ref_code: refCode,
-      about: aboutYourself,
-      stage_name: stageName,
-      record_label: recordLabel,
-      API_KEY: API_KEY,
-    };
-    console.log("registerData", registerData);
+    const form = new FormData();
+    form.append("is_artist", 1);
+    form.append("uname", username);
+    form.append("email", email);
+    form.append("password", password);
+    form.append("first_name", firstName);
+    form.append("last_name", lastName);
+    form.append("gender", gender);
+    form.append("phone", phoneNumber);
+    form.append("country", country);
+    form.append("ref_code", refCode);
+    form.append("about", aboutYourself);
+    form.append("stage_name", stageName);
+    form.append("record_label", recordLabel);
+
     if (
       !gender &&
       !nameValidator(firstName) &&
@@ -255,16 +250,13 @@ function ArtistRegister() {
     } else {
       setLoading(true);
       try {
-        await axiosInstance({
-          url: "register.php",
-          method: "POST",
-          data: registerData,
-        })
+        await axios
+          .post(`${baseURL}register.php?API_KEY=${API_KEY}`, form)
           .then((res) => {
             console.log("res", res);
             setLoading(false);
 
-            if (res?.data?.status == 200) {
+            if (parseInt(res?.data?.status) == 200) {
               console.log("register data", res?.data);
               dispatch(getUser(res?.data?.member));
               dispatch(setUserToken(res?.data?.member?.Token));

@@ -4,11 +4,38 @@ import styled from "styled-components";
 import appImage from "../../assets/AppImage.png";
 
 const Container = styled.div`
+  position: relative; /* Needed to position the pseudo-element */
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 5rem;
   background-color: #f9f9f9;
+  background: url(${require("../../assets/homeBg3.jpeg")}) no-repeat center
+    center;
+  background-size: cover;
+
+  /* Pseudo-element for background image */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.9
+    ); /* White overlay with 80% opacity */
+    z-index: 0; /* Ensure the overlay stays behind the content */
+  }
+
+  /* Ensure content is above the overlay */
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;

@@ -31,7 +31,7 @@ const ModalHeader = styled.div`
   align-items: center;
 //   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 `;
 
 const ModalTitle = styled.h2`

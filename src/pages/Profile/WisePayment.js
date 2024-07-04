@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import HeaderTitle from "../../components/common/HeaderTitle";
 import FormInput from "../../components/form/FormInput";
 import FormButton from "../../components/form/FormButton";
+import { baseURL } from "../../utils/api-client";
+import { API_KEY } from "../../utils/devKeys";
 
 const Container = styled.div`
   display: flex;
@@ -20,6 +26,53 @@ const Container = styled.div`
 `;
 
 function WisePayment() {
+  const state = useSelector((state) => state);
+  const user = state.user.user;
+
+  const [loading, setLoading] = useState(false);
+
+  const [wiseDetails, setWiseDetails] = useState("");
+
+  // Error states
+  const [formError, setFormError] = useState("");
+  const [wiseDetailsError, setWiseDetailsError] = useState("");
+
+  const addWisePaymentMethod = async () => {
+    const form = new FormData();
+    form.append("token", user?.Token);
+    form.append("wise_details", wiseDetails);
+    form.append("bank_type", "wise");
+
+    if (!wiseDetails) {
+      setWiseDetailsError("Please add a wise account");
+    } else {
+      try {
+        setLoading(true);
+
+        await axios
+          .post(`${baseURL}bank-info.php?API_KEY=${API_KEY}`, form)
+          .then((res) => {
+            setLoading(false);
+
+            if (parseInt(res?.data?.status) == 200) {
+              toast.success(
+                "Your Wise Account details has been saved successful. "
+              );
+            } else {
+              setFormError("Something went wrong, please try again later");
+              toast.error("Something went wrong, please try again later");
+            }
+          })
+          .catch((err) => {
+            setLoading(false);
+            toast.error("Failed to add Payment Method");
+          });
+      } catch (error) {
+        toast.error("Failed to add Payment Method");
+      }
+    }
+  };
+
   return (
     <Container>
       <HeaderTitle
@@ -33,9 +86,14 @@ function WisePayment() {
         inputId={"wise-email"}
         inputPlaceholder={"Wise Email Address"}
         type={"email"}
-        value={""}
-        onChange={""}
+        value={wiseDetails}
+        onChange={(e) => {
+          setWiseDetails(e.target.value);
+          setFormError("");
+          setWiseDetailsError("");
+        }}
         width={"100%"}
+        errorMessage={wiseDetailsError}
       />
 
       <div
@@ -44,7 +102,14 @@ function WisePayment() {
           display: "flex",
         }}
       >
-        <FormButton title={"Submit"} marginTop={40} marginLeft={"0px"} />
+        <FormButton
+          title={"Submit"}
+          marginTop={40}
+          marginLeft={"0px"}
+          errorMessage={formError}
+          loading={loading}
+          onClick={addWisePaymentMethod}
+        />
       </div>
     </Container>
   );

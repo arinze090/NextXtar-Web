@@ -107,7 +107,7 @@ const Carousel = () => {
 
   const slides = [
     {
-      src: require("../../assets/1.jpg"),
+      src: require("../../assets/gif11.gif"),
       appStoreImage: require("../../assets/AppStore.png"),
       playStoreImage: require("../../assets/PlayStore.png"),
       alt: "Slide 1",
@@ -115,7 +115,7 @@ const Carousel = () => {
       description: "Stream and download the music of your favourite artists.",
     },
     {
-      src: require("../../assets/2.jpg"),
+      src: require("../../assets/gif2.gif"),
       appStoreImage: require("../../assets/AppStore.png"),
       playStoreImage: require("../../assets/PlayStore.png"),
       alt: "Slide 2",
@@ -124,7 +124,7 @@ const Carousel = () => {
         "Discover what music is trending & find new talented artist to follow",
     },
     {
-      src: require("../../assets/3.jpg"),
+      src: require("../../assets/gif3.gif"),
       appStoreImage: require("../../assets/AppStore.png"),
       playStoreImage: require("../../assets/PlayStore.png"),
       alt: "Slide 3",

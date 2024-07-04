@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
 import NewsCard from "../../components/cards/NewsCard";
+import { baseURL } from "../../utils/api-client";
+import { API_KEY } from "../../utils/devKeys";
+import SkeletonLoader from "../../components/common/SkeletonLoader";
 
 const Container = styled.div`
   display: flex;
@@ -13,50 +18,71 @@ const Container = styled.div`
   }
 `;
 
-const cardData = [
-  {
-    title: "Bio section added to the App",
-    imgSrc: "path/to/image1.jpg", // Replace with the actual image path
-    description:
-      "We are excited to announce that we have recently added a plethora of new features to our app that We are excited to announce that we have recently added a plethora of new features to our",
-    date: "March 08, 2023 07:51:18 AM",
-  },
-  {
-    title: "Christmas & New Year Break!",
-    imgSrc: "path/to/image2.jpg", // Replace with the actual image path
-    description:
-      "We are excited to announce that we have recently added a plethora of new features to our app that We are excited to announce that we have recently added a plethora of new features to our",
-    date: "December 20, 2022 11:41:51 AM",
-  },
-  {
-    title: "Bio section added to the App",
-    imgSrc: "path/to/image1.jpg", // Replace with the actual image path
-    description:
-      "We are excited to announce that we have recently added a plethora of new features to our app that...",
-    date: "March 08, 2023 07:51:18 AM",
-  },
-  {
-    title: "Christmas & New Year Break!",
-    imgSrc: "path/to/image2.jpg", // Replace with the actual image path
-    description:
-      "Hello Everyone, Thank you for your faith in Singnify, we will be working so hard to serve you...",
-    date: "December 20, 2022 11:41:51 AM",
-  },
-];
-
 function News() {
+  const [hotNewsData, setHotNewsData] = useState();
+
+  const [loading, setLoading] = useState(false);
+
+  const getHotNews = async () => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("limit", 20);
+    form.append("page", 1);
+
+    try {
+      await axios
+        .post(`${baseURL}hotnews.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          // console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            // console.log("getHotNews data", res?.data);
+            setHotNewsData(res?.data);
+          } else {
+            // console.log("getHotNews message", res?.data?.status);
+          }
+        })
+        .catch((err) => {
+          // console.log("getHotNews err", err);
+          setLoading(false);
+        });
+    } catch (error) {
+      // console.log("getHotNews error", error);
+    }
+  };
+
+  useEffect(() => {
+    getHotNews();
+  }, []);
+
   return (
-    <Container>
-      {cardData.map((card, index) => (
-        <NewsCard
-          key={index}
-          title={card.title}
-          imgSrc={require("../../assets/2.jpg")}
-          description={card.description}
-          date={card.date}
-        />
-      ))}
-    </Container>
+    <div
+      style={{
+        margin: "0 auto",
+        padding: "2rem",
+        backgroundColor: "#f9f9f9",
+        borderRadius: "8px",
+      }}
+    >
+      {loading ? (
+        <SkeletonLoader />
+      ) : (
+        <Container>
+          {hotNewsData &&
+            hotNewsData?.hotnews?.map((card, index) => (
+              <NewsCard
+                key={index}
+                title={card?.title}
+                imgSrc={card?.FeatureImage}
+                description={card?.Body}
+                date={card?.DateCreated}
+              />
+            ))}
+        </Container>
+      )}
+    </div>
   );
 }
 

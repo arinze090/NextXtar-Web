@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { IoCopyOutline } from "react-icons/io5";
 import styled from "styled-components";
 import ErrorMessage from "./ErrorMessage";
 
@@ -23,6 +24,8 @@ function FormInput({
   width,
   type,
   errorMessage,
+  copyIcon,
+  onCopyIconClick,
 }) {
   return (
     <InputContainer width={width}>
@@ -47,6 +50,19 @@ function FormInput({
           border: "1px solid grey",
         }}
       />
+      {copyIcon ? (
+        <IoCopyOutline
+          onClick={onCopyIconClick}
+          style={{
+            position: "absolute",
+            right: "0.75rem",
+            top: "50%",
+            transform: "translateY(-50%)",
+            cursor: "pointer",
+            color: "gray",
+          }}
+        />
+      ) : null}
       <ErrorMessage message={errorMessage} />
     </InputContainer>
   );

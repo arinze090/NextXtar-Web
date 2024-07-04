@@ -42,14 +42,14 @@ const SidebarLabel = styled.span`
 //   }
 // `;
 
-const SubMenu = ({ item }) => {
+const SubMenu = ({ item, closeSidebar }) => {
   const [subnav, setSubnav] = useState(false);
 
   const showSubnav = () => setSubnav(!subnav);
 
   return (
     <>
-      <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
+      <SidebarLink to={item.path} onClick={closeSidebar}>
         <div
           style={{
             alignContent: "center",

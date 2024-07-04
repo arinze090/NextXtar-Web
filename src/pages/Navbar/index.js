@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoMdClose } from "react-icons/io";
 
 import {
   Nav,
@@ -73,7 +72,6 @@ const Navbar = () => {
           <ul
             style={{
               listStyleType: "none",
-              padding: 0,
               display: "flex",
               alignItems: "center",
               alignSelf: "center",
