@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { truncateText } from "../../Library/Common";
 
 const Container = styled.div`
-//   background: green;
+  //   background: green;
   border-radius: 15px;
   padding: 20px;
   width: 90%;
@@ -83,19 +84,63 @@ const GenreItem = styled.div`
   }
 `;
 
-const Genres = () => {
-  const genres = [
-    { id: 1, name: "African", imageUrl: require("../../assets/1.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/3.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-    { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-    // Add more genres here...
-  ];
+// Utility function to generate a random dark color
+const getRandomColor = () => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+const adjustColorBrightness = (color, amount) => {
+  let usePound = false;
+
+  if (color[0] === "#") {
+    color = color.slice(1);
+    usePound = true;
+  }
+
+  const num = parseInt(color, 16);
+  let r = (num >> 16) + amount;
+  let b = ((num >> 8) & 0x00ff) + amount;
+  let g = (num & 0x0000ff) + amount;
+
+  if (r > 255) r = 255;
+  else if (r < 0) r = 0;
+
+  if (b > 255) b = 255;
+  else if (b < 0) b = 0;
+
+  if (g > 255) g = 255;
+  else if (g < 0) g = 0;
+
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
+};
+
+const getRandomDarkColor = () => {
+  const color = getRandomColor();
+  return adjustColorBrightness(color, -50);
+};
+
+const Genres = ({ genres }) => {
+  // const genres = [
+  //   { id: 1, name: "African", imageUrl: require("../../assets/1.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/3.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
+  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
+  //   // Add more genres here...
+  // ];
+
+  // Determine the max words based on screen size
+  const isSmallScreen = window.innerWidth <= 768;
+  const wordsToUse = isSmallScreen ? 10 : 40;
 
   return (
     <Container>
@@ -104,12 +149,15 @@ const Genres = () => {
         <SeeAll href="#">See all</SeeAll>
       </Header>
       <GenreList>
-        {genres.map((genre) => (
+        {genres.map((genre, i) => (
           <GenreItem
-            key={genre.id}
-            style={{ backgroundImage: `url(${genre.imageUrl})` }}
+            key={i}
+            style={{
+              backgroundImage: `url(${genre.imageUrl})`,
+              backgroundColor: getRandomDarkColor(),
+            }}
           >
-            {genre.name}
+            {truncateText(genre, wordsToUse)}
           </GenreItem>
         ))}
       </GenreList>

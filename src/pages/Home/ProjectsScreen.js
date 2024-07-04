@@ -19,21 +19,21 @@ function ProjectsScreen() {
   return (
     <Container>
       <HeaderTitle
-        title={"NextXtar Projects"}
+        title={"Singnify Projects"}
         imgSrc={require("../../assets/1.jpg")}
         imgAlt={"Projects Image"}
       />
       <p>
-        NextXtar will be sponsoring projects across all sections of
+        Singnify will be sponsoring projects across all sections of
         entertainment, mainly in songwriting, skit creation, comedy, singing,
         unique ideas, short movie productions, News caster and producers. <br />
         <br />
-        1. To participate you have to download NextXtar App, in Google play
+        1. To participate you have to download Singnify App, in Google play
         store or Apple iOS store. <br />
         2. Read the guidelines, and follow the instructions <br /> 3. Create a 2
         minutes video of your ideas , fill the form and upload your video <br />{" "}
-        4. Follow NextXtar on all social media account <br />
-        5. NextXtar has total right to use any video or content uploaded without
+        4. Follow Singnify on all social media account <br />
+        5. Singnify has total right to use any video or content uploaded without
         any restriction <br />
         6. You can upload has many projects as you can <br />
         <br /> We will chose a project which is most acceptable in terms of
@@ -43,10 +43,10 @@ function ProjectsScreen() {
         Remember rejection is not the end, it only means you work harder and
         better, and your project might be accepted.
         <br />
-        <br /> Any project which is accepted, NextXtar will fully sponsor such
+        <br /> Any project which is accepted, Singnify will fully sponsor such
         project no matter the cost. <br />
         <br />
-        This is an opportunity to showcase your talent to the world. NextXtar
+        This is an opportunity to showcase your talent to the world. Singnify
         unlimited Possibilities
       </p>
 

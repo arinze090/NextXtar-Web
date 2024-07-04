@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  background: url(${require("../../assets/1.jpg")}) no-repeat center center;
+  background: ${(props) =>
+    `url(${props.backgroundImage}) no-repeat center center`};
   background-size: cover;
   border-radius: 15px;
   padding: 20px;
@@ -29,12 +30,12 @@ const Description = styled.p`
   font-size: 1rem;
 `;
 
-const SongOfTheDay = () => {
+const SongOfTheDay = ({ backgroundImage, songTitle, songDescription }) => {
   return (
-    <Container>
+    <Container backgroundImage={backgroundImage}>
       <Title>Song of the day</Title>
-      <Description>Prem Kahani</Description>
-      <Description>All mine, Lie again...</Description>
+      <Description>{songTitle}</Description>
+      <Description>{songDescription}</Description>
     </Container>
   );
 };

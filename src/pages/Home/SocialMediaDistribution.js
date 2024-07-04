@@ -186,9 +186,9 @@ function SocialMediaDistribution() {
         Things you should know about YouTube content ID and Audio fingerprint
       </h4>
       <p>
-        NextXtar will protect your intellectual property rights by using audio
+        Singnify will protect your intellectual property rights by using audio
         fingerprint technology and YouTube content ID. Audio fingerprinting and
-        YouTube content ID allow NextXtar to identify and track your music and
+        YouTube content ID allow Singnify to identify and track your music and
         other audio content, ensuring that it is not used without your
         permission. This technology creates a unique digital signature for your
         audio, which can then be compared against other audio files to determine
@@ -197,12 +197,12 @@ function SocialMediaDistribution() {
         that your content is protected and that any unauthorized use is quickly
         detected and addressed. This will give you peace of mind, knowing that
         your hard work and creativity are being protected. <br /> <br />
-        Bear in mind this service does not give NextXtar the ownership of your
+        Bear in mind this service does not give Singnify the ownership of your
         songs, you own and control your songs 100%. <br /> <br />
-        "By accepting these terms, you grant NextXtar the right to distribute
-        their songs. You acknowledge that NextXtar has the right to use, sell,
+        "By accepting these terms, you grant Singnify the right to distribute
+        their songs. You acknowledge that Singnify has the right to use, sell,
         and promote the songs as they see fit. The artist agrees to release
-        NextXtar from any liability related to the distribution and promotion of
+        Singnify from any liability related to the distribution and promotion of
         their songs."
       </p>
     </Container>

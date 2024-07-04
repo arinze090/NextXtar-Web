@@ -4,14 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
 import axiosInstance from "../../utils/api-client";
 
-import { API_KEY } from "../../utils/devKeys";
+import { baseURL } from "../../utils/api-client";
 import FormInput from "../../components/form/FormInput";
 import { obscureEmail } from "../../Library/Common";
+import { API_KEY } from "../../utils/devKeys";
 
 const Container = styled.div`
   display: flex;
@@ -26,7 +28,7 @@ const Container = styled.div`
   @media screen and (max-width: 768px) {
     padding-top: 50px;
     margin-bottom: 0px;
-    height: 70vh;
+    height: auto;
   }
 `;
 
@@ -66,6 +68,12 @@ const Logo = styled.img`
   top: 20px;
   left: 20px;
   z-index: 1;
+  width: 90%;
+  height: 20%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FormSection = styled.div`
@@ -100,14 +108,9 @@ function UserVerification() {
 
   // VerifyResetCode onSubmit
   const onUserVerification = async () => {
-    setLoading(true);
-
-    const verifyAccountData = {
-      id: userEmail,
-      otp: verifyCode,
-      API_KEY: API_KEY,
-    };
-    console.log("verifyAccountData", verifyAccountData);
+    const form = new FormData();
+    form.append("id", userEmail);
+    form.append("otp", verifyCode);
 
     if (verifyCode === "" && verifyCode?.length > 6) {
       setVerifyCodeError(
@@ -115,21 +118,23 @@ function UserVerification() {
       );
     } else {
       try {
-        await axiosInstance({
-          url: "forgot-password.php",
-          method: "POST",
-          data: verifyAccountData,
-        })
+        setLoading(true);
+
+        await axios
+          .post(
+            `${baseURL}verify-otp-forgot-password.php?API_KEY=${API_KEY}`,
+            form
+          )
           .then((res) => {
             console.log("res", res);
             setLoading(false);
 
-            if (res?.data?.status === 200) {
+            if (parseInt(res?.data?.status) === 200) {
               console.log("onUserVerification data", res?.data);
-              //   navigate("ChangePassword", {
-              //     userData: res?.data?.member,
-              //   });
-              // RNToast(Toast, 'An OTP was sent to your registered email');
+              toast.success("Great, Please change your password now");
+
+              // naviaget to the otp screen
+              navigate("/reset-password");
             } else {
               console.log("onUserVerification message", res?.data?.message);
               setFormError(res?.data?.message);
@@ -138,7 +143,7 @@ function UserVerification() {
           .catch((err) => {
             console.log("onUserVerification err", err);
             setLoading(false);
-            setFormError("Invalid Email address, please try again later");
+            setFormError("Invalid OTP, please try again later");
           });
       } catch (error) {
         console.log("onUserVerification error", error);
@@ -188,8 +193,8 @@ function UserVerification() {
       <FormContainer>
         <ImageSection>
           <Logo
-            src={require("../../assets/nextstarLogo.png")}
-            alt="NextXtar Logo"
+            src={require("../../assets/NoBgSingnifyLogo.png")}
+            alt="Singnify Logo"
           />
         </ImageSection>
         <FormSection>

@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import PasswordInput from "../../components/form/PasswordInput";
 import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
-import axiosInstance from "../../utils/api-client";
+import { baseURL } from "../../utils/api-client";
 
 import { API_KEY } from "../../utils/devKeys";
 import {
@@ -69,6 +70,12 @@ const Logo = styled.img`
   top: 20px;
   left: 20px;
   z-index: 1;
+  width: 90%;
+  height: 20%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FormSection = styled.div`
@@ -116,30 +123,22 @@ function ResetPassword() {
   console.log("checkPasswords", checkPasswords);
 
   const resetPassword = async () => {
-    navigate("/login");
-
-    const resetPasswordData = {
-      token: token,
-      password: newPassword,
-      API_KEY: API_KEY,
-    };
-    console.log("resetPasswordData", resetPasswordData);
+    const form = new FormData();
+    form.append("token", token);
+    form.append("password", newPassword);
 
     if (!passwordValidator(newPassword)) {
       setFormError("Please provide the verification code sent to your email");
     } else {
       setLoading(true);
       try {
-        await axiosInstance({
-          url: "reset-password.php",
-          method: "POST",
-          data: resetPasswordData,
-        })
+        await axios
+          .post(`${baseURL}reset-password.php?API_KEY=${API_KEY}`, form)
           .then((res) => {
             console.log("res", res);
             setLoading(false);
 
-            if (res?.data?.status == 200) {
+            if (parseInt(res?.data?.status) == 200) {
               console.log("resetPassword data", res?.data);
               navigate("/login");
 
@@ -171,8 +170,8 @@ function ResetPassword() {
       <FormContainer>
         <ImageSection>
           <Logo
-            src={require("../../assets/nextstarLogo.png")}
-            alt="NextXtar Logo"
+            src={require("../../assets/NoBgSingnifyLogo.png")}
+            alt="Singnify Logo"
           />
         </ImageSection>
         <FormSection>

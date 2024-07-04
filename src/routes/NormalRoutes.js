@@ -18,10 +18,12 @@ import StreamingPlatforms from "../pages/Home/StreamingPlatforms";
 import FAQs from "../pages/Support/FAQs";
 import PrivacyPolicy from "../pages/Support/PrivacyPolicy";
 import AboutUs from "../pages/Home/AboutUs";
+import ScrollToTop from "../components/scrollToTop/ScrollToTop";
 
 function NormalRoutes() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <ToastContainer />
 

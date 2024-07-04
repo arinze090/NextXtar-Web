@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import axios from "axios";
+
 import TopTracks from "../../components/common/TopTracks";
 import SongOfTheDay from "../../components/common/SongOfDay";
 import Genres from "../../components/common/Genres";
 import MusicPlatformSections from "./MusicPlatformSections";
 import MusicPlayer from "../../components/cards/MusicPlayer";
+import { API_KEY } from "../../utils/devKeys";
+import { baseURL } from "../../utils/api-client";
 
 const Container = styled.div`
   display: flex;
@@ -17,6 +22,7 @@ const Container = styled.div`
     flex-direction: column;
     // width: 100%;
     align-items: center;
+    margin-bottom: 50vh;
   }
 `;
 
@@ -187,28 +193,125 @@ const playerChart = [
 ];
 
 function Discover() {
+  const state = useSelector((state) => state);
+  const userToken = state?.user?.userToken;
+
+  const genresListing = state?.discover?.listings?.genres;
+
+  const discoverTracksFromRedux = state?.discover?.discoverTracks;
+
+  const [loading, setLoading] = useState(false);
+  const [songOfTheDayData, setSongOfTheDayData] = useState([]);
+  const [discoverTracks, setDiscoverTracks] = useState([]);
+  console.log("discoverTracks", discoverTracks);
+
+  const getSongOfTheDay = async () => {
+    const form = new FormData();
+    form.append("token", userToken);
+
+    try {
+      await axios
+        .post(`${baseURL}song-of-the-day.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("songOfTheDay data", res?.data);
+            setSongOfTheDayData(res?.data?.result);
+          } else {
+            console.log("songOfTheDay message", res?.data?.status);
+          }
+        })
+        .catch((err) => {
+          console.log("songOfTheDay err", err);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log("songOfTheDay error", error);
+    }
+  };
+
+  const fetchDiscoverSongs = async () => {
+    const form = new FormData();
+    form.append("token", userToken);
+
+    setLoading(true);
+    try {
+      await axios
+        .post(`${baseURL}discover.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("discover res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("fetchDiscoverSongs data", res?.data);
+
+            setDiscoverTracks(res?.data);
+          } else {
+            console.log("message", res?.data);
+          }
+        })
+        .catch((err) => {
+          console.log("fetchDiscoverSongs err", err);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log("fetchDiscoverSongs error", error);
+    }
+  };
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       await getSongOfTheDay();
+  //       await fetchDiscoverSongs();
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //       // Handle errors if needed
+  //     }
+  //   };
+
+  //   let isMounted = true;
+  //   if (isMounted) {
+  //     fetchData();
+  //   }
+
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, []);
+
   return (
     <>
       <Container>
-        <TopTracks />
+        <TopTracks topTracksData={discoverTracks?.result?.["NextXtar "]} />
         <SideContainer>
-          <SongOfTheDay />
-          <MusicPlayer
-            artist={playerChart[0].artist}
-            imageUrl={playerChart[0].imageUrl}
-            title={playerChart[0].title}
+          <SongOfTheDay
+            backgroundImage={songOfTheDayData[0]?.parent_image}
+            songTitle={songOfTheDayData[0]?.artist_name}
+            songDescription={songOfTheDayData[0]?.track_name}
           />
-          <Genres />
+
+          <Genres genres={genresListing} />
         </SideContainer>
       </Container>
-      {sections.map((section, index) => (
-        <MusicPlatformSections
-          key={index}
-          title={section.title}
-          subTitle={section.subTitle}
-          items={section.items}
-        />
-      ))}
+      {discoverTracks?.introductions?.length &&
+        Object?.entries(discoverTracks?.result)?.map(
+          ([name, objectArray], index) => {
+            // Check if objectArray is an array before mapping through it
+            if (Array.isArray(objectArray)) {
+              return (
+                <MusicPlatformSections
+                  key={index}
+                  title={name}
+                  subTitle={name}
+                  items={objectArray}
+                />
+              );
+            }
+          }
+        )}
     </>
   );
 }

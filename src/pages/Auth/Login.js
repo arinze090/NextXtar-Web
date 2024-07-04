@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import FormInput from "../../components/form/FormInput";
 import PasswordInput from "../../components/form/PasswordInput";
 import FormButton from "../../components/form/FormButton";
-import axiosInstance from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
 import { getUser, setUserToken } from "../../redux/features/user/userSlice";
+import { baseURL } from "../../utils/api-client";
+import { clearLastFetchTime } from "../../redux/features/discover/discoverSlice";
 
 const Container = styled.div`
   display: flex;
@@ -71,6 +73,12 @@ const Logo = styled.img`
   top: 20px;
   left: 20px;
   z-index: 1;
+  width: 90%;
+  height: 20%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FormSection = styled.div`
@@ -150,33 +158,30 @@ function Login() {
   const [passwordError, setPasswordError] = useState("");
 
   const login = async () => {
-    const loginData = {
-      id: email,
-      password: password,
-      API_KEY: API_KEY,
-    };
-    console.log("loginData", loginData);
+    const form = new FormData();
+    form.append("id", email);
+    form.append("password", password);
+
     if (!password) {
       setFormError("Invalid Login details, please try again");
     } else {
       setLoading(true);
       try {
-        await axiosInstance({
-          url: "login.php",
-          method: "POST",
-          data: loginData,
-        })
+        await axios
+          .post(`${baseURL}login.php?API_KEY=${API_KEY}`, form)
           .then((res) => {
             console.log("res", res);
             setLoading(false);
 
-            if (res?.data?.status == 200) {
+            if (parseInt(res?.data?.status) == 200) {
               console.log("Login data", res?.data);
+              toast.success("Login Successful. Welcome Back! 😇");
+              navigate("/discover");
               dispatch(getUser(res?.data?.member_data));
               dispatch(setUserToken(res?.data?.member_data?.Token));
-              toast.success("Login Successful. Welcome Back! 😇");
 
-              // navigate("HomeScreen", { screen: "HomeScreen" });
+              // clear clearLastFetchTime
+              dispatch(clearLastFetchTime());
             } else {
               console.log("message", res?.data?.message);
               setFormError("Invalid Details, please try again later");
@@ -201,8 +206,8 @@ function Login() {
       <FormContainer>
         <ImageSection>
           <Logo
-            src={require("../../assets/nextstarLogo.png")}
-            alt="NextXtar Logo"
+            src={require("../../assets/NoBgSingnifyLogo.png")}
+            alt="Singnify Logo"
           />
         </ImageSection>
         <FormSection>

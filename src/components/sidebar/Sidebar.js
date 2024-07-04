@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -11,6 +12,9 @@ import { IconContext } from "react-icons/lib";
 import SearchBar from "../search/SearchBar";
 import FormButton from "../form/FormButton";
 import { MdFileUpload } from "react-icons/md";
+import { RiLogoutBoxLine } from "react-icons/ri";
+import { signOutUser } from "../../redux/features/user/userSlice";
+import { clearLastFetchTime } from "../../redux/features/discover/discoverSlice";
 
 const Nav = styled.div`
   background: #fff;
@@ -70,8 +74,37 @@ const SidebarProfileSection = styled.div`
   }
 `;
 
+const SidebarLink = styled(Link)`
+  display: flex;
+  color: #000;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  list-style: none;
+  height: 20px;
+  text-decoration: none;
+  font-size: 18px;
+
+  &:hover {
+    background: #fff;
+    border-left: 4px solid green;
+    cursor: pointer;
+  }
+`;
+
+const SidebarLabel = styled.span`
+  margin-left: 16px;
+`;
+
 const Sidebar = () => {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  function logout() {
+    dispatch(signOutUser());
+    dispatch(clearLastFetchTime());
+  }
 
   const [sidebar, setSidebar] = useState(false);
 
@@ -180,7 +213,7 @@ const Sidebar = () => {
               }}
             >
               <img
-                src={require("../../assets/nextstarLogo.png")}
+                src={require("../../assets/NoBgSingnifyLogo.png")}
                 alt=""
                 style={{
                   width: "60%",
@@ -192,6 +225,20 @@ const Sidebar = () => {
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}
+            <SidebarLink to={"/"} onClick={logout}>
+              <div
+                style={{
+                  alignContent: "center",
+                  alignItems: "center",
+                  // alignSelf: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <RiLogoutBoxLine />
+                <SidebarLabel>Log Out</SidebarLabel>
+              </div>
+            </SidebarLink>
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>

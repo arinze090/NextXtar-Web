@@ -1,8 +1,8 @@
-export const RNToast = (Toast, text2) => {
-  Toast.show({
-    type: "nextXtarToast",
-    text2: text2,
-  });
+export const truncateText = (text, maxLetters) => {
+  if (text.length > maxLetters) {
+    return text.slice(0, maxLetters) + "...";
+  }
+  return text;
 };
 
 // Function to Obscure Email Using Asterisks
@@ -125,56 +125,6 @@ export function isSongLiked(songIdToCheck, userLikesArray) {
   // If no match is found, return false
   return false;
 }
-
-// export const inviteCelebsOnSocialMedia = (
-//   Linking,
-//   shouttyCelebUrl,
-//   socialMediaUrl,
-//   socialMediaType = 1
-// ) => {
-//   let socialMediaParameter = [];
-
-//   const socialMediaContent =
-//     "Hey pals! I've just joined NextXtar and would like to you listen to this track and share some love";
-
-//   if (socialMediaType == 1) {
-//     // for twitter
-//     if (shouttyCelebUrl) {
-//       socialMediaParameter.push("url=" + encodeURI(shouttyCelebUrl));
-//     }
-//     if (socialMediaContent) {
-//       socialMediaParameter.push("text=" + encodeURI(socialMediaContent));
-//     }
-//   } else if (socialMediaType == 2) {
-//     // for facebook
-//     if (shouttyCelebUrl) {
-//       socialMediaParameter.push("u=" + encodeURI(shouttyCelebUrl));
-//     }
-//     if (socialMediaContent) {
-//       socialMediaParameter.push("quote=" + encodeURI(socialMediaContent));
-//     }
-//   } else if (socialMediaType == 3) {
-//     // for whatsapp
-//     if (shouttyCelebUrl) {
-//       socialMediaParameter.push("send?" + encodeURI(shouttyCelebUrl));
-//     }
-//     if (socialMediaContent) {
-//       socialMediaParameter.push("text=" + encodeURI(socialMediaContent));
-//     }
-//   } else {
-//     null;
-//   }
-
-//   const fullSocialMediaUrl = socialMediaUrl + socialMediaParameter.join("&");
-
-//   Linking.openURL(fullSocialMediaUrl)
-//     .then((data) => {
-//       console.log("shared");
-//     })
-//     .catch(() => {
-//       console.log("Not shared");
-//     });
-// };
 
 export function getFileExtension(filePath) {
   const segments = filePath?.split("/");

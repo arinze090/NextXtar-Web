@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import FormInput from "../../components/form/FormInput";
 import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
-import axiosInstance from "../../utils/api-client";
+import { baseURL } from "../../utils/api-client";
 import { setForgetPassordUserObject } from "../../redux/features/user/userSlice";
 import { API_KEY } from "../../utils/devKeys";
 
@@ -65,6 +66,8 @@ const Logo = styled.img`
   top: 20px;
   left: 20px;
   z-index: 1;
+  width: 90%;
+  height: 20%;
 `;
 
 const FormSection = styled.div`
@@ -104,11 +107,8 @@ function ForgetPassword() {
   const [formError, setFormError] = useState("");
 
   const sendOTPToEmail = async () => {
-    const sendOTPData = {
-      id: email,
-      API_KEY: API_KEY,
-    };
-    console.log("sendOTPData", sendOTPData);
+    const form = new FormData();
+    form.append("id", email);
 
     if (!email) {
       setEmailError("Please provide your email address");
@@ -116,11 +116,8 @@ function ForgetPassword() {
       setLoading(true);
 
       try {
-        await axiosInstance({
-          url: "forgot-password.php",
-          method: "POST",
-          data: sendOTPData,
-        })
+        axios
+          .post(`${baseURL}forgot-password.php?API_KEY=${API_KEY}`, form)
           .then((res) => {
             console.log("res", res);
             setLoading(false);
@@ -162,8 +159,8 @@ function ForgetPassword() {
       <FormContainer>
         <ImageSection>
           <Logo
-            src={require("../../assets/nextstarLogo.png")}
-            alt="NextXtar Logo"
+            src={require("../../assets/NoBgSingnifyLogo.png")}
+            alt="Singnify Logo"
           />
         </ImageSection>
         <FormSection>

@@ -82,7 +82,7 @@ function AddProject() {
       />
 
       <FormTextArea
-        formTitle="Why NextXtar should sponsor your project"
+        formTitle="Why Singnify should sponsor your project"
         row={5}
         placeholder={""}
         value={projectSponsor}

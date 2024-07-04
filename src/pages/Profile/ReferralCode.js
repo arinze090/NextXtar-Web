@@ -23,7 +23,7 @@ function ReferralCode() {
         imgAlt={"Referral Image"}
       />
       <h4>Referral Earnings: $0.00</h4>
-      <p>You earn $1.00 per person you refer to NextXtar.</p>
+      <p>You earn $1.00 per person you refer to Singnify.</p>
 
       <FormInput
         type={"text"}

@@ -130,7 +130,10 @@ const Footer = () => {
     <FooterContainer>
       <FooterSection>
         <Link to={"/"}>
-          <Logo src={require("../../assets/nextstarLogo.png")} alt="NextXtar" />
+          <Logo
+            src={require("../../assets/NoBgSingnifyLogo.png")}
+            alt="Singnify"
+          />
         </Link>
 
         <AppStoreBadges>
@@ -191,7 +194,7 @@ const Footer = () => {
       </FooterSection>
 
       <Copyright>
-        © {currentYear} Copyright. NextXtar, All rights reserved.
+        © {currentYear} Copyright. Singnify, All rights reserved.
       </Copyright>
     </FooterContainer>
   );

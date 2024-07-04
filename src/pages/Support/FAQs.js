@@ -20,7 +20,7 @@ function FAQs() {
       />
       <p>Distribution Timeline</p>
       <p>
-        NextXtar gets your music on all the major digital platforms in a maximum
+        Singnify gets your music on all the major digital platforms in a maximum
         of 7 days. If you're in a hurry, we offer express delivery, which takes
         just 48 hours.
       </p>
@@ -28,7 +28,7 @@ function FAQs() {
       <p>Platform Coverage</p>
       <p>
         2. Will my song be available on iTunes and Spotify? <br />
-        Absolutely! NextXtar puts your music on a bunch of platforms, including
+        Absolutely! Singnify puts your music on a bunch of platforms, including
         iTunes, Spotify, Amazon, Deezer, Tidal, Apple Music, Boomplay,
         Audiomack, TikTok, Facebook, Instagram, and more than 100 other global
         digital music stores.
@@ -36,7 +36,7 @@ function FAQs() {
 
       <p>Royalty Payments</p>
       <p>
-        3. Will NextXtar pay royalties for songs streamed on digital stores?{" "}
+        3. Will Singnify pay royalties for songs streamed on digital stores?{" "}
         <br /> You bet! We pay out royalties every 90 days on February 24th, May
         24th, August 24th, and November 24th. Artists have full access to
         withdraw their earnings whenever they want, no strings attached.
@@ -44,7 +44,7 @@ function FAQs() {
 
       <p>Artwork Modifications</p>
       <p>
-        Why did NextXtar change my artwork? <br />
+        Why did Singnify change my artwork? <br />
         Sometimes, stores might not like the artwork you provided, and that
         could cause delays. In those cases, our graphic designers step in and
         create improved artwork. Don't worry, though; you can always update your
@@ -71,26 +71,26 @@ function FAQs() {
 
       <p>Promotion</p>
       <p>
-        Can NextXtar promote my song? <br />
-        Absolutely! NextXtar has some great tools to help artists promote their
+        Can Singnify promote my song? <br />
+        Absolutely! Singnify has some great tools to help artists promote their
         music globally. We have a substantial following on our social media
         accounts, and you can use these platforms, along with other features in
-        the NextXtar App, to get your music out there.
+        the Singnify App, to get your music out there.
       </p>
 
       <p>Artwork and Audio Requirements</p>
       <p>
         I am having trouble uploading my artwork and audio. <br />
-        No worries! NextXtar accepts artwork with dimensions ranging from 3000 x
+        No worries! Singnify accepts artwork with dimensions ranging from 3000 x
         3000 pixels to 5000 x 5000 pixels, and we take audio in MP3 or WAV
         formats. Just make sure your files meet these specs before you upload
-        them to NextXtar.
+        them to Singnify.
       </p>
 
       <p>Release Processing</p>
       <p>
         What happens after I upload my release? <br />
-        Once you've successfully uploaded your music, NextXtar reviews the music
+        Once you've successfully uploaded your music, Singnify reviews the music
         itself, the metadata, and the artwork. If we have any questions, we'll
         get in touch with you. This whole process ensures that everything aligns
         with the guidelines set by the digital music stores and blogs.
@@ -100,7 +100,7 @@ function FAQs() {
       <p>
         Can I make changes to an upload? <br />
         Sure thing! You can make changes to your upload before it's approved on
-        the NextXtar App. Once it's been distributed to the digital music
+        the Singnify App. Once it's been distributed to the digital music
         platforms, though, it takes about a month before any changes can be
         implemented.
       </p>
@@ -133,7 +133,7 @@ function FAQs() {
 
       <p>Song promotion</p>
       <p>
-        Can you promote my new song? Of course! NextXtar offers promotion
+        Can you promote my new song? Of course! Singnify offers promotion
         services for songs on various platforms, including our app
       </p>
 
@@ -157,7 +157,7 @@ function FAQs() {
       <p>
         How Can I Close My Account? <br />
         We are always sorry to lose clients, but simply email
-        contact@nextxtar.com and we’ll act on your request
+        contact@singnify.com and we’ll act on your request
       </p>
     </Container>
   );

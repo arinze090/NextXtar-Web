@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { truncateText } from "../../Library/Common";
 
 const Container = styled.div`
-  background: red;
+  // background: red;
   border-radius: 15px;
   padding: 20px;
   width: 100%;
@@ -58,6 +60,9 @@ const TrackName = styled.p`
 const TrackArtist = styled.p`
   margin: 0;
   color: grey;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const TrackActions = styled.div`
@@ -74,86 +79,39 @@ const ActionIcon = styled.span`
   cursor: pointer;
 `;
 
-const TopTracks = () => {
-  const tracks = [
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-    {
-      id: 1,
-      name: "Mistletoe",
-      artist: "Justin Bieber",
-      duration: "3:54",
-      imageUrl: "url/to/image",
-    },
-  ];
+const TopTracks = ({ topTracksData }) => {
+  const state = useSelector((state) => state);
+  // const topTracksFromRedux =
+  //   state?.discover?.discoverTracks?.result?.["NextXtar "];
+  console.log("topTracksData", topTracksData);
+
+  // Determine the max words based on screen size
+  const isSmallScreen = window.innerWidth <= 768;
+  const wordsToUse = isSmallScreen ? 10 : 40;
 
   return (
     <Container>
       <Title>Top Tracks</Title>
       <TrackList>
-        {tracks.map((track, index) => (
-          <TrackItem key={track.id}>
-            <TrackInfo>
-              <TrackImage src={track.imageUrl} alt={track.name} />
-              <TrackDetails>
-                <TrackName>{track.name}</TrackName>
-                <TrackArtist>{track.artist}</TrackArtist>
-              </TrackDetails>
-            </TrackInfo>
-            <TrackActions>
-              <TrackDuration>{track.duration}</TrackDuration>
-              <ActionIcon>❤️</ActionIcon>
-              <ActionIcon>⋮</ActionIcon>
-            </TrackActions>
-          </TrackItem>
-        ))}
+        {topTracksData?.data?.length &&
+          topTracksData?.data?.map((track, i) => (
+            <TrackItem key={i}>
+              <TrackInfo>
+                <TrackImage src={track.image} alt={track.name} />
+                <TrackDetails>
+                  <TrackName>{track.label}</TrackName>
+                  <TrackArtist>
+                    {truncateText(track.track_name, wordsToUse)}
+                  </TrackArtist>
+                </TrackDetails>
+              </TrackInfo>
+              <TrackActions>
+                <TrackDuration>{track.duration}</TrackDuration>
+                <ActionIcon>❤️</ActionIcon>
+                <ActionIcon>⋮</ActionIcon>
+              </TrackActions>
+            </TrackItem>
+          ))}
       </TrackList>
     </Container>
   );

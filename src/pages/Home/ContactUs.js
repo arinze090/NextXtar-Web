@@ -111,8 +111,8 @@ function ContactUs() {
         <FormContainer>
           <ImageSection>
             <Logo
-              src={require("../../assets/nextstarLogo.png")}
-              alt="NextXtar Logo"
+              src={require("../../assets/NoBgSingnifyLogo.png")}
+              alt="Singnify Logo"
             />
           </ImageSection>
           <FormSection>

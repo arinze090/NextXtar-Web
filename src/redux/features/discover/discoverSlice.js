@@ -39,6 +39,9 @@ const discoverSlice = createSlice({
     APILastFetchTime: (state, action) => {
       state.lastAPIFetchTime = action.payload;
     },
+    clearLastFetchTime: (state, action) => {
+      state.lastAPIFetchTime = null;
+    },
   },
 });
 
@@ -50,5 +53,6 @@ export const {
   setCompetitions,
   APILastFetchTime,
   setDiscoverLoader,
+  clearLastFetchTime,
 } = discoverSlice.actions;
 export default discoverSlice.reducer;

@@ -79,6 +79,12 @@ const Logo = styled.img`
   top: 20px;
   left: 20px;
   z-index: 1;
+  width: 90%;
+  height: 20%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FormSection = styled.div`
@@ -298,8 +304,8 @@ function ArtistRegister() {
       <FormContainer>
         <ImageSection>
           <Logo
-            src={require("../../assets/nextstarLogo.png")}
-            alt="NextXtar Logo"
+            src={require("../../assets/NoBgSingnifyLogo.png")}
+            alt="Singnify Logo"
           />
         </ImageSection>
         <FormSection>

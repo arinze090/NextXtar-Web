@@ -11,7 +11,7 @@ import {
   Sidebar,
   Times,
 } from "./NavbarElements";
-import nextXtarLogo from "../../assets/nextstarLogo.png";
+import SingnifyLogo from "../../assets/NoBgSingnifyLogo.png";
 import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
 
@@ -23,6 +23,7 @@ const Navbar = () => {
 
   const handleRegisterClick = () => {
     navigate("/register");
+    toggleMenu();
   };
 
   const toggleMenu = () => {
@@ -56,8 +57,8 @@ const Navbar = () => {
         <Sidebar isOpen={isOpen}>
           {/* Sidebar content */}
           <img
-            src={nextXtarLogo}
-            alt="NextXtar-Logo"
+            src={SingnifyLogo}
+            alt="Singnify-Logo"
             style={{
               width: "100%",
               height: 65,
@@ -85,7 +86,9 @@ const Navbar = () => {
                 marginBottom: 30,
               }}
             >
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/login" onClick={toggleMenu}>
+                Login
+              </NavLink>
             </li>
             <li>
               <TransparentBtn
@@ -101,8 +104,8 @@ const Navbar = () => {
         <NavMenu>
           <NavLink to="/">
             <img
-              src={nextXtarLogo}
-              alt="NextXtar-Logo"
+              src={SingnifyLogo}
+              alt="Singnify-Logo"
               style={{ width: 150, height: 65 }}
             />
           </NavLink>
@@ -116,7 +119,13 @@ const Navbar = () => {
             title={"Register"}
             hoverColor={"white"}
           />
-          <FormButton width="160px" title={"Discover Music"} />
+          <FormButton
+            onClick={() => {
+              navigate("/");
+            }}
+            width="160px"
+            title={"Discover Music"}
+          />
         </NavBtn>
       </Nav>
     </>

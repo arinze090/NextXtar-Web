@@ -39,7 +39,7 @@ const cardData = [
     title: "Christmas & New Year Break!",
     imgSrc: "path/to/image2.jpg", // Replace with the actual image path
     description:
-      "Hello Everyone, Thank you for your faith in NextXtar, we will be working so hard to serve you...",
+      "Hello Everyone, Thank you for your faith in Singnify, we will be working so hard to serve you...",
     date: "December 20, 2022 11:41:51 AM",
   },
 ];

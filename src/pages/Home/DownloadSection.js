@@ -71,10 +71,10 @@ function DownloadSection() {
     <Container>
       <TextWrapper>
         <Heading>
-          Download and listen to your favourite songs and artists with NextXtar
+          Download and listen to your favourite songs and artists with Singnify
         </Heading>
         <Paragraph>
-          NextXtar is available on Web, iOS and Android for download
+          Singnify is available on Web, iOS and Android for download
         </Paragraph>
       </TextWrapper>
       <ImageWrapper>

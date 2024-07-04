@@ -5,6 +5,7 @@ import MusicCard from "../../components/cards/MusicCard";
 // Container for the entire section
 const SectionContainer = styled.div`
   padding: 20px;
+  // background: red;
 `;
 
 // Header for each section
@@ -52,7 +53,7 @@ const ItemGrid = styled.div`
   overflow-x: auto;
   padding-bottom: 10px;
   width: 100%;
-  background: #4caf50;
+  // background: #4caf50;
 
   &::-webkit-scrollbar {
     height: 8px;
@@ -107,10 +108,10 @@ function MusicPlatformSections({ title, subTitle, items }) {
         {items.map((cur, i) => (
           <ItemContainer key={i}>
             <MusicCard
-              imageUrl={cur.imageUrl}
-              imageUrlAlt={cur.imageUrlAlt}
-              title={cur.name}
-              artistName={cur.artist}
+              imageUrl={cur.image}
+              imageUrlAlt={cur.label}
+              title={cur.track_name}
+              artistName={cur.label}
               audioUrl={cur.audio}
               isPlaying={
                 currentPlaying === cur.audio && !audioRef.current.paused
