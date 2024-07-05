@@ -41,7 +41,7 @@ function HeaderTitle({ title, imgSrc, imgAlt }) {
   return (
     <ImageContainer>
       <Image
-        src={require("../../assets/singnifySplashLogo.png")}
+        src={imgSrc ? imgSrc : require("../../assets/singnifySplashLogo.png")}
         alt={imgAlt}
       />
       <TitleOverlay>{title}</TitleOverlay>

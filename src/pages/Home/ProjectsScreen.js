@@ -20,7 +20,7 @@ function ProjectsScreen() {
     <Container>
       <HeaderTitle
         title={"Singnify Projects"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={require("../../assets/projects.png")}
         imgAlt={"Projects Image"}
       />
       <p>

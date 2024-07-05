@@ -10,6 +10,12 @@ const Container = styled.div`
   border-radius: 8px;
 `;
 
+const Title = styled.p`
+  color: #003018;
+  font-size: 20px;
+  font-weight: 700;
+`;
+
 function FAQs() {
   return (
     <Container>
@@ -18,14 +24,14 @@ function FAQs() {
         imgSrc={require("../../assets/2.jpg")}
         imgAlt={"FAQs Image"}
       />
-      <p>Distribution Timeline</p>
+      <Title>Distribution Timeline</Title>
       <p>
         Singnify gets your music on all the major digital platforms in a maximum
         of 7 days. If you're in a hurry, we offer express delivery, which takes
         just 48 hours.
       </p>
 
-      <p>Platform Coverage</p>
+      <Title>Platform Coverage</Title>
       <p>
         2. Will my song be available on iTunes and Spotify? <br />
         Absolutely! Singnify puts your music on a bunch of platforms, including
@@ -34,7 +40,7 @@ function FAQs() {
         digital music stores.
       </p>
 
-      <p>Royalty Payments</p>
+      <Title>Royalty Payments</Title>
       <p>
         3. Will Singnify pay royalties for songs streamed on digital stores?{" "}
         <br /> You bet! We pay out royalties every 90 days on February 24th, May
@@ -42,7 +48,7 @@ function FAQs() {
         withdraw their earnings whenever they want, no strings attached.
       </p>
 
-      <p>Artwork Modifications</p>
+      <Title>Artwork Modifications</Title>
       <p>
         Why did Singnify change my artwork? <br />
         Sometimes, stores might not like the artwork you provided, and that
@@ -52,7 +58,7 @@ function FAQs() {
         time.
       </p>
 
-      <p>Song Takedown</p>
+      <Title>Song Takedown</Title>
       <p>
         Can I take down my song anytime? <br />
         While you have the freedom to remove your song at any point, certain
@@ -61,7 +67,7 @@ function FAQs() {
         100+ stores we distribute to..
       </p>
 
-      <p>Takedown Timeline</p>
+      <Title>Takedown Timeline</Title>
       <p>
         How long does it take for a song to be taken down? <br />
         The time it takes to take down a song varies because each of the 100+
@@ -69,7 +75,7 @@ function FAQs() {
         period is usually around 30 days. Promotion.
       </p>
 
-      <p>Promotion</p>
+      <Title>Promotion</Title>
       <p>
         Can Singnify promote my song? <br />
         Absolutely! Singnify has some great tools to help artists promote their
@@ -78,7 +84,7 @@ function FAQs() {
         the Singnify App, to get your music out there.
       </p>
 
-      <p>Artwork and Audio Requirements</p>
+      <Title>Artwork and Audio Requirements</Title>
       <p>
         I am having trouble uploading my artwork and audio. <br />
         No worries! Singnify accepts artwork with dimensions ranging from 3000 x
@@ -87,7 +93,7 @@ function FAQs() {
         them to Singnify.
       </p>
 
-      <p>Release Processing</p>
+      <Title>Release Processing</Title>
       <p>
         What happens after I upload my release? <br />
         Once you've successfully uploaded your music, Singnify reviews the music
@@ -96,7 +102,7 @@ function FAQs() {
         with the guidelines set by the digital music stores and blogs.
       </p>
 
-      <p>Changes to Upload</p>
+      <Title>Changes to Upload</Title>
       <p>
         Can I make changes to an upload? <br />
         Sure thing! You can make changes to your upload before it's approved on
@@ -105,7 +111,7 @@ function FAQs() {
         implemented.
       </p>
 
-      <p>Cover Tracks</p>
+      <Title>Cover Tracks</Title>
       <p>
         Can I release cover tracks? <br />
         Yes, you can upload cover tracks, but make sure you credit the original
@@ -113,7 +119,7 @@ function FAQs() {
         be distributed. Sampling on Beats
       </p>
 
-      <p>Sampling on Beats</p>
+      <Title>Sampling on Beats</Title>
       <p>
         I use samples in my beats. <br />
         Is that allowed? Using samples is fine, as long as you have permission
@@ -122,7 +128,7 @@ function FAQs() {
         permissions for any samples you use.
       </p>
 
-      <p>Artist Name Change</p>
+      <Title>Artist Name Change</Title>
       <p>
         Can I change my artist name? <br />
         If you haven't uploaded any music yet, it's best to create a new account
@@ -131,20 +137,20 @@ function FAQs() {
         needed, update your artwork.
       </p>
 
-      <p>Song promotion</p>
+      <Title>Song promotion</Title>
       <p>
         Can you promote my new song? Of course! Singnify offers promotion
         services for songs on various platforms, including our app
       </p>
 
-      <p>Song Types</p>
+      <Title>Song Types</Title>
       <p>
         What kinds of songs can be uploaded? We're open to all types of music!
         Whether it's Christian, Native, Highlife, Jazz, Hip Hop, Soul, Blues, or
         traditional music, we accept them all.
       </p>
 
-      <p>Playlist Placement</p>
+      <Title>Playlist Placement</Title>
       <p>
         How can I get my songs on playlists? <br />
         Building up your streams in your own community, like through social
@@ -153,7 +159,7 @@ function FAQs() {
         include getting your music on iTunes and Spotify playlists.
       </p>
 
-      <p> Closing of Accounts</p>
+      <Title> Closing of Accounts</Title>
       <p>
         How Can I Close My Account? <br />
         We are always sorry to lose clients, but simply email

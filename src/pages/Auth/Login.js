@@ -18,12 +18,12 @@ import { clearLastFetchTime } from "../../redux/features/discover/discoverSlice"
 
 const Container = styled.div`
   display: flex;
-  min-height: 100vh;
+  height: auto;
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;
-  padding-top: 70px;
-  margin-bottom: 0px;
+  padding-top: 130px;
+  margin-bottom: 60px;
   align-content: center;
 
   @media screen and (max-width: 768px) {
@@ -49,7 +49,7 @@ const FormContainer = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url(${require("../../assets/1.jpg")}) no-repeat center center;
+  background: url(${require("../../assets/login.png")}) no-repeat center center;
   background-size: cover;
   position: relative;
 

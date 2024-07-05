@@ -19,7 +19,7 @@ import { baseURL } from "../../utils/api-client";
 
 const Container = styled.div`
   display: flex;
-  height: 170vh;
+  height: auto;
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;

@@ -15,7 +15,7 @@ import { API_KEY } from "../../utils/devKeys";
 
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: auto;
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;
@@ -42,7 +42,8 @@ const FormContainer = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url(${require("../../assets/2.jpg")}) no-repeat center center;
+  background: url(${require("../../assets/userVerification.png")}) no-repeat
+    center center;
   background-size: cover;
   position: relative;
 

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { FaDollarSign, FaPiggyBank } from "react-icons/fa";
 import {
   IoSettingsOutline,
@@ -10,9 +11,12 @@ import {
 import { MdPeopleAlt, MdContactPhone } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 import { IoIosRemoveCircle } from "react-icons/io";
+import { RiShutDownLine } from "react-icons/ri";
 
 import HeaderTitle from "../../components/common/HeaderTitle";
 import ListCard from "../../components/cards/ListCard";
+import { signOutUser } from "../../redux/features/user/userSlice";
+import { clearLastFetchTime } from "../../redux/features/discover/discoverSlice";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -71,10 +75,17 @@ const items = [
 
 function AccountPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClick = (navigateTo) => {
     navigate(navigateTo);
   };
+
+  function logout() {
+    dispatch(signOutUser());
+    dispatch(clearLastFetchTime());
+    navigate("/");
+  }
 
   return (
     <Container>
@@ -91,6 +102,14 @@ function AccountPage() {
           onClick={() => handleClick(item.navigateTo)}
         />
       ))}
+      <ListCard
+        icon={RiShutDownLine}
+        label={"Log Out"}
+        iconColor={"red"}
+        labelColor={"red"}
+        showArrow={false}
+        onClick={() => logout()}
+      />
     </Container>
   );
 }

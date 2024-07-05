@@ -34,7 +34,8 @@ const FormContainer = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url(${require("../../assets/1.jpg")}) no-repeat center center;
+  background: url(${require("../../assets/register.png")}) no-repeat center
+    center;
   background-size: cover;
   position: relative;
 

@@ -107,6 +107,7 @@ const Sidebar = () => {
   function logout() {
     dispatch(signOutUser());
     dispatch(clearLastFetchTime());
+    navigate("/");
   }
 
   const [sidebar, setSidebar] = useState(false);

@@ -10,6 +10,12 @@ const Container = styled.div`
   border-radius: 8px;
 `;
 
+const Title = styled.p`
+  color: #003018;
+  font-size: 20px;
+  font-weight: 700;
+`;
+
 function PrivacyPolicy() {
   return (
     <Container>
@@ -18,7 +24,7 @@ function PrivacyPolicy() {
         imgSrc={require("../../assets/2.jpg")}
         imgAlt={"PrivacyPolicy Image"}
       />
-      <p>1. The Information We Collect</p>
+      <Title>1. The Information We Collect</Title>
       <p>
         In connection with the Services, we collect and store personal
         information from you when you: <br /> <br />
@@ -28,7 +34,7 @@ function PrivacyPolicy() {
         party services <br />- Connect to third party services via us
       </p>
 
-      <p>Registration Data</p>
+      <Title>Registration Data</Title>
       <p>
         When you create a user account with the Service, we will ask for
         username, artist name, password, mobile phone number, email address,
@@ -42,7 +48,7 @@ function PrivacyPolicy() {
         You can also voluntarily provide us with your Soundcloud, Instagram,
         Twitter account username.
       </p>
-      <p>Music Upload</p>
+      <Title>Music Upload</Title>
       <p>
         When you upload music via our app, some additional personal information
         is provided by you when you do. This includes: <br />
@@ -58,7 +64,7 @@ function PrivacyPolicy() {
         address, and the device and network ID you are using to access or
         connect to the Service.
       </p>
-      <p>Payment Data</p>
+      <Title>Payment Data</Title>
       <p>
         When you make a payout through our app, via PayPal, we may collect
         information like PayPal account name, address, email address and
@@ -66,7 +72,7 @@ function PrivacyPolicy() {
         able to make the payout, to comply with our legal obligations and to
         prevent and detect fraud.
       </p>
-      <p>Information from third party sources</p>
+      <Title>Information from third party sources</Title>
       <p>
         We may integrate with third party sources from time to time and may
         receive information about you from them. <br />
@@ -77,7 +83,7 @@ function PrivacyPolicy() {
         listening activity.
       </p>
 
-      <p>2. How We Use the Information We Collected</p>
+      <Title>2. How We Use the Information We Collected</Title>
       <p>
         We will process your information for the following purposes: <br />- to
         administrate your account, <br />- to enable and provide the Service
@@ -101,7 +107,7 @@ function PrivacyPolicy() {
         otherwise stated in this Privacy Policy.
       </p>
 
-      <p>3. For How Long Do We Store It?</p>
+      <Title>3. For How Long Do We Store It?</Title>
       <p>
         The data we collect from you will be held for as long as: <br /> You use
         our Service <br />- We have to because of legal reasons <br />- We need
@@ -109,8 +115,8 @@ function PrivacyPolicy() {
         crimes
       </p>
 
-      <p>4. How We Share Information</p>
-      <p>Music platforms or services and partners</p>
+      <Title>4. How We Share Information</Title>
+      <Title>Music platforms or services and partners</Title>
       <p>
         The information you provide us with when you register and upload a song
         via our app, will be used to perform and provide our Service, by
@@ -126,7 +132,7 @@ function PrivacyPolicy() {
         you promotional communications about Singnify.
       </p>
 
-      <p>Service providers and others</p>
+      <Title>Service providers and others</Title>
       <p>
         We may from time to time share your information with service providers
         to perform functions and process user data and help provide our Service,
@@ -151,7 +157,7 @@ function PrivacyPolicy() {
         information as specified in this Privacy Policy
       </p>
 
-      <p>5. Transfer to Other Countries</p>
+      <Title>5. Transfer to Other Countries</Title>
       <p>
         If you’re a residence of Switzerland or the EEA, you understand that
         your information may be transferred to and stored outside of that area.
@@ -161,7 +167,7 @@ function PrivacyPolicy() {
         requirements and set up contracts with those parties to ensure this..
       </p>
 
-      <p>6. Children</p>
+      <Title>6. Children</Title>
       <p>
         We do not let children under the age of 16 to register with our Services
         and therefore, we do not knowingly collect personal information from
@@ -173,7 +179,7 @@ function PrivacyPolicy() {
         Customer Support.
       </p>
 
-      <p>7. How We Protect Your information</p>
+      <Title>7. How We Protect Your information</Title>
       <p>
         Your security is important to us. We always do our best to maintain
         administrative, technical and physical safeguards to help protect your
@@ -183,7 +189,7 @@ function PrivacyPolicy() {
         accessing your information.
       </p>
 
-      <p>8. Your Rights, How to Contact Us and Complaints</p>
+      <Title>8. Your Rights, How to Contact Us and Complaints</Title>
       <p>
         You are always entitled to receive information on data we have on you,
         free of charge. You also have the right to request to be erased and to
@@ -195,7 +201,7 @@ function PrivacyPolicy() {
         information, please contact us privacy@singnify.com
       </p>
 
-      <p>9. Changes to the Privacy Policy</p>
+      <Title>9. Changes to the Privacy Policy</Title>
       <p>
         We may make changes to this Privacy Policy. If we change, we’ll notify
         you by either displaying a notice within the Service or by sending you
@@ -205,7 +211,7 @@ function PrivacyPolicy() {
         please terminate your account.
       </p>
 
-      <p>10. Cookies</p>
+      <Title>10. Cookies</Title>
       <p>
         We and others working on our behalf employ cookies and related
         technologies to store information on or read information from your

@@ -15,6 +15,12 @@ const Container = styled.div`
   border-radius: 8px;
 `;
 
+const Title = styled.p`
+  color: #003018;
+  font-size: 20px;
+  font-weight: 700;
+`;
+
 function ReferralCode() {
   const state = useSelector((state) => state);
   const user = state?.user?.user;
@@ -63,7 +69,7 @@ function ReferralCode() {
         imgSrc={require("../../assets/1.jpg")}
         imgAlt={"Referral Image"}
       />
-      <h4>Referral Earnings: $0.00</h4>
+      <Title>Referral Earnings: $0.00</Title>
       <p>You earn $1.00 per person you refer to Singnify.</p>
 
       <FormInput

@@ -18,7 +18,7 @@ function ProjectList() {
     <Container>
       <HeaderTitle
         title={"Your Project"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={require("../../assets/projects.png")}
         imgAlt={"Projects Image"}
       />
 

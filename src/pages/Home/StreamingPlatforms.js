@@ -13,7 +13,6 @@ const Container = styled.div`
 
 function StreamingPlatforms() {
   const state = useSelector((state) => state);
-  console.log("state", state);
 
   const reduxStreamingPlatforms = state?.discover?.streamingPlatforms;
 
@@ -21,7 +20,7 @@ function StreamingPlatforms() {
     <Container>
       <HeaderTitle
         title={"Streaming Platforms"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Streaming Image"}
       />
 

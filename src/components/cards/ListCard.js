@@ -26,21 +26,28 @@ const IconContainer = styled.div`
 const Label = styled.span`
   margin-left: 1rem;
   font-size: 1rem;
-  color: #333;
+  color: ${({ labelColor }) => (labelColor ? labelColor : "#333")};
 `;
 
 const ArrowIcon = styled(IoMdArrowDropright)`
   color: #333;
 `;
 
-function ListCard({ icon: Icon, label, onClick }) {
+function ListCard({
+  icon: Icon,
+  label,
+  onClick,
+  iconColor,
+  labelColor,
+  showArrow = true,
+}) {
   return (
     <ItemContainer onClick={onClick}>
       <IconContainer>
-        <Icon size={20} />
-        <Label>{label}</Label>
+        <Icon size={20} color={iconColor} />
+        <Label labelColor={labelColor}>{label}</Label>
       </IconContainer>
-      <ArrowIcon size={20} />
+      {showArrow && <ArrowIcon size={20} />}
     </ItemContainer>
   );
 }
