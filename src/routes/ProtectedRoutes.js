@@ -35,6 +35,8 @@ import ScrollToTop from "../components/scrollToTop/ScrollToTop";
 
 import { APILastFetchTime } from "../redux/features/discover/discoverSlice";
 import PlaylistLibrary from "../pages/MusicLibrary/PlaylistLibrary";
+import RadioPlayer from "../pages/MusicLibrary/RadioPlayer";
+import ProfilePage from "../pages/Profile/ProfilePage";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -134,8 +136,12 @@ function ProtectedRoutes() {
           element={<SocialMediaDistribution />}
         />
 
+        {/*  Profile section */}
+        <Route path="/profile" element={<ProfilePage />} />
+
         {/*  Music section */}
         <Route path="/playlist" element={<PlaylistLibrary />} />
+        <Route path="/radio" element={<RadioPlayer />} />
 
         <Route path="/projects" element={<ProjectsScreen />} />
         <Route path="/project-lists" element={<ProjectList />} />

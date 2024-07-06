@@ -5,7 +5,7 @@ import {
   IoMusicalNotesOutline,
   IoSettingsOutline,
 } from "react-icons/io5";
-import { IoIosRadio } from "react-icons/io";
+import { IoPerson } from "react-icons/io5";
 import { SlPlaylist } from "react-icons/sl";
 import { GiMicrophone } from "react-icons/gi";
 import { MdOutlineAccountCircle } from "react-icons/md";
@@ -18,9 +18,9 @@ export const SidebarData = [
     icon: <IoDiscOutline />,
   },
   {
-    title: "Radio",
-    path: "/radio",
-    icon: <IoIosRadio />,
+    title: "Profile",
+    path: "/profile",
+    icon: <IoPerson />,
   },
   {
     title: "PlayList",
@@ -34,7 +34,7 @@ export const SidebarData = [
   },
   {
     title: "Albums",
-    path: "/albums",
+    path: "/playlist",
     icon: <IoDiscOutline />,
   },
   {

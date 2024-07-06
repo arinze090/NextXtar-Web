@@ -158,6 +158,10 @@ const Sidebar = () => {
                   alignContent: "center",
                   alignItems: "center",
                   marginLeft: 20,
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  navigate("/profile");
                 }}
               >
                 <img

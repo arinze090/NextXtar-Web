@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
 import CustomSwitch from "../../components/switches/CustomSwitch";
+import { API_KEY } from "../../utils/devKeys";
+import { baseURL } from "../../utils/api-client";
+import SkeletonLoader from "../../components/common/SkeletonLoader";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -55,28 +61,10 @@ const PlaylistDescription = styled.p`
   color: white;
 `;
 
-const playlists = [
-  {
-    title: "Playlist 1",
-    description: "Description",
-    imgSrc: require("../../assets/singnifySplashLogo.png"),
-  },
-  {
-    title: "Playlist 2",
-    description: "Description",
-    imgSrc: require("../../assets/singnifySplashLogo.png"),
-  },
-  {
-    title: "Playlist 3",
-    description: "Description",
-    imgSrc: require("../../assets/singnifySplashLogo.png"),
-  },
-  {
-    title: "Playlist 4",
-    description: "Description",
-    imgSrc: require("../../assets/singnifySplashLogo.png"),
-  },
-];
+const FullWidthMessage = styled.p`
+  width: 100%;
+  text-align: center;
+`;
 
 const musicLibraryData = [
   {
@@ -89,15 +77,202 @@ const musicLibraryData = [
     optionTitle: "Tracks",
   },
   {
+    optionTitle: "Likes",
+  },
+  {
     optionTitle: "Downloaded",
   },
 ];
 
 function PlaylistLibrary() {
+  const state = useSelector((state) => state);
+  const user = state?.user?.user;
+
+  const [loading, setLoading] = useState(false);
+
   const [activeTab, setActiveTab] = useState(0);
+  const [userAlbums, setUserAlbums] = useState();
+  const [userTracks, setUserTracks] = useState();
+  const [userPlaylist, setUserPlaylist] = useState();
+  const [userLikes, setUserLikes] = useState();
 
   const updateSwitchData = (value) => {
     setActiveTab(value);
+  };
+
+  const getUserAlbums = async () => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+
+    try {
+      await axios
+        .post(`${baseURL}user-albums.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            setUserAlbums(res?.data?.albums);
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
+    } catch (error) {}
+  };
+
+  const getUserTracks = async () => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+
+    try {
+      await axios
+        .post(`${baseURL}user-tracks.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            setUserTracks(res?.data?.tracks);
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
+    } catch (error) {}
+  };
+
+  const getUserPlaylist = async () => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+
+    try {
+      await axios
+        .post(`${baseURL}get-user-playlists.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            setUserPlaylist(res?.data?.result);
+          } else {
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
+    } catch (error) {}
+  };
+
+  const getUserLikes = async () => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+
+    try {
+      await axios
+        .post(`${baseURL}get-user-likes.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("getUserLikes data", res?.data);
+            setUserLikes(res?.data?.result);
+          } else {
+            console.log("getUserLikes message", res?.data?.status);
+          }
+        })
+        .catch((err) => {
+          console.log("getUserLikes err", err);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log("getUserLikes error", error);
+    }
+  };
+
+  useEffect(() => {
+    getUserAlbums();
+    getUserTracks();
+    getUserPlaylist();
+    getUserLikes();
+  }, []);
+
+  const renderContent = () => {
+    if (loading) {
+      return <SkeletonLoader />;
+    }
+
+    if (activeTab === 0) {
+      return userPlaylist?.length ? (
+        userPlaylist.map((playlist, index) => (
+          <PlaylistItem
+            key={index}
+            bgImage={require("../../assets/singnifySplashLogo.png")}
+          >
+            <PlaylistDiv>
+              <PlaylistTitle>{playlist?.playlist}</PlaylistTitle>
+            </PlaylistDiv>
+          </PlaylistItem>
+        ))
+      ) : (
+        <FullWidthMessage>
+          You don't have any Playlist in your collection
+        </FullWidthMessage>
+      );
+    } else if (activeTab === 1) {
+      return userAlbums?.length ? (
+        userAlbums.map((album, index) => (
+          <PlaylistItem
+            key={index}
+            bgImage={require("../../assets/singnifySplashLogo.png")}
+          >
+            <PlaylistDiv>
+              <PlaylistTitle>{album?.playlist}</PlaylistTitle>
+            </PlaylistDiv>
+          </PlaylistItem>
+        ))
+      ) : (
+        <FullWidthMessage>
+          You don't have any Album in your collection
+        </FullWidthMessage>
+      );
+    } else if (activeTab === 2) {
+      return userTracks?.length ? (
+        userTracks.map((track, index) => (
+          <PlaylistItem key={index} bgImage={track?.image}>
+            <PlaylistDiv>
+              <PlaylistTitle>{track?.track_name}</PlaylistTitle>
+            </PlaylistDiv>
+          </PlaylistItem>
+        ))
+      ) : (
+        <FullWidthMessage>
+          You don't have any Tracks in your collection
+        </FullWidthMessage>
+      );
+    } else if (activeTab === 3) {
+      return userLikes?.length ? (
+        userLikes.map((likes, index) => (
+          <PlaylistItem key={index} bgImage={likes?.image}>
+            <PlaylistDiv>
+              <PlaylistTitle>{likes?.track_name}</PlaylistTitle>
+            </PlaylistDiv>
+          </PlaylistItem>
+        ))
+      ) : (
+        <FullWidthMessage>
+          You don't have any Liked song in your collection
+        </FullWidthMessage>
+      );
+    }
   };
 
   return (
@@ -108,16 +283,7 @@ function PlaylistLibrary() {
         seletionMode={0}
       />
 
-      <GridContainer>
-        {playlists.map((playlist, index) => (
-          <PlaylistItem key={index} bgImage={playlist.imgSrc}>
-            <PlaylistDiv>
-              <PlaylistTitle>{playlist.title}</PlaylistTitle>
-              <PlaylistDescription>{playlist.description}</PlaylistDescription>
-            </PlaylistDiv>
-          </PlaylistItem>
-        ))}
-      </GridContainer>
+      <GridContainer>{renderContent()}</GridContainer>
     </Container>
   );
 }

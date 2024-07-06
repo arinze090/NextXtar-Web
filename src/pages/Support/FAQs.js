@@ -21,7 +21,7 @@ function FAQs() {
     <Container>
       <HeaderTitle
         title={"FAQs"}
-        imgSrc={require("../../assets/2.jpg")}
+        imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"FAQs Image"}
       />
       <Title>Distribution Timeline</Title>
