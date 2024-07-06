@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import CustomSwitch from "../../components/switches/CustomSwitch";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
 import SkeletonLoader from "../../components/common/SkeletonLoader";
+import { setClickedPlaylist } from "../../redux/features/discover/discoverSlice";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -85,6 +87,9 @@ const musicLibraryData = [
 ];
 
 function PlaylistLibrary() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const state = useSelector((state) => state);
   const user = state?.user?.user;
 
@@ -198,6 +203,17 @@ function PlaylistLibrary() {
     }
   };
 
+  const navigateToSelectedPlaylist = async (playlistName) => {
+    console.log("playlistName", playlistName);
+
+    // save the data in redux or localstorage
+    dispatch(setClickedPlaylist(playlistName));
+
+    const encodedName = encodeURIComponent(playlistName?.playlist);
+
+    navigate(`/playlist/${encodedName}`);
+  };
+
   useEffect(() => {
     getUserAlbums();
     getUserTracks();
@@ -216,6 +232,9 @@ function PlaylistLibrary() {
           <PlaylistItem
             key={index}
             bgImage={require("../../assets/singnifySplashLogo.png")}
+            onClick={() => {
+              navigateToSelectedPlaylist(playlist);
+            }}
           >
             <PlaylistDiv>
               <PlaylistTitle>{playlist?.playlist}</PlaylistTitle>

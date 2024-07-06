@@ -10,6 +10,70 @@ export function stripHTML(html) {
   return doc.body.textContent || "";
 }
 
+// Function to convert "MM:SS" format to total seconds
+export const getTotalDuration = (userPlaylist) => {
+  const totalSeconds = userPlaylist?.Info?.reduce((acc, item) => {
+    const [minutes, seconds] = item?.duration.split(":").map(Number);
+    return acc + minutes * 60 + seconds;
+  }, 0);
+
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const remainingSeconds = totalSeconds % 60;
+  const totalDuration = `${totalMinutes}mins ${remainingSeconds
+    .toString()
+    .padStart(2, "0")}secs`;
+
+  return totalDuration;
+};
+
+export const formatTimestampToDate = (timestamp) => {
+  const date = new Date(timestamp * 1000); // Convert timestamp to milliseconds
+  const day = date.getDate(); // Get day of the month
+  const year = date.getFullYear(); // Get full year
+
+  // Define an array of month names
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  // Get month name from months array based on zero-indexed month value
+  const monthName = months[date.getMonth()];
+
+  // Function to add ordinal suffix to day (e.g., 1st, 2nd, 3rd, 4th, etc.)
+  const addOrdinalSuffix = (day) => {
+    if (day >= 11 && day <= 13) {
+      return `${day}th`;
+    }
+    switch (day % 10) {
+      case 1:
+        return `${day}st`;
+      case 2:
+        return `${day}nd`;
+      case 3:
+        return `${day}rd`;
+      default:
+        return `${day}th`;
+    }
+  };
+
+  // Format the date string in "30th December, 2023" format
+  const formattedDate = `${addOrdinalSuffix(day)} ${monthName}, ${year}`;
+
+  return formattedDate;
+};
+
+
 // Function to Obscure Email Using Asterisks
 export const obscureEmail = (emilString) => {
   var splitEmail = emilString?.split("@");

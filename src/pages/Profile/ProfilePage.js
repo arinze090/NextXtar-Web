@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { BsDashCircleFill } from "react-icons/bs";
 import { IoPerson } from "react-icons/io5";
-import { LiaBirthdayCakeSolid } from "react-icons/lia";
 import { MdLocationOn } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { IoCallSharp } from "react-icons/io5";

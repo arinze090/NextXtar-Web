@@ -37,6 +37,7 @@ import { APILastFetchTime } from "../redux/features/discover/discoverSlice";
 import PlaylistLibrary from "../pages/MusicLibrary/PlaylistLibrary";
 import RadioPlayer from "../pages/MusicLibrary/RadioPlayer";
 import ProfilePage from "../pages/Profile/ProfilePage";
+import PlaylistLists from "../pages/MusicLibrary/PlaylistLists";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -141,6 +142,7 @@ function ProtectedRoutes() {
 
         {/*  Music section */}
         <Route path="/playlist" element={<PlaylistLibrary />} />
+        <Route path="/playlist/:playlistName" element={<PlaylistLists />} />
         <Route path="/radio" element={<RadioPlayer />} />
 
         <Route path="/projects" element={<ProjectsScreen />} />
