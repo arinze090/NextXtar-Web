@@ -15,6 +15,11 @@ const Container = styled.div`
   padding: 2rem;
   background: #f9f9f9;
   border-radius: 8px;
+  height: 70vh;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 const GridContainer = styled.div`
@@ -248,7 +253,7 @@ function PlaylistLibrary() {
       );
     } else if (activeTab === 1) {
       return userAlbums?.length ? (
-        userAlbums.map((album, index) => (
+        userAlbums?.map((album, index) => (
           <PlaylistItem
             key={index}
             bgImage={require("../../assets/singnifySplashLogo.png")}

@@ -38,7 +38,7 @@ function BankAccountPage() {
     <Container>
       <HeaderTitle
         title={"Bank Account Information"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Payment Image"}
       />
       {items.map((item, index) => (

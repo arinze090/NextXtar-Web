@@ -14,8 +14,27 @@ const InputContainer = styled.div`
   }
 `;
 
-function FormInput({
-  formTitle,
+const FormImageContainer = styled.img`
+  width: 20%;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  background: ${(props) =>
+    `url(${
+      props.backgroundImage
+        ? props.backgroundImage
+        : require("../../assets/2.jpg")
+    }) no-repeat center center`};
+
+  background-size: cover;
+
+  @media screen and (max-width: 768px) {
+    width: 45%;
+    height: 30px;
+  }
+`;
+
+function ImageFormInput({
+  formImage,
   inputPlaceholder,
   value,
   onChange,
@@ -29,12 +48,7 @@ function FormInput({
 }) {
   return (
     <InputContainer width={width}>
-      <label
-        style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}
-        htmlFor="referral-code"
-      >
-        {formTitle}
-      </label>
+      <FormImageContainer backgroundImage={formImage} />
 
       <input
         type={type}
@@ -68,4 +82,4 @@ function FormInput({
   );
 }
 
-export default FormInput;
+export default ImageFormInput;

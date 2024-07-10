@@ -83,29 +83,6 @@ const DateCreated = styled.p`
   }
 `;
 
-const playlistData = [
-  {
-    title: "Billie Jean",
-    artist: "Give Me Your Night",
-    album: "Marverick",
-    dateAdded: "20 mins ago",
-    time: "4:53",
-    imgSrc: require("../../assets/1.jpg"),
-    likes: 11345,
-    reposts: 590,
-  },
-  {
-    title: "Billie99999 Jean",
-    artist: "Give Me Your Night",
-    album: "Marverick",
-    dateAdded: "20 mins ago",
-    time: "4:53",
-    imgSrc: "path/to/image.jpg",
-    likes: 11345,
-    reposts: 590,
-  },
-];
-
 const PlaylistLists = ({ playlist }) => {
   const state = useSelector((state) => state);
   const user = state?.user?.user;

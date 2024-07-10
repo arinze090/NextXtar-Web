@@ -24,7 +24,8 @@ const TitleOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent) no-repeat
+    center center;
   color: white;
   text-align: center;
   padding: 1rem;

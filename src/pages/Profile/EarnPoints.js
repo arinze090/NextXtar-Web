@@ -21,7 +21,7 @@ function EarnPoints() {
     <Container>
       <HeaderTitle
         title={"Earn Points"}
-        imgSrc={require("../../assets/2.jpg")}
+        imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Earn Points Image"}
       />
       <p>

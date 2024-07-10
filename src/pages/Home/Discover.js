@@ -10,6 +10,7 @@ import MusicPlatformSections from "./MusicPlatformSections";
 import MusicPlayer from "../../components/cards/MusicPlayer";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
+import DiscvoverCarousel from "./DiscvoverCarousel";
 
 const Container = styled.div`
   display: flex;
@@ -203,6 +204,9 @@ function Discover() {
   const [loading, setLoading] = useState(false);
   const [songOfTheDayData, setSongOfTheDayData] = useState([]);
   const [discoverTracks, setDiscoverTracks] = useState([]);
+  const [topTracks, setTopTracks] = useState([]);
+
+  console.log("topTracks", topTracks);
   console.log("discoverTracks", discoverTracks);
 
   const getSongOfTheDay = async () => {
@@ -248,8 +252,6 @@ function Discover() {
             console.log("fetchDiscoverSongs data", res?.data);
 
             setDiscoverTracks(res?.data);
-          } else {
-            console.log("message", res?.data);
           }
         })
         .catch((err) => {
@@ -258,6 +260,31 @@ function Discover() {
         });
     } catch (error) {
       console.log("fetchDiscoverSongs error", error);
+    }
+  };
+
+  const fetchTopTracks = async () => {
+    const form = new FormData();
+    form.append("token", userToken);
+    form.append("type", "primary");
+
+    setLoading(true);
+    try {
+      await axios
+        .post(`${baseURL}discover.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("fetchTopTracks res", res);
+          setLoading(false);
+          console.log("fetchTopTracks data", res?.data?.result);
+
+          setTopTracks(res?.data?.result?.Singnify?.data);
+        })
+        .catch((err) => {
+          console.log("fetchTopTracks err", err);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log("fetchTopTracks error", error);
     }
   };
 
@@ -282,10 +309,18 @@ function Discover() {
   //   };
   // }, []);
 
+  useEffect(() => {
+    getSongOfTheDay();
+    fetchDiscoverSongs();
+    fetchTopTracks();
+  }, []);
+
   return (
     <>
+      <DiscvoverCarousel props={discoverTracks?.introductions} />
+
       <Container>
-        <TopTracks topTracksData={discoverTracks?.result?.["NextXtar "]} />
+        <TopTracks topTracksData={topTracks} />
         <SideContainer>
           <SongOfTheDay
             backgroundImage={songOfTheDayData[0]?.parent_image}

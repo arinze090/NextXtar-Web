@@ -14,7 +14,7 @@ function PaymentInformation() {
     <Container>
       <HeaderTitle
         title={"Payment Information"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Payment Image"}
       />
       <p style={{ lineHeight: 2, fontSize: 18 }}>

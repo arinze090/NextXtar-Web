@@ -7,7 +7,7 @@ import {
 } from "react-icons/io5";
 import { IoPerson } from "react-icons/io5";
 import { SlPlaylist } from "react-icons/sl";
-import { GiMicrophone } from "react-icons/gi";
+import { GrProjects } from "react-icons/gr";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { FaHandshakeAngle } from "react-icons/fa6";
 
@@ -38,13 +38,13 @@ export const SidebarData = [
     icon: <IoDiscOutline />,
   },
   {
-    title: "Artists",
-    path: "/artists",
-    icon: <GiMicrophone />,
+    title: "Projects",
+    path: "/projects",
+    icon: <GrProjects />,
   },
   {
     title: "Settings",
-    path: "/settings",
+    path: "/edit-profile",
     icon: <IoSettingsOutline />,
   },
   {

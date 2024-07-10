@@ -20,16 +20,19 @@ const ModalContainer = styled.div`
   border-radius: 8px;
   width: 90%;
   max-width: 500px;
+  max-height: 90vh;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1001;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-//   border-bottom: 1px solid #ddd;
+  //   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   // margin-bottom: 20px;
 `;
@@ -49,6 +52,8 @@ const CloseButton = styled.button`
 const ModalContent = styled.div`
   font-size: 1rem;
   line-height: 1.5;
+  overflow-y: auto;
+  margin-bottom: 20px;
 `;
 
 const Modal = ({ isOpen, onClose, title, children }) => {

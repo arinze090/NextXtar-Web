@@ -77,7 +77,7 @@ function WisePayment() {
     <Container>
       <HeaderTitle
         title={"Wise Payment"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Wise Image"}
       />
 

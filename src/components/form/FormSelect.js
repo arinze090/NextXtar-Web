@@ -43,8 +43,8 @@ function FormSelect({
         <option value="">{selectPlaceholder}</option>
 
         {options?.map((cur, i) => (
-          <option key={i} value={cur?.name}>
-            {cur?.name}
+          <option key={i} value={cur?.name ? cur?.name : JSON.stringify(cur)}>
+            {cur?.name ? cur?.name : cur?.track_name}
           </option>
         ))}
       </select>

@@ -5,6 +5,41 @@ export const truncateText = (text, maxLetters) => {
   return text;
 };
 
+export const convertToSlug = (str) => {
+  return str
+    .toString()
+    .trim()
+    ?.toLowerCase() // Convert to lowercase
+    ?.replace(/\s+/g, "-") // Replace spaces with hyphens
+    ?.replace(/[^\w\-]+/g, ""); // Remove all non-word chars
+};
+
+export const shareOnWhatsApp = (url) => {
+  const encodedUrl = encodeURIComponent(url);
+  const whatsappUrl = `whatsapp://send?text=${encodedUrl}`;
+  window.location.href = whatsappUrl;
+};
+
+export const shareOnFacebook = (url) => {
+  const encodedUrl = encodeURIComponent(url);
+  const facebookAppUrl = `fb://facewebmodal/f?href=${encodedUrl}`;
+  window.location.href = facebookAppUrl;
+};
+
+export const shareOnInstagram = (url) => {
+  // Instagram does not have a direct share URL scheme, usually shares are done via mobile apps.
+  alert(
+    "Instagram does not support direct sharing from web. Use the app to share."
+  );
+};
+
+export const shareOnTwitter = (url, text) => {
+  const encodedUrl = encodeURIComponent(url);
+  const encodedText = encodeURIComponent(text);
+  const twitterAppUrl = `twitter://post?message=${encodedText}%20${encodedUrl}`;
+  window.location.href = twitterAppUrl;
+};
+
 export function stripHTML(html) {
   const doc = new DOMParser().parseFromString(html, "text/html");
   return doc.body.textContent || "";
@@ -72,7 +107,6 @@ export const formatTimestampToDate = (timestamp) => {
 
   return formattedDate;
 };
-
 
 // Function to Obscure Email Using Asterisks
 export const obscureEmail = (emilString) => {

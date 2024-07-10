@@ -66,7 +66,7 @@ function ReferralCode() {
     <Container>
       <HeaderTitle
         title={"Referral Earnings"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Referral Image"}
       />
       <Title>Referral Earnings: $0.00</Title>

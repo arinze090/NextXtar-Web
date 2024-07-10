@@ -38,6 +38,9 @@ import PlaylistLibrary from "../pages/MusicLibrary/PlaylistLibrary";
 import RadioPlayer from "../pages/MusicLibrary/RadioPlayer";
 import ProfilePage from "../pages/Profile/ProfilePage";
 import PlaylistLists from "../pages/MusicLibrary/PlaylistLists";
+import PressReleasePage from "../pages/Home/PressReleasePage";
+import FanLinkPage from "../pages/Home/FanLinkPage";
+import EditPressRelease from "../pages/Home/EditPressRelease";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -139,6 +142,9 @@ function ProtectedRoutes() {
 
         {/*  Profile section */}
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/fanlinks" element={<FanLinkPage />} />
+        <Route path="/press-release" element={<PressReleasePage />} />
+        <Route path="/edit-press-release" element={<EditPressRelease />} />
 
         {/*  Music section */}
         <Route path="/playlist" element={<PlaylistLibrary />} />

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import HeaderTitle from "../../components/common/HeaderTitle";
@@ -7,6 +9,9 @@ import FormInput from "../../components/form/FormInput";
 import FormButton from "../../components/form/FormButton";
 import FormSelect from "../../components/form/FormSelect";
 import Modal from "../../components/modal/Modal";
+import { API_KEY } from "../../utils/devKeys";
+import { baseURL } from "../../utils/api-client";
+import SkeletonLoader from "../../components/common/SkeletonLoader";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -17,6 +22,9 @@ const Container = styled.div`
 
 function SocialMediaDistribution() {
   const navigate = useNavigate();
+
+  const state = useSelector((state) => state);
+  const user = state?.user?.user;
 
   const genderOptions = [
     {
@@ -59,10 +67,16 @@ function SocialMediaDistribution() {
     },
   ];
 
+  const [loading, setLoading] = useState(false);
+
+  const [userTracks, setUserTracks] = useState();
+
   const [selectTrack, setSelectTrack] = useState("");
   const [deliveryOption, setDeliveryOption] = useState("");
   const [paymentOption, setPaymentOption] = useState("");
   const [deliveryDate, setDeliveryDate] = useState("");
+
+  console.log("selectTrack", selectTrack);
 
   const [formError, setFormError] = useState("");
   const [selectTrackError, setSelectTrackError] = useState("");
@@ -73,12 +87,44 @@ function SocialMediaDistribution() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    setIsModalOpen(true);
+    if (!selectTrack) {
+      alert("Please select a track to promote");
+      setFormError("Please select a track to promote");
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const getUserTracks = async () => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+
+    try {
+      await axios
+        .post(`${baseURL}user-tracks.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            setUserTracks(res?.data?.tracks);
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getUserTracks();
+  }, []);
 
   return (
     <Container>
@@ -88,13 +134,18 @@ function SocialMediaDistribution() {
         imgAlt={"Express Image"}
       />
 
+      {loading && <SkeletonLoader />}
+
       <FormSelect
         formTitle={"Select the track or album your would like to promote"}
         selectId={"trackPromo"}
         selectPlaceholder={"Select Track/Album"}
-        options={genderOptions}
+        options={userTracks}
         onChange={(e) => {
-          setSelectTrack(e.target.value);
+          e.target.value
+            ? setSelectTrack(JSON?.parse(e.target.value))
+            : setSelectTrack(null);
+
           setFormError("");
           setSelectTrackError("");
         }}
@@ -112,6 +163,7 @@ function SocialMediaDistribution() {
           marginTop={40}
           marginLeft={"0px"}
           onClick={openModal}
+          errorMessage={formError}
         />
       </div>
 

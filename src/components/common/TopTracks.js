@@ -93,13 +93,13 @@ const TopTracks = ({ topTracksData }) => {
     <Container>
       <Title>Top Tracks</Title>
       <TrackList>
-        {topTracksData?.data?.length &&
-          topTracksData?.data?.map((track, i) => (
+        {topTracksData?.length &&
+          topTracksData?.map((track, i) => (
             <TrackItem key={i}>
               <TrackInfo>
                 <TrackImage src={track.image} alt={track.name} />
                 <TrackDetails>
-                  <TrackName>{track.label}</TrackName>
+                  <TrackName>{truncateText(track.label, wordsToUse)}</TrackName>
                   <TrackArtist>
                     {truncateText(track.track_name, wordsToUse)}
                   </TrackArtist>
@@ -107,7 +107,7 @@ const TopTracks = ({ topTracksData }) => {
               </TrackInfo>
               <TrackActions>
                 <TrackDuration>{track.duration}</TrackDuration>
-                <ActionIcon>❤️</ActionIcon>
+                {!isSmallScreen && <ActionIcon>❤️</ActionIcon>}
                 <ActionIcon>⋮</ActionIcon>
               </TrackActions>
             </TrackItem>

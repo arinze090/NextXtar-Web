@@ -22,7 +22,9 @@ function ProjectList() {
         imgAlt={"Projects Image"}
       />
 
-      <h4>No Projects yet</h4>
+      <h4 style={{ width: "100%", textAlign: "center", fontSize: 20 }}>
+        You don't any Project yet
+      </h4>
     </Container>
   );
 }

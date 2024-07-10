@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { FaDollarSign, FaPiggyBank } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { FaDollarSign, FaPiggyBank, FaLink } from "react-icons/fa";
 import {
   IoSettingsOutline,
   IoWalletOutline,
   IoInformationCircle,
+  IoNewspaperOutline,
 } from "react-icons/io5";
 import { MdPeopleAlt, MdContactPhone } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 import { IoIosRemoveCircle } from "react-icons/io";
 import { RiShutDownLine } from "react-icons/ri";
+import { GrProjects } from "react-icons/gr";
 
 import HeaderTitle from "../../components/common/HeaderTitle";
 import ListCard from "../../components/cards/ListCard";
@@ -34,7 +36,22 @@ const items = [
   {
     icon: IoSettingsOutline,
     label: "Settings",
-    navigateTo: "/settings",
+    navigateTo: "/edit-profile",
+  },
+  {
+    icon: FaLink,
+    label: "Fan Links",
+    navigateTo: "/fanlinks",
+  },
+  {
+    icon: IoNewspaperOutline,
+    label: "Press Release",
+    navigateTo: "/press-release",
+  },
+  {
+    icon: GrProjects,
+    label: "Projects",
+    navigateTo: "/projects",
   },
   {
     icon: MdPeopleAlt,
@@ -77,6 +94,9 @@ function AccountPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const state = useSelector((state) => state);
+  const user = state?.user?.user;
+
   const handleClick = (navigateTo) => {
     navigate(navigateTo);
   };
@@ -91,7 +111,7 @@ function AccountPage() {
     <Container>
       <HeaderTitle
         title={"Account"}
-        imgSrc={require("../../assets/1.jpg")}
+        imgSrc={user?.Picture}
         imgAlt={"Payment Image"}
       />
       {items.map((item, index) => (
