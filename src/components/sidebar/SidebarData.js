@@ -3,9 +3,9 @@ import React from "react";
 import {
   IoDiscOutline,
   IoMusicalNotesOutline,
-  IoSettingsOutline,
+  IoSettingsOutline, IoSearch
 } from "react-icons/io5";
-import { IoPerson } from "react-icons/io5";
+import { IoPerson, IoVideocamOutline } from "react-icons/io5";
 import { SlPlaylist } from "react-icons/sl";
 import { GrProjects } from "react-icons/gr";
 import { MdOutlineAccountCircle } from "react-icons/md";
@@ -16,6 +16,11 @@ export const SidebarData = [
     title: "Discover",
     path: "/discover",
     icon: <IoDiscOutline />,
+  },
+  {
+    title: "Search",
+    path: "/search",
+    icon: <IoSearch />,
   },
   {
     title: "Profile",
@@ -54,7 +59,17 @@ export const SidebarData = [
   },
   {
     title: "Partnerships",
-    path: "/support",
+    path: "/partnership-procedure",
     icon: <FaHandshakeAngle />,
+  },
+  {
+    title: "Face Video",
+    path: "/face-video",
+    icon: <IoVideocamOutline />,
+  },
+  {
+    title: "Dance  Video",
+    path: "/dance-video",
+    icon: <IoVideocamOutline />,
   },
 ];

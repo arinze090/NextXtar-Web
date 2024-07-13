@@ -26,17 +26,6 @@ function SocialMediaDistribution() {
   const state = useSelector((state) => state);
   const user = state?.user?.user;
 
-  const genderOptions = [
-    {
-      id: 1,
-      name: "Male",
-    },
-    {
-      id: 1,
-      name: "Female",
-    },
-  ];
-
   const paymentOptions = [
     {
       id: 1,

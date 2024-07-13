@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 
 const InputContainer = styled.div`
@@ -9,9 +10,10 @@ const InputContainer = styled.div`
   padding: 20px;
   justify-content: center;
   border-radius: 112px;
+  cursor: pointer;
 
   @media screen and (max-width: 768px) {
-    width: 40%;
+    width: ${({ mobilewidth }) => (mobilewidth ? mobilewidth : "40%")};
   }
 `;
 
@@ -30,9 +32,11 @@ const Input = styled.input`
   border: 1px solid grey;
 `;
 
-function SearchBar({ width, value, onChange }) {
+function SearchBar({ width, value, onChange, mobilewidth }) {
+  const navigate = useNavigate();
+
   return (
-    <InputContainer width={width}>
+    <InputContainer width={width} mobilewidth={mobilewidth}>
       <InputWrapper>
         <IoSearchOutline
           style={{

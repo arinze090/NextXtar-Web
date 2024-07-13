@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { Stepper } from "@mui/material";
 import { MdFileUpload } from "react-icons/md";
 
@@ -9,6 +15,9 @@ import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
 import FormTextArea from "../../components/form/FormTextArea";
 import UploadSection from "../../components/upload/UploadSection";
+import { API_KEY } from "../../utils/devKeys";
+import { baseURL } from "../../utils/api-client";
+import { listOfCountries } from "../../data/dummyData";
 
 const Container = styled.div`
   display: flex;
@@ -99,6 +108,14 @@ const videoRecordRules = [
 ];
 
 const UploadTracks = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const state = useSelector((state) => state);
+  const user = state.user.user;
+  const genres = state?.discover?.listings?.genres;
+  const countryOptions = listOfCountries;
+
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -109,12 +126,218 @@ const UploadTracks = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const step1Check = () => {
+    console.log("djffj");
+    if (!uploadingChoice) {
+      setUploadingChoiceError("Please select an option");
+    } else if (!trackArtistName) {
+      setTrackArtistNameError("provide the details");
+    } else if (!genre) {
+      setGenreError("Please select a genre from the options");
+    } else if (!trackName) {
+      setTrackNameError("please provide the track name");
+    } else if (!language) {
+      setLanguageError("Select a language");
+    } else if (!explicit) {
+      setExplicitError("Select an option");
+    } else if (!country) {
+      setCountryError("Provide your country");
+    } else {
+      handleNext();
+    }
+  };
+
+  const step2Check = () => {
+    console.log("djffj");
+    if (!uploadDate) {
+      setUploadDateError("Please provide a valid date");
+    } else {
+      handleNext();
+    }
+  };
+
+  const [loading, setLoading] = useState(false);
+
   // states for the uploading music form
   const [uploadingChoice, setUploadingChoice] = useState();
+  const [genre, setGenre] = useState("");
+  const [trackName, setTrackName] = useState("");
+  const [trackArtistName, setTrackArtistName] = useState("");
+  const [description, setDescription] = useState("");
+  const [explicit, setExplicit] = useState("");
+  const [recordLabel, setRecordLabel] = useState("");
+  const [spotifyUrl, setSpotifyUrl] = useState("");
+  const [itunesUrl, setItunesUrl] = useState("");
+  const [lyrics, setLyrics] = useState("");
+
+  const [videoUrl, setVideoUrl] = useState("");
+  const [language, setLanguage] = useState("");
+  const [image, setImage] = useState("");
+  const [lyricsDoc, setLyricsDoc] = useState("");
+  const [audioFile, setAudioFile] = useState("");
+  const [uploadDate, setUploadDate] = useState("");
+
+  // Artist information
+  const [artistFullName, setArtistFullName] = useState("");
+  const [artistName, setArtistName] = useState("");
+  const [artistEmail, setArtistEmail] = useState("");
+  const [artistNumber, setArtistNumber] = useState("");
+
+  const [firstName, setFirstName] = useState(
+    user?.FirstName ? user?.FirstName : ""
+  );
+  const [lastName, setLastName] = useState(
+    user?.LastName ? user?.LastName : ""
+  );
+  const [middleName, setMiddleName] = useState(
+    user?.MiddleName ? user?.MiddleName : ""
+  );
+  const [phone, setPhone] = useState(user?.Phone ? user?.Phone : "");
+  const [country, setCountry] = useState("");
+
+  // Error states
+  const [formError, setFormError] = useState("");
+  const [uploadingChoiceError, setUploadingChoiceError] = useState();
+  const [artistEmailError, setArtistEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [countryError, setCountryError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [genderError, setGenderError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [trackNameError, setTrackNameError] = useState("");
+  const [genreError, setGenreError] = useState("");
+  const [trackArtistNameError, setTrackArtistNameError] = useState("");
+  const [languageError, setLanguageError] = useState("");
+  const [recordLabelError, setRecordLabelError] = useState("");
+  const [explicitError, setExplicitError] = useState("");
+  const [artistFullNameError, setArtistFullNameError] = useState("");
+  const [artistNameError, setArtistNameError] = useState("");
+  const [artistNumberError, setArtistNumberError] = useState("");
+  const [uploadDateError, setUploadDateError] = useState("");
 
   const handleUploadingChoiceChange = (event) => {
     setUploadingChoice(event.target.value);
+    setUploadingChoiceError("");
+    setFormError("");
     console.log("Selected value:", event.target.value);
+  };
+
+  const uploadMusic = async () => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+    form.append("name", trackName);
+    form.append("label", trackArtistName);
+    form.append("genre", JSON.parse(genre));
+    form.append("language", language);
+    form.append("image", image);
+    form.append("audio", "");
+    form.append("duration", "");
+    form.append("country", country);
+    form.append(
+      "choice",
+      uploadingChoice == 1 ? "Uploading for Myself" : "Uploading For Someone"
+    );
+    form.append("someone_full_name", artistFullName);
+    form.append("someone_name", artistName);
+    form.append("someone_email", artistEmail);
+    form.append("someone_phone", artistNumber);
+    form.append("track_name", "");
+    form.append("track_id", "");
+    form.append("is_cover", 0);
+    form.append("description", description);
+    form.append("last_name", lastName);
+    form.append("middle_name", middleName);
+    form.append("first_name", firstName);
+    form.append("contact_phone", phone);
+    form.append("lyrics", lyrics);
+    form.append("feature", "");
+    form.append("compose", "");
+    form.append("record_label", recordLabel);
+    form.append("is_explicit", explicit);
+    form.append("spotify_url", spotifyUrl);
+    form.append("itunes_url", itunesUrl);
+    form.append("video_url", videoUrl);
+    form.append("music_upload_date", uploadDate);
+
+    const uploadMusicData = {
+      token: user?.Token,
+      API_KEY: API_KEY,
+      name: trackName,
+      label: trackArtistName,
+      genre: genre,
+      language: language,
+      image: image,
+      audio: "",
+      duration: "",
+      country: country,
+      choice:
+        uploadingChoice == 1 ? "Uploading for Myself" : "Uploading For Someone",
+      someone_full_name: artistFullName,
+      someone_name: artistName,
+      someone_email: artistEmail,
+      someone_phone: artistNumber,
+      track_name: "",
+      track_id: "",
+      is_cover: 0,
+      description: description,
+      last_name: lastName,
+      middle_name: middleName,
+      first_name: firstName,
+      contact_phone: phone,
+      lyrics: "",
+      // lyrics_file: !lyricsDocument ? "" : lyricsDocument?.link,
+      feature: "",
+      compose: "",
+      record_label: recordLabel,
+      is_explicit: explicit,
+      spotify_url: spotifyUrl,
+      itunes_url: itunesUrl,
+      video_url: videoUrl,
+      music_upload_date: "",
+    };
+
+    console.log("uploadMusicData", uploadMusicData);
+    try {
+      await axios
+        .post(`${baseURL}save-audio.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("uploadMusic data", res?.data);
+            //   Clear the reduxc lyrics file data
+            // dispatch(clearLyricsUploadData());
+            toast.success("Your track has been uploaded successfully 😇");
+          } else {
+            console.log("uploadMusic message", res?.data?.status);
+            setFormError("Something went wrong, please try again later");
+
+            toast.error(
+              "Track Upload Failed",
+              "Something went wrong while uploading your track, please try again later"
+            );
+          }
+        })
+        .catch((err) => {
+          console.log("uploadMusic err", err);
+          setLoading(false);
+          toast.error(
+            "Track Upload Failed",
+            "Something went wrong while uploading your track, please try again later"
+          );
+        });
+    } catch (error) {
+      console.log("uploadMusic error", error);
+      toast.error(
+        "Track Upload Failed",
+        "Something went wrong while uploading your track, please try again later"
+      );
+    }
   };
 
   return (
@@ -130,17 +353,23 @@ const UploadTracks = () => {
               selectPlaceholder={"Select Option"}
               width={"100%"}
               onChange={handleUploadingChoiceChange}
+              errorMessage={uploadingChoiceError}
             />
 
             <RowContent>
               <FormInput
-                formTitle={"Artiste Stage Name"}
+                formTitle={"Stage Name"}
                 inputId={"artist-stage-name"}
-                inputPlaceholder={"Artist Stage Name"}
+                inputPlaceholder={"Stage Name"}
                 type={"text"}
-                value={""}
-                onChange={""}
+                value={trackArtistName}
+                onChange={(e) => {
+                  setTrackArtistName(e.target.value);
+                  setFormError("");
+                  setTrackArtistNameError("");
+                }}
                 width={"30%"}
+                errorMessage={trackArtistNameError}
               />
 
               <FormInput
@@ -148,34 +377,58 @@ const UploadTracks = () => {
                 inputId={"track-name"}
                 inputPlaceholder={"Track Name"}
                 type={"text"}
-                value={""}
-                onChange={""}
+                value={trackName}
+                onChange={(e) => {
+                  setTrackName(e.target.value);
+                  setFormError("");
+                  setTrackNameError("");
+                }}
                 width={"30%"}
+                errorMessage={trackNameError}
               />
               <FormSelect
                 formTitle={"Genre"}
-                options={formSelectOptions}
+                options={genres}
                 selectId={"Genre"}
                 selectPlaceholder={"Select Genre"}
                 width={"30%"}
+                onChange={(e) => {
+                  setGenre(e.target.value);
+                  setFormError("");
+                  setGenreError("");
+                }}
+                errorMessage={genreError}
               />
             </RowContent>
 
             <RowContent>
-              <FormSelect
+              <FormInput
                 formTitle={"What language is the track name in?"}
-                options={formSelectOptions}
-                selectId={"language"}
-                selectPlaceholder={"Select Language"}
+                inputId={"language"}
+                inputPlaceholder={"language"}
+                type={"text"}
+                value={language}
+                onChange={(e) => {
+                  setLanguage(e.target.value);
+                  setFormError("");
+                  setLanguageError("");
+                }}
                 width={"48%"}
+                errorMessage={languageError}
               />
+
               <FormInput
                 formTitle={"Record Label Name or Label Imprint"}
                 inputId={"record-label-name"}
                 inputPlaceholder={"Record Label Name or Label Imprint"}
                 type={"text"}
-                value={""}
-                onChange={""}
+                value={recordLabel}
+                onChange={(e) => {
+                  setRecordLabel(e.target.value);
+                  setFormError("");
+                  setRecordLabelError("");
+                }}
+                errorMessage={recordLabelError}
                 width={"48%"}
               />
             </RowContent>
@@ -183,18 +436,39 @@ const UploadTracks = () => {
             <RowContent>
               <FormSelect
                 formTitle={"Explicit Content"}
-                options={formSelectOptions}
+                options={[
+                  {
+                    name: "Yes",
+                    value: "Yes",
+                  },
+                  {
+                    name: "No",
+                    value: "No",
+                  },
+                ]}
                 selectId={"explicit-content"}
                 selectPlaceholder={"Explicit Content"}
                 width={"48%"}
+                onChange={(e) => {
+                  setExplicit(e.target.value);
+                  setFormError("");
+                  setExplicitError("");
+                }}
+                errorMessage={explicitError}
               />
 
               <FormSelect
                 formTitle={"Nationality or Country"}
-                options={formSelectOptions}
+                options={countryOptions}
                 selectId={"country"}
                 selectPlaceholder={"Nationality or Country"}
                 width={"48%"}
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                  setFormError("");
+                  setCountryError("");
+                }}
+                errorMessage={countryError}
               />
             </RowContent>
 
@@ -211,8 +485,13 @@ const UploadTracks = () => {
                     inputId={"artist-name"}
                     inputPlaceholder={"Artist Full Name"}
                     type={"text"}
-                    value={""}
-                    onChange={""}
+                    value={artistFullName}
+                    onChange={(e) => {
+                      setArtistFullName(e.target.value);
+                      setFormError("");
+                      setArtistFullNameError("");
+                    }}
+                    errorMessage={artistFullNameError}
                     width={"48%"}
                   />
 
@@ -221,8 +500,13 @@ const UploadTracks = () => {
                     inputId={"artist-name"}
                     inputPlaceholder={"Artist Name"}
                     type={"text"}
-                    value={""}
-                    onChange={""}
+                    value={artistName}
+                    onChange={(e) => {
+                      setArtistName(e.target.value);
+                      setFormError("");
+                      setArtistNameError("");
+                    }}
+                    errorMessage={artistNameError}
                     width={"48%"}
                   />
                 </RowContent>
@@ -232,8 +516,13 @@ const UploadTracks = () => {
                     inputId={"artist-phoneNumber"}
                     inputPlaceholder={"Artist Phone Number"}
                     type={"number"}
-                    value={""}
-                    onChange={""}
+                    value={artistNumber}
+                    onChange={(e) => {
+                      setArtistNumber(e.target.value);
+                      setFormError("");
+                      setArtistNumberError("");
+                    }}
+                    errorMessage={artistNumberError}
                     width={"48%"}
                   />
 
@@ -242,8 +531,13 @@ const UploadTracks = () => {
                     inputId={"artist-email"}
                     inputPlaceholder={"Artist Email Address"}
                     type={"email"}
-                    value={""}
-                    onChange={""}
+                    value={artistEmail}
+                    onChange={(e) => {
+                      setArtistEmail(e.target.value);
+                      setFormError("");
+                      setArtistEmailError("");
+                    }}
+                    errorMessage={artistEmailError}
                     width={"48%"}
                   />
                 </RowContent>
@@ -259,7 +553,7 @@ const UploadTracks = () => {
                 marginTop: 20,
               }}
             >
-              <FormButton title={"Next"} onClick={handleNext} />
+              <FormButton title={"Next"} onClick={step1Check} />
             </div>
           </Container>
         )}
@@ -272,8 +566,11 @@ const UploadTracks = () => {
                 inputId={"spotify-url"}
                 inputPlaceholder={"Enter your Spotify URL (if any)"}
                 type={"text"}
-                value={""}
-                onChange={""}
+                value={spotifyUrl}
+                onChange={(e) => {
+                  setSpotifyUrl(e.target.value);
+                  setFormError("");
+                }}
                 width={"48%"}
               />
 
@@ -282,8 +579,11 @@ const UploadTracks = () => {
                 inputId={"itunes-url"}
                 inputPlaceholder={"Enter your iTunes URL (if any)"}
                 type={"text"}
-                value={""}
-                onChange={""}
+                value={itunesUrl}
+                onChange={(e) => {
+                  setItunesUrl(e.target.value);
+                  setFormError("");
+                }}
                 width={"48%"}
               />
             </RowContent>
@@ -291,24 +591,35 @@ const UploadTracks = () => {
               type={"date"}
               formTitle={"Select the Date for your Music to be Uploaded"}
               width={"100%"}
-              value={""}
-              onChange={""}
+              value={uploadDate}
+              onChange={(e) => {
+                setUploadDate(e.target.value);
+                setFormError("");
+                setUploadDateError("");
+              }}
+              errorMessage={uploadDateError}
             />
             <FormTextArea
               formTitle={
                 "A short description of what the song is all about (Optional)"
               }
               row={5}
-              value={""}
-              onChange={""}
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+                setFormError("");
+              }}
               placeholder={""}
               width={"100%"}
             />
             <FormTextArea
               formTitle={"Paste your Lyrics Here or Upload Below (Optional)"}
               row={5}
-              value={""}
-              onChange={""}
+              value={lyrics}
+              onChange={(e) => {
+                setLyrics(e.target.value);
+                setFormError("");
+              }}
               placeholder={""}
               width={"100%"}
             />
@@ -357,7 +668,7 @@ const UploadTracks = () => {
                 onClick={handleBack}
                 marginLeft={"0px"}
               />
-              <FormButton title={"Next"} onClick={handleNext} />
+              <FormButton title={"Next"} onClick={step2Check} />
             </div>
           </Container>
         )}

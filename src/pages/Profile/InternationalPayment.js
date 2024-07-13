@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,6 +42,7 @@ const RowContent = styled.div`
 `;
 
 function InternationalPayment() {
+  const navigate = useNavigate();
   const state = useSelector((state) => state);
   const user = state.user.user;
 
@@ -101,6 +103,7 @@ function InternationalPayment() {
 
             if (parseInt(res?.data?.status) == 200) {
               toast.success("Your bank Account has been saved successful. ");
+              navigate(-1);
             } else {
               setFormError("Something went wrong, please try again later");
               toast.error("Something went wrong, please try again later");

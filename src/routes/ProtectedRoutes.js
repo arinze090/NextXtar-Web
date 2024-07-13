@@ -41,6 +41,14 @@ import PlaylistLists from "../pages/MusicLibrary/PlaylistLists";
 import PressReleasePage from "../pages/Home/PressReleasePage";
 import FanLinkPage from "../pages/Home/FanLinkPage";
 import EditPressRelease from "../pages/Home/EditPressRelease";
+import TermsAndCondition from "../pages/Support/TermsAndCondition";
+import PartnershipProcedure from "../pages/Profile/PartnershipProcedure";
+import FaceVideoUpload from "../pages/Upload/FaceVideoUpload";
+import FaceVideo from "../pages/Upload/FaceVideo";
+import DanceVideoUpload from "../pages/Upload/DanceVideoUpload";
+import DanceVideo from "../pages/Upload/DanceVideo";
+import Support from "../pages/Support/Support";
+import Search from "../pages/Home/Search";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -119,12 +127,19 @@ function ProtectedRoutes() {
       <Sidebar />
       <Routes>
         <Route path="/discover" element={<Discover />} />
+        <Route path="/search" element={<Search />} />
 
+        {/*  Upload section */}
         <Route path="/upload" element={<UploadScreen />} />
         <Route path="/upload-music" element={<UploadMusic />} />
         <Route path="/upload-tracks" element={<UploadTracks />} />
         <Route path="/upload-album" element={<UploadAlbum />} />
+        <Route path="/dance-video" element={<DanceVideo />} />
+        <Route path="/dance-video-upload" element={<DanceVideoUpload />} />
+        <Route path="/face-video" element={<FaceVideo />} />
+        <Route path="/face-video-upload" element={<FaceVideoUpload />} />
 
+        {/*  Paymnents section */}
         <Route path="/payments" element={<Payments />} />
         <Route path="/bank-payments" element={<BankAccountPage />} />
         <Route path="/payment-information" element={<PaymentInformation />} />
@@ -139,36 +154,41 @@ function ProtectedRoutes() {
           path="/express-distribution"
           element={<SocialMediaDistribution />}
         />
+        <Route
+          path="/partnership-procedure"
+          element={<PartnershipProcedure />}
+        />
 
         {/*  Profile section */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/fanlinks" element={<FanLinkPage />} />
         <Route path="/press-release" element={<PressReleasePage />} />
         <Route path="/edit-press-release" element={<EditPressRelease />} />
+        <Route path="/referral-code" element={<ReferralCode />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/earn-points" element={<EarnPoints />} />
 
         {/*  Music section */}
         <Route path="/playlist" element={<PlaylistLibrary />} />
         <Route path="/playlist/:playlistName" element={<PlaylistLists />} />
         <Route path="/radio" element={<RadioPlayer />} />
 
+        {/*  Projects section */}
         <Route path="/projects" element={<ProjectsScreen />} />
         <Route path="/project-lists" element={<ProjectList />} />
         <Route path="/add-project" element={<AddProject />} />
-
-        <Route path="/referral-code" element={<ReferralCode />} />
-        <Route path="/edit-profile" element={<EditProfile />} />
-
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/account" element={<AccountPage />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/earn-points" element={<EarnPoints />} />
 
         {/*  Support section */}
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/streaming-platforms" element={<StreamingPlatforms />} />
         <Route path="/faqs" element={<FAQs />} />
+        <Route path="/support" element={<Support />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsAndCondition />} />
       </Routes>
       <Footer />
     </Router>

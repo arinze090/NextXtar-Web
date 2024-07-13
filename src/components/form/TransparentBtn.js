@@ -11,6 +11,8 @@ function TransparentBtn({
   btnIcon,
   hoverColor,
   mobileWidth,
+  loading,
+  loadingTitle,
 }) {
   return (
     <div style={{ marginTop: marginTop }}>
@@ -21,10 +23,10 @@ function TransparentBtn({
         color={color}
         hoverColor={hoverColor}
         mobileWidth={mobileWidth}
+        disabled={loading}
       >
         {btnIcon ? btnIcon : null}
-
-        {title}
+        {loading ? loadingTitle : title}
       </TransparentFormBtn>
     </div>
   );

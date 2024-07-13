@@ -8,6 +8,8 @@ import { IoPerson } from "react-icons/io5";
 import { MdLocationOn } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { IoCallSharp } from "react-icons/io5";
+import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 import ProfileHeader from "../../components/common/ProfileHeader";
 import ProfileSwitch from "../../components/switches/ProfileSwitch";
@@ -149,7 +151,7 @@ const musicLibraryData = [
     optionTitle: "Likes",
   },
   {
-    optionTitle: "Downloaded",
+    optionTitle: "Following",
   },
 ];
 
@@ -396,6 +398,13 @@ function ProfilePage() {
             <IoCallSharp />
             <Description>{user?.Phone}</Description>
           </AboutDetails>
+          <Title>Socials</Title>
+          <div>
+            <FaXTwitter style={{ fontSize: 30, marginRight: 10 }} />
+            <FaFacebook style={{ fontSize: 30, marginRight: 10 }} />
+            <FaWhatsapp style={{ fontSize: 30, marginRight: 10 }} />
+            <FaInstagram style={{ fontSize: 30 }} />
+          </div>
         </SideContainer>
       </ProfileContainer>
     </Container>

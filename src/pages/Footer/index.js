@@ -170,16 +170,13 @@ const Footer = () => {
             <a href="/faqs">FAQ</a>
           </li>
           <li>
+            <a href="/support">Support</a>
+          </li>
+          <li>
             <a href="/privacy-policy">Privacy Policy</a>
           </li>
           <li>
-            <a href="/streaming-platforms">Streaming Platforms</a>
-          </li>
-          <li>
-            <a href="/">Promotions</a>
-          </li>
-          <li>
-            <a href="/">Terms and Conditions</a>
+            <a href="/terms-of-service">Terms and Conditions</a>
           </li>
         </HelpLinks>
       </FooterSection>

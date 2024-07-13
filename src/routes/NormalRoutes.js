@@ -19,6 +19,8 @@ import FAQs from "../pages/Support/FAQs";
 import PrivacyPolicy from "../pages/Support/PrivacyPolicy";
 import AboutUs from "../pages/Home/AboutUs";
 import ScrollToTop from "../components/scrollToTop/ScrollToTop";
+import TermsAndCondition from "../pages/Support/TermsAndCondition";
+import Support from "../pages/Support/Support";
 
 function NormalRoutes() {
   return (
@@ -29,12 +31,12 @@ function NormalRoutes() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+
+        {/*  Auth section */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterScreen />} />
-
         <Route path="/register-as-an-artist" element={<ArtistRegister />} />
         <Route path="/register-as-a-music-lover" element={<UserRegister />} />
-
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/resend-verififcation" element={<ResendVerification />} />
         <Route path="/user-verififcation" element={<UserVerification />} />
@@ -43,10 +45,10 @@ function NormalRoutes() {
         {/*  Support section */}
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
-
-        <Route path="/streaming-platforms" element={<StreamingPlatforms />} />
         <Route path="/faqs" element={<FAQs />} />
+        <Route path="/support" element={<Support />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsAndCondition />} />
       </Routes>
       <Footer />
     </Router>

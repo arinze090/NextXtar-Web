@@ -3,12 +3,17 @@ import styled from "styled-components";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import CustomSwitch from "../../components/switches/CustomSwitch";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
 import SkeletonLoader from "../../components/common/SkeletonLoader";
 import { setClickedPlaylist } from "../../redux/features/discover/discoverSlice";
+import FormButton from "../../components/form/FormButton";
+import FormInput from "../../components/form/FormInput";
+import Modal from "../../components/modal/Modal";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -99,15 +104,65 @@ function PlaylistLibrary() {
   const user = state?.user?.user;
 
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [activeTab, setActiveTab] = useState(0);
+  const [playlistName, setPlaylistName] = useState("");
   const [userAlbums, setUserAlbums] = useState();
   const [userTracks, setUserTracks] = useState();
   const [userPlaylist, setUserPlaylist] = useState();
   const [userLikes, setUserLikes] = useState();
 
+  // Error states
+  const [formError, setFormError] = useState("");
+  const [playlistNameError, setPlaylistNameError] = useState("");
+
   const updateSwitchData = (value) => {
     setActiveTab(value);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const createPlaylist = async () => {
+    const form = new FormData();
+    form.append("token", user?.Token);
+    form.append("playlist_name", playlistName);
+
+    if (!playlistName) {
+      setPlaylistNameError("Please provide a name");
+      setFormError("Please provide a name");
+    } else {
+      setLoading(true);
+
+      try {
+        await axios
+          .post(`${baseURL}create-playlist.php?API_KEY=${API_KEY}`, form)
+          .then((res) => {
+            console.log("res", res);
+            setLoading(false);
+
+            if (res?.data?.status == 200) {
+              console.log("createPlaylist data", res?.data);
+              toast.success(`${playlistName} Playlist created 😇`);
+              closeModal();
+              navigate("/playlist");
+            }
+          })
+          .catch((err) => {
+            console.log("createPlaylist err", err);
+            setLoading(false);
+          });
+      } catch (error) {
+        console.log("createPlaylist error", error);
+        setLoading(false);
+      }
+    }
   };
 
   const getUserAlbums = async () => {
@@ -307,7 +362,54 @@ function PlaylistLibrary() {
         seletionMode={0}
       />
 
+      <div
+        style={{
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
+        <FormButton
+          title={"Create Playlist"}
+          marginTop={"0px"}
+          marginLeft={"0px"}
+          onClick={openModal}
+          width={"100%"}
+        />
+      </div>
+
       <GridContainer>{renderContent()}</GridContainer>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Add New Playlist">
+        <FormInput
+          type={"text"}
+          formTitle={"Playlist Name"}
+          inputPlaceholder={""}
+          inputId={"playlist"}
+          value={playlistName}
+          onChange={(e) => {
+            setPlaylistName(e.target.value);
+            setFormError("");
+            setPlaylistNameError("");
+          }}
+          errorMessage={playlistNameError}
+        />
+
+        <div
+          style={{
+            justifyContent: "center",
+            display: "flex",
+          }}
+        >
+          <FormButton
+            title={"Create Playlist"}
+            marginTop={40}
+            marginLeft={"0px"}
+            errorMessage={formError}
+            loading={loading}
+            onClick={createPlaylist}
+          />
+        </div>
+      </Modal>
     </Container>
   );
 }
