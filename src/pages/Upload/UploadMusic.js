@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import UploadCard from "../../components/cards/UploadCard";
 import HeaderTitle from "../../components/common/HeaderTitle";
+import Upload from "../../components/cards/Upload";
 
 const Container = styled.div`
   display: flex;
@@ -29,21 +29,21 @@ function UploadMusic() {
         imgSrc={require("../../assets/uploadMusic.png")}
         imgAlt={"Upload Music Image"}
       />
-      <UploadCard
+      <Upload
         title="Upload Tracks"
         description="A track is a single"
         formats="MP3"
-        onUploadBtnClick={() => {
+        handleClick={() => {
           navigate("/upload-tracks");
         }}
         uploadBtnTitle={"Upload Track"}
       />
-      <UploadCard
+      <Upload
         title="Upload Album"
         description="An album is two or more tracks"
         formats="MP3"
-        onUploadBtnClick={() => {
-          navigate("/upload-album");
+        handleClick={() => {
+          navigate("/upload-tracks");
         }}
         uploadBtnTitle={"Upload Album"}
       />

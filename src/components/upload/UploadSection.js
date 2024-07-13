@@ -9,6 +9,7 @@ const Section = styled.div`
   background: #f9f9f9;
   border-radius: 8px;
   margin-bottom: 2rem;
+  flex-direction: column;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -30,14 +31,14 @@ const Content = styled.div`
 const Rules = styled.div`
   padding: 1rem;
   margin-left: 1rem;
-  background: #f9f9f9;
   border-radius: 8px;
   width: 100%;
-  max-width: 400px;
+  // max-width: 400px;
 
   @media (max-width: 768px) {
     margin-left: 0;
     margin-top: 1rem;
+    font-size: 14px;
   }
 `;
 
@@ -47,7 +48,16 @@ function UploadSection({
   uploadDescription,
   rules,
   uploadBtnTitle,
-  onUploadBtnClick,
+  onFileUpload,
+  selectedFile,
+  previewUrl,
+  handleCancel,
+  loading,
+  handleFileChange,
+  fileType,
+  UploadedText,
+  isFileUploaded,
+  uploadPercentage,
 }) {
   return (
     <Section>
@@ -57,7 +67,16 @@ function UploadSection({
           title={uploadTitle}
           description={uploadDescription}
           uploadBtnTitle={uploadBtnTitle}
-          onUploadBtnClick={onUploadBtnClick}
+          onFileUpload={onFileUpload}
+          fileType={fileType}
+          handleFileChange={handleFileChange}
+          loading={loading}
+          previewUrl={previewUrl}
+          handleCancel={handleCancel}
+          selectedFile={selectedFile}
+          UploadedText={UploadedText}
+          isFileUploaded={isFileUploaded}
+          uploadPercentage={uploadPercentage}
         />
       </Content>
       <Rules>

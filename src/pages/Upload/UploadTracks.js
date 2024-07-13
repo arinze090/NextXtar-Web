@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -53,6 +53,10 @@ const Subtitle = styled.p`
   align-items: flex-start;
 `;
 
+const HiddenInput = styled.input`
+  display: none;
+`;
+
 const UploadContainer = styled.div`
   // // max-width: 1200px;
   // // margin: auto;
@@ -69,8 +73,8 @@ const UploadContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
@@ -109,7 +113,12 @@ const videoRecordRules = [
 
 const UploadTracks = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  const fileInputRef = useRef(null);
+
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
 
   const state = useSelector((state) => state);
   const user = state.user.user;
@@ -127,15 +136,24 @@ const UploadTracks = () => {
   };
 
   const step1Check = () => {
-    console.log("djffj");
     if (!uploadingChoice) {
       setUploadingChoiceError("Please select an option");
+    } else if (uploadingChoice == "Uploading for Someone" && !artistFullName) {
+      setArtistFullNameError("Please provide the details");
+    } else if (uploadingChoice == "Uploading for Someone" && !artistName) {
+      setArtistNameError("Please provide the details");
+    } else if (uploadingChoice == "Uploading for Someone" && !artistNumber) {
+      setArtistNumberError("Please provide the details");
+    } else if (uploadingChoice == "Uploading for Someone" && !artistEmail) {
+      setArtistEmailError("Please provide the details");
     } else if (!trackArtistName) {
       setTrackArtistNameError("provide the details");
     } else if (!genre) {
       setGenreError("Please select a genre from the options");
     } else if (!trackName) {
       setTrackNameError("please provide the track name");
+    } else if (!recordLabel) {
+      setRecordLabelError("Please provide your record label");
     } else if (!language) {
       setLanguageError("Select a language");
     } else if (!explicit) {
@@ -148,7 +166,6 @@ const UploadTracks = () => {
   };
 
   const step2Check = () => {
-    console.log("djffj");
     if (!uploadDate) {
       setUploadDateError("Please provide a valid date");
     } else {
@@ -157,6 +174,24 @@ const UploadTracks = () => {
   };
 
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const [uploadedDocumentUrl, setUploadedDocumentUrl] = useState(null);
+  const [base64Picture, setBase64Picture] = useState(null);
+  const [selectedPictureUrl, setSelectedPictureUrl] = useState(null);
+  const [uploadedPictureUrl, setUploadedPictureUrl] = useState(null);
+
+  // Audio upload section
+  const [audioFile, setAudioFile] = useState("");
+  const [base64Audio, setBase64Audio] = useState(null);
+  const [selectedAudioUrl, setSelectedAudioUrl] = useState(null);
+  const [uploadedAudioUrl, setUploadedAudioUrl] = useState(null);
+
+  // Video upload section
+  const [videoFile, setVideoFile] = useState("");
+  const [base64Video, setBase64Video] = useState(null);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState(null);
+  const [uploadedVideoUrl, setUploadedVideoUrl] = useState(null);
 
   // states for the uploading music form
   const [uploadingChoice, setUploadingChoice] = useState();
@@ -170,11 +205,8 @@ const UploadTracks = () => {
   const [itunesUrl, setItunesUrl] = useState("");
   const [lyrics, setLyrics] = useState("");
 
-  const [videoUrl, setVideoUrl] = useState("");
   const [language, setLanguage] = useState("");
   const [image, setImage] = useState("");
-  const [lyricsDoc, setLyricsDoc] = useState("");
-  const [audioFile, setAudioFile] = useState("");
   const [uploadDate, setUploadDate] = useState("");
 
   // Artist information
@@ -199,13 +231,7 @@ const UploadTracks = () => {
   const [formError, setFormError] = useState("");
   const [uploadingChoiceError, setUploadingChoiceError] = useState();
   const [artistEmailError, setArtistEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const [countryError, setCountryError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-  const [firstNameError, setFirstNameError] = useState("");
-  const [lastNameError, setLastNameError] = useState("");
-  const [genderError, setGenderError] = useState("");
-  const [usernameError, setUsernameError] = useState("");
   const [trackNameError, setTrackNameError] = useState("");
   const [genreError, setGenreError] = useState("");
   const [trackArtistNameError, setTrackArtistNameError] = useState("");
@@ -221,9 +247,9 @@ const UploadTracks = () => {
     setUploadingChoice(event.target.value);
     setUploadingChoiceError("");
     setFormError("");
-    console.log("Selected value:", event.target.value);
   };
 
+  // this function calls the upload track api
   const uploadMusic = async () => {
     setLoading(true);
 
@@ -231,10 +257,10 @@ const UploadTracks = () => {
     form.append("token", user?.Token);
     form.append("name", trackName);
     form.append("label", trackArtistName);
-    form.append("genre", JSON.parse(genre));
+    form.append("genre", JSON?.parse(genre));
     form.append("language", language);
-    form.append("image", image);
-    form.append("audio", "");
+    form.append("image", uploadedPictureUrl?.link);
+    form.append("audio", uploadedAudioUrl?.link);
     form.append("duration", "");
     form.append("country", country);
     form.append(
@@ -254,53 +280,19 @@ const UploadTracks = () => {
     form.append("first_name", firstName);
     form.append("contact_phone", phone);
     form.append("lyrics", lyrics);
+    form.append(
+      "lyrics_file",
+      uploadedDocumentUrl ? uploadedDocumentUrl?.link : ""
+    );
     form.append("feature", "");
     form.append("compose", "");
     form.append("record_label", recordLabel);
     form.append("is_explicit", explicit);
     form.append("spotify_url", spotifyUrl);
     form.append("itunes_url", itunesUrl);
-    form.append("video_url", videoUrl);
+    form.append("video_url", uploadedVideoUrl?.link);
     form.append("music_upload_date", uploadDate);
 
-    const uploadMusicData = {
-      token: user?.Token,
-      API_KEY: API_KEY,
-      name: trackName,
-      label: trackArtistName,
-      genre: genre,
-      language: language,
-      image: image,
-      audio: "",
-      duration: "",
-      country: country,
-      choice:
-        uploadingChoice == 1 ? "Uploading for Myself" : "Uploading For Someone",
-      someone_full_name: artistFullName,
-      someone_name: artistName,
-      someone_email: artistEmail,
-      someone_phone: artistNumber,
-      track_name: "",
-      track_id: "",
-      is_cover: 0,
-      description: description,
-      last_name: lastName,
-      middle_name: middleName,
-      first_name: firstName,
-      contact_phone: phone,
-      lyrics: "",
-      // lyrics_file: !lyricsDocument ? "" : lyricsDocument?.link,
-      feature: "",
-      compose: "",
-      record_label: recordLabel,
-      is_explicit: explicit,
-      spotify_url: spotifyUrl,
-      itunes_url: itunesUrl,
-      video_url: videoUrl,
-      music_upload_date: "",
-    };
-
-    console.log("uploadMusicData", uploadMusicData);
     try {
       await axios
         .post(`${baseURL}save-audio.php?API_KEY=${API_KEY}`, form)
@@ -313,6 +305,7 @@ const UploadTracks = () => {
             //   Clear the reduxc lyrics file data
             // dispatch(clearLyricsUploadData());
             toast.success("Your track has been uploaded successfully 😇");
+            navigate("/");
           } else {
             console.log("uploadMusic message", res?.data?.status);
             setFormError("Something went wrong, please try again later");
@@ -332,10 +325,288 @@ const UploadTracks = () => {
           );
         });
     } catch (error) {
+      setLoading(false);
+
       console.log("uploadMusic error", error);
       toast.error(
         "Track Upload Failed",
         "Something went wrong while uploading your track, please try again later"
+      );
+    }
+  };
+
+  // this function calls the upload lyrics/document api to store the documnet in the db
+  const uploadDocument = async (file) => {
+    setLoading(true);
+    const form = new FormData();
+    form.append("file", file);
+
+    try {
+      await axios
+        .post(`${baseURL}upload-document.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("uploadDocument data", res?.data);
+
+            setUploadedDocumentUrl(res?.data);
+            toast.success("Your document uploaded successfully 😇");
+          } else {
+            console.log("message", res?.data?.status);
+            setFormError("Something went wrong, please try again later");
+
+            toast.error(
+              "Document Upload Failed",
+              "Something went wrong while uploading your document, please try again later"
+            );
+          }
+        })
+        .catch((err) => {
+          console.log("uploadDocument err", err);
+          setLoading(false);
+          toast.error(
+            "Document Upload Failed",
+            "Something went wrong while uploading your document, please try again later"
+          );
+        });
+    } catch (error) {
+      setLoading(false);
+      console.log("uploadDocument error", error);
+      toast.error(
+        "Document Upload Failed",
+        "Something went wrong while uploading your document, please try again later"
+      );
+    }
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    console.log("file", file);
+    uploadDocument(file);
+  };
+
+  const handleCoverPhotoFileChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+      setSelectedPictureUrl(fileUrl);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBase64Picture(reader?.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleAudioFileChange = (event) => {
+    const file = event.target.files[0];
+    setAudioFile(file);
+
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+      setSelectedAudioUrl(fileUrl);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBase64Audio(reader?.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleVideoFileChange = (event) => {
+    const file = event.target.files[0];
+    setVideoFile(file);
+
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+      setSelectedVideoUrl(fileUrl);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBase64Video(reader?.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // this function calls the upload image/coverpicture api to store the image in the db
+  const uploadBase64Image = async (base64Image) => {
+    setLoading(true);
+
+    const form = new FormData();
+    form.append("image", base64Image);
+
+    try {
+      await axios
+        .post(`${baseURL}upload-photo.php?API_KEY=${API_KEY}`, form, {
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setProgress(percentCompleted);
+          },
+        })
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("uploadBase64Image data", res?.data);
+
+            setUploadedPictureUrl(res?.data);
+            toast.success("Your picture uploaded successfully 😇");
+          } else {
+            console.log("message", res?.data?.status);
+            setFormError("Something went wrong, please try again later");
+
+            toast.error(
+              "Picture Upload Failed",
+              "Something went wrong while uploading your picture, please try again later"
+            );
+          }
+        })
+        .catch((err) => {
+          console.log("uploadBase64Image err", err);
+          setLoading(false);
+          toast.error(
+            "Picture Upload Failed",
+            "Something went wrong while uploading your picture, please try again later"
+          );
+        });
+    } catch (error) {
+      setLoading(false);
+
+      console.log("uploadBase64Image error", error);
+      toast.error(
+        "Picture Upload Failed",
+        "Something went wrong while uploading your picture, please try again later"
+      );
+    }
+  };
+
+  // this function calls the upload audio files api to store the documnet in the db
+  const uploadMP3File = async (file, base64Audio) => {
+    setLoading(true);
+
+    const api_nonce = Date.now().toString();
+
+    const form = new FormData();
+    form.append("id", user?.ID);
+    form.append("nounce", api_nonce);
+    form.append("no", 0);
+    form.append("file", file);
+    form.append("file_data", base64Audio);
+
+    try {
+      await axios
+        .post(`${baseURL}upload-track.php?API_KEY=${API_KEY}`, form, {
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setProgress(percentCompleted);
+          },
+        })
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("uploadMP3File data", res?.data);
+
+            setUploadedAudioUrl(res?.data);
+            toast.success("Your track uploaded successfully 😇");
+          } else {
+            console.log("message", res?.data?.status);
+            setFormError("Something went wrong, please try again later");
+
+            toast.error(
+              "Track Upload Failed",
+              "Something went wrong while uploading your track, please try again later"
+            );
+          }
+        })
+        .catch((err) => {
+          console.log("uploadMP3File err", err);
+          setLoading(false);
+          toast.error(
+            "Track Upload Failed",
+            "Something went wrong while uploading your track, please try again later"
+          );
+        });
+    } catch (error) {
+      setLoading(false);
+
+      console.log("uploadMP3File error", error);
+      toast.error(
+        "Track Upload Failed",
+        "Something went wrong while uploading your track, please try again later"
+      );
+    }
+  };
+
+  // this function calls the upload mp4 files or videos api to store the documnet in the db
+  const uploadMP4File = async (file, base64Video) => {
+    setLoading(true);
+
+    const api_nonce = Date.now().toString();
+
+    const form = new FormData();
+    form.append("id", user?.ID);
+    form.append("nounce", api_nonce);
+    form.append("file", file);
+    form.append("file_data", base64Video);
+
+    try {
+      await axios
+        .post(`${baseURL}upload-video.php?API_KEY=${API_KEY}`, form, {
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setProgress(percentCompleted);
+          },
+        })
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("uploadMP4File data", res?.data);
+
+            setUploadedVideoUrl(res?.data);
+            toast.success("Your video uploaded successfully 😇");
+          } else {
+            console.log("message", res?.data?.status);
+            setFormError("Something went wrong, please try again later");
+
+            toast.error(
+              "Video Upload Failed",
+              "Something went wrong while uploading your video, please try again later"
+            );
+          }
+        })
+        .catch((err) => {
+          console.log("uploadMP4File err", err);
+          setLoading(false);
+          toast.error(
+            "Video Upload Failed",
+            "Something went wrong while uploading your video, please try again later"
+          );
+        });
+    } catch (error) {
+      setLoading(false);
+
+      console.log("uploadMP4File error", error);
+      toast.error(
+        "Video Upload Failed",
+        "Something went wrong while uploading your video, please try again later"
       );
     }
   };
@@ -632,13 +903,20 @@ const UploadTracks = () => {
             >
               <FormButton
                 title={"Upload"}
-                onClick={handleNext}
+                onClick={handleClick}
+                loading={loading}
                 marginLeft={"0px"}
                 btnIcon={
                   <MdFileUpload
                     style={{ color: "white", marginRight: 7, fontSize: 16 }}
                   />
                 }
+              />
+              <HiddenInput
+                ref={fileInputRef}
+                type="file"
+                onChange={handleFileChange}
+                accept={"application/*"}
               />
 
               <p>
@@ -675,38 +953,82 @@ const UploadTracks = () => {
 
         {activeStep === 2 && (
           <>
-            <Container>
-              <UploadContainer>
-                <UploadSection
-                  title="Cover Art"
-                  uploadTitle="Cover Art"
-                  uploadDescription="Drag & drop files or Browse. Supported formats: TIF, PNG, JPG"
-                  rules={rules1}
-                  uploadBtnTitle={"Upload"}
-                />
-                <UploadSection
-                  title="Tracks"
-                  uploadTitle="Song"
-                  uploadDescription="Drag & drop files or Browse. Supported formats: MP3"
-                  rules={rules2}
-                  uploadBtnTitle={"Upload"}
-                />
-              </UploadContainer>
-
-              <Subtitle>
-                Make a one minute Video of the song you uploaded, with your
-                Phone, and upload it here, you will get 100 Point Bonues, 24/7
-                Singnify Radio Airplay, and One Day Social Media Promotion.{" "}
-              </Subtitle>
+            <UploadContainer>
+              <UploadSection
+                title="Cover Art"
+                uploadTitle="Cover Art"
+                uploadDescription="Drag & drop files or Browse. Supported formats: TIF, PNG, JPG"
+                rules={rules1}
+                uploadBtnTitle={"Upload"}
+                fileType={"image/*"}
+                handleFileChange={handleCoverPhotoFileChange}
+                loading={loading}
+                selectedFile={image}
+                onFileUpload={() => {
+                  uploadBase64Image(base64Picture);
+                }}
+                previewUrl={selectedPictureUrl}
+                handleCancel={() => {
+                  setImage(null);
+                  setSelectedPictureUrl(null);
+                }}
+                UploadedText={"Your cover picture has been uploaded"}
+                isFileUploaded={uploadedPictureUrl?.imageName}
+                uploadPercentage={progress}
+              />
 
               <UploadSection
-                title="Video Recording"
-                uploadTitle="Video"
-                uploadDescription="Drag & drop files or Browse. Supported formats: MP4"
-                rules={videoRecordRules}
+                title="Tracks"
+                uploadTitle="Song"
+                uploadDescription="Drag & drop files or Browse. Supported formats: MP3"
+                rules={rules2}
                 uploadBtnTitle={"Upload"}
+                fileType={"audio/mp3"}
+                handleFileChange={handleAudioFileChange}
+                loading={loading}
+                selectedFile={audioFile}
+                onFileUpload={() => {
+                  uploadMP3File(audioFile, base64Audio);
+                }}
+                previewUrl={selectedAudioUrl}
+                handleCancel={() => {
+                  setAudioFile(null);
+                  setSelectedAudioUrl(null);
+                }}
+                UploadedText={"Your Track has been uploaded"}
+                isFileUploaded={uploadedAudioUrl?.link}
+                uploadPercentage={progress}
               />
-            </Container>
+            </UploadContainer>
+
+            <Subtitle>
+              Make a one minute Video of the song you uploaded, with your Phone,
+              and upload it here, you will get 100 Point Bonues, 24/7 Singnify
+              Radio Airplay, and One Day Social Media Promotion.{" "}
+            </Subtitle>
+
+            <UploadSection
+              title="Video Recording"
+              uploadTitle="Video"
+              uploadDescription="Drag & drop files or Browse. Supported formats: MP4"
+              rules={videoRecordRules}
+              uploadBtnTitle={"Upload"}
+              fileType={"video/*"}
+              handleFileChange={handleVideoFileChange}
+              loading={loading}
+              selectedFile={videoFile}
+              onFileUpload={() => {
+                uploadMP4File(videoFile, base64Video);
+              }}
+              previewUrl={selectedVideoUrl}
+              handleCancel={() => {
+                setVideoFile(null);
+                setSelectedVideoUrl(null);
+              }}
+              UploadedText={"Your Track has been uploaded"}
+              isFileUploaded={uploadedVideoUrl?.link}
+              uploadPercentage={progress}
+            />
             <div
               style={{
                 justifyContent: "center",
@@ -714,7 +1036,14 @@ const UploadTracks = () => {
                 width: "100%",
               }}
             >
-              <FormButton title={"Submit"} width={"225px"} marginLeft={"0px"} />
+              <FormButton
+                title={"Submit"}
+                width={"225px"}
+                marginLeft={"0px"}
+                onClick={uploadMusic}
+                loading={loading}
+                errorMessage={formError}
+              />
             </div>
 
             <hr />
@@ -723,7 +1052,7 @@ const UploadTracks = () => {
                 // backgroundColor: "red",
                 display: "flex",
                 justifyContent: "flex-start",
-                width: "100%",
+                width: "80%",
                 marginTop: 40,
                 marginBottom: 20,
                 padding: 20,

@@ -49,6 +49,7 @@ import DanceVideoUpload from "../pages/Upload/DanceVideoUpload";
 import DanceVideo from "../pages/Upload/DanceVideo";
 import Support from "../pages/Support/Support";
 import Search from "../pages/Home/Search";
+import UploadVideo from "../pages/Upload/UploadVideo";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -133,6 +134,7 @@ function ProtectedRoutes() {
         <Route path="/upload" element={<UploadScreen />} />
         <Route path="/upload-music" element={<UploadMusic />} />
         <Route path="/upload-tracks" element={<UploadTracks />} />
+        <Route path="/upload-video" element={<UploadVideo />} />
         <Route path="/upload-album" element={<UploadAlbum />} />
         <Route path="/dance-video" element={<DanceVideo />} />
         <Route path="/dance-video-upload" element={<DanceVideoUpload />} />
