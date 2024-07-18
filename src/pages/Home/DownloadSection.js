@@ -74,9 +74,10 @@ const Heading = styled.h2`
   color: #000;
   font-weight: bold;
   text-align: left;
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
-    text-align: center;
+    text-align: left;
     font-size: 28px;
   }
 `;
@@ -86,9 +87,10 @@ const Paragraph = styled.p`
   color: #434343;
   margin-bottom: 1rem;
   text-align: left;
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   @media (max-width: 768px) {
-    text-align: center;
+    text-align: left;
     font-size: 14px;
   }
 `;

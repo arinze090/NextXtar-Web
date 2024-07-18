@@ -169,12 +169,7 @@ function ResetPassword() {
   return (
     <Container>
       <FormContainer>
-        <ImageSection>
-          <Logo
-            src={require("../../assets/NoBgSingnifyLogo.png")}
-            alt="Singnify Logo"
-          />
-        </ImageSection>
+        <ImageSection />
         <FormSection>
           <Title>Reset Password</Title>
           <Subtitle>Choose a new password for your account</Subtitle>

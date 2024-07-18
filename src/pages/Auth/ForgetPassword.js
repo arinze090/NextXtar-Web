@@ -158,12 +158,7 @@ function ForgetPassword() {
   return (
     <Container>
       <FormContainer>
-        <ImageSection>
-          <Logo
-            src={require("../../assets/NoBgSingnifyLogo.png")}
-            alt="Singnify Logo"
-          />
-        </ImageSection>
+        <ImageSection />
         <FormSection>
           <Title>Forget Password</Title>
           <Subtitle>

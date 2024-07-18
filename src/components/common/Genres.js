@@ -125,19 +125,6 @@ const getRandomDarkColor = () => {
 };
 
 const Genres = ({ genres }) => {
-  // const genres = [
-  //   { id: 1, name: "African", imageUrl: require("../../assets/1.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/3.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-  //   { id: 1, name: "African", imageUrl: require("../../assets/2.jpg") },
-  //   // Add more genres here...
-  // ];
-
   // Determine the max words based on screen size
   const isSmallScreen = window.innerWidth <= 768;
   const wordsToUse = isSmallScreen ? 10 : 40;

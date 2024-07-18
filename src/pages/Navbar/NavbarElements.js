@@ -5,7 +5,8 @@ import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  background: ${({ scrollNav }) => (scrollNav ? "rgba(0, 0, 0, 0.7)" : "#000")};
+  background: ${({ scrollNav }) =>
+    scrollNav ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.4)"};
   height: 85px;
   display: flex;
   justify-content: space-between;
@@ -21,7 +22,7 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled(Link)`
-  color: #000;
+  color: ${({ color }) => (color ? color : "#000")};
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -36,7 +37,7 @@ export const NavLink = styled(Link)`
 export const Bars = styled(FaBars)`
   // display: ${({ isOpen }) => (isOpen ? "none" : "block")};
   display: none;
-  color: #808080;
+  color: #fff;
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
@@ -50,7 +51,7 @@ export const Bars = styled(FaBars)`
 
 export const Times = styled(IoMdClose)`
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  color: #808080;
+  color: #fff;
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;

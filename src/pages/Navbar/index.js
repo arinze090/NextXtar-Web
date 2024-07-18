@@ -109,7 +109,9 @@ const Navbar = () => {
           </NavLink>
         </NavMenu>
         <NavBtn>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/login" color={"#fff"}>
+            Login
+          </NavLink>
           <TransparentBtn
             onClick={() => {
               handleRegisterClick();

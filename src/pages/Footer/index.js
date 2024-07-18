@@ -100,14 +100,14 @@ export const SubscribeForm = styled.form`
 
   button {
     padding: 10px;
-    background-color: #00ff00; /* Bright green button */
+    background-color: #05a30b; /* Bright green button */
     border: none;
     border-radius: 4px;
     cursor: pointer;
     color: #fff;
 
     &:hover {
-      background-color: #009900; /* Darker green on hover */
+      background-color: #05a30b; /* Darker green on hover */
     }
   }
 `;
@@ -143,6 +143,8 @@ const Footer = () => {
               alt="Google Play"
             />
           </a>
+        </AppStoreBadges>
+        <AppStoreBadges>
           <a href="https://www.apple.com/app-store/">
             <img src={require("../../assets/AppStore.png")} alt="App Store" />
           </a>

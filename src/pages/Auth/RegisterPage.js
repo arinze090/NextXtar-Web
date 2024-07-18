@@ -86,12 +86,7 @@ const RegisterScreen = () => {
   return (
     <Container>
       <FormContainer>
-        <ImageSection>
-          <Logo
-            src={require("../../assets/NoBgSingnifyLogo.png")}
-            alt="Singnify Logo"
-          />
-        </ImageSection>
+        <ImageSection />
         <FormSection>
           <Title>Welcome to Singnify Music Distribution Company</Title>
           <p style={{ textAlign: "center" }}>Register as</p>

@@ -192,12 +192,7 @@ function UserVerification() {
   return (
     <Container>
       <FormContainer>
-        <ImageSection>
-          <Logo
-            src={require("../../assets/NoBgSingnifyLogo.png")}
-            alt="Singnify Logo"
-          />
-        </ImageSection>
+        <ImageSection />
         <FormSection>
           <Title>Check your Email</Title>
           <Subtitle>

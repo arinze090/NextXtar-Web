@@ -204,12 +204,7 @@ function Login() {
   return (
     <Container>
       <FormContainer>
-        <ImageSection>
-          <Logo
-            src={require("../../assets/NoBgSingnifyLogo.png")}
-            alt="Singnify Logo"
-          />
-        </ImageSection>
+        <ImageSection />
         <FormSection>
           <Title>Welcome !!!</Title>
 

@@ -8,8 +8,9 @@ import FormButton from "../../components/form/FormButton";
 
 const CarouselContainer = styled.div`
   position: relative;
-  width: 100%;
-  //   max-width: 1200px;
+  width: 95%;
+  border-radius: 40px;
+  overflow: hidden;
   margin: auto;
   //   padding-top: 3rem;
   // height: 30vh;
@@ -18,7 +19,7 @@ const CarouselContainer = styled.div`
     `url(${
       props.backgroundImage
         ? props.backgroundImage
-        : require("../../assets/2.jpg")
+        : require("../../assets/singnifySplashLogo.png")
     }) no-repeat center center`};
 
   background-size: cover;
@@ -123,8 +124,8 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 40px;
 `;
 
 const ImageWrapper = styled.div`
@@ -186,7 +187,6 @@ const Description = styled.p`
 const MusicCard = ({ music }) => {
   return (
     <CardContainer backgroundImage={music?.image}>
-      <Overlay />
       <ImageWrapper>
         <img src={music?.image} alt="Cover" />
       </ImageWrapper>
@@ -194,7 +194,7 @@ const MusicCard = ({ music }) => {
         <Title>{music?.middle}</Title>
         <Subtitle>{music?.pressure}</Subtitle>
         <Description>{truncateText(music?.description, 130)}</Description>
-        <FormButton title={"Listen Here"} />
+        <FormButton title={"Listen Here"} marginLeft={"0px"} />
       </ContentWrapper>
     </CardContainer>
   );
@@ -214,6 +214,7 @@ function DiscvoverCarousel({ props }) {
 
   return (
     <CarouselContainer>
+      <Overlay />
       <Slider {...settings}>
         {props?.map((cur, i) => (
           <MusicCard key={i} music={cur} />

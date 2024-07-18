@@ -48,9 +48,11 @@ const Heading = styled.h2`
   margin-bottom: 1rem;
   color: #000;
   font-weight: bold;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  text-align: left;
 
   @media (max-width: 768px) {
-    text-align: center;
+    text-align: left;
     font-size: 28px;
   }
 `;
@@ -59,9 +61,11 @@ const Paragraph = styled.p`
   font-size: 24px;
   color: #434343;
   margin-bottom: 1rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  text-align: left;
 
   @media (max-width: 768px) {
-    text-align: center;
+    text-align: left;
     font-size: 18px;
   }
 `;
@@ -100,7 +104,7 @@ const ContactSection = () => {
           title={"Visit Our Contact Page"}
           color={"black"}
           hoverColor={"black"}
-          width={"100%"}
+          width={"60%"}
           marginLeft={"0px"}
           onClick={() => {
             navigate("/contact-us");

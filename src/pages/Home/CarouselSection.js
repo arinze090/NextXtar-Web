@@ -9,7 +9,7 @@ const CarouselContainer = styled.div`
   width: 100%;
   //   max-width: 1200px;
   margin: auto;
-  padding-top: 3rem;
+  // padding-top: 3rem;
   // height: 30vh;
   // margin-bottom: 20px;
 
@@ -149,13 +149,25 @@ const Carousel = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   display: "flex",
-                  //   backgroundColor: "red",
+                  // backgroundColor: "red",
                   alignSelf: "center",
                   alignContent: "center",
                 }}
               >
-                <img src={cur.appStoreImage} alt={cur.alt} />
-                <img src={cur.playStoreImage} alt={cur.alt} />
+                <img
+                  src={cur.appStoreImage}
+                  alt={cur.alt}
+                  style={{
+                    width: 240,
+                  }}
+                />
+                <img
+                  src={cur.playStoreImage}
+                  alt={cur.alt}
+                  style={{
+                    width: 240,
+                  }}
+                />
               </div>
             </div>
           </div>

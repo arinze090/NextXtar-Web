@@ -1,6 +1,6 @@
 export const truncateText = (text, maxLetters) => {
-  if (text.length > maxLetters) {
-    return text.slice(0, maxLetters) + "...";
+  if (text?.length > maxLetters) {
+    return text?.slice(0, maxLetters) + "...";
   }
   return text;
 };
@@ -42,7 +42,7 @@ export const shareOnTwitter = (url, text) => {
 
 export function stripHTML(html) {
   const doc = new DOMParser().parseFromString(html, "text/html");
-  return doc.body.textContent || "";
+  return doc?.body?.textContent || "";
 }
 
 // Function to convert "MM:SS" format to total seconds
