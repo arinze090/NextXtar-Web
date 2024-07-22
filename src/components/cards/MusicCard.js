@@ -55,7 +55,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: "#05a30b";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +64,7 @@ const Overlay = styled.div`
 `;
 
 const PlayIcon = styled(FaPlay)`
-  color: red;
+  color: white;
   font-size: 2rem;
   cursor: pointer;
 `;

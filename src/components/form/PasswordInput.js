@@ -45,7 +45,7 @@ const PasswordInput = ({ formTitle, width, value, onChange, errorMessage }) => {
           style={{
             position: "absolute",
             right: "0.75rem",
-            top: "50%",
+            top: "60%",
             transform: "translateY(-50%)",
             cursor: "pointer",
             color: "gray",
@@ -57,7 +57,7 @@ const PasswordInput = ({ formTitle, width, value, onChange, errorMessage }) => {
           style={{
             position: "absolute",
             right: "0.75rem",
-            top: "50%",
+            top: "60%",
             transform: "translateY(-50%)",
             cursor: "pointer",
             color: "gray",

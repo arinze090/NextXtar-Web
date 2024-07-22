@@ -7,18 +7,18 @@ import TransparentBtn from "../../components/form/TransparentBtn";
 
 const Container = styled.div`
   display: flex;
-  height: 70vh;
+  height: auto;
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;
-  padding-top: 80px;
-  margin-bottom: 0px;
+  padding-top: 130px;
+  margin-bottom: 60px;
   align-content: center;
 
   @media screen and (max-width: 768px) {
     padding-top: 70px;
-    margin-bottom: 0px;
-    height: 100vh;
+    margin-bottom: 60px;
+    height: auto;
   }
 `;
 

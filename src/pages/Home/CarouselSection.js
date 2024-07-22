@@ -93,6 +93,30 @@ const CarouselContainer = styled.div`
   }
 `;
 
+const CarouselTitle = styled.h1`
+  font-family: "Plus Jakarta Sans";
+  margin-bottom: 16px;
+  font-size: 90px;
+  font-weight: 800;
+`;
+
+const CarouselSubTitle = styled.p`
+  font-family: "Plus Jakarta Sans";
+  margin-bottom: 48px;
+  font-size: 32px;
+  font-weight: 600;
+`;
+
+const DownloadIconSection = styled.div`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  // background-color: red;
+  align-self: center;
+  align-content: center;
+`;
+
 const Carousel = () => {
   const settings = {
     dots: false,
@@ -141,34 +165,24 @@ const Carousel = () => {
           <div className="carousel-slide">
             <img src={cur.src} alt={cur.alt} />
             <div className="carousel-content">
-              <h1>{cur.title}</h1>
-              <p>{cur.description}</p>
-              <div
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  display: "flex",
-                  // backgroundColor: "red",
-                  alignSelf: "center",
-                  alignContent: "center",
-                }}
-              >
+              <CarouselTitle>{cur.title}</CarouselTitle>
+              <CarouselSubTitle>{cur.description}</CarouselSubTitle>
+              <DownloadIconSection>
                 <img
                   src={cur.appStoreImage}
                   alt={cur.alt}
                   style={{
-                    width: 240,
+                    width: 135,
                   }}
                 />
                 <img
                   src={cur.playStoreImage}
                   alt={cur.alt}
                   style={{
-                    width: 240,
+                    width: 135,
                   }}
                 />
-              </div>
+              </DownloadIconSection>
             </div>
           </div>
         ))}

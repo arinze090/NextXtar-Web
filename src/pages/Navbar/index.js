@@ -17,12 +17,15 @@ import TransparentBtn from "../../components/form/TransparentBtn";
 const Navbar = () => {
   const navigate = useNavigate();
 
+  const isSmallScreen = window.innerWidth <= 768;
+
   const [scrollNav, setScrollNav] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleRegisterClick = () => {
     navigate("/register");
-    toggleMenu();
+
+    isSmallScreen && toggleMenu();
   };
 
   const toggleMenu = () => {

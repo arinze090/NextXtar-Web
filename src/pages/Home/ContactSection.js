@@ -37,9 +37,11 @@ const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  margin-left: 48px;
 
   @media (max-width: 768px) {
     text-align: center;
+    margin-left: 0px;
   }
 `;
 
