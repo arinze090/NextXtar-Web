@@ -272,22 +272,15 @@ function InternationalPayment() {
         />
       </RowContent>
 
-      <div
-        style={{
-          justifyContent: "center",
-          display: "flex",
-        }}
-      >
-        <FormButton
-          title={"Submit"}
-          marginTop={40}
-          // width={"323px"}
-          marginLeft={"0px"}
-          onClick={addPaymentMethod}
-          errorMessage={formError}
-          loading={loading}
-        />
-      </div>
+      <FormButton
+        title={"Submit"}
+        marginTop={40}
+        width={"100%"}
+        marginLeft={"0px"}
+        onClick={addPaymentMethod}
+        errorMessage={formError}
+        loading={loading}
+      />
     </Container>
   );
 }

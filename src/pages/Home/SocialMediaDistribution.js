@@ -131,8 +131,8 @@ function SocialMediaDistribution() {
         selectPlaceholder={"Select Track/Album"}
         options={userTracks}
         onChange={(e) => {
-          e.target.value
-            ? setSelectTrack(JSON?.parse(e.target.value))
+          e?.target?.value
+            ? setSelectTrack(JSON?.parse(e?.target?.value))
             : setSelectTrack(null);
 
           setFormError("");
@@ -141,20 +141,14 @@ function SocialMediaDistribution() {
         errorMessage={selectTrackError}
       />
 
-      <div
-        style={{
-          justifyContent: "center",
-          display: "flex",
-        }}
-      >
-        <FormButton
-          title={"Promote"}
-          marginTop={40}
-          marginLeft={"0px"}
-          onClick={openModal}
-          errorMessage={formError}
-        />
-      </div>
+      <FormButton
+        title={"Promote"}
+        marginTop={40}
+        marginLeft={"0px"}
+        width={"100%"}
+        onClick={openModal}
+        errorMessage={formError}
+      />
 
       <Modal
         isOpen={isModalOpen}

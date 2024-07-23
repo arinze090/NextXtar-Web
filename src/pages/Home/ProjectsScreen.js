@@ -50,35 +50,25 @@ function ProjectsScreen() {
         unlimited Possibilities
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-          flexDirection: "column",
-          alignItems: "center",
+      <TransparentBtn
+        title={"Submit a Project"}
+        marginTop={40}
+        marginLeft={"0px"}
+        color={"black"}
+        width={"100%"}
+        onClick={() => {
+          navigate("/add-project");
         }}
-      >
-        <TransparentBtn
-          title={"Submit a Project"}
-          marginTop={40}
-          marginLeft={"0px"}
-          color={"black"}
-          width={"100%"}
-          onClick={() => {
-            navigate("/add-project");
-          }}
-        />
-        <FormButton
-          title={"View your Projects"}
-          marginTop={40}
-          marginLeft={"0px"}
-          width={"100%"}
-          onClick={() => {
-            navigate("/project-lists");
-          }}
-        />
-      </div>
+      />
+      <FormButton
+        title={"View your Projects"}
+        marginTop={20}
+        marginLeft={"0px"}
+        width={"100%"}
+        onClick={() => {
+          navigate("/project-lists");
+        }}
+      />
     </Container>
   );
 }

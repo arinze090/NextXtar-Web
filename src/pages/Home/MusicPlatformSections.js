@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import MusicCard from "../../components/cards/MusicCard";
+import MusicCard2 from "../../components/cards/MusicCard2";
 
 // Container for the entire section
 const SectionContainer = styled.div`
@@ -107,7 +107,7 @@ function MusicPlatformSections({ title, subTitle, items }) {
       <ItemGrid>
         {items.map((cur, i) => (
           <ItemContainer key={i}>
-            <MusicCard
+            <MusicCard2
               imageUrl={cur.image}
               imageUrlAlt={cur.label}
               title={cur.track_name}
@@ -117,6 +117,12 @@ function MusicPlatformSections({ title, subTitle, items }) {
                 currentPlaying === cur.audio && !audioRef.current.paused
               }
               onPlayPause={() => handlePlayPause(cur.audio)}
+              onLikeIconClicked={() => {
+                console.log("liked ckicked");
+              }}
+              onEllipsisClicked={() => {
+                console.log("ellipsis ckicked");
+              }}
             />
           </ItemContainer>
         ))}

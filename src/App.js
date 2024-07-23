@@ -12,6 +12,7 @@ import {
 } from "./redux/features/discover/discoverSlice";
 import { baseURL } from "./utils/api-client";
 import { API_KEY } from "./utils/devKeys";
+import GlobalStyles from "./theme/GlobalStyles";
 
 function App() {
   const dispatch = useDispatch();
@@ -109,7 +110,12 @@ function App() {
     };
   }, []);
 
-  return <>{loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}</>;
+  return (
+    <>
+      <GlobalStyles />
+      {loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}
+    </>
+  );
 }
 
 export default App;

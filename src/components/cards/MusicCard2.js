@@ -1,19 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { FaPlay, FaPause } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
+import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 
 const ItemCard = styled.div`
   position: relative;
-  width: 233px;
-  background: #fff;
-  border-radius: 10px;
+  width: 171px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: left;
   cursor: pointer;
 
   @media screen and (max-width: 768px) {
-    width: 150px;
+    width: 171px;
   }
 
   &:hover .overlay {
@@ -23,8 +22,9 @@ const ItemCard = styled.div`
 
 const ItemImage = styled.img`
   width: 100%;
-  height: 150px;
+  height: 171px;
   object-fit: cover;
+  border-radius: 5px;
 `;
 
 const ItemDetails = styled.div`
@@ -55,12 +55,13 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: #05a30b;
+  background: rgba(5, 163, 11, 0.8);
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  flex-direction: row;
 `;
 
 const PlayIcon = styled(FaPlay)`
@@ -75,19 +76,39 @@ const PauseIcon = styled(FaPause)`
   cursor: pointer;
 `;
 
-function MusicCard({
+const LikeIcon = styled(CiHeart)`
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+`;
+
+const EllipsisIcon = styled(IoEllipsisHorizontalSharp)`
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+`;
+
+function MusicCard2({
   imageUrl,
   imageUrlAlt,
   title,
   artistName,
   onPlayPause,
   isPlaying,
+  onLikeIconClicked,
+  onEllipsisClicked,
 }) {
   return (
     <ItemCard>
       <ItemImage src={imageUrl} alt={imageUrlAlt} />
-      <Overlay className="overlay" onClick={onPlayPause}>
-        {isPlaying ? <PauseIcon /> : <PlayIcon />}
+      <Overlay className="overlay">
+        <LikeIcon onClick={onLikeIconClicked} />
+        {isPlaying ? (
+          <PauseIcon onClick={onPlayPause} />
+        ) : (
+          <PlayIcon onClick={onPlayPause} />
+        )}
+        <EllipsisIcon onClick={onEllipsisClicked} />
       </Overlay>
       <ItemDetails>
         <ItemName>{title}</ItemName>
@@ -97,4 +118,4 @@ function MusicCard({
   );
 }
 
-export default MusicCard;
+export default MusicCard2;

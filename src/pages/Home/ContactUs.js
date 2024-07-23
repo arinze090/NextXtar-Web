@@ -7,18 +7,19 @@ import FormButton from "../../components/form/FormButton";
 
 const Container = styled.div`
   display: flex;
-  height: 130vh;
+  height: auto;
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  padding-top: 0px;
-  // margin-bottom: 130px;
+  padding-top: 120px;
+  margin-bottom: 60px;
   align-content: center;
+  flex-direction: column;
 
   @media screen and (max-width: 768px) {
-    padding-top: 0px;
-    margin-bottom: 20px;
-    height: 130vh;
+    padding-top: 70px;
+    margin-bottom: 60px;
+    height: auto;
   }
 `;
 
@@ -30,6 +31,7 @@ const FormContainer = styled.div`
   background-color: #f2f2f2;
   border-radius: 10px;
   overflow: hidden;
+  margin-top: 30px;
 `;
 
 const ImageSection = styled.div`
@@ -121,95 +123,88 @@ function ContactUs() {
   };
 
   return (
-    <>
+    <Container>
       <Title>Contact Us</Title>
       <Subtitle>
         To find out more about us, or have a chat about how we can possibly work
         together. Send us a message today!
       </Subtitle>
-      <Container>
-        <FormContainer>
-          <ImageSection>
-            <Logo
-              src={require("../../assets/NoBgSingnifyLogo.png")}
-              alt="Singnify Logo"
-            />
-          </ImageSection>
-          <FormSection>
-            <FormInput
-              type={"text"}
-              inputId={"full-name"}
-              inputPlaceholder={"Full Name"}
-              formTitle={"Full Name"}
-              value={fullName}
-              onChange={(e) => {
-                setFullName(e.target.value);
-              }}
-            />
-            <FormInput
-              type={"email"}
-              inputId={"email"}
-              inputPlaceholder={"Email Address"}
-              formTitle={"Email Address"}
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
+      <FormContainer>
+        <ImageSection />
+        <FormSection>
+          <FormInput
+            type={"text"}
+            inputId={"full-name"}
+            inputPlaceholder={"Full Name"}
+            formTitle={"Full Name"}
+            value={fullName}
+            onChange={(e) => {
+              setFullName(e.target.value);
+            }}
+          />
+          <FormInput
+            type={"email"}
+            inputId={"email"}
+            inputPlaceholder={"Email Address"}
+            formTitle={"Email Address"}
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
 
-            <FormInput
-              type={"text"}
-              inputId={"subject"}
-              inputPlaceholder={"Subject"}
-              formTitle={"Subject"}
-              value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value);
-              }}
+          <FormInput
+            type={"text"}
+            inputId={"subject"}
+            inputPlaceholder={"Subject"}
+            formTitle={"Subject"}
+            value={subject}
+            onChange={(e) => {
+              setSubject(e.target.value);
+            }}
+          />
+
+          <FormTextArea
+            formTitle={"Message"}
+            placeholder={"Message"}
+            row={5}
+            value={message}
+            onChange={(e) => {
+              setMessage(e.target.value);
+            }}
+          />
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <FormButton
+              title={"Submit"}
+              width={"100%"}
+              onClick={sendMessage}
+              marginLeft={"0px"}
+              marginTop={20}
+              loading={loading}
             />
+          </div>
 
-            <FormTextArea
-              formTitle={"Message"}
-              placeholder={"Message"}
-              row={5}
-              value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
+          <div
+            style={{
+              justifyContent: "flex-end",
+              display: "flex",
+            }}
+          >
+            <img
+              src={require("../../assets/sendLetter.png")}
+              alt=""
+              style={{ width: "50%", height: "20%" }}
             />
-
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-              }}
-            >
-              <FormButton
-                title={"Submit"}
-                width={"100%"}
-                onClick={sendMessage}
-                marginLeft={"0px"}
-                marginTop={20}
-                loading={loading}
-              />
-            </div>
-
-            <div
-              style={{
-                justifyContent: "flex-end",
-                display: "flex",
-              }}
-            >
-              <img
-                src={require("../../assets/sendLetter.png")}
-                alt=""
-                style={{ width: "50%", height: "20%" }}
-              />
-            </div>
-          </FormSection>
-        </FormContainer>
-      </Container>
-    </>
+          </div>
+        </FormSection>
+      </FormContainer>
+    </Container>
   );
 }
 

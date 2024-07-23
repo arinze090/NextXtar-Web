@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FaDollarSign, FaPiggyBank, FaLink } from "react-icons/fa";
+import { FaPiggyBank, FaLink, FaBell } from "react-icons/fa";
 import {
   IoSettingsOutline,
   IoWalletOutline,
@@ -29,7 +29,7 @@ const Container = styled.div`
 
 const items = [
   {
-    icon: FaDollarSign,
+    icon: FaBell,
     label: "Notification",
     navigateTo: "/notifications",
   },
@@ -86,7 +86,7 @@ const items = [
   {
     icon: IoInformationCircle,
     label: "About ",
-    navigateTo: "/about",
+    navigateTo: "/about-us",
   },
 ];
 

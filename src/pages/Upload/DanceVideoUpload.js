@@ -231,20 +231,14 @@ function DanceVideoUpload() {
         loading={loading}
       />
 
-      <div
-        style={{
-          justifyContent: "center",
-          display: "flex",
-        }}
-      >
-        <FormButton
-          title={"Submit"}
-          onClick={uploadDanceVideo}
-          errorMessage={formError}
-          loading={loading}
-          marginLeft={"0px"}
-        />
-      </div>
+      <FormButton
+        title={"Submit"}
+        onClick={uploadDanceVideo}
+        errorMessage={formError}
+        loading={loading}
+        marginLeft={"0px"}
+        width={"100%"}
+      />
     </Container>
   );
 }

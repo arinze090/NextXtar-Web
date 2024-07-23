@@ -506,21 +506,15 @@ function PartnershipProcedure() {
         width={"100%"}
       />
 
-      <div
-        style={{
-          justifyContent: "center",
-          display: "flex",
-        }}
-      >
-        <FormButton
-          title={"Submit"}
-          marginTop={40}
-          marginLeft={"0px"}
-          onClick={submitPartnershipProcedure}
-          errorMessage={formError}
-          loading={loading}
-        />
-      </div>
+      <FormButton
+        title={"Submit"}
+        marginTop={40}
+        marginLeft={"0px"}
+        width={"100%"}
+        onClick={submitPartnershipProcedure}
+        errorMessage={formError}
+        loading={loading}
+      />
     </Container>
   );
 }

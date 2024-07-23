@@ -52,6 +52,8 @@ function FaceVideo() {
       </p>
       <FormButton
         title={"Proceed"}
+        marginTop={40}
+        marginLeft={"0px"}
         onClick={() => {
           navigate("/face-video-upload");
         }}

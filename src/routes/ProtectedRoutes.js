@@ -50,6 +50,7 @@ import DanceVideo from "../pages/Upload/DanceVideo";
 import Support from "../pages/Support/Support";
 import Search from "../pages/Home/Search";
 import UploadVideo from "../pages/Upload/UploadVideo";
+import GenresListing from "../pages/MusicLibrary/GenresListing";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -177,6 +178,7 @@ function ProtectedRoutes() {
         <Route path="/playlist" element={<PlaylistLibrary />} />
         <Route path="/playlist/:playlistName" element={<PlaylistLists />} />
         <Route path="/radio" element={<RadioPlayer />} />
+        <Route path="/genres" element={<GenresListing />} />
 
         {/*  Projects section */}
         <Route path="/projects" element={<ProjectsScreen />} />
