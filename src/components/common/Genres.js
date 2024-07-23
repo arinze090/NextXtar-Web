@@ -1,20 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { truncateText } from "../../Library/Common";
+import GenreCard from "../cards/GenreCard";
 
 const Container = styled.div`
-  //   background: green;
-  border-radius: 15px;
+  // background: green;
   padding: 20px;
-  width: 90%;
-
-  height: 40vh;
-  overflow-y: auto;
+  width: auto;
+  margin: 20px;
 
   @media screen and (max-width: 768px) {
-    width: 90%;
-    height: 50vh;
-    overflow-y: auto;
     justify-content: center;
   }
 `;
@@ -50,11 +44,15 @@ const SeeAll = styled.a`
 
 const GenreList = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   //   gap: 10px;
-  justify-content: space-between;
-  overflow-y: auto;
+  // justify-content: space-between;
+  // overflow-y: auto;
   //   height: 100vh;
+
+  flex-direction: row;
+  overflow-x: auto;
+  justify-content: center;
 
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -84,45 +82,10 @@ const GenreItem = styled.div`
   }
 `;
 
-// Utility function to generate a random dark color
-const getRandomColor = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
-
-const adjustColorBrightness = (color, amount) => {
-  let usePound = false;
-
-  if (color[0] === "#") {
-    color = color.slice(1);
-    usePound = true;
-  }
-
-  const num = parseInt(color, 16);
-  let r = (num >> 16) + amount;
-  let b = ((num >> 8) & 0x00ff) + amount;
-  let g = (num & 0x0000ff) + amount;
-
-  if (r > 255) r = 255;
-  else if (r < 0) r = 0;
-
-  if (b > 255) b = 255;
-  else if (b < 0) b = 0;
-
-  if (g > 255) g = 255;
-  else if (g < 0) g = 0;
-
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
-};
-
-const getRandomDarkColor = () => {
-  const color = getRandomColor();
-  return adjustColorBrightness(color, -50);
-};
+const GenreCardWrapper = styled.div`
+  margin-bottom: 16px;
+  margin-right: 30px;
+`;
 
 const Genres = ({ genres }) => {
   // Determine the max words based on screen size
@@ -133,19 +96,13 @@ const Genres = ({ genres }) => {
     <Container>
       <Header>
         <Title>All Genres</Title>
-        <SeeAll href="#">See all</SeeAll>
+        <SeeAll href="/genres">See all</SeeAll>
       </Header>
       <GenreList>
-        {genres.map((genre, i) => (
-          <GenreItem
-            key={i}
-            style={{
-              backgroundImage: `url(${genre.imageUrl})`,
-              backgroundColor: getRandomDarkColor(),
-            }}
-          >
-            {truncateText(genre, wordsToUse)}
-          </GenreItem>
+        {genres?.map((genre, i) => (
+          <GenreCardWrapper key={i}>
+            <GenreCard title={genre} />
+          </GenreCardWrapper>
         ))}
       </GenreList>
     </Container>

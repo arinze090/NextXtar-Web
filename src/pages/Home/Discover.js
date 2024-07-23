@@ -18,22 +18,23 @@ const Container = styled.div`
   //   justify-content: space-between;
   padding: 20px;
   gap: 20px;
+  margin-bottom: 30px;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
     // width: 100%;
     align-items: center;
-    margin-bottom: 50vh;
+    margin-bottom: 20px;
   }
 `;
 
 const SideContainer = styled.div`
   width: 50%;
-  height: 100vh;
+  height: 100%;
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 120vh;
+    height: 100%;
   }
 `;
 
@@ -326,11 +327,12 @@ function Discover() {
             backgroundImage={songOfTheDayData[0]?.parent_image}
             songTitle={songOfTheDayData[0]?.artist_name}
             songDescription={songOfTheDayData[0]?.track_name}
+            songLikes={songOfTheDayData[0]?.no_plays}
           />
-
-          <Genres genres={genresListing} />
         </SideContainer>
       </Container>
+      <Genres genres={genresListing} />
+
       {discoverTracks?.introductions?.length &&
         Object?.entries(discoverTracks?.result)?.map(
           ([name, objectArray], index) => {

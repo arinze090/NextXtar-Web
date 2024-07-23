@@ -2,17 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { truncateText } from "../../Library/Common";
+import { CiHeart } from "react-icons/ci";
 
 const Container = styled.div`
   // background: red;
-  border-radius: 15px;
+  border-radius: 21px;
   padding: 20px;
   width: 100%;
-  height: 100vh;
+  height: 803px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 
   @media screen and (max-width: 768px) {
     width: 90%;
-    height: 100vh;
+    height: 803px;
     overflow-y: auto;
   }
 `;

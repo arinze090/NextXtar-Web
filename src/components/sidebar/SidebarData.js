@@ -17,11 +17,11 @@ export const SidebarData = [
     path: "/discover",
     icon: <IoDiscOutline />,
   },
-  {
-    title: "Search",
-    path: "/search",
-    icon: <IoSearch />,
-  },
+  // {
+  //   title: "Search",
+  //   path: "/search",
+  //   icon: <IoSearch />,
+  // },
   {
     title: "Profile",
     path: "/profile",

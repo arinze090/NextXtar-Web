@@ -8,7 +8,17 @@ import { baseURL } from "../../utils/api-client";
 import FormSelect from "../../components/form/FormSelect";
 import SkeletonLoader from "../../components/common/SkeletonLoader";
 import MusicCard2 from "../../components/cards/MusicCard2";
-import { truncateText } from "../../Library/Common";
+
+import genre1 from "../../assets/genre1.png";
+import genre2 from "../../assets/genre2.png";
+import genre3 from "../../assets/genre3.png";
+import genre4 from "../../assets/genre4.png";
+import genre5 from "../../assets/genre5.png";
+import genre6 from "../../assets/genre6.png";
+import genre7 from "../../assets/genre7.png";
+import genre8 from "../../assets/genre8.png";
+
+const images = [genre1, genre2, genre3, genre4, genre5, genre6, genre7, genre8];
 
 const Container = styled.div`
   margin: 0 auto;
@@ -45,43 +55,42 @@ const MusicCardsContainer = styled.div`
 const MusicCardWrapper = styled.div`
   //   width: 100%;
   margin-bottom: 16px;
-  //   background: green;
+  // background: green;
   margin-right: 30px;
 `;
 
 const GenreList = styled.div`
   display: flex;
-  // flex-wrap: wrap;
+  flex-wrap: wrap;
   //   gap: 10px;
   // justify-content: space-between;
-  // overflow-y: auto;
-  // background: red;
+  // overflow-x: auto;
 
   height: auto;
   flex-direction: row;
-  overflow-x: auto;
+  overflow-x: none;
   justify-content: center;
+  margin-bottom: 20px;
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    overflow-y: auto;
     justify-content: space-between;
     align-items: center;
     // align-self: center;
-    flex-direction: row;
   }
 `;
 
 const GenreItem = styled.div`
-  background: url("url/to/image") no-repeat center center;
+  background: ${(props) =>
+    `url(${props.backgroundImage}) no-repeat center center`};
   background-size: cover;
   border-radius: 10px;
   padding: 20px;
-  width: 100%;
+  width: 190px;
+  height: 91px;
   color: white;
   text-align: center;
   font-weight: bold;
-  height: 5vh;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -112,48 +121,6 @@ function GenresListing() {
 
   console.log("selectedGenre", selectedGenre);
   console.log("selectedGenreTracks", selectedGenreTracks);
-
-  const isSmallScreen = window.innerWidth <= 768;
-  const wordsToUse = isSmallScreen ? 10 : 40;
-
-  const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
-
-  const adjustColorBrightness = (color, amount) => {
-    let usePound = false;
-
-    if (color[0] === "#") {
-      color = color.slice(1);
-      usePound = true;
-    }
-
-    const num = parseInt(color, 16);
-    let r = (num >> 16) + amount;
-    let b = ((num >> 8) & 0x00ff) + amount;
-    let g = (num & 0x0000ff) + amount;
-
-    if (r > 255) r = 255;
-    else if (r < 0) r = 0;
-
-    if (b > 255) b = 255;
-    else if (b < 0) b = 0;
-
-    if (g > 255) g = 255;
-    else if (g < 0) g = 0;
-
-    return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
-  };
-
-  const getRandomDarkColor = () => {
-    const color = getRandomColor();
-    return adjustColorBrightness(color, -50);
-  };
 
   const getSelectedGenreTracks = async () => {
     setLoading(true);
@@ -209,19 +176,18 @@ function GenresListing() {
 
   return (
     <Container>
+      <Title>Genres</Title>
+
       <GenreList>
         {genresListing?.map((genre, i) => (
           <GenreItem
             key={i}
-            style={{
-              backgroundImage: `url(${genre.imageUrl})`,
-              backgroundColor: getRandomDarkColor(),
-            }}
+            backgroundImage={images[Math?.floor(Math?.random() * images?.length)]}
             onClick={() => {
               setSelectedGenre(JSON?.stringify(genre));
             }}
           >
-            {truncateText(genre, wordsToUse)}
+            {genre}
           </GenreItem>
         ))}
       </GenreList>
@@ -231,13 +197,14 @@ function GenresListing() {
         <FormSelect
           options={genresListing}
           onChange={(e) => {
-            setSelectedGenre(e.target.value);
+            setSelectedGenre(e?.target?.value);
           }}
-          selectId={"genreList"}
+          selectId={"genre List"}
           width={"30%"}
           selectPlaceholder={"Select a Genre"}
         />
       </GenreHeader>
+
       {loading && <SkeletonLoader />}
 
       <MusicCardsContainer>
@@ -245,11 +212,11 @@ function GenresListing() {
           selectedGenreTracks?.map((cur, i) => (
             <MusicCardWrapper key={i}>
               <MusicCard2
-                imageUrl={cur.image}
-                imageUrlAlt={cur.label}
-                title={cur.track_name}
-                artistName={cur.label}
-                audioUrl={cur.audio}
+                imageUrl={cur?.image}
+                imageUrlAlt={cur?.label}
+                title={cur?.track_name}
+                artistName={cur?.label}
+                audioUrl={cur?.audio}
                 onLikeIconClicked={() => {
                   console.log("liked ckicked");
                 }}
@@ -257,9 +224,9 @@ function GenresListing() {
                   console.log("ellipsis ckicked");
                 }}
                 isPlaying={
-                  currentPlaying === cur.audio && !audioRef.current.paused
+                  currentPlaying === cur?.audio && !audioRef?.current?.paused
                 }
-                onPlayPause={() => handlePlayPause(cur.audio)}
+                onPlayPause={() => handlePlayPause(cur?.audio)}
               />
             </MusicCardWrapper>
           ))}
