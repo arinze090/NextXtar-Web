@@ -35,7 +35,7 @@ function AddProject() {
     <Container>
       <HeaderTitle
         title={"Add New Project"}
-        imgSrc={require("../../assets/projects.png")}
+        imgSrc={require("../../assets/gif11.gif")}
         imgAlt={"Projects Image"}
       />
 

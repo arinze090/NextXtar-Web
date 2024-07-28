@@ -130,7 +130,7 @@ function FanLinkPage() {
     <Container>
       <HeaderTitle
         title={"FanLink"}
-        imgSrc={require("../../assets/fanLink.png")}
+        imgSrc={require("../../assets/gif12.gif")}
         imgAlt={"FanLink Image"}
       />
       {loading && <SkeletonLoader />}

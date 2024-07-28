@@ -3,17 +3,17 @@ import styled from "styled-components";
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: 430px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 30px;
 `;
 
-const Image = styled.img`
+const Gif = styled.img`
   width: 100%;
-  height: 216px;
-  object-fit: fill;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const TitleOverlay = styled.div`
@@ -41,8 +41,8 @@ const TitleOverlay = styled.div`
 function HeaderTitle({ title, imgSrc, imgAlt }) {
   return (
     <ImageContainer>
-      <Image
-        src={imgSrc ? imgSrc : require("../../assets/singnifySplashLogo.png")}
+      <Gif
+        src={imgSrc ? imgSrc : require("../../assets/gif12.gif")}
         alt={imgAlt}
       />
       <TitleOverlay>{title}</TitleOverlay>

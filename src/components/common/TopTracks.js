@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+
 import { truncateText } from "../../Library/Common";
 import { CiHeart } from "react-icons/ci";
+import { FaEllipsisH, FaPlay } from "react-icons/fa";
+import { baseURL } from "../../utils/api-client";
+import { API_KEY } from "../../utils/devKeys";
 
 const Container = styled.div`
   // background: red;
   border-radius: 21px;
   padding: 20px;
   width: 100%;
-  height: 803px;
+  height: 725px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 
   @media screen and (max-width: 768px) {
@@ -83,13 +90,79 @@ const ActionIcon = styled.span`
 
 const TopTracks = ({ topTracksData }) => {
   const state = useSelector((state) => state);
-  // const topTracksFromRedux =
-  //   state?.discover?.discoverTracks?.result?.["NextXtar "];
+  const user = state?.user?.user;
+
   console.log("topTracksData", topTracksData);
 
   // Determine the max words based on screen size
   const isSmallScreen = window.innerWidth <= 768;
   const wordsToUse = isSmallScreen ? 10 : 40;
+
+  const [loading, setLoading] = useState(false);
+
+  const [toggleLike, setToggleLike] = useState(false);
+
+  const toggleLikeMusic = async (song) => {
+    setToggleLike(!toggleLike);
+    console.log("[ressed]");
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+    form.append("music_id", song?.music_id);
+    form.append("type", "");
+
+    try {
+      setLoading(true);
+      await axios
+        .post(`${baseURL}like-music.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("toggleLikeMusic data", res?.data);
+            toast.success(`You liked this song: ${res?.data?.music?.Name} 😇`);
+          } else {
+            console.log("toggleLikeMusic message", res?.data?.status);
+            setToggleLike(!toggleLike);
+          }
+        })
+        .catch((err) => {
+          console.log("toggleLikeMusic err", err);
+          setLoading(false);
+          setToggleLike(!toggleLike);
+        });
+    } catch (error) {
+      console.log("toggleLikeMusic error", error);
+      setToggleLike(!toggleLike);
+    }
+  };
+
+  // for the audio playing
+  const [currentPlaying, setCurrentPlaying] = useState(null);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
+  const audioRef = useRef(new Audio());
+
+  const onPlayClick = (audioUrl) => {
+    console.log("currrr", audioUrl?.audio);
+    setCurrentPlaying(audioUrl?.audio);
+
+    if (currentPlaying === audioUrl?.audio) {
+      if (!audioRef.current.paused) {
+        audioRef.current.pause();
+        setIsAudioPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsAudioPlaying(true);
+      }
+    } else {
+      audioRef.current.pause();
+      audioRef.current.src = audioUrl?.audio;
+      audioRef.current.play();
+      setCurrentPlaying(audioUrl?.audio);
+    }
+  };
 
   return (
     <Container>
@@ -109,8 +182,21 @@ const TopTracks = ({ topTracksData }) => {
               </TrackInfo>
               <TrackActions>
                 <TrackDuration>{track.duration}</TrackDuration>
-                {!isSmallScreen && <ActionIcon>❤️</ActionIcon>}
-                <ActionIcon>⋮</ActionIcon>
+                <ActionIcon>
+                  <FaPlay onClick={onPlayClick} />
+                </ActionIcon>
+                {!isSmallScreen && (
+                  <ActionIcon>
+                    <CiHeart
+                      onClick={() => {
+                        toggleLikeMusic(track);
+                      }}
+                    />
+                  </ActionIcon>
+                )}
+                <ActionIcon>
+                  <FaEllipsisH />
+                </ActionIcon>
               </TrackActions>
             </TrackItem>
           ))}

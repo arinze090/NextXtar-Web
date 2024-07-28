@@ -13,8 +13,9 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
+  position: relative;
 
-  height: 803px;
+  height: 725px;
   width: 90%;
   box-shadow: 0 8px 6px rgba(0, 0, 0, 0.1);
 
@@ -22,6 +23,23 @@ const Container = styled.div`
     width: 90%;
     justify-content: center;
   }
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  // z-index: 1;
+  border-radius: 15px;
+`;
+
+const Content = styled.div`
+  position: relative;
+  z-index: 2;
+  color: white;
 `;
 
 const Title = styled.h2`
@@ -44,7 +62,7 @@ const Description2 = styled.p`
 
 const LikeIcon = styled(FaHeart)`
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 const LikesSection = styled.div`
@@ -62,12 +80,15 @@ const SongOfTheDay = ({
 }) => {
   return (
     <Container backgroundImage={backgroundImage}>
-      <Title>Song of the day</Title>
-      <Description>{songTitle} vdgg</Description>
-      <Description2>{songDescription} dvrgrg</Description2>
-      <LikesSection>
-        <LikeIcon /> {songLikes}
-      </LikesSection>
+      <Overlay />
+      <Content>
+        <Title>Song of the day</Title>
+        <Description>{songTitle}</Description>
+        <Description2>{songDescription}</Description2>
+        <LikesSection>
+          <LikeIcon style={{ marginRight: 10 }} /> {songLikes}
+        </LikesSection>
+      </Content>
     </Container>
   );
 };

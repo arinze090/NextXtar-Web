@@ -218,7 +218,7 @@ function PartnershipProcedure() {
     <Container>
       <HeaderTitle
         title={"Partnership Procedure"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/gif12.gif")}
         imgAlt={"Payment Image"}
       />
 

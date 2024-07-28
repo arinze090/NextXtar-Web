@@ -17,6 +17,7 @@ import genre5 from "../../assets/genre5.png";
 import genre6 from "../../assets/genre6.png";
 import genre7 from "../../assets/genre7.png";
 import genre8 from "../../assets/genre8.png";
+import { useLocation } from "react-router-dom";
 
 const images = [genre1, genre2, genre3, genre4, genre5, genre6, genre7, genre8];
 
@@ -87,7 +88,7 @@ const GenreItem = styled.div`
   border-radius: 10px;
   padding: 20px;
   width: 190px;
-  height: 91px;
+  height: 45px;
   color: white;
   text-align: center;
   font-weight: bold;
@@ -110,13 +111,17 @@ function GenresListing() {
   const state = useSelector((state) => state);
   const userToken = state?.user?.userToken;
 
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const genre = params.get("genre");
+
   const genresListing = state?.discover?.listings?.genres;
 
   const [currentPlaying, setCurrentPlaying] = useState(null);
   const audioRef = useRef(new Audio());
 
   const [loading, setLoading] = useState(false);
-  const [selectedGenre, setSelectedGenre] = useState();
+  const [selectedGenre, setSelectedGenre] = useState(JSON?.stringify(genre));
   const [selectedGenreTracks, setSelectedGenreTracks] = useState([]);
 
   console.log("selectedGenre", selectedGenre);
@@ -182,7 +187,9 @@ function GenresListing() {
         {genresListing?.map((genre, i) => (
           <GenreItem
             key={i}
-            backgroundImage={images[Math?.floor(Math?.random() * images?.length)]}
+            backgroundImage={
+              images[Math?.floor(Math?.random() * images?.length)]
+            }
             onClick={() => {
               setSelectedGenre(JSON?.stringify(genre));
             }}

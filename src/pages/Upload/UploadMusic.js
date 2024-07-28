@@ -26,7 +26,7 @@ function UploadMusic() {
     <Container>
       <HeaderTitle
         title={"Upload Music"}
-        imgSrc={require("../../assets/uploadMusic.png")}
+        imgSrc={require("../../assets/gif1.gif")}
         imgAlt={"Upload Music Image"}
       />
       <Upload

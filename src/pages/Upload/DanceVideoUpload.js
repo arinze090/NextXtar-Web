@@ -174,7 +174,7 @@ function DanceVideoUpload() {
     <Container>
       <HeaderTitle
         title={"DanceVideo"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/gif2.gif")}
         imgAlt={"DanceVideo Image"}
       />
       <FormInput

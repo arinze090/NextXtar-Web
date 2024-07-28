@@ -159,7 +159,7 @@ function Notifications() {
     <Container>
       <HeaderTitle
         title={"Notifications"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/gif12.gif")}
         imgAlt={"Notifications Image"}
       />
       {loading ? <SkeletonLoader /> : <NotificationInfo />}

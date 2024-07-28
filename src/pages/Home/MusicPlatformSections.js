@@ -1,6 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+
 import MusicCard2 from "../../components/cards/MusicCard2";
+import { baseURL } from "../../utils/api-client";
+import { API_KEY } from "../../utils/devKeys";
+import { useSelector } from "react-redux";
 
 // Container for the entire section
 const SectionContainer = styled.div`
@@ -51,21 +58,14 @@ const ItemGrid = styled.div`
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   width: 100%;
   // background: #4caf50;
 
+  // Hide the scrollbar
   &::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #4caf50; // Customize the scrollbar color
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #45a049;
+    width: 0;
+    height: 0;
   }
 
   @media screen and (max-width: 768px) {
@@ -78,6 +78,9 @@ const ItemContainer = styled.div`
 `;
 
 function MusicPlatformSections({ title, subTitle, items }) {
+  const state = useSelector((state) => state);
+  const user = state?.user?.user;
+
   const [currentPlaying, setCurrentPlaying] = useState(null);
   const audioRef = useRef(new Audio());
 
@@ -96,6 +99,46 @@ function MusicPlatformSections({ title, subTitle, items }) {
     }
   };
 
+  const [loading, setLoading] = useState(false);
+
+  const [toggleLike, setToggleLike] = useState(false);
+
+  const toggleLikeMusic = async (song) => {
+    setToggleLike(!toggleLike);
+    console.log("[ressed]");
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+    form.append("music_id", song?.music_id);
+    form.append("type", "");
+
+    try {
+      setLoading(true);
+      await axios
+        .post(`${baseURL}like-music.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("toggleLikeMusic data", res?.data);
+            toast.success(`You liked this song: ${res?.data?.music?.Name} 😇`);
+          } else {
+            console.log("toggleLikeMusic message", res?.data?.status);
+            setToggleLike(!toggleLike);
+          }
+        })
+        .catch((err) => {
+          console.log("toggleLikeMusic err", err);
+          setLoading(false);
+          setToggleLike(!toggleLike);
+        });
+    } catch (error) {
+      console.log("toggleLikeMusic error", error);
+      setToggleLike(!toggleLike);
+    }
+  };
+
   return (
     <SectionContainer>
       <SectionHeader>
@@ -105,7 +148,7 @@ function MusicPlatformSections({ title, subTitle, items }) {
         <SeeMoreLink href="#">See more</SeeMoreLink>
       </SectionHeader>
       <ItemGrid>
-        {items.map((cur, i) => (
+        {items?.map((cur, i) => (
           <ItemContainer key={i}>
             <MusicCard2
               imageUrl={cur.image}
@@ -119,6 +162,7 @@ function MusicPlatformSections({ title, subTitle, items }) {
               onPlayPause={() => handlePlayPause(cur.audio)}
               onLikeIconClicked={() => {
                 console.log("liked ckicked");
+                toggleLikeMusic(cur);
               }}
               onEllipsisClicked={() => {
                 console.log("ellipsis ckicked");

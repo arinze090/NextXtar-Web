@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import GenreCard from "../cards/GenreCard";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   // background: green;
@@ -54,6 +55,12 @@ const GenreList = styled.div`
   overflow-x: auto;
   justify-content: center;
 
+  // Hide the scrollbar
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 50vh;
@@ -85,9 +92,17 @@ const GenreItem = styled.div`
 const GenreCardWrapper = styled.div`
   margin-bottom: 16px;
   margin-right: 30px;
+
+  // Hide the scrollbar
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 `;
 
 const Genres = ({ genres }) => {
+  const navigate = useNavigate();
+
   // Determine the max words based on screen size
   const isSmallScreen = window.innerWidth <= 768;
   const wordsToUse = isSmallScreen ? 10 : 40;
@@ -101,7 +116,13 @@ const Genres = ({ genres }) => {
       <GenreList>
         {genres?.map((genre, i) => (
           <GenreCardWrapper key={i}>
-            <GenreCard title={genre} />
+            <GenreCard
+              title={genre}
+              onGenreClick={() => {
+                console.log("onGenreClick", genre);
+                navigate(`/genres?genre=${encodeURIComponent(genre)}`);
+              }}
+            />
           </GenreCardWrapper>
         ))}
       </GenreList>

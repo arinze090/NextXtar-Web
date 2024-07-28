@@ -177,7 +177,7 @@ function FaceVideoUpload() {
     <Container>
       <HeaderTitle
         title={"FaceVideo"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/gif1.gif")}
         imgAlt={"FaceVideo Image"}
       />
       <FormInput

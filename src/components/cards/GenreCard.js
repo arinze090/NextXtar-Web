@@ -48,12 +48,12 @@ const ItemName = styled.p`
   text-overflow: ellipsis;
 `;
 
-function GenreCard({ title }) {
+function GenreCard({ title, onGenreClick }) {
   // Select a random image from the imported images
   const randomImage = images[Math.floor(Math.random() * images.length)];
 
   return (
-    <ItemCard>
+    <ItemCard onClick={onGenreClick}>
       <ItemImage src={randomImage} alt={title} />
       <ItemDetails>
         <ItemName>{title}</ItemName>

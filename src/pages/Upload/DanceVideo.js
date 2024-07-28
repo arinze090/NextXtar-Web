@@ -25,7 +25,7 @@ function DanceVideo() {
     <Container>
       <HeaderTitle
         title={"Dance Video"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/gif2.gif")}
         imgAlt={"Dance Video Image"}
       />
       <Title>Upload Your Dance Video</Title>

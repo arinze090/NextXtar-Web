@@ -6,6 +6,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { truncateText } from "../../Library/Common";
 import FormButton from "../../components/form/FormButton";
 
+const SliderContainer = styled.div`
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+`;
+
 const CarouselContainer = styled.div`
   position: relative;
   width: 95%;
@@ -23,6 +29,7 @@ const CarouselContainer = styled.div`
     }) no-repeat center center`};
 
   background-size: cover;
+  object-fit: cover;
 
   .slick-prev,
   .slick-next {
@@ -110,8 +117,14 @@ const CardContainer = styled.div`
   border-radius: 16px;
   //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  padding: 20px;
   margin: 20px auto;
   width: 95%;
+  height: auto;
+  position: relative;
+  background: ${(props) =>
+    `url(${props.backgroundImage}) no-repeat center center`};
+  background-size: cover;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -186,7 +199,7 @@ const Description = styled.p`
 
 const MusicCard = ({ music }) => {
   return (
-    <CardContainer backgroundImage={music?.image}>
+    <CardContainer>
       <ImageWrapper>
         <img src={music?.image} alt="Cover" />
       </ImageWrapper>
@@ -213,14 +226,16 @@ function DiscvoverCarousel({ props }) {
   };
 
   return (
-    <CarouselContainer>
-      <Overlay />
+    <SliderContainer>
       <Slider {...settings}>
         {props?.map((cur, i) => (
-          <MusicCard key={i} music={cur} />
+          <CarouselContainer key={i} backgroundImage={cur?.image}>
+            <Overlay />
+            <MusicCard music={cur} />
+          </CarouselContainer>
         ))}
       </Slider>
-    </CarouselContainer>
+    </SliderContainer>
   );
 }
 
