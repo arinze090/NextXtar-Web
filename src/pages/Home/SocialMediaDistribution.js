@@ -119,7 +119,7 @@ function SocialMediaDistribution() {
     <Container>
       <HeaderTitle
         title={"Social Media Distribution"}
-        imgSrc={require("../../assets/expressDelivery.png")}
+        imgSrc={require("../../assets/gif3.gif")}
         imgAlt={"Express Image"}
       />
 
