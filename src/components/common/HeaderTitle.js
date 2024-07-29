@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 430px;
+  height: 330px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;

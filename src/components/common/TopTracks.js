@@ -16,12 +16,19 @@ const Container = styled.div`
   border-radius: 21px;
   padding: 20px;
   width: 100%;
-  height: 725px;
+  height: 625px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+  // Hide the scrollbar
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   @media screen and (max-width: 768px) {
     width: 90%;
-    height: 803px;
+    height: 625px;
     overflow-y: auto;
   }
 `;

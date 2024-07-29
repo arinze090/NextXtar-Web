@@ -47,10 +47,10 @@ const TextWrapper = styled.div`
 
 const Heading = styled.h2`
   font-size: 42px;
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
   color: #000;
   font-weight: bold;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Arimo", sans-serif;
   text-align: left;
 
   @media (max-width: 768px) {
@@ -62,8 +62,8 @@ const Heading = styled.h2`
 const Paragraph = styled.p`
   font-size: 24px;
   color: #434343;
-  margin-bottom: 1rem;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  margin-bottom: 60px;
+  font-family: "Arimo", sans-serif;
   text-align: left;
 
   @media (max-width: 768px) {

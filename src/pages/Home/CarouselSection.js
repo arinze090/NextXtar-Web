@@ -94,14 +94,14 @@ const CarouselContainer = styled.div`
 `;
 
 const CarouselTitle = styled.h1`
-  font-family: "Plus Jakarta Sans";
+  font-family: "Arimo";
   margin-bottom: 16px;
   font-size: 90px;
   font-weight: 800;
 `;
 
 const CarouselSubTitle = styled.p`
-  font-family: "Plus Jakarta Sans";
+  font-family: "Arimo";
   margin-bottom: 48px;
   font-size: 32px;
   font-weight: 600;

@@ -101,6 +101,10 @@ const ButtonGroup = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const SocialButtons = styled.div`
@@ -148,12 +152,14 @@ function FanLinkCard({ props, btnTitle, onBtnClicked, editBtnIcon, shareUrl }) {
             marginTop={"0"}
             onClick={onBtnClicked}
             btnIcon={editBtnIcon}
+            width={"100%"}
           />
           <TransparentBtn
             btnIcon={<FaShareAlt />}
             title={"Share"}
             onClick={openShareModal}
             color={"black"}
+            width={"100%"}
           />
         </ButtonGroup>
       </ContentWrapper>

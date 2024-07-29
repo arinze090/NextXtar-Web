@@ -51,6 +51,7 @@ import Support from "../pages/Support/Support";
 import Search from "../pages/Home/Search";
 import UploadVideo from "../pages/Upload/UploadVideo";
 import GenresListing from "../pages/MusicLibrary/GenresListing";
+import Home from "../pages/Home/Home";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -128,6 +129,8 @@ function ProtectedRoutes() {
       <ToastContainer />
       <Sidebar />
       <Routes>
+        <Route path="/" element={<Home />} />
+
         <Route path="/discover" element={<Discover />} />
         <Route path="/search" element={<Search />} />
 

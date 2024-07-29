@@ -69,12 +69,12 @@ const TextWrapper = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 42px;
+  font-size: 48px;
   margin-bottom: 1rem;
   color: #000;
   font-weight: bold;
   text-align: left;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Arimo", sans-serif;
 
   @media (max-width: 768px) {
     text-align: left;
@@ -87,7 +87,7 @@ const Paragraph = styled.p`
   color: #434343;
   margin-bottom: 1rem;
   text-align: left;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Arimo", sans-serif;
 
   @media (max-width: 768px) {
     text-align: left;

@@ -14,6 +14,7 @@ const Title = styled.p`
   color: #003018;
   font-size: 20px;
   font-weight: 700;
+  margin-bottom: 0px;
 `;
 
 function FAQs() {

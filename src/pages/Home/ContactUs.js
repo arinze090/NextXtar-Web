@@ -10,14 +10,14 @@ const Container = styled.div`
   height: auto;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  padding-top: 120px;
+  background-color: white;
+  padding-top: 50px;
   margin-bottom: 60px;
   align-content: center;
   flex-direction: column;
 
   @media screen and (max-width: 768px) {
-    padding-top: 70px;
+    padding-top: 20px;
     margin-bottom: 60px;
     height: auto;
   }

@@ -27,6 +27,13 @@ const Container = styled.div`
   }
 `;
 
+const SwitchSection = styled.div`
+  flex-direction: row;
+  justify-content: flex-end;
+  display: flex;
+  margin-bottom: 20px;
+`;
+
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -356,18 +363,7 @@ function PlaylistLibrary() {
 
   return (
     <Container>
-      <CustomSwitch
-        arrayData={musicLibraryData}
-        onSelectSwitch={updateSwitchData}
-        seletionMode={0}
-      />
-
-      <div
-        style={{
-          justifyContent: "center",
-          display: "flex",
-        }}
-      >
+      <SwitchSection>
         <FormButton
           title={"Create Playlist"}
           marginTop={"0px"}
@@ -375,7 +371,12 @@ function PlaylistLibrary() {
           onClick={openModal}
           width={"100%"}
         />
-      </div>
+      </SwitchSection>
+      <CustomSwitch
+        arrayData={musicLibraryData}
+        onSelectSwitch={updateSwitchData}
+        seletionMode={0}
+      />
 
       <GridContainer>{renderContent()}</GridContainer>
 

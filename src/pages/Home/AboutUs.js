@@ -13,6 +13,7 @@ const Container = styled.div`
   align-items: center;
   padding: 5rem;
   background-color: ${({ bgColor }) => (bgColor ? bgColor : "white")};
+  margin-top: 0px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -88,7 +89,7 @@ function AboutUs() {
       <img
         src={require("../../assets/partners.png")}
         alt="partners"
-        style={{ width: "100%" }}
+        style={{ width: "100%", marginBottom: 0 }}
       />
       <Container bgColor={"#F2F2F2"}>
         <TextWrapper>
