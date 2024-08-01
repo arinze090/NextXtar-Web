@@ -37,7 +37,7 @@ const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-left: 48px;
+  margin-left: 80px;
 
   @media (max-width: 768px) {
     text-align: center;
@@ -65,6 +65,7 @@ const Paragraph = styled.p`
   margin-bottom: 60px;
   font-family: "Arimo", sans-serif;
   text-align: left;
+  margin-top: 5px;
 
   @media (max-width: 768px) {
     text-align: left;

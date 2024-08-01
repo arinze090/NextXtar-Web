@@ -29,7 +29,7 @@ const CarouselContainer = styled.div`
 
   img {
     width: 100%;
-    height: 430px;
+    height: 560px;
     object-fit: cover;
 
     @media (max-width: 768px) {
@@ -102,9 +102,13 @@ const CarouselTitle = styled.h1`
 
 const CarouselSubTitle = styled.p`
   font-family: "Arimo";
-  margin-bottom: 48px;
+  margin-bottom: 88px;
   font-size: 32px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    margin-bottom: 48px;
+  }
 `;
 
 const DownloadIconSection = styled.div`
@@ -131,7 +135,7 @@ const Carousel = () => {
 
   const slides = [
     {
-      src: require("../../assets/gif11.gif"),
+      src: require("../../assets/landingSlider1.gif"),
       appStoreImage: require("../../assets/AppStore.png"),
       playStoreImage: require("../../assets/PlayStore.png"),
       alt: "Slide 1",
@@ -139,7 +143,7 @@ const Carousel = () => {
       description: "Stream and download the music of your favourite artists.",
     },
     {
-      src: require("../../assets/gif2.gif"),
+      src: require("../../assets/landingSlider2.gif"),
       appStoreImage: require("../../assets/AppStore.png"),
       playStoreImage: require("../../assets/PlayStore.png"),
       alt: "Slide 2",
@@ -148,7 +152,7 @@ const Carousel = () => {
         "Discover what music is trending & find new talented artist to follow",
     },
     {
-      src: require("../../assets/gif3.gif"),
+      src: require("../../assets/landingSlider3.gif"),
       appStoreImage: require("../../assets/AppStore.png"),
       playStoreImage: require("../../assets/PlayStore.png"),
       alt: "Slide 3",
