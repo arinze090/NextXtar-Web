@@ -129,7 +129,6 @@ function ProtectedRoutes() {
       <ToastContainer />
       <Sidebar />
       <Routes>
-        <Route path="/" element={<Home />} />
 
         <Route path="/discover" element={<Discover />} />
         <Route path="/search" element={<Search />} />
