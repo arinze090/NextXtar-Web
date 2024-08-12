@@ -73,6 +73,7 @@ function UploadVideo() {
   const [trackName, setTrackName] = useState("");
   const [trackArtistName, setTrackArtistName] = useState("");
   const [description, setDescription] = useState("");
+  const [videoDuration, setVideoDuration] = useState("");
 
   const [language, setLanguage] = useState("");
 
@@ -98,15 +99,15 @@ function UploadVideo() {
   const uploadVideo = async () => {
     const form = new FormData();
     form.append("token", user?.Token);
-    form.append("privacy", 0);
+    form.append("privacy", "public");
     form.append("label", trackArtistName);
     form.append("name", trackName);
     form.append("genre", JSON?.parse(genre));
     form.append("language", language);
     form.append("tags", "Singnify");
-    form.append("image", "");
-    form.append("duration", "");
-    form.append("video_url", uploadedVideoUrl?.link);
+    form.append("image", null);
+    form.append("duration", videoDuration);
+    form.append("video", uploadedVideoUrl?.link);
     form.append("country", country);
     form.append("phone", phone);
     form.append("choice", "Uploading for Myself");
@@ -140,7 +141,7 @@ function UploadVideo() {
               console.log("uploadVideo data", res?.data);
 
               toast.success("Your video has been uploaded successfully 😇");
-              navigate("/");
+              navigate("/upload");
             } else {
               console.log("uploadVideo message", res?.data?.status);
               setFormError("Something went wrong, please try again later");
@@ -184,6 +185,19 @@ function UploadVideo() {
         setBase64Video(reader?.result);
       };
       reader.readAsDataURL(file);
+
+      // Create a video element to load the file and get its duration
+      const videoElement = document.createElement("video");
+      videoElement.src = fileUrl;
+
+      // Wait for the metadata to load, which includes the duration
+      videoElement.onloadedmetadata = () => {
+        const duration = videoElement.duration;
+        console.log("Video Duration: ", duration?.toFixed(2));
+
+        // Optionally, you can set this duration to state if needed
+        setVideoDuration(duration?.toFixed(2));
+      };
     }
   };
 

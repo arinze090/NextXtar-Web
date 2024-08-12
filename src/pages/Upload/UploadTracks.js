@@ -204,6 +204,7 @@ const UploadTracks = () => {
   const [spotifyUrl, setSpotifyUrl] = useState("");
   const [itunesUrl, setItunesUrl] = useState("");
   const [lyrics, setLyrics] = useState("");
+  const [audioDuration, setAudioDuration] = useState("");
 
   const [language, setLanguage] = useState("");
   const [image, setImage] = useState("");
@@ -261,7 +262,7 @@ const UploadTracks = () => {
     form.append("language", language);
     form.append("image", uploadedPictureUrl?.link);
     form.append("audio", uploadedAudioUrl?.link);
-    form.append("duration", "");
+    form.append("duration", audioDuration);
     form.append("country", country);
     form.append(
       "choice",
@@ -305,7 +306,14 @@ const UploadTracks = () => {
             //   Clear the reduxc lyrics file data
             // dispatch(clearLyricsUploadData());
             toast.success("Your track has been uploaded successfully 😇");
-            navigate("/");
+            navigate("/upload");
+          } else if (parseInt(res?.data?.status) == 501) {
+            console.log("uploadMusic message", res?.data?.status);
+            setFormError(res?.data?.message);
+            toast.error(
+              "Track Upload Failed",
+              "Something went wrong while uploading your track, please try again later"
+            );
           } else {
             console.log("uploadMusic message", res?.data?.status);
             setFormError("Something went wrong, please try again later");
@@ -416,6 +424,18 @@ const UploadTracks = () => {
         setBase64Audio(reader?.result);
       };
       reader.readAsDataURL(file);
+
+      // Create an audio element to load the file and get its duration
+      const audioElement = new Audio(fileUrl);
+
+      // Wait for the metadata to load, which includes the duration
+      audioElement.onloadedmetadata = () => {
+        const duration = audioElement.duration;
+        console.log("Audio Duration: ", duration?.toFixed(2));
+
+        // Optionally, you can set this duration to state if needed
+        setAudioDuration(duration?.toFixed(2));
+      };
     }
   };
 
