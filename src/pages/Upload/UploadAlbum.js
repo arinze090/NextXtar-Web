@@ -358,7 +358,7 @@ function UploadAlbum() {
                 <UploadSection
                   title="Cover Art"
                   uploadTitle="Cover Art"
-                  uploadDescription="Drag & drop files or Browse. Supported formats: TIF, PNG, JPG"
+                  uploadDescription="Drag & drop files or Browse. Supported formats: PNG, JPG"
                   rules={rules1}
                   uploadBtnTitle={"Upload"}
                 />

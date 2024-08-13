@@ -53,6 +53,7 @@ import UploadVideo from "../pages/Upload/UploadVideo";
 import GenresListing from "../pages/MusicLibrary/GenresListing";
 import Home from "../pages/Home/Home";
 import WithdrawalPage from "../pages/Profile/WithdrawalPage";
+import UserVerification from "../pages/Profile/UserVerification";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -168,6 +169,7 @@ function ProtectedRoutes() {
 
         {/*  Profile section */}
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/verification" element={<UserVerification />} />
         <Route path="/fanlinks" element={<FanLinkPage />} />
         <Route path="/press-release" element={<PressReleasePage />} />
         <Route path="/edit-press-release" element={<EditPressRelease />} />

@@ -233,6 +233,8 @@ const UploadTracks = () => {
 
   // Error states
   const [formError, setFormError] = useState("");
+  const [coverArtErrorMessage, setCoverArtErrorMessage] = useState("");
+
   const [uploadingChoiceError, setUploadingChoiceError] = useState();
   const [artistEmailError, setArtistEmailError] = useState("");
   const [countryError, setCountryError] = useState("");
@@ -461,15 +463,16 @@ const UploadTracks = () => {
   };
 
   // this function calls the upload image/coverpicture api to store the image in the db
-  const uploadBase64Image = async (base64Image) => {
+  const uploadCoverArt = async (file) => {
     setLoading(true);
 
     const form = new FormData();
-    form.append("image", base64Image);
+    form.append("file", file);
+    form.append("is_cover", 1);
 
     try {
       await axios
-        .post(`${baseURL}upload-photo.php?API_KEY=${API_KEY}`, form, {
+        .post(`${baseURL}upload-cover-art.php?API_KEY=${API_KEY}`, form, {
           onUploadProgress: (progressEvent) => {
             const percentCompleted = Math.round(
               (progressEvent.loaded * 100) / progressEvent.total
@@ -482,13 +485,14 @@ const UploadTracks = () => {
           setLoading(false);
 
           if (res?.data?.status == 200) {
-            console.log("uploadBase64Image data", res?.data);
+            console.log("uploadCoverArt data", res?.data);
 
             setUploadedPictureUrl(res?.data);
             toast.success("Your picture uploaded successfully 😇");
           } else {
             console.log("message", res?.data?.status);
             setFormError("Something went wrong, please try again later");
+            setCoverArtErrorMessage(res?.data?.message);
 
             toast.error(
               "Picture Upload Failed",
@@ -497,7 +501,7 @@ const UploadTracks = () => {
           }
         })
         .catch((err) => {
-          console.log("uploadBase64Image err", err);
+          console.log("uploadCoverArt err", err);
           setLoading(false);
           toast.error(
             "Picture Upload Failed",
@@ -507,7 +511,7 @@ const UploadTracks = () => {
     } catch (error) {
       setLoading(false);
 
-      console.log("uploadBase64Image error", error);
+      console.log("uploadCoverArt error", error);
       toast.error(
         "Picture Upload Failed",
         "Something went wrong while uploading your picture, please try again later"
@@ -993,7 +997,7 @@ const UploadTracks = () => {
               <UploadSection
                 title="Cover Art"
                 uploadTitle="Cover Art"
-                uploadDescription="Drag & drop files or Browse. Supported formats: TIF, PNG, JPG"
+                uploadDescription="Drag & drop files or Browse. Supported formats: PNG, JPG"
                 rules={rules1}
                 uploadBtnTitle={"Upload"}
                 fileType={"image/*"}
@@ -1001,7 +1005,7 @@ const UploadTracks = () => {
                 loading={loading}
                 selectedFile={image}
                 onFileUpload={() => {
-                  uploadBase64Image(base64Picture);
+                  uploadCoverArt(image);
                 }}
                 previewUrl={selectedPictureUrl}
                 handleCancel={() => {
@@ -1011,6 +1015,7 @@ const UploadTracks = () => {
                 UploadedText={"Your cover picture has been uploaded"}
                 isFileUploaded={uploadedPictureUrl?.imageName}
                 uploadPercentage={progress}
+                fileUploadErrorMessage={coverArtErrorMessage}
               />
 
               <UploadSection

@@ -58,6 +58,7 @@ function UploadSection({
   UploadedText,
   isFileUploaded,
   uploadPercentage,
+  fileUploadErrorMessage,
 }) {
   return (
     <Section>
@@ -77,16 +78,19 @@ function UploadSection({
           UploadedText={UploadedText}
           isFileUploaded={isFileUploaded}
           uploadPercentage={uploadPercentage}
+          fileUploadErrorMessage={fileUploadErrorMessage}
         />
       </Content>
-      <Rules>
-        <h4>Rules</h4>
-        <ul>
-          {rules.map((rule, index) => (
-            <li key={index}>{rule}</li>
-          ))}
-        </ul>
-      </Rules>
+      {rules && (
+        <Rules>
+          <h4>Rules</h4>
+          <ul>
+            {rules?.map((rule, index) => (
+              <li key={index}>{rule}</li>
+            ))}
+          </ul>
+        </Rules>
+      )}
     </Section>
   );
 }

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { MdVerified } from "react-icons/md";
 import { BsDashCircleFill } from "react-icons/bs";
 import { GrStatusGood } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 const ImageContainer = styled.div`
   width: 100%;
@@ -77,6 +78,8 @@ const VerificationButton = styled.button`
 `;
 
 const ProfileHeader = ({ fullName, imgSrc, isVerified }) => {
+  const navigate = useNavigate();
+
   return (
     <ImageContainer>
       <ProfileImage src={imgSrc} alt="Profile" />
@@ -102,7 +105,13 @@ const ProfileHeader = ({ fullName, imgSrc, isVerified }) => {
           {!isVerified && (
             <>
               <GrStatusGood style={{ color: "green", marginRight: "5px" }} />
-              <VerificationButton>Click here to verify</VerificationButton>
+              <VerificationButton
+                onClick={() => {
+                  navigate("/verification");
+                }}
+              >
+                Click here to verify
+              </VerificationButton>
             </>
           )}
         </VerificationContainer>

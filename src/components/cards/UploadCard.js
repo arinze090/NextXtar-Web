@@ -4,6 +4,7 @@ import { MdFileUpload } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 
 import TransparentBtn from "../form/TransparentBtn";
+import ErrorMessage from "../form/ErrorMessage";
 
 const Card = styled.div`
   border: 1px solid #e0e0e0;
@@ -125,6 +126,7 @@ const UploadCard = ({
   isFileUploaded,
   UploadedText,
   uploadPercentage,
+  fileUploadErrorMessage,
 }) => {
   const fileInputRef = useRef(null);
 
@@ -195,6 +197,10 @@ const UploadCard = ({
           display: "flex",
         }}
       >
+        {fileUploadErrorMessage && (
+          <ErrorMessage message={fileUploadErrorMessage} textAlign={"center"} />
+        )}
+
         {!isFileUploaded ? (
           <TransparentBtn
             onClick={onFileUpload}
