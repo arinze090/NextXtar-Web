@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { MdVerified } from "react-icons/md";
 import { BsDashCircleFill } from "react-icons/bs";
+import { GrStatusGood } from "react-icons/gr";
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: 330px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;
@@ -14,7 +15,7 @@ const ImageContainer = styled.div`
 
 const ProfileImage = styled.img`
   width: 100%;
-  height: 216px;
+  height: 330px;
   object-fit: cover;
 `;
 
@@ -81,7 +82,7 @@ const ProfileHeader = ({ fullName, imgSrc, isVerified }) => {
       <ProfileImage src={imgSrc} alt="Profile" />
       <InfoContainer>
         <Name>{fullName}</Name>
-        <Stats>10 Tracks, 5 Playlists, 10 Plays</Stats>
+        <Stats></Stats>
         <VerificationContainer>
           <VerificationStatus verified={isVerified}>
             {isVerified ? (
@@ -99,7 +100,10 @@ const ProfileHeader = ({ fullName, imgSrc, isVerified }) => {
             )}
           </VerificationStatus>
           {!isVerified && (
-            <VerificationButton>Click here to verify</VerificationButton>
+            <>
+              <GrStatusGood style={{ color: "green", marginRight: "5px" }} />
+              <VerificationButton>Click here to verify</VerificationButton>
+            </>
           )}
         </VerificationContainer>
       </InfoContainer>

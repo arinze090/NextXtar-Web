@@ -321,7 +321,7 @@ function UploadAlbum() {
               />
 
               <p>
-                By uploading or writing your lyrics gives you big opportunities;{" "}
+                By uploading or writing your lyrics gives you big opportunities{" "}
                 <br />
                 1. Your lyrics will be on music services. <br />
                 2. If your music is picked by our executives, you will get an

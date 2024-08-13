@@ -20,6 +20,7 @@ function FormButton({
         justifyContent: "center",
         display: "flex",
         flexDirection: "column",
+        // width: "100%",
         // backgroundColor: "red",
         // width: "100%",
         // alignContent: "center",

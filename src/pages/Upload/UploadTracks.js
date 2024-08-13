@@ -176,10 +176,13 @@ const UploadTracks = () => {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const [uploadedDocumentUrl, setUploadedDocumentUrl] = useState(null);
   const [base64Picture, setBase64Picture] = useState(null);
   const [selectedPictureUrl, setSelectedPictureUrl] = useState(null);
   const [uploadedPictureUrl, setUploadedPictureUrl] = useState(null);
+
+  // Lyrics document section
+  const [selectedDocFile, setSelectedDocFile] = useState("");
+  const [uploadedDocumentUrl, setUploadedDocumentUrl] = useState(null);
 
   // Audio upload section
   const [audioFile, setAudioFile] = useState("");
@@ -392,6 +395,8 @@ const UploadTracks = () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     console.log("file", file);
+    setSelectedDocFile(file);
+
     uploadDocument(file);
   };
 
@@ -902,6 +907,7 @@ const UploadTracks = () => {
               }}
               placeholder={""}
               width={"100%"}
+              maxLength={100}
             />
             <FormTextArea
               formTitle={"Paste your Lyrics Here or Upload Below (Optional)"}
@@ -913,6 +919,7 @@ const UploadTracks = () => {
               }}
               placeholder={""}
               width={"100%"}
+              maxLength={100}
             />
             <div
               style={{
@@ -939,8 +946,17 @@ const UploadTracks = () => {
                 accept={"application/*"}
               />
 
+              {uploadedDocumentUrl && (
+                <embed
+                  src={{ uri: uploadedDocumentUrl }}
+                  type="application/pdf"
+                  width="100%"
+                  height="400px"
+                />
+              )}
+
               <p>
-                By uploading or writing your lyrics gives you big opportunities;{" "}
+                By uploading or writing your lyrics gives you big opportunities{" "}
                 <br />
                 1. Your lyrics will be on music services. <br />
                 2. If your music is picked by our executives, you will get an

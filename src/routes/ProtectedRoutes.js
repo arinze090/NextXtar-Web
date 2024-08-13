@@ -52,6 +52,7 @@ import Search from "../pages/Home/Search";
 import UploadVideo from "../pages/Upload/UploadVideo";
 import GenresListing from "../pages/MusicLibrary/GenresListing";
 import Home from "../pages/Home/Home";
+import WithdrawalPage from "../pages/Profile/WithdrawalPage";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -129,7 +130,6 @@ function ProtectedRoutes() {
       <ToastContainer />
       <Sidebar />
       <Routes>
-
         <Route path="/discover" element={<Discover />} />
         <Route path="/search" element={<Search />} />
 
@@ -146,6 +146,8 @@ function ProtectedRoutes() {
 
         {/*  Paymnents section */}
         <Route path="/payments" element={<Payments />} />
+        <Route path="/withdrawal" element={<WithdrawalPage />} />
+
         <Route path="/bank-payments" element={<BankAccountPage />} />
         <Route path="/payment-information" element={<PaymentInformation />} />
         <Route

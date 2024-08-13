@@ -165,6 +165,14 @@ const UploadCard = ({
             </AudioPreview>
             <PreviewText>{selectedFile.name}</PreviewText>
           </FilePreviewContainer>
+        ) : selectedFile?.type == "application/pdf" ? (
+          <FilePreviewContainer>
+            <CancelIcon onClick={handleCancel}>
+              <IoCloseSharp size={20} color="black" />
+            </CancelIcon>
+            {selectedFile && <embed src={selectedFile} alt="Preview" />}
+            <PreviewText>{selectedFile?.name}</PreviewText>
+          </FilePreviewContainer>
         ) : (
           <DottedBorderContainer onClick={handleClick}>
             Unsupported file type

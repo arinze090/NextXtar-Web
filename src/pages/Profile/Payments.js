@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const items = [
   { icon: FaDollarSign, label: "Royalties", navigateTo: "/" },
-  { icon: FaMoneyCheckAlt, label: "Withdrawals", navigateTo: "/" },
+  { icon: FaMoneyCheckAlt, label: "Withdrawals", navigateTo: "/withdrawal" },
   { icon: FaShoppingCart, label: "Promotion & Services", navigateTo: "/" },
   {
     icon: MdPayment,

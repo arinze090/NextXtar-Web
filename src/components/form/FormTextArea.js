@@ -21,6 +21,7 @@ function FormTextArea({
   row,
   placeholder,
   errorMessage,
+  maxLength,
 }) {
   return (
     <InputContainer width={width}>
@@ -31,6 +32,7 @@ function FormTextArea({
         {formTitle}
       </label>
       <textarea
+        maxLength={maxLength ? maxLength : 100}
         rows={row}
         value={value}
         onChange={onChange}
