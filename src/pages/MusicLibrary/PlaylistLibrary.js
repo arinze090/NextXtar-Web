@@ -408,6 +408,7 @@ function PlaylistLibrary() {
             errorMessage={formError}
             loading={loading}
             onClick={createPlaylist}
+            width={"100%"}
           />
         </div>
       </Modal>

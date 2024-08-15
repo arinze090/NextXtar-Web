@@ -95,6 +95,23 @@ const Paragraph = styled.p`
   }
 `;
 
+const DownloadIconSection = styled.div`
+  flex-direction: row;
+  justify-content: flex-start;
+  display: flex;
+  // background-color: red;
+  margin-top: 40px;
+  width: auto;
+
+  img {
+    width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
+`;
+
 function DownloadSection() {
   return (
     <Container>
@@ -105,6 +122,18 @@ function DownloadSection() {
         <Paragraph>
           Singnify is available on Web, iOS and Android for download
         </Paragraph>
+
+        <DownloadIconSection>
+          <a href="https://play.google.com/store/apps/details?id=com.nextxtar.app">
+            <img
+              src={require("../../assets/PlayStore.png")}
+              alt="Google Play"
+            />
+          </a>
+          <a href="https://apps.apple.com/us/app/nextxtar/id1544401047">
+            <img src={require("../../assets/AppStore.png")} alt="App Store" />
+          </a>
+        </DownloadIconSection>
       </TextWrapper>
       <ImageWrapper>
         <img src={appImage} alt="appImage" />

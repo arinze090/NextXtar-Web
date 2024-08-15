@@ -10,6 +10,7 @@ import FormInput from "../../components/form/FormInput";
 import FormButton from "../../components/form/FormButton";
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
+import FormTextArea from "../../components/form/FormTextArea";
 
 const Container = styled.div`
   display: flex;
@@ -81,11 +82,12 @@ function WisePayment() {
         imgAlt={"Wise Image"}
       />
 
-      <FormInput
+      <FormTextArea
         formTitle={"Wise Email Address"}
         inputId={"wise-email"}
         inputPlaceholder={"Wise Email Address"}
-        type={"email"}
+        type={"text"}
+        row={5}
         value={wiseDetails}
         onChange={(e) => {
           setWiseDetails(e.target.value);

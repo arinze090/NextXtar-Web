@@ -7,7 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export const FooterContainer = styled.footer`
   background: ${COLORS.footerColor};
-  padding: 20px;
+  padding: 40px;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -49,10 +49,14 @@ export const AppStoreBadges = styled.div`
   }
 `;
 
+export const FollowUs = styled.p`
+  margin-top: 40px;
+`;
+
 export const SocialIcons = styled.div`
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 0px;
 
   a {
     color: #fff;
@@ -135,9 +139,8 @@ const Footer = () => {
             alt="Singnify"
           />
         </Link>
-
         <AppStoreBadges>
-          <a href="https://play.google.com/store">
+          <a href="https://play.google.com/store/apps/details?id=com.nextxtar.app">
             <img
               src={require("../../assets/PlayStore.png")}
               alt="Google Play"
@@ -145,21 +148,28 @@ const Footer = () => {
           </a>
         </AppStoreBadges>
         <AppStoreBadges>
-          <a href="https://www.apple.com/app-store/">
+          <a href="https://apps.apple.com/us/app/nextxtar/id1544401047">
             <img src={require("../../assets/AppStore.png")} alt="App Store" />
           </a>
         </AppStoreBadges>
+        <FollowUs>Follow Us</FollowUs>
         <SocialIcons>
           <a href="https://www.instagram.com/Singnify/">
-            <i className="fab fa-instagram"></i>
+            <i
+              className="fab fa-instagram"
+              style={{
+                background:
+                  "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)",
+              }}
+            ></i>
           </a>
           <a href="https://x.com/Singnify?s=08">
             <i className="fab fa-twitter"></i>
           </a>
-          <a href="https://www.facebook.com/singnify/">
+          <a href="https://www.facebook.com/@singnifymusic/">
             <i className="fab fa-facebook"></i>
           </a>
-          <a href="https://www.youtube.com/channel/UChgNR3asChkPAYs0KKPMi3Q?view_as=subscriber">
+          <a href="https://www.youtube.com/@Singnify">
             <i className="fab fa-youtube"></i>
           </a>
         </SocialIcons>

@@ -56,7 +56,10 @@ function Upload({ title, description, formats, uploadBtnTitle, handleClick }) {
       <UploadArea>
         <UploadIcon style={{ fontSize: 48, color: "#0a4827" }} />
         <UploadText>
-          Drag & drop files or <a href="#,">Browse</a>
+          Drag & drop files or{" "}
+          <a href="#," style={{ color: "#0a4827" }}>
+            Browse
+          </a>
         </UploadText>
         <UploadText>Supported formats: {formats}</UploadText>
       </UploadArea>

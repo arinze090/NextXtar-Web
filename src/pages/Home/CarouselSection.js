@@ -96,7 +96,7 @@ const CarouselContainer = styled.div`
 const CarouselTitle = styled.h1`
   font-family: "Arimo";
   margin-bottom: 16px;
-  font-size: 90px;
+  font-size: 100px;
   font-weight: 800;
 `;
 
@@ -141,6 +141,9 @@ const Carousel = () => {
       alt: "Slide 1",
       title: "We are all about The Music",
       description: "Stream and download the music of your favourite artists.",
+      appStoreLink: "https://apps.apple.com/us/app/nextxtar/id1544401047",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.nextxtar.app",
     },
     {
       src: require("../../assets/landingSlider2.gif"),
@@ -150,6 +153,9 @@ const Carousel = () => {
       title: "Listen to your Favourite artist",
       description:
         "Discover what music is trending & find new talented artist to follow",
+      appStoreLink: "https://apps.apple.com/us/app/nextxtar/id1544401047",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.nextxtar.app",
     },
     {
       src: require("../../assets/landingSlider3.gif"),
@@ -159,32 +165,37 @@ const Carousel = () => {
       title: "Distribute your songs Globally",
       description:
         "ITunes,Spotify,Deezer, TIDAL, SoundCloud, Spotify,YouTube music etc.",
+      appStoreLink: "https://apps.apple.com/us/app/nextxtar/id1544401047",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.nextxtar.app",
     },
   ];
 
   return (
     <CarouselContainer>
       <Slider {...settings}>
-        {slides.map((cur, i) => (
+        {slides?.map((cur, i) => (
           <div className="carousel-slide">
-            <img src={cur.src} alt={cur.alt} />
+            <img src={cur?.src} alt={cur?.alt} />
             <div className="carousel-content">
-              <CarouselTitle>{cur.title}</CarouselTitle>
-              <CarouselSubTitle>{cur.description}</CarouselSubTitle>
+              <CarouselTitle>{cur?.title}</CarouselTitle>
+              <CarouselSubTitle>{cur?.description}</CarouselSubTitle>
               <DownloadIconSection>
                 <img
-                  src={cur.appStoreImage}
-                  alt={cur.alt}
+                  src={cur?.appStoreImage}
+                  alt={cur?.alt}
                   style={{
                     width: 135,
                   }}
+                  onClick={cur?.appStoreLink}
                 />
                 <img
-                  src={cur.playStoreImage}
-                  alt={cur.alt}
+                  src={cur?.playStoreImage}
+                  alt={cur?.alt}
                   style={{
                     width: 135,
                   }}
+                  onClick={cur?.playStoreLink}
                 />
               </DownloadIconSection>
             </div>
