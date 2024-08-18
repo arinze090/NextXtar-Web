@@ -9,7 +9,12 @@ const Trigger = styled.div`
   cursor: pointer;
 `;
 
-function Ellipsis({ playlistItem }) {
+function Ellipsis({
+  playlistItem,
+  showLikeSection,
+  ellipsisColor,
+  ellipsisFontSize,
+}) {
   const [showMenu, setShowMenu] = useState(false);
   const triggerRef = useRef(null);
 
@@ -32,8 +37,16 @@ function Ellipsis({ playlistItem }) {
 
   return (
     <Trigger ref={triggerRef}>
-      <FaEllipsisH onClick={handleToggleMenu} />
-      {showMenu && <EllipsisMenu playlistItem={playlistItem} />}
+      <FaEllipsisH
+        onClick={handleToggleMenu}
+        style={{ color: ellipsisColor, fontSize: ellipsisFontSize }}
+      />
+      {showMenu && (
+        <EllipsisMenu
+          playlistItem={playlistItem}
+          showLikeSection={showLikeSection}
+        />
+      )}
     </Trigger>
   );
 }

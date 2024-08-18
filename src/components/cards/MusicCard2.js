@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
+import Ellipsis from "../modal/Ellipsis";
 
 const ItemCard = styled.div`
   position: relative;
@@ -98,6 +99,7 @@ function MusicCard2({
   isPlaying,
   onLikeIconClicked,
   onEllipsisClicked,
+  playlistItem,
 }) {
   return (
     <ItemCard>
@@ -109,7 +111,13 @@ function MusicCard2({
         ) : (
           <PlayIcon onClick={onPlayPause} />
         )}
-        <EllipsisIcon onClick={onEllipsisClicked} />
+        <Ellipsis
+          onClick={onEllipsisClicked}
+          showLikeSection={0}
+          ellipsisColor={"white"}
+          playlistItem={playlistItem}
+          ellipsisFontSize={"2rem"}
+        />
       </Overlay>
       <ItemDetails>
         <ItemName>{title}</ItemName>

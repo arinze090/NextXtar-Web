@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
@@ -110,6 +112,7 @@ const GenreItem = styled.div`
 function GenresListing() {
   const state = useSelector((state) => state);
   const userToken = state?.user?.userToken;
+  const user = state?.user?.user;
 
   const { search } = useLocation();
   const params = new URLSearchParams(search);
@@ -173,6 +176,44 @@ function GenresListing() {
     }
   };
 
+  const [toggleLike, setToggleLike] = useState(false);
+
+  const toggleLikeMusic = async (song) => {
+    setToggleLike(!toggleLike);
+    console.log("[ressed]");
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+    form.append("music_id", song?.music_id);
+    form.append("type", "");
+
+    try {
+      setLoading(true);
+      await axios
+        .post(`${baseURL}like-music.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("toggleLikeMusic data", res?.data);
+            toast.success(`You liked this song: ${res?.data?.music?.Name} 😇`);
+          } else {
+            console.log("toggleLikeMusic message", res?.data?.status);
+            setToggleLike(!toggleLike);
+          }
+        })
+        .catch((err) => {
+          console.log("toggleLikeMusic err", err);
+          setLoading(false);
+          setToggleLike(!toggleLike);
+        });
+    } catch (error) {
+      console.log("toggleLikeMusic error", error);
+      setToggleLike(!toggleLike);
+    }
+  };
+
   useEffect(() => {
     if (selectedGenre) {
       getSelectedGenreTracks();
@@ -226,6 +267,7 @@ function GenresListing() {
                 audioUrl={cur?.audio}
                 onLikeIconClicked={() => {
                   console.log("liked ckicked");
+                  toggleLikeMusic(cur);
                 }}
                 onEllipsisClicked={() => {
                   console.log("ellipsis ckicked");
@@ -234,6 +276,7 @@ function GenresListing() {
                   currentPlaying === cur?.audio && !audioRef?.current?.paused
                 }
                 onPlayPause={() => handlePlayPause(cur?.audio)}
+                playlistItem={cur}
               />
             </MusicCardWrapper>
           ))}

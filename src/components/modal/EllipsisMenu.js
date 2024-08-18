@@ -40,7 +40,7 @@ const MenuItemText = styled.span`
   margin-left: 8px;
 `;
 
-function EllipsisMenu({ playlistItem }) {
+function EllipsisMenu({ playlistItem, showLikeSection }) {
   console.log("EllipsisMenu", playlistItem);
 
   const state = useSelector((state) => state);
@@ -107,6 +107,7 @@ function EllipsisMenu({ playlistItem }) {
           if (res?.data?.status == 200) {
             console.log("followArtist data", res?.data);
             setFollowingStatus(true);
+            toast.success(`You followed this artiste: ${res?.data?.music?.Name} 😇`);
           } else {
             console.log("followArtist message", res?.data?.status);
             setFollowingStatus(false);
@@ -138,14 +139,17 @@ function EllipsisMenu({ playlistItem }) {
 
   return (
     <MenuContainer>
-      <MenuItem
-        onClick={() => {
-          toggleLikeMusic();
-        }}
-      >
-        {toggleLike ? <FcDislike /> : <FcLike />}
-        <MenuItemText>{toggleLike ? "UnLike" : "Like"}</MenuItemText>
-      </MenuItem>
+      {showLikeSection ? (
+        <MenuItem
+          onClick={() => {
+            toggleLikeMusic();
+          }}
+        >
+          {toggleLike ? <FcDislike /> : <FcLike />}
+          <MenuItemText>{toggleLike ? "UnLike" : "Like"}</MenuItemText>
+        </MenuItem>
+      ) : null}
+
       <MenuItem
         onClick={() => {
           followArtist();
