@@ -179,16 +179,16 @@ const TopTracks = ({ topTracksData }) => {
           topTracksData?.map((track, i) => (
             <TrackItem key={i}>
               <TrackInfo>
-                <TrackImage src={track.image} alt={track.name} />
+                <TrackImage src={track?.image} alt={track.name} />
                 <TrackDetails>
-                  <TrackName>{truncateText(track.label, wordsToUse)}</TrackName>
+                  <TrackName>{truncateText(track?.label, wordsToUse)}</TrackName>
                   <TrackArtist>
-                    {truncateText(track.track_name, wordsToUse)}
+                    {truncateText(track?.track_name, wordsToUse)}
                   </TrackArtist>
                 </TrackDetails>
               </TrackInfo>
               <TrackActions>
-                <TrackDuration>{track.duration}</TrackDuration>
+                <TrackDuration>{track?.duration}</TrackDuration>
                 <ActionIcon>
                   <FaPlay onClick={onPlayClick} />
                 </ActionIcon>
