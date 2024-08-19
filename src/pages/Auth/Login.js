@@ -91,8 +91,8 @@ const FormSection = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 5rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 
   @media screen and (max-width: 768px) {
     font-size: 1.5rem;
@@ -206,7 +206,7 @@ function Login() {
       <FormContainer>
         <ImageSection />
         <FormSection>
-          <Title>Welcome !!!</Title>
+          <Title>Welcome</Title>
 
           <FormInput
             type={"email"}
