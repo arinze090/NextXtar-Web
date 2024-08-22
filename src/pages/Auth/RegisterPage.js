@@ -80,14 +80,6 @@ const Title = styled.h2`
   margin-bottom: 70px;
 `;
 
-const Div = styled.div`
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  background-color: red;
-  display: flex;
-`;
-
 const RegisterScreen = () => {
   const navigate = useNavigate();
 

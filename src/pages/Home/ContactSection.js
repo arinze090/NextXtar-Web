@@ -73,21 +73,6 @@ const Paragraph = styled.p`
   }
 `;
 
-const Button = styled.a`
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #05a30b;
-  border-radius: 5px;
-  color: #05a30b;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s, color 0.3s;
-
-  &:hover {
-    background-color: #05a30b;
-    color: #fff;
-  }
-`;
-
 const ContactSection = () => {
   const navigate = useNavigate();
 
