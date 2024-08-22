@@ -17,6 +17,11 @@ const Title = styled.p`
   margin-bottom: 0px;
 `;
 
+const Description = styled.p`
+  font-size: 14px;
+  margin-top: 3px;
+`;
+
 function TermsAndCondition() {
   return (
     <Container>
@@ -26,7 +31,7 @@ function TermsAndCondition() {
         imgAlt={"T&C Image"}
       />
       <Title>1. Introduction:</Title>
-      <p>
+      <Description>
         Thank you for choosing Singnify (“Singnify”, “we”, “us”, “our”). By
         signing up to or otherwise using the Singnify platform, app, service,
         websites, and software applications (together, the “Singnify Service” or
@@ -51,10 +56,10 @@ function TermsAndCondition() {
         grant all permissions and licenses provided in the Agreements and bind
         the entity to the Agreements, and that you agree to the Agreements on
         the entity’s behalf.
-      </p>
+      </Description>
 
       <Title>2. Definitions: </Title>
-      <p>
+      <Description>
         “Recordings” shall mean any and all audio/Video recordings that you
         submit to Singnify by uploading through the Services. <br /> <br />{" "}
         “Stores” shall mean any and all, now known or future, digital Internet
@@ -66,11 +71,11 @@ function TermsAndCondition() {
         to, track title, band or artist name, type of music, label, and the year
         the track was released. <br /> <br /> “Territory” shall mean the world
         or specified applicable territory.
-      </p>
+      </Description>
 
       <Title>3. Grant of rights:</Title>
       <Title>3a. Distribution:</Title>
-      <p>
+      <Description>
         You grant us the right to sell and make use of your recordings for
         digital downloads, interactive and non-interactive streaming, cloud
         services, and streaming-on-demand services. This grant of rights does
@@ -97,28 +102,28 @@ function TermsAndCondition() {
         all rights granted to us above are granted on a royalty license basis.
         This includes the use of any lyrics of the Recordings if you have
         submitted any.
-      </p>
+      </Description>
 
       <Title>3b. PUBLISHING:</Title>
       <Title>THE BASIS ON WHICH YOU ARE SIGNED</Title>
-      <p>
+      <Description>
         This Agreement is an exclusive Licensing and Publishing administration
         agreement by which you exclusively grant to us the copyright in all
         songs (including music, lyrics, arrangements, and titles) written by you
         and whose titles are specified in the schedule annexed. These are called
         the Songs.
-      </p>
+      </Description>
 
       <Title>HOW LONG YOU ARE SIGNED FOR</Title>
-      <p>
+      <Description>
         This Agreement shall run for a period of 60 months from the date of
         signature hereof and shall continue thereafter unless terminated by
         either party on 6 months written notice. This is called the Term of the
         Agreement.
-      </p>
+      </Description>
 
       <Title>HOW LONG WE CONTROL THE SONGS FOR</Title>
-      <p>
+      <Description>
         We shall exclusively own and administer the worldwide copyright of your
         Songs for the duration of the Term but if we procure a cover or a
         synchronization license of your Songs or any of them then the Term shall
@@ -126,10 +131,10 @@ function TermsAndCondition() {
         years. The Term and this period of extension is called the Rights
         Period.So you assign to us for the Rights Period all of your copyright
         and or similar rights, title, and interest in the Songs.
-      </p>
+      </Description>
 
       <Title>WHAT YOU WILL DO FOR US</Title>
-      <p>
+      <Description>
         If during the Term you would like us to administer additional songs
         which are not specified in the schedule then we will do so on the same
         terms and conditions as contained herein provided that you comply with
@@ -144,10 +149,10 @@ function TermsAndCondition() {
         Should any further documentation be required to confirm the assignment
         and grant of rights in this Agreement (for example signature of
         registrations), you will sign any such documentation.
-      </p>
+      </Description>
 
       <Title>WHAT WE PAY YOU</Title>
-      <p>
+      <Description>
         We shall pay a royalty as follows: An amount equal to Seventy percent
         (70%) of our Net Receipts as that expression is defined below. But in
         the case of any Cover of a Song, this shall be sixty percent (60%) of
@@ -169,10 +174,10 @@ function TermsAndCondition() {
         retained by our sub-publishers sub-licensees and/or administrators
         (which shall not exceed twenty-five (25%) percent of the monies arising
         “at source” in the relevant territory).
-      </p>
+      </Description>
 
       <Title>WHEN WE WILL PAY YOU AND YOUR RIGHTS TO INSPECT OUR BOOKS</Title>
-      <p>
+      <Description>
         We shall send you royalty statements no less frequently than on a
         quarterly basis within ninety (90) days after each such quarterly
         accounting period. If any royalties are shown to be due. <br /> <br />{" "}
@@ -190,10 +195,10 @@ function TermsAndCondition() {
         and/or final report and you and your representatives shall discuss such
         report with us with a view to correcting any errors or questions arising
         therefrom.
-      </p>
+      </Description>
 
       <Title>WHAT WE SHALL DO FOR YOU </Title>
-      <p>
+      <Description>
         We shall do our best to exploit your songs. We shall exploit each Song
         by either granting licenses for commercial recordings of the Song or by
         granting a license for the use of the Song in a commercial or for a
@@ -210,10 +215,10 @@ function TermsAndCondition() {
         additional three (3) years within which to achieve some form of
         commercial exploitation before any such unexploited Songs shall revert
         to you.
-      </p>
+      </Description>
 
       <Title>YOUR PROMISES TO US:</Title>
-      <p>
+      <Description>
         You promise: You are free to enter into this Agreement and own all the
         rights in and to the Songs. The Songs are original and do not infringe
         the rights of any third party. <br /> <br />
@@ -244,20 +249,20 @@ function TermsAndCondition() {
         failure to provide such services exclusively to us or for other breaches
         by you. <br /> <br /> We shall be entitled to take legal proceedings in
         your name to protect our rights under this Agreement.
-      </p>
+      </Description>
 
       <Title>CREATIVE ISSUES: </Title>
-      <p>
+      <Description>
         We shall use reasonable commercial endeavors to consult with you on all
         creative issues to do with the Songs. You shall have a right of
         consultation over the use of your Songs in commercials and
         advertisements (but excluding commercials or advertisements for records
         featuring or promoting your Songs), and over the making of any material
         changes to the original language lyric or musical content of your Songs.
-      </p>
+      </Description>
 
       <Title>PRS OR EQUIVALENT </Title>
-      <p>
+      <Description>
         If you are a member of the PRS, then this Agreement shall constitute
         your certificate for the purpose of rule 1(o) of the PRS, entitling PRS
         to treat us as “Publishers exploiting the Songs for the benefit of the
@@ -272,10 +277,10 @@ function TermsAndCondition() {
         to publishers but not less than six-twelfths (6/12) of gross performing
         fees.You shall notify us immediately if you are a member of any
         performing or copyright collection society that is not based in the UK.
-      </p>
+      </Description>
 
       <Title>EFFECT OF BREACH</Title>
-      <p>
+      <Description>
         If we shall materially fail to perform any material obligation and such
         failure continues for a period of forty-five (45) days after receipt by
         us of notice in writing from you specifying such default you can
@@ -298,10 +303,10 @@ function TermsAndCondition() {
         extended for a period equal to all or any part of the period of such
         default or breach PROVIDED THAT no such suspension or extension for any
         one default shall exceed two (2) years.
-      </p>
+      </Description>
 
       <Title>4. Your Singnify Account:</Title>
-      <p>
+      <Description>
         In order to access certain features of the Service, you must create
         and/or sign in to a user account (“Singnify Account”) of your own.
         Creating an account is completely free. Use of another’s account is not
@@ -313,10 +318,10 @@ function TermsAndCondition() {
         to your account. <br /> <br /> Please review our fully transparent
         Privacy Policy for information regarding security, confidentiality, and
         what we do with the data you provide us.
-      </p>
+      </Description>
 
       <Title>5. Your Music, Materials, and Information: </Title>
-      <p>
+      <Description>
         When you upload your Recordings through our Services, you are asked to
         submit cover artwork for use in the Stores. You submit the Recordings,
         cover artwork, and any other information and material at your own
@@ -325,10 +330,10 @@ function TermsAndCondition() {
         unsuitable, we reserve the right to, in our sole discretion, remove the
         information and/or prevent you from using our Services and/or any or all
         Stores.
-      </p>
+      </Description>
 
       <Title> 6. Terms of Upload: </Title>
-      <p>
+      <Description>
         When uploading your song/s or videos make sure they met our
         specifications, Audio files must be 16-bit, 44.1 kHz MP3 files of good
         quality. The artwork/Cover/jacket must have these specifications, <br />{" "}
@@ -347,10 +352,10 @@ function TermsAndCondition() {
         use before uploading songs and videos on Singnify. If the artist chooses
         to take his or her songs/Videos down immediately, a fee of $100 is
         charged in order for a takedown to proceed.
-      </p>
+      </Description>
 
       <Title>7. Payment and Fees: </Title>
-      <p>
+      <Description>
         Singnify shall pay to you or Company: a) Distribution. Sixty percent
         (60%) of all gross receipts actually received by Singnify from its
         Licensees deriving from sales of the Recordings to end consumers, and
@@ -374,19 +379,19 @@ function TermsAndCondition() {
         from digital stores. You can withdraw your fund anytime, as long as you
         have at less $100 in your account. Withdraw can only be approved if an
         account is verified.
-      </p>
+      </Description>
 
       <Title>8. Singnify Copyright. </Title>
-      <p>
+      <Description>
         When you upload your songs/videos on Singnify, Singnify will place
         copyright ownership on your songs/Videos, on your behalf this does not
         mean you transferred ownership of your songs/Video to Singnify, it
         simply means Singnify put a protective claim over it on your behalf, you
         own your songs/Videos and materials 100%
-      </p>
+      </Description>
 
       <Title>9. Stores: </Title>
-      <p>
+      <Description>
         We have entered into agreements with different Stores for the purpose of
         Distributing, Licensing, and Publishing. The agreements that Singnify
         enter with the Stores shall determine the terms on which you’re
@@ -394,12 +399,12 @@ function TermsAndCondition() {
         for any interruptions, delays, errors, or any suspensions of access,
         neither in whole nor in part. When you upload your Recordings through
         Our Service, we will send your Recording to all territories worldwide.
-      </p>
+      </Description>
 
       <Title>
         10. Prohibited Use and Infringement and Reporting of Content:{" "}
       </Title>
-      <p>
+      <Description>
         You may not in any way use our Services for any unlawful purpose or for
         the following reasons. In any way that is or has the purpose of being
         unlawful or fraudulent. For the purpose to harm or attempt to harm any
@@ -416,9 +421,9 @@ function TermsAndCondition() {
         action we deem appropriate. We might, but are not limited to,
         temporarily or permanently remove your account and any Recordings or
         material uploaded through our Services, without notifying you.
-      </p>
+      </Description>
       <Title>11. Third Party Applications. </Title>
-      <p>
+      <Description>
         The Singnify Service may be integrated with third-party applications,
         websites, and services (“Third Party Applications”) to make the Services
         available to you. These Third-Party Applications may have their own
@@ -429,9 +434,9 @@ function TermsAndCondition() {
         behavior, features, or content of any Third-Party Application or for any
         transaction you may enter into with the provider of any such Third-Party
         Applications.
-      </p>
+      </Description>
       <Title>12. Your Use of the Singnify Service: </Title>
-      <p>
+      <Description>
         The Singnify Service may be used and accessed solely for lawful
         purposes. You agree to abide by all applicable laws and regulations in
         connection with your use of the Service. You agree and warrant that you
@@ -447,9 +452,9 @@ function TermsAndCondition() {
         otherwise illegal account activity shall constitute a basis to terminate
         your account. You agree to indemnify Singnify against any liability and
         costs arising from such improper use of your Singnify Account.
-      </p>
+      </Description>
       <Title>13. Your Liability and Warranties: </Title>
-      <p>
+      <Description>
         You agree and warrant that you will not distribute, transmit or store
         any files or material that might infringe copyrighted works. You also
         agree that you will not promote violation of a third party’s
@@ -482,9 +487,9 @@ function TermsAndCondition() {
         any content on the Service; Sell, rent, sublicense or lease any part of
         the Service; Provide your password to any other person or using any
         other person’s username and password;
-      </p>
+      </Description>
       <Title>14. Infringement and Reporting of Content: </Title>
-      <p>
+      <Description>
         Singnify respects the rights of intellectual property owners. If you
         believe that any content on the Service infringes your intellectual
         property rights or other rights, please contact customer support. If
@@ -496,17 +501,17 @@ function TermsAndCondition() {
         content. If you believe that any content infringes any other
         intellectual property rights or does not comply with these Terms of Use,
         please contact Customer Support.
-      </p>
+      </Description>
       <Title>15. Our Rights: </Title>
-      <p>
+      <Description>
         We reserve the right to amend, discontinue or terminate our Services
         under this Agreement, at any time. We reserve the right to reject or
         remove any Recordings or Materials from the Stores and our Services that
         you have uploaded through the Services. We also reserve the right to
         terminate your access to the Stores or Services without notice
-      </p>
+      </Description>
       <Title>16. Our Intellectual Property: </Title>
-      <p>
+      <Description>
         The Singnify Service, including but not limited to, all related
         technology, data, tools, and design is the property of Singnify and its
         subsidiaries or its licensors. We grant you a limited, non-exclusive,
@@ -520,9 +525,9 @@ function TermsAndCondition() {
         If you choose to submit comments, ideas, or feedback (“Feedback”), you
         agree that we are free to use them without any restriction or
         compensation to you.
-      </p>
+      </Description>
       <Title>17. Service Limitations and Modifications: </Title>
-      <p>
+      <Description>
         Singnify will make reasonable efforts to keep the Singnify Service
         operational. However, certain technical difficulties or maintenance may,
         from time to time, result in temporary interruptions. Singnify reserves
@@ -532,9 +537,9 @@ function TermsAndCondition() {
         where prohibited by law, for any interruption, modification, or
         discontinuation of the Singnify Service or any function or feature
         thereof.
-      </p>
+      </Description>
       <Title>18. Term and Termination: </Title>
-      <p>
+      <Description>
         The terms of this Agreement shall commence and continue (the “Term”)
         unless terminated by either Party under the Agreements. You may at any
         time terminate and cancel the Singnify Services by contacting Customer
@@ -552,10 +557,10 @@ function TermsAndCondition() {
         Days) Any sections of the Agreements that, either explicitly or by their
         nature, must remain in effect even after termination of the Agreements,
         shall survive termination.
-      </p>
+      </Description>
 
       <Title>19. Warranty and Disclaimer: </Title>
-      <p>
+      <Description>
         WE ENDEAVOUR TO PROVIDE THE BEST SERVICE WE CAN, BUT YOU UNDERSTAND AND
         AGREE THAT THE Singnify SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE”,
         WITHOUT EXPRESS OR IMPLIED WARRANTY OR CONDITION OF ANY KIND. YOU USE
@@ -563,9 +568,9 @@ function TermsAndCondition() {
         BY APPLICABLE LAW, Singnify MAKES NO REPRESENTATIONS AND DISCLAIMS ANY
         WARRANTIES OR CONDITIONS OF SATISFACTORY QUALITY, MERCHANTABILITY,
         FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
-      </p>
+      </Description>
       <Title>20. Limitation of Liability: </Title>
-      <p>
+      <Description>
         YOU AGREE THAT, TO THE EXTENT PERMITTED BY APPLICABLE LAW, YOU’RE SOLE
         AND EXCLUSIVE REMEDY FOR ANY PROBLEMS OR DISSATISFACTION WITH THE
         Singnify SERVICE IS TO UNINSTALL ANY Singnify SOFTWARE AND TO STOP USING
@@ -591,17 +596,17 @@ function TermsAndCondition() {
         ARISING OUT OF ANY BREACH OR ALLEGED BREACH BY YOU OF THE ABOVE
         WARRANTIES AND REPRESENTATIONS AND/OR USE OF THE RECORDINGS OR MATERIALS
         AS PERMITTED HEREUNDER.
-      </p>
+      </Description>
       <Title>21. Entire Agreement: </Title>
-      <p>
+      <Description>
         Other than as stated in this section or as explicitly agreed upon in
         writing between you and Singnify, the Agreements constitute all the
         terms and conditions agreed upon between you and Singnify and supersede
         any prior agreements in relation to the subject matter of these
         Agreements, whether written or oral.
-      </p>
+      </Description>
       <Title>22. Severability and Waiver: </Title>
-      <p>
+      <Description>
         Unless as otherwise stated in the Agreements, should any provision of
         the Agreements be held invalid or unenforceable for any reason or to any
         extent, such invalidity or unenforceability shall not in any manner
@@ -610,16 +615,16 @@ function TermsAndCondition() {
         to the extent permitted by law. Any failure by Singnify to enforce the
         Agreements or any provision thereof shall not waive Singnify’s or the
         applicable third-party beneficiary’s right to do so.
-      </p>
+      </Description>
       <Title>23. Assignment: </Title>
-      <p>
+      <Description>
         Singnify may assign the Agreements or any part of them, and Singnify may
         delegate any of its obligations under the Agreements. You may not assign
         the Agreements or any part of them, nor transfer or sub-license your
         rights under the Agreements, to any third party.
-      </p>
+      </Description>
       <Title>24. Indemnification: </Title>
-      <p>
+      <Description>
         To the fullest extent permitted by applicable law, you agree to
         indemnify and hold Singnify harmless from and against all damages,
         losses, and expenses of any kind (including reasonable attorney fees and
@@ -627,9 +632,9 @@ function TermsAndCondition() {
         content submitted by you to the Service; (3) any activity in which you
         engage on or through the Singnify Service; and (4) your violation of any
         law or the rights of a third party.
-      </p>
+      </Description>
       <Title>25. Force Majeure: </Title>
-      <p>
+      <Description>
         Singnify takes no liability or responsibility for failures in providing
         any of our Services if they are caused by an event outside Singnify’s
         control. Force Majeure means an event beyond our control that prevents
@@ -643,15 +648,15 @@ function TermsAndCondition() {
         due fulfillment can be expected. You may cancel your Services with us if
         your Service is affected by Force Majeure and if it has continued for
         more than 90 days.
-      </p>
+      </Description>
       <Title>26. Jurisdiction and Dispute Venue:</Title>
-      <p>
+      <Description>
         The Agreements and our Services shall be governed by the laws of Ukraine
         and any dispute regarding this Agreement shall be submitted to the
         exclusive jurisdiction of the district court of Warsaw, Poland.
-      </p>
+      </Description>
       <Title>27. Changes to the Agreement: </Title>
-      <p>
+      <Description>
         Occasionally we may, in our discretion, make changes to the Agreements.
         When we make material changes to the Agreements, we’ll provide you with
         prominent notice as appropriate under the circumstances, e.g., by
@@ -660,31 +665,31 @@ function TermsAndCondition() {
         use of the Service after the changes have been made will constitute your
         acceptance of the changes. Please, therefore, make sure you read any
         such notice carefully.
-      </p>
+      </Description>
       <Title>28. Contact Us: </Title>
-      <p>
+      <Description>
         If you have any questions concerning the Singnify Service or the
         Agreements, please contact our Customer Support. info@singnify.com,
         contact@singnify.com dispute@singnify.com Publishing and Licensing
         Agreement
-      </p>
+      </Description>
       <Title>1. THE BASIS ON WHICH YOU ARE SIGNED </Title>
-      <p>
+      <Description>
         This Agreement is an exclusive Licensing and Publishing administration
         agreement by which you exclusively grant to us the copyright in all
         songs (including music, lyrics, arrangements, and titles) written by you
         and whose titles are specified in the schedule annexed. These are called
         the Songs.
-      </p>
+      </Description>
       <Title>2. HOW LONG YOU ARE SIGNED FOR </Title>
-      <p>
+      <Description>
         This Agreement shall run for a period of 60 months from the date of
         signature hereof and shall continue thereafter unless terminated by
         either party on 6 months written notice. This is called the Term of the
         Agreement.
-      </p>
+      </Description>
       <Title>3. HOW LONG WE CONTROL THE SONGS FOR </Title>
-      <p>
+      <Description>
         3.1 We shall exclusively own and administer the worldwide copyright of
         your Songs for the duration of the Term but if we procure a cover or a
         synchronization license of your Songs or any of them then the Term shall
@@ -693,9 +698,9 @@ function TermsAndCondition() {
         Period. <br /> <br /> 3.2 So you assign to us for the Rights Period all
         of your copyright and or similar rights, title, and interest in the
         Songs.
-      </p>
+      </Description>
       <Title>4. WHAT YOU WILL DO FOR US</Title>
-      <p>
+      <Description>
         4.1 If during the Term you would like us to administer additional songs
         which are not specified in the schedule then we will do so on the same
         terms and conditions as contained herein provided that you comply with
@@ -709,9 +714,9 @@ function TermsAndCondition() {
         <br /> 4.3 Should any further documentation be required to confirm the
         assignment and grant of rights in this Agreement (for example signature
         of registrations), you will sign any such documentation.
-      </p>
+      </Description>
       <Title>5. WHAT WE PAY YOU </Title>
-      <p>
+      <Description>
         We shall pay a royalty as follows: An amount equal to Sixty percent
         (60%) of our Net Receipts as that expression is defined below. But in
         the case of any Cover of a Song, this shall be sixty percent (60%) of
@@ -733,11 +738,11 @@ function TermsAndCondition() {
         translators; Any amounts retained by our sub-publishers sub-licensees
         and/or administrators (which shall not exceed twenty-five (25%) percent
         of the monies arising “at source” in the relevant territory).
-      </p>
+      </Description>
       <Title>
         6. WHEN WE WILL PAY YOU AND YOUR RIGHTS TO INSPECT OUR BOOKS{" "}
       </Title>
-      <p>
+      <Description>
         6.1 We shall send you royalty statements no less frequently than on a
         semiannual basis within ninety (90) days after each such semi-annual
         accounting period. If any royalties are shown to be due. <br /> <br />{" "}
@@ -755,9 +760,9 @@ function TermsAndCondition() {
         and/or final report and you and your representatives shall discuss such
         report with us with a view to correcting any errors or questions arising
         therefrom.
-      </p>
+      </Description>
       <Title>7. WHAT WE SHALL DO FOR YOU</Title>
-      <p>
+      <Description>
         7.1 We shall do our best to exploit your songs. <br /> <br /> 7.2 We
         shall exploit each Song by either granting licenses for commercial
         recordings of the Song or by granting a license for the use of the Song
@@ -774,9 +779,9 @@ function TermsAndCondition() {
         we shall have a further period of an additional three (3) years within
         which to achieve some form of commercial exploitation before any such
         unexploited Songs shall revert to you.
-      </p>
+      </Description>
       <Title>8. YOUR PROMISES TO US:</Title>
-      <p>
+      <Description>
         You promise: <br /> 8.1 You are free to enter into this Agreement and
         own all the rights in and to the Songs. <br /> 8.2 The Songs are
         original and do not infringe the rights of any third party. <br />
@@ -806,18 +811,18 @@ function TermsAndCondition() {
         such services exclusively to us or for other breaches by you. <br /> 8.7
         We shall be entitled to take legal proceedings in your name to protect
         our rights under this Agreement.
-      </p>
+      </Description>
       <Title>9. CREATIVE ISSUES</Title>
-      <p>
+      <Description>
         We shall use reasonable commercial endeavors to consult with you on all
         creative issues to do with the Songs. You shall have a right of
         consultation over the use of your Songs in commercials and
         advertisements (but excluding commercials or advertisements for records
         featuring or promoting your Songs), and over the making of any material
         changes to the original language lyric or musical content of your Songs.
-      </p>
+      </Description>
       <Title>10. PRS OR EQUIVALENT</Title>
-      <p>
+      <Description>
         10.1 If you are a member of the PRS, then this Agreement shall
         constitute your certificate for the purpose of rule 1(o) of the PRS,
         entitling PRS to treat us as “Publishers exploiting the Songs for the
@@ -833,9 +838,9 @@ function TermsAndCondition() {
         fees. <br /> <br /> 10.2 You shall notify us immediately if you are a
         member of any performing or copyright collection society that is not
         based in the UK.
-      </p>
+      </Description>
       <Title>11. EFFECT OF BREACH</Title>
-      <p>
+      <Description>
         11.1 If we shall materially fail to perform any material obligation and
         such failure continues for a period of forty-five (45) days after
         receipt by us of notice in writing from you specifying such default you
@@ -858,9 +863,9 @@ function TermsAndCondition() {
         automatically extended for a period equal to all or any part of the
         period of such default or breach PROVIDED THAT no such suspension or
         extension for any one default shall exceed two (2) years.
-      </p>
+      </Description>
       <Title>12. JURISDICTION AND INTERPRETATION</Title>
-      <p>This Agreement shall be governed by Polish law.</p>
+      <Description>This Agreement shall be governed by Polish law.</Description>
     </Container>
   );
 }

@@ -110,7 +110,7 @@ function App() {
     };
   }, []);
 
-  return <>{loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}</>;
+  return <>{!loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}</>;
 }
 
 export default App;

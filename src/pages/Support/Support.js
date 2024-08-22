@@ -17,6 +17,11 @@ const Title = styled.p`
   margin-bottom: 0px;
 `;
 
+const Description = styled.p`
+  font-size: 14px;
+  margin-top: 3px;
+`;
+
 function Support() {
   return (
     <Container>
@@ -25,21 +30,21 @@ function Support() {
         imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Support Image"}
       />
-      <p>
+      <Description>
         Welcome to Singnify official website, we love to support our teaming
         members, in the best ways possible.
-      </p>
+      </Description>
 
-      <p>
+      <Description>
         <Title>Singnify: </Title>
         is a place perfectly built to help upcoming artiste, upload their songs
         and videos, in the comfort of your home while we do the shouting for
         you, we help in promoting them in the best possible ways, for more
         information, you can send us email on info@singnify.com
-      </p>
+      </Description>
 
       <Title>SINGNIFY RECORDS AND LABELS DEAL:</Title>
-      <p>
+      <Description>
         We also sign artist we believed in, we have dedicated team who are
         professional in the areas of STRATEGIES PLANNING, MARKETING, BRANDING,
         PUBLIC RELATION (PR) and more. We have other music executive we work
@@ -50,10 +55,10 @@ function Support() {
         Inc. the chances of been sign is very high with Singnify, a platform
         like never seen before, for more information about our Record deals and
         others, email us at support@singnify.com
-      </p>
+      </Description>
 
       <Title>UPLOADS:</Title>
-      <p>
+      <Description>
         We create the platform to make it easy for our members to upload their
         songs without stress or worries, we undertake the whole process on your
         behalf, simply upload your artwork which should be 450 pixel X 450
@@ -63,18 +68,18 @@ function Support() {
         some people to access good internet, we can also help you to upload your
         songs and videos. simply send your songs and artwork (Jacket) to
         upload@singnify.com
-      </p>
+      </Description>
 
       <Title>COMPETE AND WIN:</Title>
-      <p>
+      <Description>
         This is a monthly challenge among members to use their songs to win, our
         fabulous prizes for the best liked and most listened songs on our
         web/app, the prizes varies, it is a programs designed to promote our
         members, for more information email info@singnify.com
-      </p>
+      </Description>
 
       <Title>ROYALITY AND PAYMENT: </Title>
-      <p>
+      <Description>
         The sole aim of this platform is to promote, underground, unknown and
         upcoming artiste, and we are commitment in carry out this task with
         utmost sincerity, in the cause of promoting an artiste, in over 500
@@ -83,22 +88,22 @@ function Support() {
         Inc., payment can only be made if an artiste makes $100 and above. For
         more information about this kindly read our terms of use, or send us an
         email, info@singnify.com
-      </p>
+      </Description>
 
       <Title>TOP SONGS CATAGORIES: </Title>
-      <p>
+      <Description>
         We have our top chart songs on our platform, with leading songs, mostly
         played or liked, our songs are judged by the way people respond your
         songs, and equally like them, we encouraged all members to share their
         songs on their social media platform to attract more listening and like,
         the most wins our $1,000, every 90 days, for more information email
         charts@singnify.com
-      </p>
+      </Description>
 
       <Title>
         LABEL OWNERS / PRODUCERS / RECORD LABEL /MARKETERS / PRODUCERS:
       </Title>
-      <p>
+      <Description>
         A portal has been created for music executives, label owners, Marketers,
         movie producers, independent artiste, record labels, etc. to upload all
         their artists or movies and equally monitors the sales on quarterly
@@ -111,7 +116,7 @@ function Support() {
         videos, a confirmation will be sent to you and your all set to sale your
         product worldwide without any restrictions, for more information kindly
         send us email labels@singnify.com
-      </p>
+      </Description>
     </Container>
   );
 }

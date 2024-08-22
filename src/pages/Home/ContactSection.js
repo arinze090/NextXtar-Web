@@ -62,7 +62,7 @@ const Heading = styled.h2`
 const Paragraph = styled.p`
   font-size: 24px;
   color: #434343;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   font-family: "Arimo", sans-serif;
   text-align: left;
   margin-top: 5px;

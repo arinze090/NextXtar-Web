@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { COLORS } from "../../theme/theme";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -130,6 +132,11 @@ export const Copyright = styled.div`
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const onSubscribe = () => {
+    console.log("hfhhf");
+    toast?.success("Great, You have subscribed to our newsletter");
+  };
+
   return (
     <FooterContainer>
       <FooterSection>
@@ -155,13 +162,7 @@ const Footer = () => {
         <FollowUs>Follow Us</FollowUs>
         <SocialIcons>
           <a href="https://www.instagram.com/Singnify/">
-            <i
-              className="fab fa-instagram"
-              style={{
-                background:
-                  "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)",
-              }}
-            ></i>
+            <i className="fab fa-instagram"></i>
           </a>
           <a href="https://x.com/Singnify?s=08">
             <i className="fab fa-twitter"></i>
@@ -198,7 +199,7 @@ const Footer = () => {
         <p>Stay Informed On How You Can Make a Difference</p>
         <SubscribeForm>
           <input type="email" placeholder="Your email address" />
-          <button type="submit">&gt;</button>
+          <button onClick={onSubscribe}>&gt;</button>
         </SubscribeForm>
       </FooterSection>
 
