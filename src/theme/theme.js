@@ -7,7 +7,7 @@ export const COLORS = {
 
   appBgColor1: "#05A30B",
   appColor2: "#003018",
-  footerColor: "#003018",
+  footerColor: "#0B0B0B",
 
   // darkMode colors
   darkModeTextColor: "white",

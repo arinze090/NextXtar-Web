@@ -52,7 +52,6 @@ export const FooterLink = styled.a`
   margin-bottom: 20px;
   font-size: 18px;
   text-decoration: none;
-  font-family: "Arimo", sans-serif;
 
   &:hover {
     color: black;
@@ -65,5 +64,4 @@ export const Heading = styled.p`
   color: #fff;
   margin-bottom: 40px;
   font-weight: bold;
-  font-family: "Arimo", sans-serif;
 `;

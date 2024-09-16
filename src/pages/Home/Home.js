@@ -1,24 +1,16 @@
 import React from "react";
-import ContactSection from "./ContactSection";
 import Carousel from "./CarouselSection";
-import DownloadSection from "./DownloadSection";
+import NewsletterSection from "./NewsletterSection";
+import ToptracksLandingSection from "./ToptracksLandingSection";
+import GenresLandingPageSection from "./GenresLandingPageSection";
 
 function Home() {
   return (
     <>
       <Carousel />
-      <img
-        src={require("../../assets/Frame1.png")}
-        alt="Frame1"
-        style={{ width: "100%" }}
-      />
-      <DownloadSection />
-      <img
-        src={require("../../assets/newsletter.png")}
-        alt="newsletter"
-        style={{ width: "100%" }}
-      />
-      <ContactSection />
+      <ToptracksLandingSection />
+      <GenresLandingPageSection />
+      <NewsletterSection />
     </>
   );
 }

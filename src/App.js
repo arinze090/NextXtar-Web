@@ -110,7 +110,12 @@ function App() {
     };
   }, []);
 
-  return <>{loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}</>;
+  return (
+    <>
+      <GlobalStyles />
+      {loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}
+    </>
+  );
 }
 
 export default App;

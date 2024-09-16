@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TransparentBtn from "../../components/form/TransparentBtn";
 
 const CarouselContainer = styled.div`
   position: relative;
@@ -10,8 +11,9 @@ const CarouselContainer = styled.div`
   //   max-width: 1200px;
   margin: auto;
   // padding-top: 3rem;
-  // height: 30vh;
+  height: 700px;
   // margin-bottom: 20px;
+  background: green;
 
   .slick-prev,
   .slick-next {
@@ -29,7 +31,7 @@ const CarouselContainer = styled.div`
 
   img {
     width: 100%;
-    height: 560px;
+    height: 700px;
     object-fit: cover;
 
     @media (max-width: 768px) {
@@ -42,13 +44,14 @@ const CarouselContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
+    text-align: left;
     color: white;
     width: 100%;
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 4.5rem;
       margin-bottom: 0px;
+      margin-left: 40px;
 
       @media (max-width: 768px) {
         font-size: 1.2rem;
@@ -56,8 +59,9 @@ const CarouselContainer = styled.div`
     }
 
     p {
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       margin-top: 0px;
+      margin-left: 40px;
 
       @media (max-width: 768px) {
         font-size: 0.8rem;
@@ -94,31 +98,18 @@ const CarouselContainer = styled.div`
 `;
 
 const CarouselTitle = styled.h1`
-  font-family: "Arimo";
   margin-bottom: 16px;
-  font-size: 100px;
+  font-size: 220px;
   font-weight: 800;
 `;
 
 const CarouselSubTitle = styled.p`
-  font-family: "Arimo";
-  margin-bottom: 88px;
+  margin-bottom: 58px;
   font-size: 32px;
-  font-weight: 600;
 
   @media (max-width: 768px) {
     margin-bottom: 48px;
   }
-`;
-
-const DownloadIconSection = styled.div`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  // background-color: red;
-  align-self: center;
-  align-content: center;
 `;
 
 const Carousel = () => {
@@ -180,24 +171,11 @@ const Carousel = () => {
             <div className="carousel-content">
               <CarouselTitle>{cur?.title}</CarouselTitle>
               <CarouselSubTitle>{cur?.description}</CarouselSubTitle>
-              <DownloadIconSection>
-                <img
-                  src={cur?.appStoreImage}
-                  alt={cur?.alt}
-                  style={{
-                    width: 135,
-                  }}
-                  onClick={cur?.appStoreLink}
-                />
-                <img
-                  src={cur?.playStoreImage}
-                  alt={cur?.alt}
-                  style={{
-                    width: 135,
-                  }}
-                  onClick={cur?.playStoreLink}
-                />
-              </DownloadIconSection>
+              <TransparentBtn
+                title={"Try for Free"}
+                marginLeft={"40px"}
+                width={"150px"}
+              />
             </div>
           </div>
         ))}

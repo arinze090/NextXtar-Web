@@ -50,7 +50,6 @@ const Heading = styled.h2`
   margin-bottom: 0px;
   color: #000;
   font-weight: bold;
-  font-family: "Arimo", sans-serif;
   text-align: left;
 
   @media (max-width: 768px) {
@@ -63,7 +62,6 @@ const Paragraph = styled.p`
   font-size: 24px;
   color: #434343;
   margin-bottom: 30px;
-  font-family: "Arimo", sans-serif;
   text-align: left;
   margin-top: 5px;
 

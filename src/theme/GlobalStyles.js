@@ -1,15 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-  body {
-    font-family: "Arimo", sans-serif; 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  @font-face {
+    font-family: 'ClashDisplay';
+    src: url('./fonts/ClashDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
   }
 
-  *, *::before, *::after {
-    box-sizing: inherit;
+  body {
+    font-family: 'ClashDisplay', sans-serif;
   }
 `;
 

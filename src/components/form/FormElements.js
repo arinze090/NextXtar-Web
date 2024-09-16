@@ -7,7 +7,6 @@ export const FormBtn = styled.button`
   width: ${({ width }) => (width ? width : "122px")};
   color: #fff;
   font-size: 18;
-  font-family: "Arimo", sans-serif;
   font-weight: 600;
   outline: none;
   border: none;
@@ -19,6 +18,7 @@ export const FormBtn = styled.button`
   justify-content: center;
   align-content: center;
   display: flex;
+  font-family: "ClashDisplay", sans-serif;
 
   /* Second Nav */
   //   &:hover {
@@ -42,7 +42,6 @@ export const TransparentFormBtn = styled.button`
   color: ${({ color }) => (color ? color : "#fff")};
   font-size: 18;
   font-weight: 600;
-  font-family: "Arimo", sans-serif;
   border: 2px solid #05a30b;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -52,6 +51,7 @@ export const TransparentFormBtn = styled.button`
   justify-content: center;
   align-content: center;
   display: flex;
+  font-family: "ClashDisplay", sans-serif;
 
   &:hover {
     transition: all 0.2s ease-in-out;

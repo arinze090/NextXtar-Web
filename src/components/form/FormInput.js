@@ -48,6 +48,7 @@ function FormInput({
           borderRadius: 5,
           fontSize: "1rem",
           border: "1px solid grey",
+          fontFamily: "ClashDisplay, sans-serif",
         }}
       />
       {copyIcon ? (
