@@ -13,7 +13,11 @@ const CarouselContainer = styled.div`
   // padding-top: 3rem;
   height: 700px;
   // margin-bottom: 20px;
-  background: green;
+  // background: green;
+
+  @media (max-width: 768px) {
+    height: 350px;
+  }
 
   .slick-prev,
   .slick-next {
@@ -35,7 +39,7 @@ const CarouselContainer = styled.div`
     object-fit: cover;
 
     @media (max-width: 768px) {
-      height: 230px;
+      height: 350px;
     }
   }
 
@@ -113,6 +117,8 @@ const CarouselSubTitle = styled.p`
 `;
 
 const Carousel = () => {
+  const isSmallScreen = window.innerWidth <= 768;
+
   const settings = {
     dots: false,
     infinite: true,
@@ -171,11 +177,13 @@ const Carousel = () => {
             <div className="carousel-content">
               <CarouselTitle>{cur?.title}</CarouselTitle>
               <CarouselSubTitle>{cur?.description}</CarouselSubTitle>
-              <TransparentBtn
-                title={"Try for Free"}
-                marginLeft={"40px"}
-                width={"150px"}
-              />
+              {!isSmallScreen && (
+                <TransparentBtn
+                  title={"Try for Free"}
+                  marginLeft={"40px"}
+                  width={"150px"}
+                />
+              )}
             </div>
           </div>
         ))}
