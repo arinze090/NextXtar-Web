@@ -11,17 +11,18 @@ import { IoCallSharp } from "react-icons/io5";
 import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-import ProfileHeader from "../../components/common/ProfileHeader";
-import ProfileSwitch from "../../components/switches/ProfileSwitch";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
 import { setClickedPlaylist } from "../../redux/features/discover/discoverSlice";
 import SkeletonLoader from "../../components/common/SkeletonLoader";
+import ProfileMusicCard from "../../components/cards/ProfileMusicCard";
+import ProfileInfoTitle from "../../components/common/ProfileInfoTitle";
+import ProfileHeader2 from "../../components/common/ProfileHeader2";
 
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #dfdada;
+  background: #ffffff;
   border-radius: 8px;
 `;
 
@@ -46,21 +47,22 @@ const LeftContainer = styled.div`
   border-radius: 15px;
   padding: 20px;
   width: 100%;
-  height: 100vh;
+  height: auto;
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100vh;
+    height: auto;
     overflow-y: auto;
   }
 `;
 
 const SideContainer = styled.div`
-  width: 50%;
+  width: 30%;
   height: auto;
   padding: 20px;
   background: #fff;
   border-radius: 15px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -137,6 +139,13 @@ const FullWidthMessage = styled.p`
   text-align: center;
 `;
 
+const TrackTitle = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+`;
+
 const musicLibraryData = [
   {
     optionTitle: "Playlists",
@@ -165,16 +174,95 @@ function ProfilePage() {
 
   const [activeTab, setActiveTab] = useState(0);
 
+  const [loading, setLoading] = useState(false);
+
+  const [userAlbums, setUserAlbums] = useState();
+  const [userTracks, setUserTracks] = useState([]);
+  const [userPlaylist, setUserPlaylist] = useState();
+  const [userLikes, setUserLikes] = useState([]);
+
   const updateSwitchData = (value) => {
     setActiveTab(value);
   };
 
-  const [loading, setLoading] = useState(false);
+  // State to manage the current set of uploaded tracks
+  const [uploadedTracksCurrentPage, setUploadedTracksCurrentPage] = useState(0);
 
-  const [userAlbums, setUserAlbums] = useState();
-  const [userTracks, setUserTracks] = useState();
-  const [userPlaylist, setUserPlaylist] = useState();
-  const [userLikes, setUserLikes] = useState();
+  // Number of items to show per page
+  const itemsPerPage = 2;
+
+  // Determine the current visible items based on the page
+  const uploadedTrackStartIdx =
+    uploadedTracksCurrentPage == 0
+      ? uploadedTracksCurrentPage * itemsPerPage
+      : uploadedTracksCurrentPage * itemsPerPage - 1;
+  const uploadedTrackEndIdx = uploadedTrackStartIdx + itemsPerPage;
+
+  // State to manage the current set of uploaded tracks
+  const [likedTracksCurrentPage, setLikedTracksCurrentPage] = useState(0);
+
+  // Calculate the total number of pages
+  const totalPages = Math.ceil(userLikes.length / itemsPerPage);
+  console.log("totalPages", totalPages);
+
+  // Determine the current visible items based on the page
+  const likedTrackStartIdx =
+    likedTracksCurrentPage == 0
+      ? likedTracksCurrentPage * itemsPerPage
+      : likedTracksCurrentPage * itemsPerPage - 1;
+  const likedTrackEndIdx = likedTrackStartIdx + itemsPerPage;
+
+  const currentTracks = userTracks.slice(
+    uploadedTrackStartIdx,
+    uploadedTrackEndIdx
+  );
+
+  // console.log("currentTracks", currentTracks);
+  // console.log("likedTrackStartIdx", likedTrackStartIdx);
+  // console.log("likedTrackEndIdx", likedTrackEndIdx);
+
+  // Handlers to navigate between pages
+  const handleUploadedTrackNext = () => {
+    // console.log("press", uploadedTrackEndIdx, uploadedTracksCurrentPage);
+    if (uploadedTrackEndIdx < userTracks.length) {
+      setUploadedTracksCurrentPage(uploadedTracksCurrentPage + 1);
+    }
+  };
+
+  const handleUploadedTrackPrevious = () => {
+    // console.log("press", uploadedTracksCurrentPage);
+
+    if (uploadedTracksCurrentPage > 0) {
+      setUploadedTracksCurrentPage(uploadedTracksCurrentPage - 1);
+    }
+  };
+
+  const currentLikedTracks = userLikes.slice(
+    likedTrackStartIdx,
+    likedTrackEndIdx
+  );
+
+  console.log("currentLikedTracks", currentLikedTracks);
+
+  // Handlers to navigate between pages
+  const handleLikedTrackNext = () => {
+    // console.log(
+    //   "handleLikedTrackNext",
+    //   likedTrackEndIdx,
+    //   uploadedTracksCurrentPage
+    // );
+    if (likedTracksCurrentPage < totalPages - 1) {
+      setLikedTracksCurrentPage(likedTracksCurrentPage + 1);
+    }
+  };
+
+  const handleLikedTrackPrevious = () => {
+    // console.log("handleLikedTrackPrevious", likedTracksCurrentPage);
+
+    if (likedTracksCurrentPage > 0) {
+      setLikedTracksCurrentPage(likedTracksCurrentPage - 1);
+    }
+  };
 
   const getUserAlbums = async () => {
     setLoading(true);
@@ -367,19 +455,56 @@ function ProfilePage() {
 
   return (
     <Container>
-      <ProfileHeader
+      <ProfileHeader2
         fullName={user?.FirstName + " " + user?.LastName}
         imgSrc={user?.Picture}
         isVerified={parseInt(user?.IsVerified)}
       />
       <ProfileContainer>
         <LeftContainer>
-          <ProfileSwitch
-            arrayData={musicLibraryData}
-            onSelectSwitch={updateSwitchData}
-            seletionMode={0}
+          {/* Uploaded Tracks section */}
+          <ProfileInfoTitle
+            title={"Uploaded Tracks"}
+            onRightArrowClick={handleUploadedTrackNext}
+            onLeftArrowClick={handleUploadedTrackPrevious}
           />
-          <GridContainer>{renderContent()}</GridContainer>
+          {currentTracks?.length ? (
+            currentTracks?.map((cur, i) => (
+              <ProfileMusicCard
+                imageUrl={cur?.image}
+                imageUrlAlt={cur?.base_name}
+                numberOfLikes={cur?.no_downloads}
+                numberOfListens={cur?.no_plays}
+                title={cur?.track_name}
+                songDescription={cur?.artist_name}
+                artisteName={cur?.artist_name}
+              />
+            ))
+          ) : (
+            <TrackTitle>You have no Uploaded Track</TrackTitle>
+          )}
+
+          {/* Liked Tracks section */}
+          <ProfileInfoTitle
+            title={"Liked Tracks"}
+            onRightArrowClick={handleLikedTrackNext}
+            onLeftArrowClick={handleLikedTrackPrevious}
+          />
+          {currentLikedTracks?.length ? (
+            currentLikedTracks?.map((cur, i) => (
+              <ProfileMusicCard
+                imageUrl={cur?.image}
+                imageUrlAlt={cur?.base_name}
+                numberOfLikes={cur?.no_downloads}
+                numberOfListens={cur?.no_plays}
+                title={cur?.track_name}
+                songDescription={cur?.artist_name}
+                artisteName={cur?.label}
+              />
+            ))
+          ) : (
+            <TrackTitle>You have no Liked Track</TrackTitle>
+          )}
         </LeftContainer>
         <SideContainer>
           <Title>About</Title>
