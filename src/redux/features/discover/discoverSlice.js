@@ -11,6 +11,7 @@ const initialState = {
   competitions: null,
   lastAPIFetchTime: null,
   clickedUserPlaylist: null,
+  topTracks: null,
 };
 
 const discoverSlice = createSlice({
@@ -46,6 +47,9 @@ const discoverSlice = createSlice({
     setClickedPlaylist: (state, action) => {
       state.clickedUserPlaylist = action.payload;
     },
+    setTopTracks: (state, action) => {
+      state.topTracks = action.payload;
+    },
   },
 });
 
@@ -59,5 +63,6 @@ export const {
   setDiscoverLoader,
   clearLastFetchTime,
   setClickedPlaylist,
+  setTopTracks,
 } = discoverSlice.actions;
 export default discoverSlice.reducer;

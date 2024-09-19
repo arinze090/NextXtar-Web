@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 import genre1 from "../../assets/genre1.png";
 import genre2 from "../../assets/genre2.png";
@@ -145,6 +146,11 @@ const MusicCardWrapper = styled.div`
 `;
 
 function ToptracksLandingSection() {
+  const state = useSelector((state) => state);
+
+  const reduxTopTracks = state?.discover?.topTracks;
+  // console.log("reduxTopTracks", reduxTopTracks);
+
   return (
     <Container>
       <Title>The Singnify Top Tracks of the Week</Title>
@@ -154,11 +160,11 @@ function ToptracksLandingSection() {
       </Subtitle>
 
       <MusicCardsContainer>
-        {dummyTopTracks?.map((cur, i) => (
+        {reduxTopTracks?.map((cur, i) => (
           <MusicCardWrapper key={i}>
             <LandingPageTopTracksCard
-              artistName={cur?.track}
-              title={cur?.artist}
+              artistName={cur?.label}
+              title={cur?.track_name}
               imageUrl={cur?.image}
               imageUrlAlt={cur?.artist}
             />

@@ -77,7 +77,6 @@ function SocialMediaDistribution() {
 
   const openModal = () => {
     if (!selectTrack) {
-      alert("Please select a track to promote");
       setFormError("Please select a track to promote");
     } else {
       setIsModalOpen(true);

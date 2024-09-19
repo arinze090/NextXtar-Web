@@ -199,17 +199,18 @@ function Discover() {
   const state = useSelector((state) => state);
   const userToken = state?.user?.userToken;
 
-  const genresListing = state?.discover?.listings?.genres;
+  const discoverListings = state?.discover?.listings?.listDiscover;
 
-  const discoverTracksFromRedux = state?.discover?.discoverTracks;
+  const genresListing = state?.discover?.listings?.genres;
+  const reduxTopTracks = state?.discover?.topTracks;
 
   const [loading, setLoading] = useState(false);
   const [songOfTheDayData, setSongOfTheDayData] = useState([]);
-  const [discoverTracks, setDiscoverTracks] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
+  const [carouselTracks, setCarouselTracks] = useState([]);
 
-  console.log("topTracks", topTracks);
-  console.log("discoverTracks", discoverTracks);
+  // console.log("topTracks", topTracks);
+  // console.log("discoverTracks", discoverTracks);
 
   const getSongOfTheDay = async () => {
     const form = new FormData();
@@ -238,30 +239,88 @@ function Discover() {
     }
   };
 
-  const fetchDiscoverSongs = async () => {
+  const fetchSongsForCarousel = async () => {
     const form = new FormData();
     form.append("token", userToken);
+    form.append("primary", "introductions");
 
     setLoading(true);
     try {
       await axios
         .post(`${baseURL}discover.php?API_KEY=${API_KEY}`, form)
         .then((res) => {
-          console.log("discover res", res);
+          console.log("fetchSongsForCarousel res", res);
           setLoading(false);
 
           if (res?.data?.status == 200) {
-            console.log("fetchDiscoverSongs data", res?.data);
+            console.log("fetchSongsForCarousel data", res?.data);
 
-            setDiscoverTracks(res?.data);
+            setCarouselTracks(res?.data?.introductions);
           }
         })
         .catch((err) => {
-          console.log("fetchDiscoverSongs err", err);
+          console.log("fetchSongsForCarousel err", err);
           setLoading(false);
         });
     } catch (error) {
-      console.log("fetchDiscoverSongs error", error);
+      console.log("fetchSongsForCarousel error", error);
+    }
+  };
+
+  const [discoverTrackss, setDiscoverTrackss] = useState([]);
+  // console.log("discoverTracksssss", discoverTrackss);
+
+  const fetchDiscoverSongsRecursively = async (index = 0) => {
+    // console.log("indexxxx", index);
+
+    if (index >= discoverListings.length) {
+      console.log("All platforms fetched::", discoverTrackss);
+      setLoading(false);
+      return;
+    }
+
+    const form = new FormData();
+    form.append("token", userToken);
+    form.append("type", discoverListings[index]);
+
+    setLoading(true);
+
+    try {
+      await axios
+        .post(`${baseURL}discover.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          // console.log(
+          //   `discover res for ${discoverListings[index]}`,
+          //   res?.data?.result
+          // );
+
+          if (
+            res?.data?.status == 200 &&
+            typeof res?.data?.result == "object" &&
+            res?.data?.result !== null
+          ) {
+            setDiscoverTrackss((prevTracks) => ({
+              ...prevTracks,
+              ...res?.data?.result,
+            }));
+
+            // console.log("discoverTrackss", discoverTrackss);
+
+            // Recursive call to process the next platform
+            fetchDiscoverSongsRecursively(index + 1);
+          } else {
+            // Recursive call to process the next platform
+            fetchDiscoverSongsRecursively(index + 1);
+          }
+        });
+    } catch (error) {
+      console.log(
+        `fetchDiscoverSongs error for ${discoverListings[index]}`,
+        error
+      );
+
+      // Continue fetching next platform even if an error occurs
+      fetchDiscoverSongsRecursively(index + 1);
     }
   };
 
@@ -290,39 +349,37 @@ function Discover() {
     }
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       await getSongOfTheDay();
-  //       await fetchDiscoverSongs();
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //       // Handle errors if needed
-  //     }
-  //   };
-
-  //   let isMounted = true;
-  //   if (isMounted) {
-  //     fetchData();
-  //   }
-
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, []);
-
   useEffect(() => {
-    getSongOfTheDay();
-    fetchDiscoverSongs();
-    fetchTopTracks();
+    // fetchDiscoverSongs();
+    // fetchTopTracks();
+
+    const fetchData = async () => {
+      try {
+        await getSongOfTheDay();
+        await fetchSongsForCarousel();
+        await fetchDiscoverSongsRecursively();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // Handle errors if needed
+      }
+    };
+
+    let isMounted = true;
+
+    if (isMounted) {
+      fetchData();
+    }
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
     <>
-      <DiscvoverCarousel props={discoverTracks?.introductions} />
+      <DiscvoverCarousel props={carouselTracks} />
 
       <Container>
-        <TopTracks topTracksData={topTracks} />
+        <TopTracks topTracksData={reduxTopTracks} />
         <SideContainer>
           <SongOfTheDay
             backgroundImage={songOfTheDayData[0]?.parent_image}
@@ -334,22 +391,21 @@ function Discover() {
       </Container>
       <Genres genres={genresListing} />
 
-      {discoverTracks?.introductions?.length &&
-        Object?.entries(discoverTracks?.result)?.map(
-          ([name, objectArray], index) => {
-            // Check if objectArray is an array before mapping through it
-            if (Array.isArray(objectArray)) {
-              return (
-                <MusicPlatformSections
-                  key={index}
-                  title={name}
-                  subTitle={name}
-                  items={objectArray}
-                />
-              );
-            }
+      {discoverTrackss &&
+        Object?.entries(discoverTrackss)?.map(([name, objectArray], index) => {
+          // console.log("insideee ooo", discoverTrackss);
+          // Check if objectArray is an array before mapping through it
+          if (Array.isArray(objectArray)) {
+            return (
+              <MusicPlatformSections
+                key={index}
+                title={name}
+                subTitle={name}
+                items={objectArray}
+              />
+            );
           }
-        )}
+        })}
     </>
   );
 }

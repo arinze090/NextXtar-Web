@@ -90,7 +90,6 @@ function EditProfile() {
   const [recordLabel, setRecordLabel] = useState(
     user?.RecordLabel ? user?.RecordLabel : ""
   );
-  const [about, setAbout] = useState(user?.About ? user?.About : "");
   const [country, setCountry] = useState(user?.Country ? user?.Country : "");
   const [profilePicture, setProfilePicture] = useState(
     uploadedImage ? uploadedImage : user?.Picture
@@ -107,7 +106,9 @@ function EditProfile() {
   const [phoneNumber, setPhoneNumber] = useState(
     user?.Phone ? user?.Phone : ""
   );
-  const [aboutYourself, setAboutYourself] = useState("");
+  const [aboutYourself, setAboutYourself] = useState(
+    user?.About ? user?.About : ""
+  );
   console.log("uploadedImage", uploadedImage);
 
   // Error states
@@ -203,7 +204,7 @@ function EditProfile() {
     form.append("phone", phoneNumber);
     form.append("country", country);
     form.append("image", profilePicture);
-    form.append("about", about);
+    form.append("about", aboutYourself);
     form.append("stage_name", stageName);
     form.append("instagram", instagram);
     form.append("facebook", facebook);
@@ -242,7 +243,7 @@ function EditProfile() {
     } else if (!phoneNumber) {
       setPhoneNumberError("Invalid phone number");
       setFormError("Please fill the required fields");
-    } else if (!about) {
+    } else if (!aboutYourself) {
       setAboutYourselfError("Please briefly fill this section");
       setFormError("Please fill the required fields");
     } else {

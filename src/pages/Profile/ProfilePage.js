@@ -170,7 +170,6 @@ function ProfilePage() {
 
   const state = useSelector((state) => state);
   const user = state?.user?.user;
-  console.log("dhdhd", user);
 
   const [activeTab, setActiveTab] = useState(0);
 

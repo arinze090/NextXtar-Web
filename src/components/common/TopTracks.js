@@ -99,7 +99,7 @@ const TopTracks = ({ topTracksData }) => {
   const state = useSelector((state) => state);
   const user = state?.user?.user;
 
-  console.log("topTracksData", topTracksData);
+  // console.log("topTracksData", topTracksData);
 
   // Determine the max words based on screen size
   const isSmallScreen = window.innerWidth <= 768;

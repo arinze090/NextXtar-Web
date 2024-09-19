@@ -9,6 +9,7 @@ import {
   APILastFetchTime,
   setListings,
   setStreamingPlatforms,
+  setTopTracks,
 } from "./redux/features/discover/discoverSlice";
 import { baseURL } from "./utils/api-client";
 import { API_KEY } from "./utils/devKeys";
@@ -80,11 +81,38 @@ function App() {
     }
   };
 
+  const fetchTopTracks = async () => {
+    setLoading(true);
+    try {
+      await axios
+        .get(`${baseURL}top-tracks.php?API_KEY=${API_KEY}`)
+        .then((res) => {
+          console.log("fetchTopTracks res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("fetchTopTracks data", res?.data);
+            // dispatch the data to redux
+            dispatch(setTopTracks(res?.data?.data));
+          } else {
+            console.log("fetchTopTracks message", res?.data);
+          }
+        })
+        .catch((err) => {
+          console.log("fetchTopTracks err", err);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log("fetchTopTracks error", error);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         await fetchListings();
         await fetchStreamingPlatforms();
+        await fetchTopTracks();
 
         dispatch(APILastFetchTime(Date.now()));
       } catch (error) {
@@ -95,6 +123,7 @@ function App() {
 
     let isMounted = true;
     if (isMounted) {
+      fetchTopTracks();
       // run a check if the last time fetched is greater than 6hrs in milliseconds
       if (
         !reduxLastTimeAPIFetch ||
