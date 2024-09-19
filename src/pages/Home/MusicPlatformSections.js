@@ -167,6 +167,7 @@ function MusicPlatformSections({ title, subTitle, items }) {
               onEllipsisClicked={() => {
                 console.log("ellipsis ckicked");
               }}
+              loading={loading}
             />
           </ItemContainer>
         ))}

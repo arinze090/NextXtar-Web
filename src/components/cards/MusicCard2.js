@@ -90,6 +90,27 @@ const EllipsisIcon = styled(IoEllipsisHorizontalSharp)`
   cursor: pointer;
 `;
 
+const SkeletonLoader = styled.div`
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  width: ${(props) => props.width || "100%"};
+  height: ${(props) => props.height || "171px"};
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
 function MusicCard2({
   imageUrl,
   imageUrlAlt,
@@ -100,7 +121,20 @@ function MusicCard2({
   onLikeIconClicked,
   onEllipsisClicked,
   playlistItem,
+  loading,
 }) {
+  if (loading) {
+    return (
+      <ItemCard>
+        <SkeletonLoader />
+        <ItemDetails>
+          <ItemName>{title}</ItemName>
+          <ItemArtist>{artistName}</ItemArtist>
+        </ItemDetails>
+      </ItemCard>
+    );
+  }
+
   return (
     <ItemCard>
       <ItemImage src={imageUrl} alt={imageUrlAlt} />
