@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { TbHeadphonesFilled, TbPoint } from "react-icons/tb";
 
 import { truncateText } from "../../Library/Common";
 import { CiHeart } from "react-icons/ci";
@@ -95,6 +96,24 @@ const ActionIcon = styled.span`
   cursor: pointer;
 `;
 
+const HeadsetIcon = styled(TbHeadphonesFilled)`
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+`;
+
+const PointIcon = styled(TbPoint)`
+  color: black;
+  font-size: 10px;
+  cursor: pointer;
+`;
+
+const IconsSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 const TopTracks = ({ topTracksData }) => {
   const state = useSelector((state) => state);
   const user = state?.user?.user;
@@ -181,9 +200,17 @@ const TopTracks = ({ topTracksData }) => {
               <TrackInfo>
                 <TrackImage src={track?.image} alt={track.name} />
                 <TrackDetails>
-                  <TrackName>{truncateText(track?.label, wordsToUse)}</TrackName>
+                  <IconsSection>
+                    <HeadsetIcon />
+                    <TrackName>{track?.no_plays + " "}</TrackName>
+                    <PointIcon />
+                    <TrackName>
+                      {" " + truncateText(track?.track_name, wordsToUse)}
+                    </TrackName>
+                  </IconsSection>
+
                   <TrackArtist>
-                    {truncateText(track?.track_name, wordsToUse)}
+                    {truncateText(track?.label, wordsToUse)}
                   </TrackArtist>
                 </TrackDetails>
               </TrackInfo>

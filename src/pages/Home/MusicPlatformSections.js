@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import YouTube from "react-youtube";
 
 import MusicCard2 from "../../components/cards/MusicCard2";
 import { baseURL } from "../../utils/api-client";
@@ -143,32 +144,48 @@ function MusicPlatformSections({ title, subTitle, items }) {
     <SectionContainer>
       <SectionHeader>
         <div>
-          <SectionTitle>{title}</SectionTitle>
+          <SectionTitle>
+            {title == "video_data" ? "Videos" : title}
+          </SectionTitle>
         </div>
         <SeeMoreLink href="#">See more</SeeMoreLink>
       </SectionHeader>
       <ItemGrid>
         {items?.map((cur, i) => (
           <ItemContainer key={i}>
-            <MusicCard2
-              imageUrl={cur.image}
-              imageUrlAlt={cur.label}
-              title={cur.track_name}
-              artistName={cur.label}
-              audioUrl={cur.audio}
-              isPlaying={
-                currentPlaying === cur.audio && !audioRef.current.paused
-              }
-              onPlayPause={() => handlePlayPause(cur.audio)}
-              onLikeIconClicked={() => {
-                console.log("liked ckicked");
-                toggleLikeMusic(cur);
-              }}
-              onEllipsisClicked={() => {
-                console.log("ellipsis ckicked");
-              }}
-              loading={loading}
-            />
+            {cur?.image && cur?.track_name && cur?.label ? (
+              <MusicCard2
+                imageUrl={cur.image}
+                imageUrlAlt={cur.label}
+                title={cur.track_name}
+                artistName={cur.label}
+                audioUrl={cur.audio}
+                isPlaying={
+                  currentPlaying === cur.audio && !audioRef.current.paused
+                }
+                onPlayPause={() => handlePlayPause(cur.audio)}
+                onLikeIconClicked={() => {
+                  console.log("like clicked");
+                  toggleLikeMusic(cur);
+                }}
+                onEllipsisClicked={() => {
+                  console.log("ellipsis clicked");
+                }}
+                loading={loading}
+              />
+            ) : (
+              <YouTube
+                videoId={cur?.VideoID}
+                opts={{
+                  height: "390",
+                  width: "640",
+                  playerVars: {
+                    autoplay: 0,
+                  },
+                }}
+                style={{ width: 200, height: 100 }}
+              />
+            )}
           </ItemContainer>
         ))}
       </ItemGrid>
