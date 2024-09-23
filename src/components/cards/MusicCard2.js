@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
+import { TbHeadphonesFilled, TbPoint } from "react-icons/tb";
+
 import Ellipsis from "../modal/Ellipsis";
 
 const ItemCard = styled.div`
@@ -35,11 +37,18 @@ const ItemDetails = styled.div`
 
 const ItemName = styled.p`
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   margin: 10px 0 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+const NumberOfPlays = styled.p`
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px 0 5px;
+  white-space: nowrap;
 `;
 
 const ItemArtist = styled.p`
@@ -111,11 +120,32 @@ const SkeletonLoader = styled.div`
   }
 `;
 
+const HeadsetIcon = styled(TbHeadphonesFilled)`
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+`;
+
+const PointIcon = styled(TbPoint)`
+  color: black;
+  font-size: 10px;
+  cursor: pointer;
+`;
+
+const IconsSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 function MusicCard2({
   imageUrl,
   imageUrlAlt,
   title,
   artistName,
+  numberOfPlays,
   onPlayPause,
   isPlaying,
   onLikeIconClicked,
@@ -154,7 +184,12 @@ function MusicCard2({
         />
       </Overlay>
       <ItemDetails>
-        <ItemName>{title}</ItemName>
+        <IconsSection>
+          <HeadsetIcon />
+          <NumberOfPlays>{numberOfPlays + " "}</NumberOfPlays>
+          <PointIcon />
+          <ItemName>{" " + title}</ItemName>
+        </IconsSection>
         <ItemArtist>{artistName}</ItemArtist>
       </ItemDetails>
     </ItemCard>

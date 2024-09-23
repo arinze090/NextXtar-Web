@@ -54,6 +54,7 @@ import GenresListing from "../pages/MusicLibrary/GenresListing";
 import Home from "../pages/Home/Home";
 import WithdrawalPage from "../pages/Profile/WithdrawalPage";
 import UserVerification from "../pages/Profile/UserVerification";
+import DiscoverCategoryList from "../pages/MusicLibrary/DiscoverCategoryList";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -132,6 +133,7 @@ function ProtectedRoutes() {
       <Sidebar />
       <Routes>
         <Route path="/discover" element={<Discover />} />
+        <Route path="/discover/:category" element={<DiscoverCategoryList />} />
         <Route path="/search" element={<Search />} />
 
         {/*  Upload section */}

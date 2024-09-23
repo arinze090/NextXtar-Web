@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
@@ -198,6 +199,17 @@ const Description = styled.p`
 `;
 
 const MusicCard = ({ music }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    // Check if it's an internal URL or an external one
+    if (music?.url.includes("http")) {
+      window.location.href = music?.url; // External URL
+    } else {
+      navigate(music?.url); // Internal URL
+    }
+  };
+
   return (
     <CardContainer>
       <ImageWrapper>
@@ -207,7 +219,11 @@ const MusicCard = ({ music }) => {
         <Title>{music?.middle}</Title>
         <Subtitle>{music?.pressure}</Subtitle>
         <Description>{truncateText(music?.description, 130)}</Description>
-        <FormButton title={"Listen Here"} marginLeft={"0px"} />
+        <FormButton
+          title={music?.button_name}
+          onClick={handleClick}
+          marginLeft={"0px"}
+        />
       </ContentWrapper>
     </CardContainer>
   );

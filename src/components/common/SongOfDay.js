@@ -15,7 +15,7 @@ const Container = styled.div`
   align-content: center;
   position: relative;
 
-  height: 625px;
+  height: 525px;
   width: 90%;
   box-shadow: 0 8px 6px rgba(0, 0, 0, 0.1);
 

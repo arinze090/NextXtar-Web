@@ -17,7 +17,7 @@ const Container = styled.div`
   border-radius: 21px;
   padding: 20px;
   width: 100%;
-  height: 625px;
+  height: 525px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 
@@ -29,7 +29,7 @@ const Container = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 90%;
-    height: 625px;
+    height: 525px;
     overflow-y: auto;
   }
 `;
@@ -71,7 +71,7 @@ const TrackDetails = styled.div`
 
 const TrackName = styled.p`
   margin: 0;
-  font-weight: bold;
+  font-weight: 600;
 `;
 
 const TrackArtist = styled.p`

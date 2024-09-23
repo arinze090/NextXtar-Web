@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import YouTube from "react-youtube";
+import { Link } from "react-router-dom";
 
 import MusicCard2 from "../../components/cards/MusicCard2";
 import { baseURL } from "../../utils/api-client";
@@ -39,7 +40,7 @@ const SectionSubTitle = styled.h3`
   color: #4caf50; // Green color for sub-title
 `;
 
-const SeeMoreLink = styled.a`
+const SeeMoreLink = styled(Link)`
   font-size: 1rem;
   color: #4caf50; // Green color for "See more"
   text-decoration: none;
@@ -76,6 +77,20 @@ const ItemGrid = styled.div`
 
 const ItemContainer = styled.div`
   flex: 0 0 200px; // Fixed width for each card, adjust as needed
+`;
+
+const VideoCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 320px; // Keep the size like YouTube thumbnail
+  margin: 15px;
+`;
+
+const YouTubeThumbnail = styled.div`
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 function MusicPlatformSections({ title, subTitle, items }) {
@@ -148,43 +163,49 @@ function MusicPlatformSections({ title, subTitle, items }) {
             {title == "video_data" ? "Videos" : title}
           </SectionTitle>
         </div>
-        <SeeMoreLink href="#">See more</SeeMoreLink>
+        <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
       </SectionHeader>
       <ItemGrid>
-        {items?.map((cur, i) => (
+        {items?.slice(0, 10)?.map((cur, i) => (
           <ItemContainer key={i}>
-            {cur?.image && cur?.track_name && cur?.label ? (
-              <MusicCard2
-                imageUrl={cur.image}
-                imageUrlAlt={cur.label}
-                title={cur.track_name}
-                artistName={cur.label}
-                audioUrl={cur.audio}
-                isPlaying={
-                  currentPlaying === cur.audio && !audioRef.current.paused
-                }
-                onPlayPause={() => handlePlayPause(cur.audio)}
-                onLikeIconClicked={() => {
-                  console.log("like clicked");
-                  toggleLikeMusic(cur);
-                }}
-                onEllipsisClicked={() => {
-                  console.log("ellipsis clicked");
-                }}
-                loading={loading}
-              />
+            {title == "video_data" && cur?.VideoID ? (
+              <VideoCard>
+                <YouTubeThumbnail>
+                  <YouTube
+                    videoId={cur?.VideoID}
+                    opts={{
+                      height: "180",
+                      width: "320",
+                      playerVars: { autoplay: 0 },
+                    }}
+                  />
+                </YouTubeThumbnail>
+              </VideoCard>
             ) : (
-              <YouTube
-                videoId={cur?.VideoID}
-                opts={{
-                  height: "390",
-                  width: "640",
-                  playerVars: {
-                    autoplay: 0,
-                  },
-                }}
-                style={{ width: 200, height: 100 }}
-              />
+              cur?.image &&
+              cur?.track_name &&
+              cur?.label && (
+                <MusicCard2
+                  imageUrl={cur?.image}
+                  imageUrlAlt={cur?.label}
+                  title={cur?.track_name}
+                  artistName={cur?.label}
+                  audioUrl={cur?.audio}
+                  isPlaying={
+                    currentPlaying === cur.audio && !audioRef.current.paused
+                  }
+                  onPlayPause={() => handlePlayPause(cur.audio)}
+                  onLikeIconClicked={() => {
+                    console.log("like clicked");
+                    toggleLikeMusic(cur);
+                  }}
+                  onEllipsisClicked={() => {
+                    console.log("ellipsis clicked");
+                  }}
+                  loading={loading}
+                  numberOfPlays={cur?.no_plays}
+                />
+              )
             )}
           </ItemContainer>
         ))}
