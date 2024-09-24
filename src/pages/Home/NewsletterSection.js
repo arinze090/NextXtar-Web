@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import appImage from "../../assets/headphones.png";
 import FormInput from "../../components/form/FormInput";
@@ -121,6 +123,14 @@ const DownloadIconSection = styled.div`
 `;
 
 function NewsletterSection() {
+  const [subscribeEmail, setSubscribeEmail] = useState("");
+
+  const onSubscribe = () => {
+    console.log("hfhhf");
+    setSubscribeEmail("");
+    toast?.success("Great, You have subscribed to our newsletter");
+  };
+
   return (
     <Container>
       <InsideContainer>
@@ -141,8 +151,17 @@ function NewsletterSection() {
               inputPlaceholder={"Enter your email address"}
               type={"email"}
               width={"50%"}
+              multiple={false}
+              value={subscribeEmail}
+              onChange={(e) => {
+                setSubscribeEmail(e.target.value);
+              }}
             />
-            <FormButton title={"Subscribe"} marginTop={-20} />
+            <FormButton
+              title={"Subscribe"}
+              marginTop={-20}
+              onClick={onSubscribe}
+            />
           </DownloadIconSection>
         </TextWrapper>
       </InsideContainer>

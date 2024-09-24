@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { COLORS } from "../../theme/theme";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import FormInput from "../../components/form/FormInput";
+import FormButton from "../../components/form/FormButton";
 
 export const FooterContainer = styled.footer`
   background: ${COLORS.footerColor};
@@ -90,31 +92,18 @@ export const HelpLinks = styled.ul`
   }
 `;
 
-export const SubscribeForm = styled.form`
+export const SubscribeForm = styled.div`
   display: flex;
-  gap: 10px;
+  flex-direcrion: row;
+  align-items: center;
   margin-top: 10px;
-  flex-wrap: wrap;
+  width: auto;
+  align-content: center;
+  align-items: center;
 
-  input {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  button {
-    padding: 10px;
-    background-color: #05a30b; /* Bright green button */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #fff;
-
-    &:hover {
-      background-color: #05a30b; /* Darker green on hover */
-    }
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    flex-direction: column;
   }
 `;
 
@@ -132,8 +121,11 @@ export const Copyright = styled.div`
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const [subscribeEmail, setSubscribeEmail] = useState("");
+
   const onSubscribe = () => {
     console.log("hfhhf");
+    setSubscribeEmail("");
     toast?.success("Great, You have subscribed to our newsletter");
   };
 
@@ -198,8 +190,22 @@ const Footer = () => {
         <h3>Stay up to date</h3>
         <p>Stay Informed On How You Can Make a Difference</p>
         <SubscribeForm>
-          <input type="email" placeholder="Your email address" />
-          <button onClick={onSubscribe}>&gt;</button>
+          <FormInput
+            inputPlaceholder={"Enter your email address"}
+            type={"email"}
+            width={"70%"}
+            multiple={false}
+            value={subscribeEmail}
+            onChange={(e) => {
+              setSubscribeEmail(e.target.value);
+            }}
+          />
+          <FormButton
+            onClick={onSubscribe}
+            title={"Subscribe"}
+            marginTop={-20}
+            width={"70%"}
+          />
         </SubscribeForm>
       </FooterSection>
 

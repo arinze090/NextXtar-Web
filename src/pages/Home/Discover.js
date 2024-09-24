@@ -383,8 +383,8 @@ function Discover() {
         <SideContainer>
           <SongOfTheDay
             backgroundImage={songOfTheDayData[0]?.parent_image}
-            songTitle={songOfTheDayData[0]?.artist_name}
-            songDescription={songOfTheDayData[0]?.track_name}
+            songTitle={songOfTheDayData[0]?.track_name}
+            songDescription={songOfTheDayData[0]?.label}
             songLikes={songOfTheDayData[0]?.no_plays}
           />
         </SideContainer>

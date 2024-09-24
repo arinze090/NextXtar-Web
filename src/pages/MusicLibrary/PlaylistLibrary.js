@@ -20,7 +20,7 @@ const Container = styled.div`
   padding: 2rem;
   background: #f9f9f9;
   border-radius: 8px;
-  height: 70vh;
+  height: 100%;
 
   @media (max-width: 768px) {
     height: auto;

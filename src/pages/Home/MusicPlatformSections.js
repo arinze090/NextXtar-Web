@@ -157,14 +157,21 @@ function MusicPlatformSections({ title, subTitle, items }) {
 
   return (
     <SectionContainer>
-      <SectionHeader>
-        <div>
-          <SectionTitle>
-            {title == "video_data" ? "Videos" : title}
-          </SectionTitle>
-        </div>
-        <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
-      </SectionHeader>
+      {items?.filter(
+        (cur) =>
+          (title === "video_data" && cur?.VideoID) ||
+          (cur?.image && cur?.track_name && cur?.label)
+      )?.length > 0 && (
+        <SectionHeader>
+          <div>
+            <SectionTitle>
+              {title == "video_data" ? "Videos" : title}
+            </SectionTitle>
+          </div>
+          <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
+        </SectionHeader>
+      )}
+
       <ItemGrid>
         {items?.slice(0, 10)?.map((cur, i) => (
           <ItemContainer key={i}>

@@ -85,6 +85,7 @@ const TrackArtist = styled.p`
 const TrackActions = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const TrackDuration = styled.span`
@@ -228,9 +229,6 @@ const TopTracks = ({ topTracksData }) => {
                     />
                   </ActionIcon>
                 )}
-                <ActionIcon>
-                  <FaEllipsisH />
-                </ActionIcon>
               </TrackActions>
             </TrackItem>
           ))}

@@ -52,6 +52,8 @@ const Description = styled.p`
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Description2 = styled.p`
