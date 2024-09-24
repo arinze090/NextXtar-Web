@@ -58,7 +58,10 @@ function DiscoverCategoryList() {
   const fetchDiscoverCatTracks = async (category) => {
     const form = new FormData();
     form.append("token", userToken);
-    form.append("type", category);
+    form.append(
+      "type",
+      category == "Recently Uploaded" ? "most recent" : category
+    );
 
     setLoading(true);
 

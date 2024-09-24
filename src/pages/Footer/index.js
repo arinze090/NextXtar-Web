@@ -199,6 +199,8 @@ const Footer = () => {
             onChange={(e) => {
               setSubscribeEmail(e.target.value);
             }}
+            inputBackgroundColor={"black"}
+            inputColor={"white"}
           />
           <FormButton
             onClick={onSubscribe}

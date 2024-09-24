@@ -109,6 +109,12 @@ const PointIcon = styled(TbPoint)`
   cursor: pointer;
 `;
 
+const LikeIcon = styled(CiHeart)`
+  color: black;
+  font-size: 2rem;
+  cursor: pointer;
+`;
+
 const IconsSection = styled.div`
   display: flex;
   flex-direction: row;
@@ -222,7 +228,7 @@ const TopTracks = ({ topTracksData }) => {
                 </ActionIcon>
                 {!isSmallScreen && (
                   <ActionIcon>
-                    <CiHeart
+                    <LikeIcon
                       onClick={() => {
                         toggleLikeMusic(track);
                       }}

@@ -208,8 +208,9 @@ function Discover() {
   const [songOfTheDayData, setSongOfTheDayData] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
   const [carouselTracks, setCarouselTracks] = useState([]);
+  const [recentlyUploadedTracks, setRecentlyUploadedTracks] = useState([]);
 
-  // console.log("topTracks", topTracks);
+  // console.log("recentlyUploadedTracks", recentlyUploadedTracks);
   // console.log("discoverTracks", discoverTracks);
 
   const getSongOfTheDay = async () => {
@@ -324,28 +325,28 @@ function Discover() {
     }
   };
 
-  const fetchTopTracks = async () => {
+  const fetchRecentlyUploadedTracks = async () => {
     const form = new FormData();
     form.append("token", userToken);
-    form.append("type", "primary");
+    form.append("type", "most recent");
 
     setLoading(true);
     try {
       await axios
         .post(`${baseURL}discover.php?API_KEY=${API_KEY}`, form)
         .then((res) => {
-          console.log("fetchTopTracks res", res);
+          console.log("fetchRecentlyUploadedTracks res", res);
           setLoading(false);
-          console.log("fetchTopTracks data", res?.data?.result);
 
-          setTopTracks(res?.data?.result?.Singnify?.data);
+          setRecentlyUploadedTracks(res?.data?.result);
         })
         .catch((err) => {
-          console.log("fetchTopTracks err", err);
+          console.log("fetchRecentlyUploadedTracks err", err);
           setLoading(false);
         });
     } catch (error) {
-      console.log("fetchTopTracks error", error);
+      console.log("fetchRecentlyUploadedTracks error", error);
+      setLoading(false);
     }
   };
 
@@ -357,6 +358,7 @@ function Discover() {
       try {
         await getSongOfTheDay();
         await fetchSongsForCarousel();
+        await fetchRecentlyUploadedTracks();
         await fetchDiscoverSongsRecursively();
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -377,7 +379,6 @@ function Discover() {
   return (
     <>
       <DiscvoverCarousel props={carouselTracks} />
-
       <Container>
         <TopTracks topTracksData={reduxTopTracks} />
         <SideContainer>
@@ -391,6 +392,26 @@ function Discover() {
       </Container>
       <Genres genres={genresListing} />
 
+      {/* Recently Uploaded Tracks section */}
+      {recentlyUploadedTracks &&
+        Object?.entries(recentlyUploadedTracks)?.map(
+          ([name, objectArray], index) => {
+            // console.log("insideee ooo", discoverTrackss);
+            // Check if objectArray is an array before mapping through it
+            if (Array.isArray(objectArray)) {
+              return (
+                <MusicPlatformSections
+                  key={index}
+                  title={name}
+                  subTitle={name}
+                  items={objectArray}
+                />
+              );
+            }
+          }
+        )}
+
+      {/* Discover Tracks section */}
       {discoverTrackss &&
         Object?.entries(discoverTrackss)?.map(([name, objectArray], index) => {
           // console.log("insideee ooo", discoverTrackss);

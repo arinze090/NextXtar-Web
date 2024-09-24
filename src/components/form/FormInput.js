@@ -26,6 +26,8 @@ function FormInput({
   errorMessage,
   copyIcon,
   onCopyIconClick,
+  inputBackgroundColor,
+  inputColor,
 }) {
   return (
     <InputContainer width={width}>
@@ -49,6 +51,10 @@ function FormInput({
           fontSize: "1rem",
           border: "1px solid grey",
           fontFamily: "ClashDisplay, sans-serif",
+          backgroundColor: inputBackgroundColor
+            ? inputBackgroundColor
+            : "white",
+          color: inputColor ? inputColor : "black",
         }}
       />
       {copyIcon ? (
