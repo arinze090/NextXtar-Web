@@ -225,7 +225,7 @@ function ArtistRegister() {
       setPhoneNumberError("Please enter a valid phone number");
       setEmailError("Please enter a valid email");
       setUsernameError("Please enter a valid username");
-      setPasswordError(validatedPassword.cause);
+      // setPasswordError(validatedPassword.cause);
       setAboutYourselfError("Please tell us more");
       setStageNameError("Please provide your stage name");
       setRecordLabelError("Please provide your record label");

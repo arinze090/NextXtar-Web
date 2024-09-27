@@ -219,7 +219,7 @@ function UserRegister() {
       setPhoneNumberError("Please enter a valid phone number");
       setEmailError("Please enter a valid email");
       setUsernameError("Please enter a valid username");
-      setPasswordError(validatedPassword.cause);
+      setPasswordError("Please enter your password");
     } else if (!gender) {
       setGenderError("Please select a gender");
     } else if (!firstName) {
@@ -232,8 +232,8 @@ function UserRegister() {
       setCountryError("Please selct a country from the options");
     } else if (!phoneNumber) {
       setPhoneNumberError("Invalid phone number");
-    } else if (!passwordValidator(password)) {
-      setFormError("Invalid Register details, please try again");
+    } else if (!password) {
+      setPasswordError("Please enter your password");
     } else {
       setLoading(true);
       try {
