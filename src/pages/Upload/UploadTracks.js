@@ -52,6 +52,7 @@ const Subtitle = styled.p`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 20px;
 `;
 
 const HiddenInput = styled.input`
@@ -986,9 +987,9 @@ const UploadTracks = () => {
           <Container>
             <RowContent>
               <FormInput
-                formTitle={"Enter your Spotify URL"}
+                formTitle={"Enter your Spotify artist URL"}
                 inputId={"spotify-url"}
-                inputPlaceholder={"Enter your Spotify URL"}
+                inputPlaceholder={"Enter your Spotify artist URL"}
                 type={"text"}
                 value={spotifyUrl}
                 onChange={(e) => {
@@ -999,9 +1000,9 @@ const UploadTracks = () => {
               />
 
               <FormInput
-                formTitle={"Enter your iTunes URL"}
+                formTitle={"Enter your iTunes artist URL"}
                 inputId={"itunes-url"}
-                inputPlaceholder={"Enter your iTunes URL"}
+                inputPlaceholder={"Enter your iTunes artist URL"}
                 type={"text"}
                 value={itunesUrl}
                 onChange={(e) => {
@@ -1081,6 +1082,7 @@ const UploadTracks = () => {
                     style={{ color: "white", marginRight: 7, fontSize: 16 }}
                   />
                 }
+                width={"20%"}
               />
               <HiddenInput
                 ref={fileInputRef}
@@ -1160,7 +1162,7 @@ const UploadTracks = () => {
               {trackSections?.map((section, index) => (
                 <UploadSection
                   key={index}
-                  title={`${index == 0 ? trackName : section?.trackTitle}`}
+                  title={section?.trackTitle}
                   uploadTitle="Song"
                   uploadDescription="Drag & drop files or Browse. Supported formats: MP3"
                   uploadBtnTitle={"Upload Track"}
@@ -1194,7 +1196,11 @@ const UploadTracks = () => {
                 />
               ))}
 
-              <FormButton title="Add More Tracks" onClick={addMoreTracks} />
+              <FormButton
+                title="Add More Tracks"
+                onClick={addMoreTracks}
+                width={"20%"}
+              />
             </UploadContainer>
 
             <Subtitle>
