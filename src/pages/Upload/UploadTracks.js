@@ -17,7 +17,7 @@ import FormTextArea from "../../components/form/FormTextArea";
 import UploadSection from "../../components/upload/UploadSection";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
-import { listOfCountries } from "../../data/dummyData";
+import { languagesList, listOfCountries } from "../../data/dummyData";
 import Modal from "../../components/modal/Modal";
 
 const Container = styled.div`
@@ -125,6 +125,7 @@ const UploadTracks = () => {
   const user = state?.user?.user;
   const genres = state?.discover?.listings?.genres;
   const countryOptions = listOfCountries;
+  const languagesOptions = languagesList;
 
   const [activeStep, setActiveStep] = useState(0);
 
@@ -826,18 +827,17 @@ const UploadTracks = () => {
             </RowContent>
 
             <RowContent>
-              <FormInput
+              <FormSelect
                 formTitle={"What language is the track name in?"}
-                inputId={"language"}
-                inputPlaceholder={"language"}
-                type={"text"}
-                value={language}
+                options={languagesOptions}
+                selectId={"language"}
+                selectPlaceholder={"Select language"}
+                width={"48%"}
                 onChange={(e) => {
                   setLanguage(e.target.value);
                   setFormError("");
                   setLanguageError("");
                 }}
-                width={"48%"}
                 errorMessage={languageError}
               />
 
