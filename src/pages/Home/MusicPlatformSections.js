@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import MusicCard2 from "../../components/cards/MusicCard2";
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsAudioPlayingData } from "../../redux/features/user/userSlice";
 
 // Container for the entire section
 const SectionContainer = styled.div`
@@ -94,25 +95,31 @@ const YouTubeThumbnail = styled.div`
 `;
 
 function MusicPlatformSections({ title, subTitle, items }) {
+  const dispatch = useDispatch();
+
   const state = useSelector((state) => state);
   const user = state?.user?.user;
 
   const [currentPlaying, setCurrentPlaying] = useState(null);
   const audioRef = useRef(new Audio());
 
-  const handlePlayPause = (audioUrl) => {
-    if (currentPlaying === audioUrl) {
-      if (!audioRef.current.paused) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-    } else {
-      audioRef.current.pause();
-      audioRef.current.src = audioUrl;
-      audioRef.current.play();
-      setCurrentPlaying(audioUrl);
-    }
+  const handlePlayPause = (selectedTrack) => {
+    console.log("selectedTrack", selectedTrack);
+    // if (currentPlaying === selectedTrack?.audioUrl) {
+    //   if (!audioRef.current.paused) {
+    //     audioRef.current.pause();
+    //   } else {
+    //     audioRef.current.play();
+    //   }
+    // } else {
+    //   audioRef.current.pause();
+    //   audioRef.current.src = selectedTrack?.audioUrl;
+    //   audioRef.current.play();
+    //   setCurrentPlaying(selectedTrack?.audioUrl);
+
+    //   // save the selected track to redux
+    //   dispatch(setIsAudioPlayingData(selectedTrack));
+    // }
   };
 
   const [loading, setLoading] = useState(false);
@@ -199,9 +206,9 @@ function MusicPlatformSections({ title, subTitle, items }) {
                   artistName={cur?.label}
                   audioUrl={cur?.audio}
                   isPlaying={
-                    currentPlaying === cur.audio && !audioRef.current.paused
+                    currentPlaying === cur?.audio && !audioRef?.current?.paused
                   }
-                  onPlayPause={() => handlePlayPause(cur.audio)}
+                  onPlayPause={() => handlePlayPause(cur)}
                   onLikeIconClicked={() => {
                     console.log("like clicked");
                     toggleLikeMusic(cur);

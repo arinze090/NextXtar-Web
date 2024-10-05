@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +11,7 @@ import SkeletonLoader from "../../components/common/SkeletonLoader";
 import MusicCard2 from "../../components/cards/MusicCard2";
 
 import { useParams } from "react-router-dom";
+import { setIsAudioPlayingData } from "../../redux/features/user/userSlice";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -41,6 +42,8 @@ const MusicCardWrapper = styled.div`
 `;
 
 function DiscoverCategoryList() {
+  const dispatch = useDispatch();
+
   const state = useSelector((state) => state);
   const userToken = state?.user?.userToken;
   const user = state?.user?.user;
@@ -83,8 +86,9 @@ function DiscoverCategoryList() {
     }
   };
 
-  const handlePlayPause = (audioUrl) => {
-    if (currentPlaying === audioUrl) {
+  const handlePlayPause = (selectedTrack) => {
+    console.log("selectedTrack", selectedTrack);
+    if (currentPlaying === selectedTrack?.audioUrl) {
       if (!audioRef.current.paused) {
         audioRef.current.pause();
       } else {
@@ -92,9 +96,12 @@ function DiscoverCategoryList() {
       }
     } else {
       audioRef.current.pause();
-      audioRef.current.src = audioUrl;
+      audioRef.current.src = selectedTrack?.audioUrl;
       audioRef.current.play();
-      setCurrentPlaying(audioUrl);
+      setCurrentPlaying(selectedTrack?.audioUrl);
+
+      // save the selected track to redux
+      dispatch(setIsAudioPlayingData(selectedTrack));
     }
   };
 
@@ -169,7 +176,7 @@ function DiscoverCategoryList() {
                 isPlaying={
                   currentPlaying === cur?.audio && !audioRef?.current?.paused
                 }
-                onPlayPause={() => handlePlayPause(cur?.audio)}
+                onPlayPause={() => handlePlayPause(cur)}
                 loading={loading}
               />
             </MusicCardWrapper>

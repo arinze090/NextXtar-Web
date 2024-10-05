@@ -133,6 +133,29 @@ const UploadCard = ({
   const handleClick = () => {
     fileInputRef.current.click();
   };
+
+  // Drag and drop handlers
+  const handleDragOver = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const files = event.dataTransfer.files;
+    if (files && files.length > 0) {
+      // Call handleFileChange to process the files
+      handleFileChange({ target: { files } });
+    }
+  };
+
+  const handleDragLeave = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   return (
     <Card>
       <Title>{title}</Title>
@@ -181,12 +204,17 @@ const UploadCard = ({
           </DottedBorderContainer>
         )
       ) : (
-        <UploadArea onClick={handleClick}>
+        <UploadArea
+          onClick={handleClick}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          onDragLeave={handleDragLeave}
+        >
           <UploadIcon style={{ fontSize: 48, color: "#0a4827" }} />
           <UploadText>
             Drag & drop files or <a href="#,">Browse</a>
           </UploadText>
-          <UploadText>Supported formats: {formats}</UploadText>
+          <UploadText>Maximum file size should be 100mb</UploadText>
         </UploadArea>
       )}
       <DescriptionText>{description}</DescriptionText>

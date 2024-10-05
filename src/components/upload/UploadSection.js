@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import UploadCard from "../cards/UploadCard";
+import FormInput from "../form/FormInput";
 
 const Section = styled.div`
   display: flex;
@@ -59,11 +60,28 @@ function UploadSection({
   isFileUploaded,
   uploadPercentage,
   fileUploadErrorMessage,
+  showTrackInput,
+  handleTrackTitleChange,
+  errorMessage,
 }) {
   return (
     <Section>
       <Content>
-        <h2>{title}</h2>
+        {showTrackInput ? (
+          <FormInput
+            formTitle={"Track Title"}
+            inputId={"track-title"}
+            inputPlaceholder={"Track Title"}
+            type="text"
+            placeholder="Enter Track Title"
+            value={title}
+            onChange={handleTrackTitleChange}
+            errorMessage={errorMessage}
+            width={"70%"}
+          />
+        ) : (
+          <h2>{title}</h2>
+        )}
         <UploadCard
           title={uploadTitle}
           description={uploadDescription}

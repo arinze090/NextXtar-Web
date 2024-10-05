@@ -5,6 +5,12 @@ export const truncateText = (text, maxLetters) => {
   return text;
 };
 
+// Function to convert duration (mm:ss) to total seconds
+export const convertDurationToSeconds = (duration) => {
+  const [minutes, seconds] = duration?.split(":")?.map(Number);
+  return minutes * 60 + seconds;
+};
+
 export const convertToSlug = (str) => {
   return str
     .toString()

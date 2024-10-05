@@ -277,6 +277,7 @@ function GenresListing() {
                 }
                 onPlayPause={() => handlePlayPause(cur?.audio)}
                 playlistItem={cur}
+                numberOfPlays={cur?.no_plays}
               />
             </MusicCardWrapper>
           ))}

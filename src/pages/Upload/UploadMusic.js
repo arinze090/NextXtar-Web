@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import HeaderTitle from "../../components/common/HeaderTitle";
 import Upload from "../../components/cards/Upload";
+import Upload2 from "../../components/cards/Upload2";
 
 const Container = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ function UploadMusic() {
         imgSrc={require("../../assets/gif1.gif")}
         imgAlt={"Upload Music Image"}
       />
-      <Upload
+      <Upload2
         title="Upload Tracks"
         description="A track is a single"
         formats="MP3"
@@ -38,7 +39,7 @@ function UploadMusic() {
         }}
         uploadBtnTitle={"Upload Track"}
       />
-      <Upload
+      <Upload2
         title="Upload Album"
         description="An album is two or more tracks"
         formats="MP3"

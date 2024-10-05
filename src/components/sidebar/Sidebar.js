@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as FaIcons from "react-icons/fa";
@@ -97,12 +97,14 @@ const SidebarLabel = styled.span`
 `;
 
 const Sidebar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
   const loggedInUser = state?.user?.user;
+  const hiddenUploadPaths = ["/upload-tracks", "/upload-video"];
 
   function logout() {
     dispatch(signOutUser());
@@ -137,20 +139,25 @@ const Sidebar = () => {
             <SearchBar width={"500px"} />
 
             <SidebarProfileSection>
-              <UploadBtn>
-                <FormButton
-                  btnIcon={
-                    <MdFileUpload
-                      style={{ color: "white", marginRight: 7, fontSize: 16 }}
-                    />
-                  }
-                  title={"Upload"}
-                  onClick={() => {
-                    navigate("/upload");
-                  }}
-                />
-              </UploadBtn>
-
+              {!hiddenUploadPaths?.includes(location?.pathname) && (
+                <UploadBtn>
+                  <FormButton
+                    btnIcon={
+                      <MdFileUpload
+                        style={{
+                          color: "white",
+                          marginRight: 7,
+                          fontSize: 16,
+                        }}
+                      />
+                    }
+                    title={"Upload"}
+                    onClick={() => {
+                      navigate("/upload");
+                    }}
+                  />
+                </UploadBtn>
+              )}
               <div
                 style={{
                   flexDirection: "row",

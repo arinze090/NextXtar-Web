@@ -18,6 +18,7 @@ import UploadSection from "../../components/upload/UploadSection";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
 import { listOfCountries } from "../../data/dummyData";
+import Modal from "../../components/modal/Modal";
 
 const Container = styled.div`
   display: flex;
@@ -121,7 +122,7 @@ const UploadTracks = () => {
   };
 
   const state = useSelector((state) => state);
-  const user = state.user.user;
+  const user = state?.user?.user;
   const genres = state?.discover?.listings?.genres;
   const countryOptions = listOfCountries;
 
@@ -168,9 +169,19 @@ const UploadTracks = () => {
   const step2Check = () => {
     if (!uploadDate) {
       setUploadDateError("Please provide a valid date");
+    } else if (!description) {
+      setDescriptionError("Please provide a short description");
+    } else if (!biography) {
+      setBiographyError("Please provide your biography");
     } else {
       handleNext();
     }
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const [loading, setLoading] = useState(false);
@@ -202,6 +213,7 @@ const UploadTracks = () => {
   const [trackName, setTrackName] = useState("");
   const [trackArtistName, setTrackArtistName] = useState("");
   const [description, setDescription] = useState("");
+  const [biography, setBiography] = useState("");
   const [explicit, setExplicit] = useState("");
   const [recordLabel, setRecordLabel] = useState("");
   const [spotifyUrl, setSpotifyUrl] = useState("");
@@ -240,6 +252,8 @@ const UploadTracks = () => {
   const [countryError, setCountryError] = useState("");
   const [trackNameError, setTrackNameError] = useState("");
   const [genreError, setGenreError] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
+  const [biographyError, setBiographyError] = useState("");
   const [trackArtistNameError, setTrackArtistNameError] = useState("");
   const [languageError, setLanguageError] = useState("");
   const [recordLabelError, setRecordLabelError] = useState("");
@@ -249,10 +263,43 @@ const UploadTracks = () => {
   const [artistNumberError, setArtistNumberError] = useState("");
   const [uploadDateError, setUploadDateError] = useState("");
 
+  const [trackSections, setTrackSections] = useState([
+    {
+      file: null,
+      previewUrl: null,
+      uploadedUrl: null,
+      progress: 0,
+      base64Audio: null,
+      audioDuration: null,
+      loading: false,
+      trackTitle: "",
+      errorMessage: "",
+    },
+  ]);
+
+  console.log("trackSections", trackSections);
+
   const handleUploadingChoiceChange = (event) => {
     setUploadingChoice(event.target.value);
     setUploadingChoiceError("");
     setFormError("");
+  };
+
+  // Function to handle file change
+  const handleMultipleAudioFileChange = (
+    index,
+    file,
+    previewUrl,
+    base64Audio,
+    audioDuration
+  ) => {
+    const updatedSections = [...trackSections];
+    updatedSections[index].file = file;
+    updatedSections[index].previewUrl = previewUrl;
+    updatedSections[index].base64Audio = base64Audio;
+    updatedSections[index].audioDuration = audioDuration;
+
+    setTrackSections(updatedSections);
   };
 
   // this function calls the upload track api
@@ -266,21 +313,28 @@ const UploadTracks = () => {
     form.append("genre", JSON?.parse(genre));
     form.append("language", language);
     form.append("image", uploadedPictureUrl?.link);
-    form.append("audio", uploadedAudioUrl?.link);
-    form.append("duration", audioDuration);
-    form.append("country", country);
     form.append(
-      "choice",
-      uploadingChoice == 1 ? "Uploading for Myself" : "Uploading For Someone"
+      "audio",
+      trackSections?.map((track) => track?.uploadedUrl).join("||::")
     );
+    form.append(
+      "duration",
+      trackSections?.map((track) => track?.audioDuration).join("||::")
+    );
+    form.append(
+      "track_name",
+      trackSections?.map((track) => track?.trackTitle).join("||::")
+    );
+    form.append("country", country);
+    form.append("choice", uploadingChoice);
     form.append("someone_full_name", artistFullName);
     form.append("someone_name", artistName);
     form.append("someone_email", artistEmail);
     form.append("someone_phone", artistNumber);
-    form.append("track_name", "");
     form.append("track_id", "");
     form.append("is_cover", 0);
     form.append("description", description);
+    form.append("biography", biography);
     form.append("last_name", lastName);
     form.append("middle_name", middleName);
     form.append("first_name", firstName);
@@ -298,6 +352,8 @@ const UploadTracks = () => {
     form.append("itunes_url", itunesUrl);
     form.append("video_url", uploadedVideoUrl?.link);
     form.append("music_upload_date", uploadDate);
+
+    // console.log("forrrmm", [...form]);
 
     try {
       await axios
@@ -418,7 +474,19 @@ const UploadTracks = () => {
     }
   };
 
-  const handleAudioFileChange = (event) => {
+  const handleAudioTitleChange = (index, newTitle) => {
+    const updatedSections = [...trackSections];
+    updatedSections[index].trackTitle = newTitle;
+
+    // Reset error message if title is changed
+    if (newTitle) {
+      updatedSections[index].errorMessage = "";
+    }
+
+    setTrackSections(updatedSections);
+  };
+
+  const handleAudioFileChange = (event, index) => {
     const file = event.target.files[0];
     setAudioFile(file);
 
@@ -428,7 +496,24 @@ const UploadTracks = () => {
 
       const reader = new FileReader();
       reader.onloadend = () => {
-        setBase64Audio(reader?.result);
+        const base64Audio = reader.result; // Get Base64
+        setBase64Audio(base64Audio); // Set Base64 state
+
+        // Create an audio element to get duration
+        const audioElement = new Audio(fileUrl);
+        audioElement.onloadedmetadata = () => {
+          const duration = audioElement.duration?.toFixed(2); // Get duration
+          setAudioDuration(duration); // Optionally set duration state
+
+          // Call the handler to pass all the data (file, preview, base64, and duration)
+          handleMultipleAudioFileChange(
+            index,
+            file, // The audio file
+            fileUrl, // Preview URL
+            base64Audio, // Base64 string
+            duration // Audio duration
+          );
+        };
       };
       reader.readAsDataURL(file);
 
@@ -483,20 +568,21 @@ const UploadTracks = () => {
         .then((res) => {
           console.log("res", res);
           setLoading(false);
+          setFormError("");
 
           if (res?.data?.status == 200) {
             console.log("uploadCoverArt data", res?.data);
 
             setUploadedPictureUrl(res?.data);
-            toast.success("Your picture uploaded successfully 😇");
+            toast.success("Your cover art was uploaded successfully 😇");
           } else {
             console.log("message", res?.data?.status);
             setFormError("Something went wrong, please try again later");
             setCoverArtErrorMessage(res?.data?.message);
 
             toast.error(
-              "Picture Upload Failed",
-              "Something went wrong while uploading your picture, please try again later"
+              "Cover Art Upload Failed",
+              "Something went wrong while uploading your cover art, please try again later"
             );
           }
         })
@@ -504,8 +590,8 @@ const UploadTracks = () => {
           console.log("uploadCoverArt err", err);
           setLoading(false);
           toast.error(
-            "Picture Upload Failed",
-            "Something went wrong while uploading your picture, please try again later"
+            "Cover Art Upload Failed",
+            "Something went wrong while uploading your cover art, please try again later"
           );
         });
     } catch (error) {
@@ -513,15 +599,20 @@ const UploadTracks = () => {
 
       console.log("uploadCoverArt error", error);
       toast.error(
-        "Picture Upload Failed",
-        "Something went wrong while uploading your picture, please try again later"
+        "Cover Art Upload Failed",
+        "Something went wrong while uploading your cover art, please try again later"
       );
     }
   };
 
   // this function calls the upload audio files api to store the documnet in the db
-  const uploadMP3File = async (file, base64Audio) => {
+  const uploadMP3File = async (index, file, base64Audio) => {
     setLoading(true);
+    // console.log("inddd", index);
+
+    const updatedSections = [...trackSections];
+    updatedSections[index].loading = true;
+    setTrackSections(updatedSections);
 
     const api_nonce = Date.now().toString();
 
@@ -531,7 +622,6 @@ const UploadTracks = () => {
     form.append("no", 0);
     form.append("file", file);
     form.append("file_data", base64Audio);
-
     try {
       await axios
         .post(`${baseURL}upload-track.php?API_KEY=${API_KEY}`, form, {
@@ -540,19 +630,31 @@ const UploadTracks = () => {
               (progressEvent.loaded * 100) / progressEvent.total
             );
             setProgress(percentCompleted);
+
+            const updatedSections = [...trackSections];
+            updatedSections[index].progress = percentCompleted;
+            setTrackSections(updatedSections);
           },
         })
         .then((res) => {
           console.log("res", res);
           setLoading(false);
+          setFormError("");
 
           if (res?.data?.status == 200) {
             console.log("uploadMP3File data", res?.data);
+
+            const updatedSections = [...trackSections];
+            updatedSections[index].uploadedUrl = res?.data?.link;
+            updatedSections[index].loading = false;
+            setTrackSections(updatedSections);
 
             setUploadedAudioUrl(res?.data);
             toast.success("Your track uploaded successfully 😇");
           } else {
             console.log("message", res?.data?.status);
+            updatedSections[index].loading = false;
+            setTrackSections(updatedSections);
             setFormError("Something went wrong, please try again later");
 
             toast.error(
@@ -563,6 +665,8 @@ const UploadTracks = () => {
         })
         .catch((err) => {
           console.log("uploadMP3File err", err);
+          updatedSections[index].loading = false;
+          setTrackSections(updatedSections);
           setLoading(false);
           toast.error(
             "Track Upload Failed",
@@ -571,7 +675,8 @@ const UploadTracks = () => {
         });
     } catch (error) {
       setLoading(false);
-
+      updatedSections[index].loading = false;
+      setTrackSections(updatedSections);
       console.log("uploadMP3File error", error);
       toast.error(
         "Track Upload Failed",
@@ -605,6 +710,7 @@ const UploadTracks = () => {
         .then((res) => {
           console.log("res", res);
           setLoading(false);
+          setFormError("");
 
           if (res?.data?.status == 200) {
             console.log("uploadMP4File data", res?.data);
@@ -638,6 +744,24 @@ const UploadTracks = () => {
         "Something went wrong while uploading your video, please try again later"
       );
     }
+  };
+
+  // Function to add more tracks
+  const addMoreTracks = () => {
+    setTrackSections([
+      ...trackSections,
+      {
+        file: null,
+        previewUrl: null,
+        uploadedUrl: null,
+        progress: 0,
+        base64Audio: null,
+        loading: false,
+        trackTitle: "",
+        errorMessage: "",
+        showInput: true,
+      },
+    ]);
   };
 
   return (
@@ -862,9 +986,9 @@ const UploadTracks = () => {
           <Container>
             <RowContent>
               <FormInput
-                formTitle={"Enter your Spotify URL (if any)"}
+                formTitle={"Enter your Spotify URL"}
                 inputId={"spotify-url"}
-                inputPlaceholder={"Enter your Spotify URL (if any)"}
+                inputPlaceholder={"Enter your Spotify URL"}
                 type={"text"}
                 value={spotifyUrl}
                 onChange={(e) => {
@@ -875,9 +999,9 @@ const UploadTracks = () => {
               />
 
               <FormInput
-                formTitle={"Enter your iTunes URL (if any)"}
+                formTitle={"Enter your iTunes URL"}
                 inputId={"itunes-url"}
-                inputPlaceholder={"Enter your iTunes URL (if any)"}
+                inputPlaceholder={"Enter your iTunes URL"}
                 type={"text"}
                 value={itunesUrl}
                 onChange={(e) => {
@@ -889,7 +1013,7 @@ const UploadTracks = () => {
             </RowContent>
             <FormInput
               type={"date"}
-              formTitle={"Select the Date for your Music to be Uploaded"}
+              formTitle={"Select the Date for your Music to be Uploaded *"}
               width={"100%"}
               value={uploadDate}
               onChange={(e) => {
@@ -900,18 +1024,33 @@ const UploadTracks = () => {
               errorMessage={uploadDateError}
             />
             <FormTextArea
-              formTitle={
-                "A short description of what the song is all about (Optional)"
-              }
+              formTitle={"A short description of what the song is all about *"}
               row={5}
               value={description}
               onChange={(e) => {
                 setDescription(e.target.value);
                 setFormError("");
+                setDescriptionError("");
               }}
               placeholder={""}
               width={"100%"}
               maxLength={100}
+              errorMessage={descriptionError}
+            />
+
+            <FormTextArea
+              formTitle={"A short biography about you *"}
+              row={5}
+              value={biography}
+              onChange={(e) => {
+                setBiography(e.target.value);
+                setFormError("");
+                setBiographyError("");
+              }}
+              placeholder={""}
+              width={"100%"}
+              maxLength={100}
+              errorMessage={biographyError}
             />
             <FormTextArea
               formTitle={"Paste your Lyrics Here or Upload Below (Optional)"}
@@ -933,7 +1072,7 @@ const UploadTracks = () => {
               }}
             >
               <FormButton
-                title={"Upload"}
+                title={"Upload Lyrics"}
                 onClick={handleClick}
                 loading={loading}
                 marginLeft={"0px"}
@@ -999,7 +1138,7 @@ const UploadTracks = () => {
                 uploadTitle="Cover Art"
                 uploadDescription="Drag & drop files or Browse. Supported formats: PNG, JPG"
                 rules={rules1}
-                uploadBtnTitle={"Upload"}
+                uploadBtnTitle={"Upload Cover Art"}
                 fileType={"image/*"}
                 handleFileChange={handleCoverPhotoFileChange}
                 loading={loading}
@@ -1012,34 +1151,50 @@ const UploadTracks = () => {
                   setImage(null);
                   setSelectedPictureUrl(null);
                 }}
-                UploadedText={"Your cover picture has been uploaded"}
+                UploadedText={"Your cover art has been successfully uploaded"}
                 isFileUploaded={uploadedPictureUrl?.imageName}
                 uploadPercentage={progress}
                 fileUploadErrorMessage={coverArtErrorMessage}
               />
 
-              <UploadSection
-                title="Tracks"
-                uploadTitle="Song"
-                uploadDescription="Drag & drop files or Browse. Supported formats: MP3"
-                rules={rules2}
-                uploadBtnTitle={"Upload"}
-                fileType={"audio/mp3"}
-                handleFileChange={handleAudioFileChange}
-                loading={loading}
-                selectedFile={audioFile}
-                onFileUpload={() => {
-                  uploadMP3File(audioFile, base64Audio);
-                }}
-                previewUrl={selectedAudioUrl}
-                handleCancel={() => {
-                  setAudioFile(null);
-                  setSelectedAudioUrl(null);
-                }}
-                UploadedText={"Your Track has been uploaded"}
-                isFileUploaded={uploadedAudioUrl?.link}
-                uploadPercentage={progress}
-              />
+              {trackSections?.map((section, index) => (
+                <UploadSection
+                  key={index}
+                  title={`${index == 0 ? trackName : section?.trackTitle}`}
+                  uploadTitle="Song"
+                  uploadDescription="Drag & drop files or Browse. Supported formats: MP3"
+                  uploadBtnTitle={"Upload Track"}
+                  fileType={"audio/mp3"}
+                  handleFileChange={(event) =>
+                    handleAudioFileChange(event, index)
+                  }
+                  loading={section?.loading}
+                  selectedFile={section?.file}
+                  onFileUpload={() =>
+                    uploadMP3File(index, section?.file, section?.base64Audio)
+                  }
+                  previewUrl={section?.previewUrl}
+                  handleCancel={() => {
+                    const updatedSections = [...trackSections];
+                    updatedSections[index] = {
+                      file: null,
+                      previewUrl: null,
+                      uploadedUrl: null,
+                      progress: 0,
+                    };
+                    setTrackSections(updatedSections);
+                  }}
+                  UploadedText={"Your Track has been successfully uploaded"}
+                  isFileUploaded={section?.uploadedUrl}
+                  uploadPercentage={section?.progress}
+                  showTrackInput={section?.showInput}
+                  handleTrackTitleChange={(e) =>
+                    handleAudioTitleChange(index, e?.target?.value)
+                  }
+                />
+              ))}
+
+              <FormButton title="Add More Tracks" onClick={addMoreTracks} />
             </UploadContainer>
 
             <Subtitle>
@@ -1053,7 +1208,7 @@ const UploadTracks = () => {
               uploadTitle="Video"
               uploadDescription="Drag & drop files or Browse. Supported formats: MP4"
               rules={videoRecordRules}
-              uploadBtnTitle={"Upload"}
+              uploadBtnTitle={"Upload Video"}
               fileType={"video/*"}
               handleFileChange={handleVideoFileChange}
               loading={loading}
@@ -1081,11 +1236,50 @@ const UploadTracks = () => {
                 title={"Submit"}
                 width={"225px"}
                 marginLeft={"0px"}
-                onClick={uploadMusic}
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}
                 loading={loading}
                 errorMessage={formError}
               />
             </div>
+
+            <Modal
+              isOpen={isModalOpen}
+              onClose={closeModal}
+              title="Are you sure you want to submit ?"
+            >
+              <h4 style={{ fontWeight: "500" }}>
+                if yes, click , Submit. <br />
+                if it was a mistake, click Go back to keep editing.
+              </h4>
+
+              <div
+                style={{
+                  justifyContent: "space-between",
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <TransparentBtn
+                  title={"Close"}
+                  color={"black"}
+                  width={"125px"}
+                  marginLeft={"0px"}
+                  onClick={() => {
+                    setIsModalOpen(false);
+                  }}
+                />
+                <FormButton
+                  title={"Submit"}
+                  width={"225px"}
+                  marginLeft={"0px"}
+                  onClick={uploadMusic}
+                  loading={loading}
+                  errorMessage={formError}
+                />
+              </div>
+            </Modal>
 
             <hr />
             <div

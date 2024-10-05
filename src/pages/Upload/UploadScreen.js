@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import Upload from "../../components/cards/Upload";
+import Upload2 from "../../components/cards/Upload2";
 
 const Container = styled.div`
   display: flex;
@@ -24,23 +25,23 @@ const UploadScreen = () => {
 
   return (
     <Container>
-      <Upload
+      <Upload2
         title="Upload Music"
         description="Distribute your songs across multiple platforms"
         formats="MP3"
         handleClick={() => {
           navigate("/upload-music");
         }}
-        uploadBtnTitle={"Upload"}
+        uploadBtnTitle={"Upload Music"}
       />
-      <Upload
+      <Upload2
         title="Upload Video"
         description="Distribute your video via our YouTube channel, with YouTube content ID"
         formats="MP4"
         handleClick={() => {
           navigate("/upload-video");
         }}
-        uploadBtnTitle={"Upload"}
+        uploadBtnTitle={"Upload Video"}
       />
     </Container>
   );

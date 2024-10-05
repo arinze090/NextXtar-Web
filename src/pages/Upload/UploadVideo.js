@@ -385,7 +385,7 @@ function UploadVideo() {
         uploadTitle="Video"
         uploadDescription="Drag & drop files or Browse. Supported formats: MP4"
         rules={videoRecordRules}
-        uploadBtnTitle={"Upload"}
+        uploadBtnTitle={"Upload Video"}
         fileType={"video/*"}
         handleFileChange={handleVideoFileChange}
         loading={loading}

@@ -258,9 +258,9 @@ function UploadAlbum() {
           <Container>
             <RowContent>
               <FormInput
-                formTitle={"Enter your Spotify URL (if any)"}
+                formTitle={"Enter your Spotify URL"}
                 inputId={"spotify-url"}
-                inputPlaceholder={"Enter your Spotify URL (if any)"}
+                inputPlaceholder={"Enter your Spotify URL"}
                 type={"text"}
                 value={""}
                 onChange={""}
@@ -268,9 +268,9 @@ function UploadAlbum() {
               />
 
               <FormInput
-                formTitle={"Enter your iTunes URL (if any)"}
+                formTitle={"Enter your iTunes URL"}
                 inputId={"itunes-url"}
-                inputPlaceholder={"Enter your iTunes URL (if any)"}
+                inputPlaceholder={"Enter your iTunes URL"}
                 type={"text"}
                 value={""}
                 onChange={""}

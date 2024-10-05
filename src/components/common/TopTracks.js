@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -11,6 +11,10 @@ import { CiHeart } from "react-icons/ci";
 import { FaEllipsisH, FaPlay } from "react-icons/fa";
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
+import {
+  setIsAudioPlaying,
+  setIsAudioPlayingData,
+} from "../../redux/features/user/userSlice";
 
 const Container = styled.div`
   // background: red;
@@ -122,6 +126,8 @@ const IconsSection = styled.div`
 `;
 
 const TopTracks = ({ topTracksData }) => {
+  const dispatch = useDispatch();
+
   const state = useSelector((state) => state);
   const user = state?.user?.user;
 
@@ -173,27 +179,33 @@ const TopTracks = ({ topTracksData }) => {
 
   // for the audio playing
   const [currentPlaying, setCurrentPlaying] = useState(null);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  // const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   const audioRef = useRef(new Audio());
 
-  const onPlayClick = (audioUrl) => {
-    console.log("currrr", audioUrl?.audio);
-    setCurrentPlaying(audioUrl?.audio);
+  const onPlayClick = (selectedTrack) => {
+    console.log("currrr", selectedTrack);
+    // setCurrentPlaying(selectedTrack?.audio);
 
-    if (currentPlaying === audioUrl?.audio) {
+    if (currentPlaying === selectedTrack?.audio) {
       if (!audioRef.current.paused) {
         audioRef.current.pause();
-        setIsAudioPlaying(false);
+        dispatch(setIsAudioPlaying(false));
       } else {
         audioRef.current.play();
-        setIsAudioPlaying(true);
+        // setIsAudioPlaying(true);
+        // save the selected track and the playing status to redux
+        dispatch(setIsAudioPlaying(true));
       }
     } else {
       audioRef.current.pause();
-      audioRef.current.src = audioUrl?.audio;
+      audioRef.current.src = selectedTrack?.audio;
       audioRef.current.play();
-      setCurrentPlaying(audioUrl?.audio);
+      setCurrentPlaying(selectedTrack?.audio);
+
+      // save the selected track and the playing status to redux
+      dispatch(setIsAudioPlayingData(selectedTrack));
+      dispatch(setIsAudioPlaying(true));
     }
   };
 
@@ -224,7 +236,11 @@ const TopTracks = ({ topTracksData }) => {
               <TrackActions>
                 <TrackDuration>{track?.duration}</TrackDuration>
                 <ActionIcon>
-                  <FaPlay onClick={onPlayClick} />
+                  <FaPlay
+                    onClick={() => {
+                      onPlayClick(track);
+                    }}
+                  />
                 </ActionIcon>
                 {!isSmallScreen && (
                   <ActionIcon>
