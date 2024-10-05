@@ -144,8 +144,6 @@ function App() {
     <>
       <GlobalStyles />
       {loggedInUser ? <ProtectedRoutes /> : <NormalRoutes />}
-
-      <MusicPlayer />
     </>
   );
 }
