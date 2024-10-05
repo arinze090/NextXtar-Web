@@ -19,7 +19,7 @@ import MusicPlayer from "./components/musicPlayer/MusicPlayer";
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  console.log("state", state);
+  // console.log("state", state);
 
   const loggedInUser = state?.user?.user;
   console.log("loggedInUser", loggedInUser);
