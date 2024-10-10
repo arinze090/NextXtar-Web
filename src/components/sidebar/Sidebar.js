@@ -258,6 +258,9 @@ const Sidebar = () => {
                 <SidebarLabel>Log Out</SidebarLabel>
               </div>
             </SidebarLink>
+            <div
+              style={{ marginTop: 50, minHeight: 50, marginBottom: 100 }}
+            ></div>
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>

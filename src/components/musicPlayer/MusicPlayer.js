@@ -26,7 +26,7 @@ const PlayerContainer = styled.div`
   left: 0;
   right: 0;
   height: 80px;
-  background-color: white;
+  background-color: black;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
@@ -99,11 +99,12 @@ const ItemName = styled.p`
   text-overflow: ellipsis;
   // background: green;
   width: 100%;
+  color: white;
 `;
 
 const ItemArtist = styled.p`
   font-size: 0.9rem;
-  color: grey;
+  color: white;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -242,7 +243,7 @@ const VolumeInputRange = styled.input`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: grey;
+    background: white;
     cursor: pointer;
     margin-top: -4px; /* Center the thumb on the line */
   }
@@ -285,7 +286,7 @@ const PlaySection = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: black;
+  background: #05a30b;
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -305,31 +306,31 @@ const PlaySection = styled.div`
 // `;
 
 const ShuffleIcon = styled(IoShuffle)`
-  color: #3b3b3b;
+  color: #fff;
   font-size: 30px;
   cursor: pointer;
 `;
 
 const SpeakerIcon = styled(HiMiniSpeakerWave)`
-  color: black;
+  color: white;
   font-size: 15px;
   cursor: pointer;
 `;
 
 const SkipBackIcon = styled(IoPlaySkipBack)`
-  color: #3b3b3b;
+  color: #fff;
   font-size: 30px;
   cursor: pointer;
 `;
 
 const SkipForwardIcon = styled(IoPlaySkipForward)`
-  color: #3b3b3b;
+  color: #fff;
   font-size: 30px;
   cursor: pointer;
 `;
 
 const PlayIcon = styled(FaPlay)`
-  color: #fff;
+  color: white;
   font-size: 1.5rem;
   cursor: pointer;
   // background: #005903;
@@ -342,7 +343,7 @@ const PauseIcon = styled(IoPauseOutline)`
 `;
 
 const RepeatIcon = styled(RiRepeat2Fill)`
-  color: #3b3b3b;
+  color: #fff;
   font-size: 30px;
   cursor: pointer;
 `;
@@ -440,15 +441,14 @@ const MusicPlayer = ({}) => {
     const list = isShuffle ? shuffledTrackList : trackList;
     const nextTrackIndex = currentTrackIndex + 1;
 
-    // If repeat is on, play the current track again
-    if (isRepeat) {
-      playTrack(list[currentTrackIndex]); // Repeat the current track
-      return;
-    }
-
     if (nextTrackIndex < list.length) {
       dispatch(setCurrentTrackIndex(nextTrackIndex));
       playTrack(list[nextTrackIndex]);
+    }
+    // If repeat is on, play the current track again
+    else if (isRepeat) {
+      playTrack(list[currentTrackIndex]); // Repeat the current track
+      return;
     }
   };
 
@@ -613,7 +613,7 @@ const MusicPlayer = ({}) => {
               <ShuffleIcon
                 onClick={handleShuffle}
                 style={{
-                  color: isShuffle && COLORS.appBgColor2,
+                  color: isShuffle && COLORS.appBgColor1,
                   fontWeight: isShuffle && "bold",
                 }}
               />
@@ -630,7 +630,7 @@ const MusicPlayer = ({}) => {
               <RepeatIcon
                 onClick={toggleRepeat}
                 style={{
-                  color: isRepeat && COLORS.appBgColor2,
+                  color: isRepeat && COLORS.appBgColor1,
                   fontWeight: isRepeat && "bold",
                 }}
               />
