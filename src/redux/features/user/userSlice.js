@@ -19,6 +19,8 @@ const initialState = {
   isAudioPlayingData: null,
   fcmToken: null,
   reduxTheme: "light",
+  currentTrackIndex: 0,
+  audioRef: null,
 };
 
 const userSlice = createSlice({
@@ -86,6 +88,17 @@ const userSlice = createSlice({
     changeTheme: (state, action) => {
       state.reduxTheme = action.payload;
     },
+    setCurrentTrackIndex: (state, action) => {
+      state.currentTrackIndex = action.payload;
+    },
+    clearPlayerData: (state, action) => {
+      state.currentTrackIndex = 0;
+      state.isAudioPlaying = false;
+      state.isAudioPlayingData = null;
+    },
+    setAudioRef: (state, action) => {
+      state.audioRef = action.payload;
+    },
   },
 });
 
@@ -109,5 +122,8 @@ export const {
   setIsAudioPlayingData,
   setFCMToken,
   changeTheme,
+  setCurrentTrackIndex,
+  clearPlayerData,
+  setAudioRef,
 } = userSlice.actions;
 export default userSlice.reducer;

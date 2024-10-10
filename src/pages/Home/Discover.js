@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 import TopTracks from "../../components/common/TopTracks";
 import SongOfTheDay from "../../components/common/SongOfDay";
 import Genres from "../../components/common/Genres";
 import MusicPlatformSections from "./MusicPlatformSections";
-import MusicPlayer from "../../components/cards/MusicPlayer";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
 import DiscvoverCarousel from "./DiscvoverCarousel";
+import { setDiscoverTracks } from "../../redux/features/discover/discoverSlice";
 
 const Container = styled.div`
   display: flex;
@@ -196,17 +196,20 @@ const playerChart = [
 ];
 
 function Discover() {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const userToken = state?.user?.userToken;
 
   const discoverListings = state?.discover?.listings?.listDiscover;
+
+  const discoverTracksFromRedux = state?.discover?.discoverTracks;
+  // console.log("discoverTracksFromReduxX", discoverTracksFromRedux);
 
   const genresListing = state?.discover?.listings?.genres;
   const reduxTopTracks = state?.discover?.topTracks;
 
   const [loading, setLoading] = useState(false);
   const [songOfTheDayData, setSongOfTheDayData] = useState([]);
-  const [topTracks, setTopTracks] = useState([]);
   const [carouselTracks, setCarouselTracks] = useState([]);
   const [recentlyUploadedTracks, setRecentlyUploadedTracks] = useState([]);
 
@@ -276,6 +279,9 @@ function Discover() {
 
     if (index >= discoverListings.length) {
       console.log("All platforms fetched::", discoverTrackss);
+
+      // push the pverall data to redux here
+      // dispatch(setDiscoverTracks(discoverTrackss));
       setLoading(false);
       return;
     }

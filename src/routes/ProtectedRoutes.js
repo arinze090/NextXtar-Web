@@ -55,6 +55,7 @@ import Home from "../pages/Home/Home";
 import WithdrawalPage from "../pages/Profile/WithdrawalPage";
 import UserVerification from "../pages/Profile/UserVerification";
 import DiscoverCategoryList from "../pages/MusicLibrary/DiscoverCategoryList";
+import MusicPlayer from "../components/musicPlayer/MusicPlayer";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -64,42 +65,6 @@ function ProtectedRoutes() {
   const reduxLastTimeAPIFetch = useSelector(
     (state) => state?.discover?.lastAPIFetchTime
   );
-
-  const discoverTracksFromRedux = state?.discover?.discoverTracks;
-  console.log("discoverTracksFromReduxX", discoverTracksFromRedux);
-
-  // const fetchPressReleases = async () => {
-  //   setLoading(true);
-
-  //   const form = new FormData();
-  //   form.append("token", userToken);
-  //   form.append("limit", 10);
-  //   form.append("page", 1);
-
-  //   try {
-  //     await axios
-  //       .post(`${baseURL}press-releases.php?API_KEY=${API_KEY}`, form)
-
-  //       .then((res) => {
-  //         console.log("fetchPressReleases res", res);
-  //         setLoading(false);
-
-  //         if (res?.data?.status == 200) {
-  //           console.log("fetchPressReleases data", res?.data);
-  //           // dispatch the data to redux
-  //           dispatch(setPressReleases(res?.data));
-  //         } else {
-  //           console.log("fetchPressReleases message", res?.data);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log("fetchPressReleases err", err);
-  //         setLoading(false);
-  //       });
-  //   } catch (error) {
-  //     console.log("fetchPressReleases error", error);
-  //   }
-  // };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -203,6 +168,8 @@ function ProtectedRoutes() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsAndCondition />} />
       </Routes>
+      <MusicPlayer />
+
       <Footer />
     </Router>
   );

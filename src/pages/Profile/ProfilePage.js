@@ -146,24 +146,6 @@ const TrackTitle = styled.p`
   text-align: center;
 `;
 
-const musicLibraryData = [
-  {
-    optionTitle: "Playlists",
-  },
-  {
-    optionTitle: "Albums",
-  },
-  {
-    optionTitle: "Tracks",
-  },
-  {
-    optionTitle: "Likes",
-  },
-  {
-    optionTitle: "Following",
-  },
-];
-
 function ProfilePage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -202,7 +184,7 @@ function ProfilePage() {
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(userLikes.length / itemsPerPage);
-  console.log("totalPages", totalPages);
+  // console.log("totalPages", totalPages);
 
   // Determine the current visible items based on the page
   const likedTrackStartIdx =
@@ -236,12 +218,11 @@ function ProfilePage() {
     }
   };
 
-  const currentLikedTracks = userLikes.slice(
+  const currentLikedTracks = userLikes?.slice(
     likedTrackStartIdx,
     likedTrackEndIdx
   );
-
-  console.log("currentLikedTracks", currentLikedTracks);
+  // console.log("currentLikedTracks", currentLikedTracks);
 
   // Handlers to navigate between pages
   const handleLikedTrackNext = () => {
@@ -372,79 +353,6 @@ function ProfilePage() {
     navigate(`/playlist/${encodedName}`);
   };
 
-  const renderContent = () => {
-    if (loading) {
-      return <SkeletonLoader />;
-    }
-
-    if (activeTab === 0) {
-      return userPlaylist?.length ? (
-        userPlaylist.map((playlist, index) => (
-          <PlaylistItem
-            key={index}
-            bgImage={require("../../assets/singnifySplashLogo.png")}
-            onClick={() => {
-              navigateToSelectedPlaylist(playlist);
-            }}
-          >
-            <PlaylistDiv>
-              <PlaylistTitle>{playlist?.playlist}</PlaylistTitle>
-            </PlaylistDiv>
-          </PlaylistItem>
-        ))
-      ) : (
-        <FullWidthMessage>
-          You don't have any Playlist in your collection
-        </FullWidthMessage>
-      );
-    } else if (activeTab === 1) {
-      return userAlbums?.length ? (
-        userAlbums?.map((album, index) => (
-          <PlaylistItem
-            key={index}
-            bgImage={require("../../assets/singnifySplashLogo.png")}
-          >
-            <PlaylistDiv>
-              <PlaylistTitle>{album?.playlist}</PlaylistTitle>
-            </PlaylistDiv>
-          </PlaylistItem>
-        ))
-      ) : (
-        <FullWidthMessage>
-          You don't have any Album in your collection
-        </FullWidthMessage>
-      );
-    } else if (activeTab === 2) {
-      return userTracks?.length ? (
-        userTracks.map((track, index) => (
-          <PlaylistItem key={index} bgImage={track?.image}>
-            <PlaylistDiv>
-              <PlaylistTitle>{track?.track_name}</PlaylistTitle>
-            </PlaylistDiv>
-          </PlaylistItem>
-        ))
-      ) : (
-        <FullWidthMessage>
-          You don't have any Tracks in your collection
-        </FullWidthMessage>
-      );
-    } else if (activeTab === 3) {
-      return userLikes?.length ? (
-        userLikes.map((likes, index) => (
-          <PlaylistItem key={index} bgImage={likes?.image}>
-            <PlaylistDiv>
-              <PlaylistTitle>{likes?.track_name}</PlaylistTitle>
-            </PlaylistDiv>
-          </PlaylistItem>
-        ))
-      ) : (
-        <FullWidthMessage>
-          You don't have any Liked song in your collection
-        </FullWidthMessage>
-      );
-    }
-  };
-
   useEffect(() => {
     getUserAlbums();
     getUserTracks();
@@ -469,15 +377,7 @@ function ProfilePage() {
           />
           {currentTracks?.length ? (
             currentTracks?.map((cur, i) => (
-              <ProfileMusicCard
-                imageUrl={cur?.image}
-                imageUrlAlt={cur?.base_name}
-                numberOfLikes={cur?.no_downloads}
-                numberOfListens={cur?.no_plays}
-                title={cur?.track_name}
-                songDescription={cur?.artist_name}
-                artisteName={cur?.artist_name}
-              />
+              <ProfileMusicCard key={i} props={cur} />
             ))
           ) : (
             <TrackTitle>You have no Uploaded Track</TrackTitle>
@@ -491,15 +391,7 @@ function ProfilePage() {
           />
           {currentLikedTracks?.length ? (
             currentLikedTracks?.map((cur, i) => (
-              <ProfileMusicCard
-                imageUrl={cur?.image}
-                imageUrlAlt={cur?.base_name}
-                numberOfLikes={cur?.no_downloads}
-                numberOfListens={cur?.no_plays}
-                title={cur?.track_name}
-                songDescription={cur?.artist_name}
-                artisteName={cur?.label}
-              />
+              <ProfileMusicCard key={i} props={cur} />
             ))
           ) : (
             <TrackTitle>You have no Liked Track</TrackTitle>

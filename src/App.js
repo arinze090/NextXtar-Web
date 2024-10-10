@@ -14,7 +14,6 @@ import {
 import { baseURL } from "./utils/api-client";
 import { API_KEY } from "./utils/devKeys";
 import GlobalStyles from "./theme/GlobalStyles";
-import MusicPlayer from "./components/musicPlayer/MusicPlayer";
 
 function App() {
   const dispatch = useDispatch();

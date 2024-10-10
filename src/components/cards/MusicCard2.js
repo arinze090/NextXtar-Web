@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { TbHeadphonesFilled, TbPoint } from "react-icons/tb";
 
+import { baseURL } from "../../utils/api-client";
+import { API_KEY } from "../../utils/devKeys";
 import Ellipsis from "../modal/Ellipsis";
+import {
+  setIsAudioPlaying,
+  setIsAudioPlayingData,
+} from "../../redux/features/user/userSlice";
 
 const ItemCard = styled.div`
   position: relative;
@@ -140,26 +151,74 @@ const IconsSection = styled.div`
   text-overflow: ellipsis;
 `;
 
-function MusicCard2({
-  imageUrl,
-  imageUrlAlt,
-  title,
-  artistName,
-  numberOfPlays,
-  onPlayPause,
-  isPlaying,
-  onLikeIconClicked,
-  onEllipsisClicked,
-  playlistItem,
-  loading,
-}) {
+function MusicCard2({ props, onEllipsisClicked }) {
+  const dispatch = useDispatch();
+
+  const state = useSelector((state) => state);
+  const user = state?.user?.user;
+  const isAudioPlayingData = state?.user?.isAudioPlayingData;
+  const isAudioPlaying = state?.user?.isAudioPlaying;
+
+  const [loading, setLoading] = useState(false);
+
+  const [toggleLike, setToggleLike] = useState(false);
+
+  const toggleLikeMusic = async (song) => {
+    setToggleLike(!toggleLike);
+    console.log("[ressed]");
+
+    const form = new FormData();
+    form.append("token", user?.Token);
+    form.append("music_id", song?.music_id);
+    form.append("type", "");
+
+    try {
+      setLoading(true);
+      await axios
+        .post(`${baseURL}like-music.php?API_KEY=${API_KEY}`, form)
+        .then((res) => {
+          console.log("res", res);
+          setLoading(false);
+
+          if (res?.data?.status == 200) {
+            console.log("toggleLikeMusic data", res?.data);
+            toast.success(`You liked this song: ${res?.data?.music?.Name} 😇`);
+          } else {
+            console.log("toggleLikeMusic message", res?.data?.status);
+            setToggleLike(!toggleLike);
+          }
+        })
+        .catch((err) => {
+          console.log("toggleLikeMusic err", err);
+          setLoading(false);
+          setToggleLike(!toggleLike);
+        });
+    } catch (error) {
+      console.log("toggleLikeMusic error", error);
+      setToggleLike(!toggleLike);
+    }
+  };
+
+  const onPlayClicked = (selectedTrack) => {
+    console.log("selectedTrack", selectedTrack);
+    // just send the data to redux
+    dispatch(setIsAudioPlaying(true));
+    dispatch(setIsAudioPlayingData(selectedTrack));
+  };
+
+  const pausedClicked = (selectedTrack) => {
+    // just send the data to redux
+    dispatch(setIsAudioPlaying(false));
+    dispatch(setIsAudioPlayingData(selectedTrack));
+  };
+
   if (loading) {
     return (
       <ItemCard>
         <SkeletonLoader />
         <ItemDetails>
-          <ItemName>{title}</ItemName>
-          <ItemArtist>{artistName}</ItemArtist>
+          <ItemName>{props?.track_name}</ItemName>
+          <ItemArtist>{props?.label}</ItemArtist>
         </ItemDetails>
       </ItemCard>
     );
@@ -167,30 +226,42 @@ function MusicCard2({
 
   return (
     <ItemCard>
-      <ItemImage src={imageUrl} alt={imageUrlAlt} />
+      <ItemImage src={props?.image} alt={props?.label} />
       <Overlay className="overlay">
-        <LikeIcon onClick={onLikeIconClicked} />
-        {isPlaying ? (
-          <PauseIcon onClick={onPlayPause} />
+        <LikeIcon
+          onClick={() => {
+            toggleLikeMusic(props);
+          }}
+        />
+        {isAudioPlaying && isAudioPlayingData?.id === props?.id ? (
+          <PauseIcon
+            onClick={() => {
+              pausedClicked(props);
+            }}
+          />
         ) : (
-          <PlayIcon onClick={onPlayPause} />
+          <PlayIcon
+            onClick={() => {
+              onPlayClicked(props);
+            }}
+          />
         )}
         <Ellipsis
           onClick={onEllipsisClicked}
           showLikeSection={0}
           ellipsisColor={"white"}
-          playlistItem={playlistItem}
+          // playlistItem={playlistItem}
           ellipsisFontSize={"2rem"}
         />
       </Overlay>
       <ItemDetails>
         <IconsSection>
           <HeadsetIcon />
-          <NumberOfPlays>{numberOfPlays + " "}</NumberOfPlays>
+          <NumberOfPlays>{props?.no_plays + " "}</NumberOfPlays>
           <PointIcon />
-          <ItemName>{" " + title}</ItemName>
+          <ItemName>{" " + props?.track_name}</ItemName>
         </IconsSection>
-        <ItemArtist>{artistName}</ItemArtist>
+        <ItemArtist>{props?.label}</ItemArtist>
       </ItemDetails>
     </ItemCard>
   );

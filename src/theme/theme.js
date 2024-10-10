@@ -6,6 +6,7 @@ export const COLORS = {
   purple: "#8E24AA",
 
   appBgColor1: "#05A30B",
+  appBgColor2: "#005903",
   appColor2: "#003018",
   footerColor: "#0B0B0B",
 

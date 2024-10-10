@@ -4,15 +4,21 @@ import { useSelector, useDispatch } from "react-redux";
 
 import {
   IoShuffle,
-  IoPlaySkipBackOutline,
-  IoPlaySkipForwardOutline,
-  IoPlay,
+  IoPlaySkipBack,
+  IoPlaySkipForward,
   IoPauseOutline,
 } from "react-icons/io5";
+import { FaPlay } from "react-icons/fa6";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
 import { RiRepeat2Fill } from "react-icons/ri";
 import { convertDurationToSeconds } from "../../Library/Common";
-import { setIsAudioPlaying } from "../../redux/features/user/userSlice";
+import {
+  clearPlayerData,
+  setCurrentTrackIndex,
+  setIsAudioPlaying,
+  setIsAudioPlayingData,
+} from "../../redux/features/user/userSlice";
+import { COLORS } from "../../theme/theme";
 
 const PlayerContainer = styled.div`
   position: fixed;
@@ -38,12 +44,20 @@ const PlayerContainer = styled.div`
 const TrackInfo = styled.div`
   display: flex;
   align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  // background: red;
+  overflow: hidden;
 
   img {
     height: 60px;
     width: 60px;
     margin-right: 10px;
     border-radius: 4px;
+  }
+
+  div {
+    flex-grow: 1; /* Allow the text container to take available space */
   }
 
   p {
@@ -83,7 +97,8 @@ const ItemName = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  //   background: green;
+  // background: green;
+  width: 100%;
 `;
 
 const ItemArtist = styled.p`
@@ -93,6 +108,7 @@ const ItemArtist = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 90%;
 `;
 
 const ControlsSection = styled.div`
@@ -106,9 +122,9 @@ const ControlsSection = styled.div`
 const Controls = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   //   background: red;
-  width: 20%;
+  width: 25%;
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -142,67 +158,72 @@ const ProgressBarContainer = styled.div`
 
 const ProgressBar = styled.div`
   height: 100%;
-  background-color: #4caf50;
-  width: ${({ progress }) => `${progress}%`};
-  border-radius: 2px;
-`;
-
-const ProgressInputRange = styled.input`
-  width: 100%;
-  position: absolute;
-  top: -4px; /* Move thumb to sit on top of the line */
-  left: 0;
-  height: 6px; /* Height matches the thumb size */
-  appearance: none;
   background: ${({ progressValue }) =>
     `linear-gradient(to right, #4caf50 ${progressValue}%, #ccc ${progressValue}%)`};
+  width: ${({ progress }) => `${progress}%`};
+  border-radius: 2px;
+  width: 100%;
   z-index: 2;
   cursor: pointer;
   border-radius: 2px;
-
-  &::-webkit-slider-thumb {
-    appearance: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #000;
-    cursor: pointer;
-    margin-top: -4px; /* Center the thumb on the line */
-  }
-
-  &::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #05a30b;
-    cursor: pointer;
-  }
-
-  &::-ms-thumb {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #4caf50;
-    cursor: pointer;
-  }
-
-  &::-webkit-slider-runnable-track {
-    height: 2px; /* Thin line for the track */
-    background: transparent;
-  }
-
-  &::-moz-range-track {
-    height: 4px;
-    background: transparent;
-  }
-
-  &::-ms-track {
-    height: 4px;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-  }
 `;
+
+// const ProgressInputRange = styled.input`
+//   width: 100%;
+//   position: absolute;
+//   top: -4px; /* Move thumb to sit on top of the line */
+//   left: 0;
+//   height: 6px; /* Height matches the thumb size */
+//   appearance: none;
+//   background: ${({ progressValue }) =>
+//     `linear-gradient(to right, #4caf50 ${progressValue}%, #ccc ${progressValue}%)`};
+//   z-index: 2;
+//   cursor: pointer;
+//   border-radius: 2px;
+
+//   &::-webkit-slider-thumb {
+//     appearance: none;
+//     width: 10px;
+//     height: 10px;
+//     border-radius: 50%;
+//     background: #000;
+//     cursor: pointer;
+//     margin-top: -4px; /* Center the thumb on the line */
+//   }
+
+//   &::-moz-range-thumb {
+//     width: 12px;
+//     height: 12px;
+//     border-radius: 50%;
+//     background: #05a30b;
+//     cursor: pointer;
+//   }
+
+//   &::-ms-thumb {
+//     width: 12px;
+//     height: 12px;
+//     border-radius: 50%;
+//     background: #4caf50;
+//     cursor: pointer;
+//   }
+
+//   &::-webkit-slider-runnable-track {
+//     height: 2px; /* Thin line for the track */
+//     background: transparent;
+//   }
+
+//   &::-moz-range-track {
+//     height: 4px;
+//     background: transparent;
+//   }
+
+//   &::-ms-track {
+//     height: 4px;
+//     background: transparent;
+//     border-color: transparent;
+//     color: transparent;
+//   }
+// `;
 
 const VolumeInputRange = styled.input`
   width: 100%;
@@ -268,30 +289,23 @@ const PlaySection = styled.div`
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  align-self: center;
 
   @media (max-width: 768px) {
     font-size: 1rem;
   }
 `;
 
-const CurrentTime = styled.span`
-  font-size: 12px;
-  color: #ffffff;
-  margin-right: 10px;
-  width: 40px;
-  text-align: right;
-`;
-
-const TotalDuration = styled.span`
-  font-size: 12px;
-  color: #ffffff;
-  margin-left: 10px;
-  width: 40px;
-  text-align: left;
-`;
+// const CurrentTime = styled.span`
+//   font-size: 12px;
+//   color: #ffffff;
+//   margin-right: 10px;
+//   width: 40px;
+//   text-align: right;
+// `;
 
 const ShuffleIcon = styled(IoShuffle)`
-  color: grey;
+  color: #3b3b3b;
   font-size: 30px;
   cursor: pointer;
 `;
@@ -302,22 +316,23 @@ const SpeakerIcon = styled(HiMiniSpeakerWave)`
   cursor: pointer;
 `;
 
-const SkipBackIcon = styled(IoPlaySkipBackOutline)`
-  color: grey;
+const SkipBackIcon = styled(IoPlaySkipBack)`
+  color: #3b3b3b;
   font-size: 30px;
   cursor: pointer;
 `;
 
-const SkipForwardIcon = styled(IoPlaySkipForwardOutline)`
-  color: grey;
+const SkipForwardIcon = styled(IoPlaySkipForward)`
+  color: #3b3b3b;
   font-size: 30px;
   cursor: pointer;
 `;
 
-const PlayIcon = styled(IoPlay)`
-  color: white;
-  font-size: 2rem;
+const PlayIcon = styled(FaPlay)`
+  color: #fff;
+  font-size: 1.5rem;
   cursor: pointer;
+  // background: #005903;
 `;
 
 const PauseIcon = styled(IoPauseOutline)`
@@ -327,109 +342,257 @@ const PauseIcon = styled(IoPauseOutline)`
 `;
 
 const RepeatIcon = styled(RiRepeat2Fill)`
-  color: grey;
+  color: #3b3b3b;
   font-size: 30px;
   cursor: pointer;
 `;
 
 const MusicPlayer = ({}) => {
+  const audioRef = useRef(new Audio());
+
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state);
+
+  // const audioRef = state?.user.audioRef;
   const isAudioPlayingData = state?.user?.isAudioPlayingData;
   const isAudioPlaying = state?.user?.isAudioPlaying;
   console.log("isAudioPlaying", isAudioPlaying);
   console.log("isAudioPlayingData", isAudioPlayingData);
 
-  const getTotalDurationOfTrack = convertDurationToSeconds(
-    isAudioPlayingData?.duration
+  const currentTrackIndex = state?.user?.currentTrackIndex;
+  const trackList = state?.discover?.topTracks;
+
+  const [currentTrack, setCurrentTrack] = useState(
+    isAudioPlayingData ? isAudioPlayingData : null
   );
-  console.log("getTotalDurationOfTrack", getTotalDurationOfTrack);
 
-  const audioRef = useRef(new Audio());
-
-  const [volume, setVolume] = useState(50);
+  const [volume, setVolume] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
-
   const [currentTime, setCurrentTime] = useState(0);
   const [audioDuration, setAudioDuration] = useState(0);
+  const [isShuffle, setIsShuffle] = useState(false);
+  const [shuffledTrackList, setShuffledTrackList] = useState([]);
+  const [isRepeat, setIsRepeat] = useState(false);
+
+  const [isPlaying, setIsPlaying] = useState(isAudioPlaying);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log("ooopp", audioDuration, currentTime, isPlaying, isLoading);
 
   // Handle volume change
   const handleVolumeChange = (e) => {
     const newVolume = e.target.value;
-    setVolume(newVolume);
-    audioRef.current.volume = newVolume / 100; // Convert 0-100 scale to 0-1 scale
-  };
 
-  // Handle volume change
-  const handleVolumeChange2 = (e) => {
-    const newVolume2 = e.target.value;
-    setProgress(newVolume2);
-    audioRef.current.progress = newVolume2 / 100;
-  };
-
-  // Handle progress change
-  const handleProgressChange = (e) => {
-    // const newProgress = e.target.value;
-    // const newTime = (newProgress / 100) * audioRef.current.duration;
-    // audioRef.current.currentTime = newTime;
-    // setProgress(newProgress);
-
-    const newTime = e.target.value;
-    setCurrentTime(newTime);
-    audioRef.current.currentTime = newTime;
-  };
-
-  const handlePlayPause = () => {
-    if (!audioRef.current.paused) {
-      audioRef.current.pause();
-      dispatch(setIsAudioPlaying(false));
-    } else {
-      audioRef.current.play();
-      // save the selected track and the playing status to redux
-      dispatch(setIsAudioPlaying(true));
+    // Ensure that the current audioRef is valid before trying to set the volume
+    if (audioRef.current) {
+      setVolume(newVolume);
+      audioRef.current.volume = newVolume / 100;
+      console.log("New volume:", newVolume / 100);
     }
   };
 
-  // useEffect(() => {
-  //   if (audioElement) {
-  //     const onLoadedMetadata = () => {
-  //       setAudioDuration(audioElement.duration);
-  //     };
-  //     audioElement.addEventListener("loadedmetadata", onLoadedMetadata);
-  //     return () => {
-  //       audioElement.removeEventListener("loadedmetadata", onLoadedMetadata);
-  //     };
-  //   }
-  // }, [audioElement]);
+  const handlePlayPause = () => {
+    console.log("playpause pressed");
+    if (!audioRef.current) return;
 
-  //   useEffect(() => {
-  //     if (isPlaying) {
-  //       audioRef.current.play();
-  //     } else {
-  //       audioRef.current.pause();
-  //     }
+    // if (isLoading) return; // Prevent triggering while audio is loading
 
-  //     // Set duration when the metadata is loaded
-  //     audioRef.current.onloadedmetadata = () => {
-  //       setDuration(audioRef.current.duration);
-  //     };
+    if (!isPlaying) {
+      setIsLoading(true); // Start loading
 
-  //     // Update progress as the song plays
-  //     const updateProgress = () => {
-  //       setProgress(
-  //         (audioRef.current.currentTime / audioRef.current.duration) * 100
-  //       );
-  //     };
+      // Ensure the play request is properly handled
+      audioRef.current
+        .play()
+        .then((res) => {
+          console.log("playing reess", res);
+          // Listen for the 'playing' event to confirm the audio is actually playing
+          audioRef.current.onplaying = () => {
+            console.log("started playing");
 
-  //     audioRef.current.ontimeupdate = updateProgress;
+            setIsPlaying(true); // Audio is now playing
+            dispatch(setIsAudioPlaying(true)); // Update Redux state
+            setIsLoading(false); // Loading complete
+          };
 
-  //     return () => {
-  //       audioRef.current.pause();
-  //       audioRef.current.ontimeupdate = null;
-  //     };
-  //   }, [isPlaying]);
+          // Listen for errors during playback
+          audioRef.current.onerror = (error) => {
+            console.error("Error playing audio:", error);
+            setIsLoading(false); // Ensure loading stops even if there's an error
+          };
+        })
+        .catch((error) => {
+          console.error("Error initiating audio play:", error);
+          setIsLoading(false); // Ensure loading stops even if there's an error
+        });
+    } else {
+      // setIsLoading(true); // Start loading
+      audioRef.current.pause();
+      audioRef.current.onpause = () => {
+        setIsPlaying(false); // Audio is paused
+        dispatch(setIsAudioPlaying(false)); // Update Redux state
+        setIsLoading(false); // Loading complete
+      };
+    }
+  };
+
+  // Play the next track, considering shuffle
+  const playNextTrack = () => {
+    const list = isShuffle ? shuffledTrackList : trackList;
+    const nextTrackIndex = currentTrackIndex + 1;
+
+    // If repeat is on, play the current track again
+    if (isRepeat) {
+      playTrack(list[currentTrackIndex]); // Repeat the current track
+      return;
+    }
+
+    if (nextTrackIndex < list.length) {
+      dispatch(setCurrentTrackIndex(nextTrackIndex));
+      playTrack(list[nextTrackIndex]);
+    }
+  };
+
+  const playTrack = (track) => {
+    console.log("newww", track);
+    dispatch(setIsAudioPlaying(true));
+    dispatch(setIsAudioPlayingData(track));
+
+    if (!audioRef.current) return;
+
+    if (audioRef.current) {
+      audioRef.current.src = track?.audio;
+      audioRef.current.load(); // Ensure audio metadata is loaded before playing
+
+      audioRef.current.onloadedmetadata = () => {
+        setAudioDuration(audioRef.current.duration); // Set the track's duration once metadata is loaded
+        console.log("Track duration:", audioRef.current.duration);
+      };
+
+      audioRef.current
+        .play()
+        .then(() => {
+          // Ensure play starts, handle any errors here
+          console.log(`Playing: ${track?.label}`);
+
+          // Add an event listener for when the track ends
+          audioRef.current.onended = () => {
+            if (isRepeat) {
+              // If repeat is enabled, play the same track again
+              playTrack(track);
+            } else {
+              // Otherwise, play the next track
+              playNextTrack();
+            }
+          };
+        })
+        .catch((error) => {
+          console.error("Error playing track:", error);
+          dispatch(setIsAudioPlaying(false));
+        });
+    }
+  };
+
+  // Handle the previous button click (plays the previous song)
+  const playPreviousTrack = () => {
+    if (trackList.length === 0) return;
+
+    if (currentTrackIndex === null) {
+      // If no track is playing, do nothing
+      return;
+    } else if (currentTrackIndex > 0) {
+      const previousTrackIndex = currentTrackIndex - 1;
+      dispatch(setCurrentTrackIndex(previousTrackIndex));
+    } else {
+      console.log("Already at the first track");
+    }
+  };
+
+  // Handle shuffle button click
+  const handleShuffle = () => {
+    setIsShuffle((prevShuffle) => !prevShuffle);
+
+    if (!isShuffle) {
+      // Shuffle the track list when shuffle is turned on
+      const shuffledTracks = [...trackList]?.sort(() => Math.random() - 0.5);
+      setShuffledTrackList(shuffledTracks);
+    } else {
+      // Revert to original track order when shuffle is turned off
+      setShuffledTrackList([]);
+    }
+  };
+
+  // Handle repeat toggle
+  const toggleRepeat = () => {
+    setIsRepeat((prevRepeat) => !prevRepeat);
+  };
+
+  // here i am listening to the change in the redux audioData
+  useEffect(() => {
+    if (isAudioPlayingData) {
+      setCurrentTrack(isAudioPlayingData);
+
+      playTrack(isAudioPlayingData);
+    }
+    console.log("currenttrackkkkkk", currentTrack);
+  }, [isAudioPlayingData?.audio]);
+
+  // here i am listening to the change in the isAudioPlaying to trigger the playing and pausing of tracks
+  useEffect(() => {
+    if (isAudioPlaying) {
+      handlePlayPause();
+    }
+    console.log("isAudioPlayingisAudioPlaying", isAudioPlaying);
+  }, [isAudioPlaying]);
+
+  // Handle playing the track when currentTrackIndex changes
+  useEffect(() => {
+    if (currentTrackIndex !== null && trackList[currentTrackIndex]) {
+      playTrack(trackList[currentTrackIndex]);
+    }
+  }, [currentTrackIndex]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      // Handler to set duration when metadata is loaded
+      const handleLoadedMetadata = () => {
+        setAudioDuration(audioRef.current.duration);
+      };
+
+      // Handler to update progress as the track plays
+      const handleTimeUpdate = () => {
+        setCurrentTime(audioRef.current.currentTime);
+        const percentage =
+          (audioRef.current.currentTime / audioRef.current.duration) * 100;
+        console.log("progressPercentage", percentage.toFixed(2));
+
+        setProgress(percentage);
+      };
+
+      // Attach the event listeners
+      audioRef.current.addEventListener("loadedmetadata", handleLoadedMetadata);
+      audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
+
+      // Cleanup event listeners on component unmount
+      return () => {
+        audioRef.current.removeEventListener(
+          "loadedmetadata",
+          handleLoadedMetadata
+        );
+        audioRef.current.removeEventListener("timeupdate", handleTimeUpdate);
+      };
+    }
+  }, [audioRef.current]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      // Ensure the volume is set when the component mounts or when the audio changes
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume, audioRef.current]);
+
+  const cleardata = () => {
+    dispatch(clearPlayerData());
+  };
 
   return (
     <>
@@ -440,15 +603,22 @@ const MusicPlayer = ({}) => {
               src={isAudioPlayingData?.image}
               alt={isAudioPlayingData?.title}
             />
-            <div>
+            <div style={{ flex: "1 1 0", overflow: "hidden" }}>
               <ItemName>{isAudioPlayingData?.track_name}</ItemName>
               <ItemArtist>{isAudioPlayingData?.label}</ItemArtist>
             </div>
           </TrackInfo>
           <ControlsSection>
             <Controls>
-              <ShuffleIcon />
-              <SkipBackIcon />
+              <ShuffleIcon
+                onClick={handleShuffle}
+                style={{
+                  color: isShuffle && COLORS.appBgColor2,
+                  fontWeight: isShuffle && "bold",
+                }}
+              />
+
+              <SkipBackIcon onClick={playPreviousTrack} />
               <PlaySection onClick={handlePlayPause}>
                 {isAudioPlaying ? (
                   <PauseIcon onClick={handlePlayPause} />
@@ -456,21 +626,21 @@ const MusicPlayer = ({}) => {
                   <PlayIcon onClick={handlePlayPause} />
                 )}
               </PlaySection>
-              <SkipForwardIcon />
-              <RepeatIcon />
+              <SkipForwardIcon onClick={playNextTrack} />
+              <RepeatIcon
+                onClick={toggleRepeat}
+                style={{
+                  color: isRepeat && COLORS.appBgColor2,
+                  fontWeight: isRepeat && "bold",
+                }}
+              />
             </Controls>
 
             {/* Progress Bar */}
             <ProgressBarContainer>
               {/* The input range for progress control */}
-              <ProgressInputRange
-                type="range"
-                min="0"
-                max={audioDuration}
-                value={currentTime}
-                onChange={handleProgressChange}
-                progressValue={progress}
-              />
+
+              <ProgressBar progress={progress} progressValue={progress} />
             </ProgressBarContainer>
           </ControlsSection>
 
