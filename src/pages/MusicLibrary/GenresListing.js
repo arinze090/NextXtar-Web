@@ -259,26 +259,7 @@ function GenresListing() {
         {selectedGenreTracks &&
           selectedGenreTracks?.map((cur, i) => (
             <MusicCardWrapper key={i}>
-              <MusicCard2
-                imageUrl={cur?.image}
-                imageUrlAlt={cur?.label}
-                title={cur?.track_name}
-                artistName={cur?.label}
-                audioUrl={cur?.audio}
-                onLikeIconClicked={() => {
-                  console.log("liked ckicked");
-                  toggleLikeMusic(cur);
-                }}
-                onEllipsisClicked={() => {
-                  console.log("ellipsis ckicked");
-                }}
-                isPlaying={
-                  currentPlaying === cur?.audio && !audioRef?.current?.paused
-                }
-                onPlayPause={() => handlePlayPause(cur?.audio)}
-                playlistItem={cur}
-                numberOfPlays={cur?.no_plays}
-              />
+              <MusicCard2 props={cur} key={i} />
             </MusicCardWrapper>
           ))}
       </MusicCardsContainer>

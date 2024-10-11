@@ -55,10 +55,11 @@ const SeeMoreLink = styled(Link)`
 const ItemGrid = styled.div`
   display: flex;
   gap: 20px;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  overflow-x: hidden;
   padding-bottom: 4px;
   width: 100%;
-  // background: #4caf50;
+  padding: 20px;
 
   // Hide the scrollbar
   &::-webkit-scrollbar {
@@ -68,6 +69,35 @@ const ItemGrid = styled.div`
 
   @media screen and (max-width: 768px) {
     gap: 0px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  @media screen and (max-width: 430px) {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    padding-bottom: 4px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 375px) {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
   }
 `;
 
@@ -113,7 +143,7 @@ function MusicPlatformSections({ title, items }) {
       )}
 
       <ItemGrid>
-        {items?.slice(0, 10)?.map((cur, i) => (
+        {items?.slice(0, 14)?.map((cur, i) => (
           <ItemContainer key={i}>
             {title == "video_data" && cur?.VideoID ? (
               <VideoCard>

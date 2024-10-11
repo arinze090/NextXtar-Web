@@ -159,26 +159,7 @@ function DiscoverCategoryList() {
         {selectedCategoryTracks &&
           selectedCategoryTracks?.map((cur, i) => (
             <MusicCardWrapper key={i}>
-              <MusicCard2
-                imageUrl={cur?.image}
-                imageUrlAlt={cur?.label}
-                title={cur?.track_name}
-                numberOfPlays={cur?.no_plays}
-                artistName={cur?.label}
-                audioUrl={cur?.audio}
-                onLikeIconClicked={() => {
-                  console.log("liked ckicked");
-                  toggleLikeMusic(cur);
-                }}
-                onEllipsisClicked={() => {
-                  console.log("ellipsis ckicked");
-                }}
-                isPlaying={
-                  currentPlaying === cur?.audio && !audioRef?.current?.paused
-                }
-                onPlayPause={() => handlePlayPause(cur)}
-                loading={loading}
-              />
+              <MusicCard2 key={i} props={cur} />
             </MusicCardWrapper>
           ))}
       </MusicCardsContainer>

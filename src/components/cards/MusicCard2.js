@@ -9,6 +9,7 @@ import { FaPlay, FaPause } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { TbHeadphonesFilled, TbPoint } from "react-icons/tb";
+import { IoHeadsetOutline } from "react-icons/io5";
 
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
@@ -22,11 +23,17 @@ const ItemCard = styled.div`
   position: relative;
   width: 171px;
   overflow: hidden;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
 
   @media screen and (max-width: 768px) {
     width: 171px;
+    height: 70%;
+  }
+
+  @media screen and (max-width: 430px) {
+    width: 151px;
+    height: 70%;
   }
 
   &:hover .overlay {
@@ -40,10 +47,22 @@ const ItemImage = styled.img`
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  @media screen and (max-width: 768px) {
+    width: 171px;
+    height: 171px;
+  }
+
+  @media screen and (max-width: 430px) {
+    width: 151px;
+    height: 70%;
+  }
 `;
 
 const ItemDetails = styled.div`
   padding: 5px;
+  // justify-content: center;
+  // align-items: center;
 `;
 
 const ItemName = styled.p`
@@ -53,6 +72,7 @@ const ItemName = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 `;
 
 const NumberOfPlays = styled.p`
@@ -131,7 +151,7 @@ const SkeletonLoader = styled.div`
   }
 `;
 
-const HeadsetIcon = styled(TbHeadphonesFilled)`
+const HeadsetIcon = styled(IoHeadsetOutline)`
   color: black;
   font-size: 16px;
   cursor: pointer;
@@ -149,6 +169,9 @@ const IconsSection = styled.div`
   align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
 `;
 
 function MusicCard2({ props, onEllipsisClicked }) {

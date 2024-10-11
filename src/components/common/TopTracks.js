@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { TbHeadphonesFilled, TbPoint } from "react-icons/tb";
+import { BsDot } from "react-icons/bs";
+import { IoHeadsetOutline } from "react-icons/io5";
 
 import { truncateText } from "../../Library/Common";
 import { CiHeart } from "react-icons/ci";
@@ -61,11 +62,42 @@ const TrackInfo = styled.div`
   align-items: center;
 `;
 
-const TrackImage = styled.img`
-  width: 40px;
-  height: 40px;
+const TrackImageContainer = styled.div`
+  width: 57px;
+  height: 57px;
   border-radius: 5px;
   margin-right: 10px;
+  cursor: pointer;
+  background: red;
+  position: relative;
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+`;
+
+const TrackImage = styled.img`
+  width: 57px;
+  height: 57px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 163, 11, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  flex-direction: row;
+  z-index: 999;
 `;
 
 const TrackDetails = styled.div`
@@ -101,15 +133,15 @@ const ActionIcon = styled.span`
   cursor: pointer;
 `;
 
-const HeadsetIcon = styled(TbHeadphonesFilled)`
+const HeadsetIcon = styled(IoHeadsetOutline)`
   color: black;
   font-size: 16px;
   cursor: pointer;
 `;
 
-const PointIcon = styled(TbPoint)`
-  color: black;
-  font-size: 10px;
+const PointIcon = styled(BsDot)`
+  color: #c60303;
+  font-size: 20px;
   cursor: pointer;
 `;
 
@@ -198,7 +230,24 @@ const TopTracks = ({ topTracksData }) => {
           topTracksData?.map((track, i) => (
             <TrackItem key={i}>
               <TrackInfo>
-                <TrackImage src={track?.image} alt={track.name} />
+                <TrackImageContainer>
+                  <TrackImage src={track?.image} alt={track.name} />
+                </TrackImageContainer>
+                <Overlay className="overlay">
+                  {isAudioPlaying && isAudioPlayingData?.id === track?.id ? (
+                    <FaPause
+                      onClick={() => {
+                        pausedClicked(track);
+                      }}
+                    />
+                  ) : (
+                    <FaPlay
+                      onClick={() => {
+                        pausedClicked(track);
+                      }}
+                    />
+                  )}
+                </Overlay>
                 <TrackDetails>
                   <IconsSection>
                     <HeadsetIcon />
@@ -215,7 +264,9 @@ const TopTracks = ({ topTracksData }) => {
                 </TrackDetails>
               </TrackInfo>
               <TrackActions>
-                <TrackDuration>{track?.duration}</TrackDuration>
+                {!isSmallScreen && (
+                  <TrackDuration>{track?.duration}</TrackDuration>
+                )}
                 <ActionIcon>
                   {isAudioPlaying && isAudioPlayingData?.id === track?.id ? (
                     <FaPause

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import GenreCard from "../cards/GenreCard";
 import { useNavigate } from "react-router-dom";
+import GenreCard2 from "../cards/GenreCard2";
 
 const Container = styled.div`
   // background: green;
@@ -45,15 +46,19 @@ const SeeAll = styled.a`
 
 const GenreList = styled.div`
   display: flex;
-  // flex-wrap: wrap;
+  flex-wrap: wrap;
   //   gap: 10px;
-  // justify-content: space-between;
+  // justify-content: center;
   // overflow-y: auto;
   //   height: 100vh;
 
   flex-direction: row;
-  overflow-x: auto;
+  overflow-x: hidden;
   justify-content: center;
+  align-items: center;
+  // background: green;
+  width: 100%;
+  padding: 20px;
 
   // Hide the scrollbar
   &::-webkit-scrollbar {
@@ -63,11 +68,21 @@ const GenreList = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 50vh;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  @media screen and (max-width: 375px) {
+    width: 100%;
+    overflow-x: auto;
     overflow-y: auto;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    // align-self: center;
+    gap: 10px;
   }
 `;
 
@@ -92,11 +107,18 @@ const GenreItem = styled.div`
 const GenreCardWrapper = styled.div`
   margin-bottom: 16px;
   margin-right: 30px;
+  // flex: 1 1 calc(20% - 30px);
+  // max-width: calc(20% - 30px);
+  // background: red;
 
   // Hide the scrollbar
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-right: 0px;
   }
 `;
 
@@ -114,9 +136,9 @@ const Genres = ({ genres }) => {
         <SeeAll href="/genres">See all</SeeAll>
       </Header>
       <GenreList>
-        {genres?.map((genre, i) => (
+        {genres?.slice(0, 12)?.map((genre, i) => (
           <GenreCardWrapper key={i}>
-            <GenreCard
+            <GenreCard2
               title={genre}
               onGenreClick={() => {
                 console.log("onGenreClick", genre);
