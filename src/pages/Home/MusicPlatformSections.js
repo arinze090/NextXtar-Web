@@ -58,8 +58,12 @@ const ItemGrid = styled.div`
   flex-wrap: wrap;
   overflow-x: hidden;
   padding-bottom: 4px;
-  width: 100%;
+  width: 95%;
   padding: 20px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
 
   // Hide the scrollbar
   &::-webkit-scrollbar {
@@ -120,10 +124,11 @@ const YouTubeThumbnail = styled.div`
 `;
 
 function MusicPlatformSections({ title, items }) {
-  console.log("dsissss", items);
+  // console.log("dsissss", items);
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state);
+  // console.log("state", state);
 
   return (
     <SectionContainer>
@@ -131,41 +136,44 @@ function MusicPlatformSections({ title, items }) {
         (cur) =>
           (title === "video_data" && cur?.VideoID) ||
           (cur?.image && cur?.track_name && cur?.label)
-      )?.length > 0 && (
-        <SectionHeader>
-          <div>
-            <SectionTitle>
-              {title == "video_data" ? "Videos" : title}
-            </SectionTitle>
-          </div>
-          <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
-        </SectionHeader>
-      )}
+      )?.length > 0 &&
+        title != "Recently Uploaded" && (
+          <SectionHeader>
+            <div>
+              <SectionTitle>
+                {title == "video_data" ? "Videos" : title}
+              </SectionTitle>
+            </div>
+            <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
+          </SectionHeader>
+        )}
 
-      <ItemGrid>
-        {items?.slice(0, 12)?.map((cur, i) => (
-          <ItemContainer key={i}>
-            {title == "video_data" && cur?.VideoID ? (
-              <VideoCard>
-                <YouTubeThumbnail>
-                  <YouTube
-                    videoId={cur?.VideoID}
-                    opts={{
-                      height: "180",
-                      width: "320",
-                      playerVars: { autoplay: 0 },
-                    }}
-                  />
-                </YouTubeThumbnail>
-              </VideoCard>
-            ) : (
-              cur?.image &&
-              cur?.track_name &&
-              cur?.label && <MusicCard2 key={i} props={cur} />
-            )}
-          </ItemContainer>
-        ))}
-      </ItemGrid>
+      {title != "Recently Uploaded" && (
+        <ItemGrid>
+          {items?.slice(0, 12)?.map((cur, i) => (
+            <ItemContainer key={i}>
+              {title == "video_data" && cur?.VideoID ? (
+                <VideoCard>
+                  <YouTubeThumbnail>
+                    <YouTube
+                      videoId={cur?.VideoID}
+                      opts={{
+                        height: "180",
+                        width: "320",
+                        playerVars: { autoplay: 0 },
+                      }}
+                    />
+                  </YouTubeThumbnail>
+                </VideoCard>
+              ) : (
+                cur?.image &&
+                cur?.track_name &&
+                cur?.label && <MusicCard2 key={i} props={cur} />
+              )}
+            </ItemContainer>
+          ))}
+        </ItemGrid>
+      )}
     </SectionContainer>
   );
 }
