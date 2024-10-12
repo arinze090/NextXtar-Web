@@ -143,7 +143,7 @@ function MusicPlatformSections({ title, items }) {
       )}
 
       <ItemGrid>
-        {items?.slice(0, 14)?.map((cur, i) => (
+        {items?.slice(0, 12)?.map((cur, i) => (
           <ItemContainer key={i}>
             {title == "video_data" && cur?.VideoID ? (
               <VideoCard>

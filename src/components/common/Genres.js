@@ -136,7 +136,7 @@ const Genres = ({ genres }) => {
         <SeeAll href="/genres">See all</SeeAll>
       </Header>
       <GenreList>
-        {genres?.slice(0, 12)?.map((genre, i) => (
+        {genres?.slice(0, 10)?.map((genre, i) => (
           <GenreCardWrapper key={i}>
             <GenreCard2
               title={genre}
