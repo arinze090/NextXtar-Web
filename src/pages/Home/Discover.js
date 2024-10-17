@@ -422,7 +422,7 @@ function Discover() {
         Object?.entries(discoverTrackss)?.map(([name, objectArray], index) => {
           // console.log("insideee ooo", discoverTrackss);
           // Check if objectArray is an array before mapping through it
-          if (Array.isArray(objectArray)) {
+          if (Array?.isArray(objectArray)) {
             return (
               <MusicPlatformSections
                 key={index}

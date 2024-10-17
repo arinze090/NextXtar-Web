@@ -11,7 +11,7 @@ import {
 import { FaPlay } from "react-icons/fa6";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
 import { RiRepeat2Fill } from "react-icons/ri";
-import { convertDurationToSeconds } from "../../Library/Common";
+import { convertDurationToSeconds, formatTime } from "../../Library/Common";
 import {
   clearPlayerData,
   setCurrentTrackIndex,
@@ -149,12 +149,31 @@ const VolumeSlider = styled.div`
 `;
 
 const ProgressBarContainer = styled.div`
-  width: 100%;
+  width: 90%;
   position: relative;
   height: 4px;
-  //   background-color: red;
+  // background-color: blue;
   border-radius: 2px;
   margin-top: 10px;
+  // flex-direction: "row";
+  // justify-content: "space-between";
+`;
+
+const ProgressSection = styled.div`
+  flex-direction: row;
+  // background-color: pink;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 20px;
+`;
+
+const TrackDuration = styled.p`
+  color: white;
+  font-size: 16px;
+  font-weight: "600";
+  // background-color: blue;
 `;
 
 const ProgressBar = styled.div`
@@ -324,9 +343,10 @@ const SkipBackIcon = styled(IoPlaySkipBack)`
 `;
 
 const SkipForwardIcon = styled(IoPlaySkipForward)`
-  color: #fff;
+  color: ${({ isDisabled }) => (isDisabled ? "#ccc" : "#fff")};
   font-size: 30px;
-  cursor: pointer;
+  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
+  pointer-events: ${({ isDisabled }) => (isDisabled ? "none" : "auto")};
 `;
 
 const PlayIcon = styled(FaPlay)`
@@ -379,6 +399,10 @@ const MusicPlayer = ({}) => {
   const [isPlaying, setIsPlaying] = useState(isAudioPlaying);
   const [isLoading, setIsLoading] = useState(false);
   console.log("ooopp", audioDuration, currentTime, isPlaying, isLoading);
+
+  // Check if it's the last track
+  const isLastTrack = currentTrackIndex === trackList?.length - 1;
+  console.log("isLastTrack", isLastTrack);
 
   // Handle volume change
   const handleVolumeChange = (e) => {
@@ -626,7 +650,10 @@ const MusicPlayer = ({}) => {
                   <PlayIcon onClick={handlePlayPause} />
                 )}
               </PlaySection>
-              <SkipForwardIcon onClick={playNextTrack} />
+              <SkipForwardIcon
+                onClick={playNextTrack}
+                isDisabled={isLastTrack}
+              />
               <RepeatIcon
                 onClick={toggleRepeat}
                 style={{
@@ -637,11 +664,15 @@ const MusicPlayer = ({}) => {
             </Controls>
 
             {/* Progress Bar */}
-            <ProgressBarContainer>
-              {/* The input range for progress control */}
-
-              <ProgressBar progress={progress} progressValue={progress} />
-            </ProgressBarContainer>
+            <ProgressSection>
+              <ProgressBarContainer>
+                {/* The input range for progress control */}
+                <ProgressBar progress={progress} progressValue={progress} />
+              </ProgressBarContainer>
+              <TrackDuration>
+                {formatTime(currentTime)} / {formatTime(audioDuration)}
+              </TrackDuration>
+            </ProgressSection>
           </ControlsSection>
 
           {/* Volume Control */}

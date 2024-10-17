@@ -74,7 +74,7 @@ const ArtistImage = styled.img`
   }
 `;
 
-const GenreCard2 = ({ title }) => {
+const GenreCard2 = ({ title, onGenreClick }) => {
   // Generate random background color
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
@@ -82,7 +82,7 @@ const GenreCard2 = ({ title }) => {
   const randomImage = images[Math.floor(Math.random() * images.length)];
 
   return (
-    <CardContainer backgroundColor={randomColor}>
+    <CardContainer onClick={onGenreClick} backgroundColor={randomColor}>
       <GenreTitle>{title}</GenreTitle>
       <ArtistImage src={randomImage} alt={`${title} artist`} />
     </CardContainer>

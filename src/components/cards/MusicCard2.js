@@ -104,6 +104,8 @@ const Overlay = styled.div`
   opacity: 0;
   transition: opacity 0.3s ease;
   flex-direction: row;
+  overflow: visible;
+  z-index: 10;
 `;
 
 const PlayIcon = styled(FaPlay)`

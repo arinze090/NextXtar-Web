@@ -106,7 +106,19 @@ const ItemGrid = styled.div`
 `;
 
 const ItemContainer = styled.div`
-  flex: 0 0 200px; // Fixed width for each card, adjust as needed
+  flex: 1 1 20%;
+  max-width: 17%;
+  min-width: 100px;
+  box-sizing: border-box;
+  // background-color: red;
+
+  @media screen and (max-width: 768px) {
+    flex: 1 1 45%; // Adjust for medium screens (2 items per row)
+  }
+
+  @media screen and (max-width: 430px) {
+    flex: 1 1 100%; // Full width on smaller screens
+  }
 `;
 
 const VideoCard = styled.div`
@@ -136,44 +148,41 @@ function MusicPlatformSections({ title, items }) {
         (cur) =>
           (title === "video_data" && cur?.VideoID) ||
           (cur?.image && cur?.track_name && cur?.label)
-      )?.length > 0 &&
-        title != "Recently Uploaded" && (
-          <SectionHeader>
-            <div>
-              <SectionTitle>
-                {title == "video_data" ? "Videos" : title}
-              </SectionTitle>
-            </div>
-            <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
-          </SectionHeader>
-        )}
-
-      {title != "Recently Uploaded" && (
-        <ItemGrid>
-          {items?.slice(0, 12)?.map((cur, i) => (
-            <ItemContainer key={i}>
-              {title == "video_data" && cur?.VideoID ? (
-                <VideoCard>
-                  <YouTubeThumbnail>
-                    <YouTube
-                      videoId={cur?.VideoID}
-                      opts={{
-                        height: "180",
-                        width: "320",
-                        playerVars: { autoplay: 0 },
-                      }}
-                    />
-                  </YouTubeThumbnail>
-                </VideoCard>
-              ) : (
-                cur?.image &&
-                cur?.track_name &&
-                cur?.label && <MusicCard2 key={i} props={cur} />
-              )}
-            </ItemContainer>
-          ))}
-        </ItemGrid>
+      )?.length > 0 && (
+        <SectionHeader>
+          <div>
+            <SectionTitle>
+              {title == "video_data" ? "Videos" : title}
+            </SectionTitle>
+          </div>
+          <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
+        </SectionHeader>
       )}
+
+      <ItemGrid>
+        {items?.slice(0, 10)?.map((cur, i) => (
+          <ItemContainer key={i}>
+            {title == "video_data" && cur?.VideoID ? (
+              <VideoCard>
+                <YouTubeThumbnail>
+                  <YouTube
+                    videoId={cur?.VideoID}
+                    opts={{
+                      height: "180",
+                      width: "320",
+                      playerVars: { autoplay: 0 },
+                    }}
+                  />
+                </YouTubeThumbnail>
+              </VideoCard>
+            ) : (
+              cur?.image &&
+              cur?.track_name &&
+              cur?.label && <MusicCard2 key={i} props={cur} />
+            )}
+          </ItemContainer>
+        ))}
+      </ItemGrid>
     </SectionContainer>
   );
 }

@@ -9,22 +9,23 @@ import { IoHeadsetOutline } from "react-icons/io5";
 
 import { truncateText } from "../../Library/Common";
 import { CiHeart } from "react-icons/ci";
-import { FaPause, FaPlay } from "react-icons/fa";
+import { FaPause, FaPlay, FaEllipsisH } from "react-icons/fa";
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
 import {
   setIsAudioPlaying,
   setIsAudioPlayingData,
 } from "../../redux/features/user/userSlice";
+import Ellipsis from "../modal/Ellipsis";
 
 const Container = styled.div`
   // background: red;
   border-radius: 21px;
   padding: 20px;
   width: 100%;
-  height: 525px;
+  height: auto;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
+  // overflow-y: auto;
 
   // Hide the scrollbar
   &::-webkit-scrollbar {
@@ -291,6 +292,16 @@ const TopTracks = ({ topTracksData }) => {
                     />
                   </ActionIcon>
                 )}
+                <ActionIcon>
+                  <Ellipsis />
+                </ActionIcon>
+                <Ellipsis
+                  // onClick={onEllipsisClicked}
+                  showLikeSection={0}
+                  ellipsisColor={"white"}
+                  // playlistItem={playlistItem}
+                  ellipsisFontSize={"2rem"}
+                />
               </TrackActions>
             </TrackItem>
           ))}

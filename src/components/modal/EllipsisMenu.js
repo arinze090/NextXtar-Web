@@ -107,7 +107,9 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
           if (res?.data?.status == 200) {
             console.log("followArtist data", res?.data);
             setFollowingStatus(true);
-            toast.success(`You followed this artiste: ${res?.data?.music?.Name} 😇`);
+            toast.success(
+              `You followed this artiste: ${res?.data?.music?.Name} 😇`
+            );
           } else {
             console.log("followArtist message", res?.data?.status);
             setFollowingStatus(false);

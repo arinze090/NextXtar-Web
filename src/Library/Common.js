@@ -5,6 +5,12 @@ export const truncateText = (text, maxLetters) => {
   return text;
 };
 
+export const formatTime = (timeInSeconds) => {
+  const minutes = Math?.floor(timeInSeconds / 60);
+  const seconds = Math?.floor(timeInSeconds % 60);
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+};
+
 // Function to convert duration (mm:ss) to total seconds
 export const convertDurationToSeconds = (duration) => {
   const [minutes, seconds] = duration?.split(":")?.map(Number);
