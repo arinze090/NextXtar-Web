@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +13,10 @@ import Ellipsis from "../../components/modal/Ellipsis";
 import { formatTimestampToDate } from "../../Library/Common";
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
+import {
+  setIsAudioPlaying,
+  setIsAudioPlayingData,
+} from "../../redux/features/user/userSlice";
 
 const TableContainer = styled.div`
   display: block;
@@ -65,37 +69,21 @@ const ActionIcons = styled.div`
 `;
 
 const FullTableView = ({ playlist, onClick }) => {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const user = state.user.user;
+
+  const isAudioPlayingData = state?.user?.isAudioPlayingData;
+  const isAudioPlaying = state?.user?.isAudioPlaying;
 
   const [loading, setLoading] = useState(false);
 
   const [playlistTracks, setPlaylistTracks] = useState(playlist);
 
-  // for the audio playing
-  const [currentPlaying, setCurrentPlaying] = useState(null);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-
-  const audioRef = useRef(new Audio());
-
-  const onPlayClick = (audioUrl) => {
-    console.log("currrr", audioUrl?.audio);
-    setCurrentPlaying(audioUrl?.audio);
-
-    if (currentPlaying === audioUrl?.audio) {
-      if (!audioRef.current.paused) {
-        audioRef.current.pause();
-        setIsAudioPlaying(false);
-      } else {
-        audioRef.current.play();
-        setIsAudioPlaying(true);
-      }
-    } else {
-      audioRef.current.pause();
-      audioRef.current.src = audioUrl?.audio;
-      audioRef.current.play();
-      setCurrentPlaying(audioUrl?.audio);
-    }
+  const onPlayClicked = (selectedTrack) => {
+    console.log("selectedTrack", selectedTrack);
+    // just send the data to redux
+    dispatch(setIsAudioPlaying(true));
+    dispatch(setIsAudioPlayingData(selectedTrack));
   };
 
   const removeTrackFromPlaylist = async (playlistItem) => {
@@ -182,11 +170,11 @@ const FullTableView = ({ playlist, onClick }) => {
                 <ActionIcons>
                   <IconWrapper
                     onClick={() => {
-                      onPlayClick(song);
+                      onPlayClicked(song);
                     }}
                   >
-                    {currentPlaying === song.audio &&
-                    !audioRef.current.paused ? (
+                    {isAudioPlaying &&
+                    isAudioPlayingData?.id === song?.id ? (
                       <FaPause />
                     ) : (
                       <FaPlay />

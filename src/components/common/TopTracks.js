@@ -327,15 +327,8 @@ const TopTracks = ({ topTracksData }) => {
                   </ActionIcon>
                 )}
                 <ActionIcon>
-                  <Ellipsis />
+                  <Ellipsis playlistItem={track} />
                 </ActionIcon>
-                <Ellipsis
-                  // onClick={onEllipsisClicked}
-                  showLikeSection={0}
-                  ellipsisColor={"white"}
-                  // playlistItem={playlistItem}
-                  ellipsisFontSize={"2rem"}
-                />
               </TrackActions>
             </TrackItem>
           ))}
