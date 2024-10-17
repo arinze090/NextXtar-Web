@@ -85,6 +85,35 @@ const TrackImage = styled.img`
   cursor: pointer;
 `;
 
+const ImageOverlayContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+const ImageOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const OverlayText = styled.span`
+  color: white;
+  font-size: 1.5rem;
+`;
+
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -232,23 +261,28 @@ const TopTracks = ({ topTracksData }) => {
             <TrackItem key={i}>
               <TrackInfo>
                 <TrackImageContainer>
-                  <TrackImage src={track?.image} alt={track.name} />
+                  <ImageOverlayContainer>
+                    <TrackImage src={track?.image} alt={track.name} />
+                    <ImageOverlay>
+                      {isAudioPlaying &&
+                      isAudioPlayingData?.id === track?.id ? (
+                        <FaPause
+                          onClick={() => {
+                            pausedClicked(track);
+                          }}
+                          style={{ color: "#05a30b" }}
+                        />
+                      ) : (
+                        <FaPlay
+                          onClick={() => {
+                            onPlayClicked(track);
+                          }}
+                          style={{ color: "#05a30b" }}
+                        />
+                      )}
+                    </ImageOverlay>
+                  </ImageOverlayContainer>{" "}
                 </TrackImageContainer>
-                <Overlay className="overlay">
-                  {isAudioPlaying && isAudioPlayingData?.id === track?.id ? (
-                    <FaPause
-                      onClick={() => {
-                        pausedClicked(track);
-                      }}
-                    />
-                  ) : (
-                    <FaPlay
-                      onClick={() => {
-                        pausedClicked(track);
-                      }}
-                    />
-                  )}
-                </Overlay>
                 <TrackDetails>
                   <IconsSection>
                     <HeadsetIcon />
