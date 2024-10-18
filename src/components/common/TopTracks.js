@@ -302,21 +302,6 @@ const TopTracks = ({ topTracksData }) => {
                 {!isSmallScreen && (
                   <TrackDuration>{track?.duration}</TrackDuration>
                 )}
-                <ActionIcon>
-                  {isAudioPlaying && isAudioPlayingData?.id === track?.id ? (
-                    <FaPause
-                      onClick={() => {
-                        pausedClicked(track);
-                      }}
-                    />
-                  ) : (
-                    <FaPlay
-                      onClick={() => {
-                        onPlayClicked(track);
-                      }}
-                    />
-                  )}
-                </ActionIcon>
                 {!isSmallScreen && (
                   <ActionIcon>
                     <LikeIcon

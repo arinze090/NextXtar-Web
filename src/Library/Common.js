@@ -36,17 +36,21 @@ export const shuffleArray = (array) => {
   return shuffled;
 };
 
-export const shareOnWhatsApp = (url) => {
+export const shareOnWhatsApp = (url, text) => {
   const encodedUrl = encodeURIComponent(url);
-  const whatsappUrl = `whatsapp://send?text=${encodedUrl}`;
+  const encodedText = encodeURIComponent(text);
+  const whatsappUrl = `whatsapp://send?text=${encodedText}%20${encodedUrl}`;
   window.location.href = whatsappUrl;
 };
 
-export const shareOnFacebook = (url) => {
+
+export const shareOnFacebook = (url, text) => {
   const encodedUrl = encodeURIComponent(url);
-  const facebookAppUrl = `fb://facewebmodal/f?href=${encodedUrl}`;
+  const encodedText = encodeURIComponent(text);
+  const facebookAppUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
   window.location.href = facebookAppUrl;
 };
+
 
 export const shareOnInstagram = (url) => {
   // Instagram does not have a direct share URL scheme, usually shares are done via mobile apps.
@@ -211,6 +215,12 @@ export function convertUnixTimestampToDateString(unixTimestamp) {
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${ampm}`;
 
   return formattedDate;
+}
+
+export function formatWordToRemoveEmptySpace(word) {
+  const newWord = word?.replace(/\s+/g, "-");
+
+  return newWord;
 }
 
 export const copyToClipboard = (Clipboard, text) => {

@@ -275,7 +275,7 @@ function MusicCard2({ props, onEllipsisClicked }) {
           onClick={onEllipsisClicked}
           showLikeSection={0}
           ellipsisColor={"white"}
-          // playlistItem={playlistItem}
+          playlistItem={props}
           ellipsisFontSize={"2rem"}
         />
       </Overlay>

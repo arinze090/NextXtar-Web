@@ -5,13 +5,29 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { FaShareAlt } from "react-icons/fa";
 import { IoAnalytics } from "react-icons/io5";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { FcLike, FcDislike } from "react-icons/fc";
+import {
+  FaWhatsapp,
+  FaFacebook,
+  FaInstagram,
+  FaShareAlt,
+} from "react-icons/fa";
+import { FaXTwitter, FaRegCopy } from "react-icons/fa6";
 
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
+import Modal from "./Modal";
+import FormButton from "../form/FormButton";
+import {
+  shareOnTwitter,
+  shareOnWhatsApp,
+  shareOnFacebook,
+  shareOnInstagram,
+  formatWordToRemoveEmptySpace,
+} from "../../Library/Common";
+import FormInput from "../form/FormInput";
 
 const MenuContainer = styled.div`
   position: absolute;
@@ -40,6 +56,17 @@ const MenuItemText = styled.span`
   margin-left: 8px;
 `;
 
+const SocialButtons = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+
+  svg {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+`;
+
 function EllipsisMenu({ playlistItem, showLikeSection }) {
   console.log("EllipsisMenu", playlistItem);
 
@@ -51,7 +78,28 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
   const [toggleLike, setToggleLike] = useState(false);
   const [followingStatus, setFollowingStatus] = useState(false);
 
-  const [removedtrack, setRemovedtrack] = useState();
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const shareUrl = `http://singnify.com/song/${
+    playlistItem?.artist_name
+      ? formatWordToRemoveEmptySpace(playlistItem?.artist_name)
+      : formatWordToRemoveEmptySpace(playlistItem?.label)
+  }/${formatWordToRemoveEmptySpace(playlistItem?.track_name)}`;
+
+  const twitterMessage = `Listen to ${formatWordToRemoveEmptySpace(
+    playlistItem?.track_name
+  )} by ${
+    playlistItem?.artist_name
+      ? formatWordToRemoveEmptySpace(playlistItem?.artist_name)
+      : formatWordToRemoveEmptySpace(playlistItem?.label)
+  } via singnify.com, Enjoyy!!!.`;
+
+  const openShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const closeShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   const toggleLikeMusic = async () => {
     setToggleLike(!toggleLike);
@@ -128,11 +176,6 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
 
   const menuItems = [
     {
-      name: "Share",
-      icon: <FaShareAlt />,
-      action: (item) => alert(`Share clicked ${item?.label}`),
-    },
-    {
       name: "Analytics",
       icon: <IoAnalytics />,
       action: (item) => alert(`Analytics clicked ${item?.label}`),
@@ -151,7 +194,6 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
           <MenuItemText>{toggleLike ? "UnLike" : "Like"}</MenuItemText>
         </MenuItem>
       ) : null}
-
       <MenuItem
         onClick={() => {
           followArtist();
@@ -159,6 +201,14 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
       >
         {followingStatus ? <SlDislike /> : <SlLike />}
         <MenuItemText>{followingStatus ? "UnFollow" : "Follow"}</MenuItemText>
+      </MenuItem>
+      <MenuItem
+        onClick={() => {
+          openShareModal();
+        }}
+      >
+        <FaShareAlt />
+        <MenuItemText>Share</MenuItemText>
       </MenuItem>
       {menuItems?.map((cur, i) => (
         <MenuItem
@@ -172,6 +222,24 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
           <MenuItemText>{cur?.name}</MenuItemText>
         </MenuItem>
       ))}
+      <Modal isOpen={isShareModalOpen} onClose={closeShareModal} title="Share">
+        <SocialButtons>
+          <FaWhatsapp
+            onClick={() => shareOnWhatsApp(shareUrl, twitterMessage)}
+          />
+          <FaFacebook
+            onClick={() => shareOnFacebook(shareUrl, twitterMessage)}
+          />
+          <FaInstagram
+            onClick={() => shareOnInstagram(shareUrl, twitterMessage)}
+          />
+          <FaXTwitter
+            onClick={() => shareOnTwitter(shareUrl, twitterMessage)}
+          />
+        </SocialButtons>
+        <FormInput type={"text"} value={shareUrl} />
+        <FormButton btnIcon={<FaRegCopy />} title={"Copy"} marginTop={"10px"} />
+      </Modal>
     </MenuContainer>
   );
 }
