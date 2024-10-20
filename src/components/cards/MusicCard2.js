@@ -271,13 +271,6 @@ function MusicCard2({ props, onEllipsisClicked }) {
             }}
           />
         )}
-        <Ellipsis
-          onClick={onEllipsisClicked}
-          showLikeSection={0}
-          ellipsisColor={"white"}
-          playlistItem={props}
-          ellipsisFontSize={"2rem"}
-        />
       </Overlay>
       <ItemDetails>
         <IconsSection>
@@ -288,6 +281,13 @@ function MusicCard2({ props, onEllipsisClicked }) {
         </IconsSection>
         <ItemArtist>{props?.label}</ItemArtist>
       </ItemDetails>
+      <Ellipsis
+        onClick={onEllipsisClicked}
+        showLikeSection={0}
+        ellipsisColor={"white"}
+        playlistItem={props}
+        ellipsisFontSize={"2rem"}
+      />
     </ItemCard>
   );
 }

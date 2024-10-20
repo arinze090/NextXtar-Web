@@ -13,6 +13,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaShareAlt,
+  FaCloudDownloadAlt,
 } from "react-icons/fa";
 import { FaXTwitter, FaRegCopy } from "react-icons/fa6";
 
@@ -179,6 +180,11 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
       name: "Analytics",
       icon: <IoAnalytics />,
       action: (item) => alert(`Analytics clicked ${item?.label}`),
+    },
+    {
+      name: "Download",
+      icon: <FaCloudDownloadAlt />,
+      action: (item) => alert(`Download clicked ${item?.label}`),
     },
   ];
 
