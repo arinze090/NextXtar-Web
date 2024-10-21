@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
-import { TbHeadphonesFilled, TbPoint } from "react-icons/tb";
+import { TbPoint } from "react-icons/tb";
 import { IoHeadsetOutline } from "react-icons/io5";
 
 import { baseURL } from "../../utils/api-client";
@@ -37,6 +37,11 @@ const ItemCard = styled.div`
     height: 70%;
   }
 
+  @media screen and (max-width: 325px) {
+    width: 141px;
+    height: 70%;
+  }
+
   &:hover .overlay {
     opacity: 1;
   }
@@ -56,6 +61,10 @@ const ItemImage = styled.img`
 
   @media screen and (max-width: 430px) {
     width: 151px;
+    height: 70%;
+  }
+  @media screen and (max-width: 325px) {
+    width: 131px;
     height: 70%;
   }
 `;

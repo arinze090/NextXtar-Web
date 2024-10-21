@@ -95,29 +95,54 @@ const ItemGrid = styled.div`
   }
 
   @media screen and (max-width: 375px) {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    padding-bottom: 4px;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: auto;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    padding: 20px;
   }
+
+  // @media screen and (max-width: 375px) {
+  //   width: 100%;
+  //   overflow-x: auto;
+  //   overflow-y: auto;
+  //   flex-wrap: nowrap;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   gap: 10px;
+  // }
 `;
 
 const ItemContainer = styled.div`
   flex: 1 1 20%;
-  max-width: 17%;
-  min-width: 100px;
+  max-width: 18%;
+  // min-width: 100px;
   box-sizing: border-box;
   // background-color: red;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  display: flex;
 
   @media screen and (max-width: 768px) {
     flex: 1 1 45%; // Adjust for medium screens (2 items per row)
+    // background: green;
+    max-width: 30%;
   }
 
   @media screen and (max-width: 430px) {
     flex: 1 1 100%; // Full width on smaller screens
+    // background: blue;
+    max-width: 45%;
+  }
+
+  @media screen and (max-width: 375px) {
+    flex: 1 1 100%; // Full width on smaller screens
+    // background: yellow;
+    max-width: 45%;
   }
 `;
 
