@@ -16,6 +16,7 @@ import {
   FaCloudDownloadAlt,
 } from "react-icons/fa";
 import { FaXTwitter, FaRegCopy } from "react-icons/fa6";
+import { IoIosAddCircle } from "react-icons/io";
 
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
@@ -39,6 +40,7 @@ const MenuContainer = styled.div`
   padding: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  overflow: visible;
 `;
 
 const MenuItem = styled.div`
@@ -177,14 +179,19 @@ function EllipsisMenu({ playlistItem, showLikeSection }) {
 
   const menuItems = [
     {
+      name: "Add to Playlist",
+      icon: <IoIosAddCircle />,
+      action: (item) => console.log(`Add clicked ${item?.label}`),
+    },
+    {
       name: "Analytics",
       icon: <IoAnalytics />,
-      action: (item) => alert(`Analytics clicked ${item?.label}`),
+      action: (item) => console.log(`Analytics clicked ${item?.label}`),
     },
     {
       name: "Download",
       icon: <FaCloudDownloadAlt />,
-      action: (item) => alert(`Download clicked ${item?.label}`),
+      action: (item) => console.log(`Download clicked ${item?.label}`),
     },
   ];
 

@@ -25,6 +25,7 @@ const ItemCard = styled.div`
   overflow: hidden;
   text-align: center;
   cursor: pointer;
+  overflow: visible;
 
   @media screen and (max-width: 768px) {
     width: 171px;
@@ -96,7 +97,7 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 171px;
   background: rgba(5, 163, 11, 0.8);
   display: flex;
   justify-content: space-around;
@@ -271,6 +272,13 @@ function MusicCard2({ props, onEllipsisClicked }) {
             }}
           />
         )}
+        <Ellipsis
+          onClick={onEllipsisClicked}
+          showLikeSection={0}
+          ellipsisColor={"white"}
+          playlistItem={props}
+          ellipsisFontSize={"2rem"}
+        />
       </Overlay>
       <ItemDetails>
         <IconsSection>
@@ -281,13 +289,6 @@ function MusicCard2({ props, onEllipsisClicked }) {
         </IconsSection>
         <ItemArtist>{props?.label}</ItemArtist>
       </ItemDetails>
-      <Ellipsis
-        onClick={onEllipsisClicked}
-        showLikeSection={0}
-        ellipsisColor={"white"}
-        playlistItem={props}
-        ellipsisFontSize={"2rem"}
-      />
     </ItemCard>
   );
 }
