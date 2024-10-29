@@ -4,13 +4,15 @@ import {
   IoDiscOutline,
   IoMusicalNotesOutline,
   IoSettingsOutline,
-  IoSearch,
+  IoPerson,
+  IoVideocamOutline,
 } from "react-icons/io5";
-import { IoPerson, IoVideocamOutline } from "react-icons/io5";
 import { SlPlaylist } from "react-icons/sl";
 import { GrProjects } from "react-icons/gr";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { FaHandshakeAngle } from "react-icons/fa6";
+import { FaLink, FaBell } from "react-icons/fa";
+import { IoIosRemoveCircle } from "react-icons/io";
 
 export const SidebarData = [
   // {
@@ -57,6 +59,21 @@ export const SidebarData = [
     title: "Projects",
     path: "/projects",
     icon: <GrProjects />,
+  },
+  {
+    title: "Notifications",
+    path: "/notifications",
+    icon: <FaBell />,
+  },
+  {
+    title: "FanLink",
+    path: "/fanlinks",
+    icon: <FaLink />,
+  },
+  {
+    title: "Takedown Song or Album",
+    path: "/takedown-song",
+    icon: <IoIosRemoveCircle />,
   },
   {
     title: "Partnerships",

@@ -18,10 +18,34 @@ const Container = styled.div`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+  // background: red;
+
+  @media screen and (max-width: 10000px) {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 4000px) {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 60%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+  }
 
   @media screen and (max-width: 768px) {
+    width: 100%;
     margin-bottom: 3px;
   }
 `;
@@ -35,12 +59,12 @@ const Title = styled.h2`
 `;
 
 const SeeAll = styled.a`
-  font-size: 1rem;
-  color: #000;
+  font-size: 18px;
+  color: #4caf50;
   text-decoration: none;
 
   @media screen and (max-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 16px;
   }
 `;
 
@@ -132,7 +156,7 @@ const GenreList = styled.div`
     // background: blue;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 80%;
     // background: red;
   }
@@ -215,7 +239,7 @@ const GenreCardWrapper = styled.div`
     flex: 1 1 calc(22% - 40px);
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 100%;
     // background: green;
     flex: 1 1 calc(20% - 20px);
@@ -239,7 +263,7 @@ const Genres = ({ genres }) => {
     <Container>
       <Header>
         <Title>All Genres</Title>
-        <SeeAll href="/genres">See all</SeeAll>
+        <SeeAll href="/genres">See more</SeeAll>
       </Header>
       <GenreList>
         {genres?.slice(0, 10)?.map((genre, i) => (

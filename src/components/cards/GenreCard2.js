@@ -27,8 +27,9 @@ const images = [genre1, genre2, genre3, genre4, genre5, genre6, genre7, genre8];
 
 const CardContainer = styled.div`
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 100%;
+  // height: 220px;
+  aspect-ratio: 1 / 1;
   background-color: ${(props) => props.backgroundColor};
   border-radius: 8px;
   display: flex;
@@ -39,22 +40,22 @@ const CardContainer = styled.div`
 
   @media screen and (max-width: 10000px) {
     width: 100%;
-    height: 400px;
+    // height: 400px;
   }
 
   @media screen and (max-width: 5000px) {
     width: 100%;
-    height: 300px;
+    // height: 300px;
   }
 
   @media screen and (max-width: 2000px) {
     width: 95%;
-    height: 200px;
+    // height: 200px;
   }
 
-  @media screen and (max-width: 1000px) {
-    width: 95%;
-    height: 180px;
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+    // height: 150px;
   }
 
   @media screen and (max-width: 768px) {
@@ -65,30 +66,28 @@ const CardContainer = styled.div`
 
 const GenreTitle = styled.h2`
   color: white;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 21px;
+  font-weight: 500;
   position: absolute;
   top: 20px;
   left: 20px;
   margin: 0;
-  font-family: Arial, sans-serif;
 
   @media screen and (max-width: 10000px) {
     font-size: 32px;
+    font-weight: 600;
   }
 
   @media screen and (max-width: 2000px) {
     font-size: 22px;
   }
 
-  @media screen and (max-width: 1000px) {
-    font-size: 18px;
-    font-weight: 600;
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
   }
 
   @media screen and (max-width: 768px) {
     font-size: 14px;
-    font-weight: 600;
   }
 `;
 
@@ -117,7 +116,7 @@ const ArtistImage = styled.img`
     height: 60px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 55px;
     height: 55px;
   }

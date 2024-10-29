@@ -134,6 +134,7 @@ const NavLink = styled(Link)`
   height: 20px;
   text-decoration: none;
   font-size: 18px;
+  white-space: nowrap;
 
   &:hover {
     cursor: pointer;
@@ -158,8 +159,12 @@ const navData = [
     path: "/discover",
   },
   {
-    title: "Account",
-    path: "/account",
+    title: "Streaming Platforms",
+    path: "/streaming-platforms",
+  },
+  {
+    title: "Promotions",
+    path: "/promotions",
   },
   {
     title: "Partnerships",
