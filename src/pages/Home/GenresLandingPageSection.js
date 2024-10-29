@@ -7,6 +7,8 @@ import {
 } from "react-icons/io5";
 
 import LandingPageGenreCard from "../../components/cards/LandingPageGenreCard";
+import GenreCard2 from "../../components/cards/GenreCard2";
+import Genres from "../../components/common/Genres";
 
 const Container = styled.div`
   display: flex;
@@ -39,37 +41,36 @@ const Header = styled.div`
 const Title = styled.h2`
   font-size: 3rem;
   margin-bottom: 0px;
-  text-align: start;
+  text-align: center;
   color: white;
-  // background: red;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 40%;
-  padding: 20px;
 
   @media screen and (max-width: 768px) {
     font-size: 1.7rem;
-    width: 100%;
   }
 `;
 
 const Subtitle = styled.p`
   margin-bottom: 0px;
   margin-top: 0px;
-  text-align: start;
+  text-align: center;
   font-size: 20px;
   display: flex;
-  width: 40%;
+  // width: 100%;
   // background-color: red;
   justify-content: center;
   align-items: center;
   align-content: center;
   color: white;
-  padding: 20px;
 
   @media screen and (max-width: 768px) {
     font-size: 15px;
-    width: 100%;
+    width: 70%;
+    text-align: center;
+    // justify-content: center;
+    // align-items: center;
+    // align-content: center;
+    align-self: center;
+    margin: 0 auto; /* Centers the element horizontally */
   }
 `;
 
@@ -94,7 +95,7 @@ const MusicCardWrapper = styled.div`
   margin-bottom: 16px;
   // background: green;
   margin-right: 30px;
-  margin-top: ${({ index }) => (index % 2 === 1 ? "20px" : "0")};
+  // margin-top: ${({ index }) => (index % 2 === 1 ? "20px" : "0")};
 `;
 
 function GenresLandingPageSection() {
@@ -105,24 +106,12 @@ function GenresLandingPageSection() {
   return (
     <Container>
       <Title>Explore Our Endless Music Genres</Title>
-      <Header>
-        <Subtitle>
-          Our Music libraries offer a diverse collection of songs and Genres,
-          waiting to be explored by you.
-        </Subtitle>
-        <ArrowSection>
-          <IoArrowBackCircleOutline size={40} color="white" />
-          <IoArrowForwardCircleOutline size={40} color="white" />
-        </ArrowSection>
-      </Header>
+      <Subtitle>
+        Our Music libraries offer a diverse collection of songs and Genres,
+        waiting to be explored by you.
+      </Subtitle>
 
-      <MusicCardsContainer>
-        {genresListing?.slice(0, 5)?.map((cur, i) => (
-          <MusicCardWrapper key={i} index={i}>
-            <LandingPageGenreCard genreName={cur} />
-          </MusicCardWrapper>
-        ))}
-      </MusicCardsContainer>
+      <Genres genres={genresListing} />
     </Container>
   );
 }

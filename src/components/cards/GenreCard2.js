@@ -37,9 +37,29 @@ const CardContainer = styled.div`
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
+  @media screen and (max-width: 10000px) {
+    width: 100%;
+    height: 400px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 100%;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 95%;
+    height: 200px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 95%;
+    height: 180px;
+  }
+
   @media screen and (max-width: 768px) {
-    width: 151px;
-    height: 151px;
+    width: 121px;
+    height: 121px;
   }
 `;
 
@@ -53,8 +73,22 @@ const GenreTitle = styled.h2`
   margin: 0;
   font-family: Arial, sans-serif;
 
+  @media screen and (max-width: 10000px) {
+    font-size: 32px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
   @media screen and (max-width: 768px) {
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 600;
   }
 `;
 
@@ -67,6 +101,26 @@ const ArtistImage = styled.img`
   transform: rotate(15deg);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  @media screen and (max-width: 10000px) {
+    width: 80px;
+    height: 80px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 70px;
+    height: 70px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 55px;
+    height: 55px;
+  }
 
   @media screen and (max-width: 768px) {
     width: 51px;

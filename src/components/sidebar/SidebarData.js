@@ -3,7 +3,8 @@ import React from "react";
 import {
   IoDiscOutline,
   IoMusicalNotesOutline,
-  IoSettingsOutline, IoSearch
+  IoSettingsOutline,
+  IoSearch,
 } from "react-icons/io5";
 import { IoPerson, IoVideocamOutline } from "react-icons/io5";
 import { SlPlaylist } from "react-icons/sl";
@@ -12,11 +13,11 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { FaHandshakeAngle } from "react-icons/fa6";
 
 export const SidebarData = [
-  {
-    title: "Discover",
-    path: "/discover",
-    icon: <IoDiscOutline />,
-  },
+  // {
+  //   title: "Discover",
+  //   path: "/discover",
+  //   icon: <IoDiscOutline />,
+  // },
   // {
   //   title: "Search",
   //   path: "/search",
@@ -26,6 +27,16 @@ export const SidebarData = [
     title: "Profile",
     path: "/profile",
     icon: <IoPerson />,
+  },
+  {
+    title: "Settings",
+    path: "/edit-profile",
+    icon: <IoSettingsOutline />,
+  },
+  {
+    title: "Account",
+    path: "/account",
+    icon: <MdOutlineAccountCircle />,
   },
   {
     title: "PlayList",
@@ -46,16 +57,6 @@ export const SidebarData = [
     title: "Projects",
     path: "/projects",
     icon: <GrProjects />,
-  },
-  {
-    title: "Settings",
-    path: "/edit-profile",
-    icon: <IoSettingsOutline />,
-  },
-  {
-    title: "Account",
-    path: "/account",
-    icon: <MdOutlineAccountCircle />,
   },
   {
     title: "Partnerships",

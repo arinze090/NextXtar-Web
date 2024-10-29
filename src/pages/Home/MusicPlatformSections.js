@@ -37,10 +37,11 @@ const SectionSubTitle = styled.h3`
 `;
 
 const SeeMoreLink = styled(Link)`
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #4caf50; // Green color for "See more"
   text-decoration: none;
   cursor: pointer;
+  font-weight: bold;
 
   &:hover {
     text-decoration: underline;

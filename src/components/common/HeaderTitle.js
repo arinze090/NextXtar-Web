@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SingnifyLogo from "../../assets/NoBgSingnifyLogo.png";
 
 const ImageContainer = styled.div`
   width: 100%;
@@ -13,7 +14,8 @@ const ImageContainer = styled.div`
 const Gif = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: black;
 `;
 
 const TitleOverlay = styled.div`
@@ -41,10 +43,7 @@ const TitleOverlay = styled.div`
 function HeaderTitle({ title, imgSrc, imgAlt }) {
   return (
     <ImageContainer>
-      <Gif
-        src={imgSrc ? imgSrc : require("../../assets/gif12.gif")}
-        alt={imgAlt}
-      />
+      <Gif src={SingnifyLogo} alt={imgAlt} />
       <TitleOverlay>{title}</TitleOverlay>
     </ImageContainer>
   );

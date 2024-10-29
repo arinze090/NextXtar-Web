@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const SidebarLink = styled(Link)`
   display: flex;
-  color: #000;
+  color: #fff;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -16,7 +16,7 @@ const SidebarLink = styled(Link)`
   font-size: 18px;
 
   &:hover {
-    background: #fff;
+    background: #000;
     border-left: 4px solid green;
     cursor: pointer;
   }
@@ -59,7 +59,9 @@ const SubMenu = ({ item, closeSidebar }) => {
             justifyContent: "center",
           }}
         >
-          {item.icon}
+          {React.cloneElement(item.icon, {
+            style: { color: "white" },
+          })}
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>
       </SidebarLink>

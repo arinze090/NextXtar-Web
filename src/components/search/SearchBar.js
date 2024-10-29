@@ -11,6 +11,7 @@ const InputContainer = styled.div`
   justify-content: center;
   border-radius: 112px;
   cursor: pointer;
+  background: transparent;
 
   @media screen and (max-width: 768px) {
     width: ${({ mobilewidth }) => (mobilewidth ? mobilewidth : "40%")};
@@ -30,6 +31,8 @@ const Input = styled.input`
   border-radius: 112px;
   font-size: 1rem;
   border: 1px solid grey;
+  background: transparent;
+  width: 50%;
 `;
 
 function SearchBar({ width, value, onChange, mobilewidth }) {
@@ -44,7 +47,7 @@ function SearchBar({ width, value, onChange, mobilewidth }) {
             left: 10,
             top: "50%",
             transform: "translateY(-50%)",
-            color: "black",
+            color: "white",
           }}
         />
         <Input

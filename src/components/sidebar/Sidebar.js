@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import { AiOutlineMenu } from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
@@ -15,12 +16,13 @@ import { MdFileUpload } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { signOutUser } from "../../redux/features/user/userSlice";
 import { clearLastFetchTime } from "../../redux/features/discover/discoverSlice";
+import SingnifyLogo from "../../assets/NoBgSingnifyLogo.png";
 
 const Nav = styled.div`
-  background: #fff;
+  background: #0b0b0b;
   height: 80px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
   z-index: 999;
@@ -38,18 +40,30 @@ const NavIcon = styled(Link)`
 `;
 
 const SidebarNav = styled.nav`
-  background: #fff;
+  background: rgba(0, 0, 0, 0.6);
   width: 250px;
   height: 100vh;
   display: flex;
   justify-content: center;
   position: fixed;
   top: 0;
-  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+  right: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
   overflow-y: auto;
   max-height: 100vh;
+
+  /* Hide scrollbar */
+  overflow-y: auto; /* This allows scrolling but hides the scrollbar */
+
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 `;
 
 const UploadBtn = styled.div`
@@ -78,9 +92,23 @@ const SidebarProfileSection = styled.div`
   }
 `;
 
+const SidebarNavLinks = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding-right: 30px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const SidebarLink = styled(Link)`
   display: flex;
-  color: #000;
+  color: #fff;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -90,9 +118,26 @@ const SidebarLink = styled(Link)`
   font-size: 18px;
 
   &:hover {
-    background: #fff;
+    background: #000;
     border-left: 4px solid green;
     cursor: pointer;
+  }
+`;
+
+const NavLink = styled(Link)`
+  display: flex;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  list-style: none;
+  height: 20px;
+  text-decoration: none;
+  font-size: 18px;
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 2px solid green;
   }
 `;
 
@@ -100,7 +145,40 @@ const SidebarLabel = styled.span`
   margin-left: 16px;
 `;
 
+const HamburgerContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 10px;
+`;
+
+const navData = [
+  {
+    title: "Discover",
+    path: "/discover",
+  },
+  {
+    title: "Account",
+    path: "/account",
+  },
+  {
+    title: "Partnerships",
+    path: "/partnership-procedure",
+  },
+];
+
+const HamburgerMenu = ({ toggleSidebar, sidebar }) => (
+  <div onClick={toggleSidebar} style={{ cursor: "pointer" }}>
+    {sidebar ? (
+      <AiIcons.AiOutlineClose size={30} color="white" />
+    ) : (
+      <AiOutlineMenu size={30} color="white" />
+    )}
+  </div>
+);
+
 const Sidebar = () => {
+  const sidebarRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -116,23 +194,53 @@ const Sidebar = () => {
     navigate("/");
   }
 
+  const isSmallScreen = window.innerWidth < 768;
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  // Close sidebar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Check if click is outside the sidebar and if the sidebar is open
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setSidebar(false); // Close sidebar
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [sidebar]);
 
   return (
     <>
       <IconContext.Provider value={{ color: "#000" }}>
         <Nav>
           <NavIcon to="#">
-            <FaIcons.FaBars onClick={showSidebar} />
+            <img
+              src={SingnifyLogo}
+              alt="Singnify-Logo"
+              style={{
+                width: "100%",
+                height: 65,
+                objectFit: "contain",
+                justifyContent: "center",
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                alignSelf: "center",
+                marginRight: 30,
+              }}
+            />
           </NavIcon>
 
           <div
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              //   backgroundColor: "red",
+              // backgroundColor: "red",
               display: "flex",
               width: "100%",
               alignContent: "center",
@@ -140,108 +248,104 @@ const Sidebar = () => {
               paddingRight: 10,
             }}
           >
-            <SearchBar width={"500px"} />
-
-            <SidebarProfileSection>
-              {!hiddenUploadPaths?.includes(location?.pathname) && (
-                <UploadBtn>
-                  <FormButton
-                    btnIcon={
-                      <MdFileUpload
-                        style={{
-                          color: "white",
-                          marginRight: 7,
-                          fontSize: 16,
+            {!isSmallScreen ? (
+              <>
+                <SidebarNavLinks>
+                  {navData?.map((cur, i) => (
+                    <NavLink key={i} to={cur?.path}>
+                      {cur?.title}
+                    </NavLink>
+                  ))}
+                  <SearchBar width={"500px"} />
+                </SidebarNavLinks>
+                <SidebarProfileSection>
+                  {!hiddenUploadPaths?.includes(location?.pathname) && (
+                    <UploadBtn>
+                      <FormButton
+                        btnIcon={
+                          <MdFileUpload
+                            style={{
+                              color: "white",
+                              marginRight: 7,
+                              fontSize: 16,
+                            }}
+                          />
+                        }
+                        title={"Upload"}
+                        onClick={() => {
+                          navigate("/upload");
                         }}
                       />
-                    }
-                    title={"Upload"}
-                    onClick={() => {
-                      navigate("/upload");
-                    }}
-                  />
-                </UploadBtn>
-              )}
-              <div
-                style={{
-                  flexDirection: "row",
-                  display: "flex",
-                  alignContent: "center",
-                  alignItems: "center",
-                  marginLeft: 20,
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  navigate("/profile");
-                }}
-              >
-                <img
-                  src={loggedInUser?.Picture}
-                  alt="ProfilePicture"
-                  style={{
-                    borderRadius: 50,
-                    width: 40,
-                    height: 40,
-                    objectFit: "cover",
-                  }}
-                />
-                <div
-                  style={{
-                    flexDirection: "column",
-                    display: "flex",
-                    marginLeft: 10,
-                  }}
-                >
-                  <h5
+                    </UploadBtn>
+                  )}
+                  <div
                     style={{
-                      margin: 0,
-                      color: "black",
-                      fontSize: 16,
-                      fontWeight: "700",
+                      flexDirection: "row",
+                      display: "flex",
+                      alignContent: "center",
+                      alignItems: "center",
+                      marginLeft: 20,
+                      cursor: "pointer",
                     }}
+                    onClick={showSidebar}
                   >
-                    {loggedInUser?.Username}
-                  </h5>
-                  <p
-                    style={{
-                      margin: 0,
-                      color: "black",
-                      fontSize: 12,
-                    }}
-                  >
-                    {parseInt(loggedInUser?.IsArtist)
-                      ? "Artist"
-                      : "Music lover"}
-                  </p>
-                </div>
-              </div>
-            </SidebarProfileSection>
+                    <img
+                      src={loggedInUser?.Picture}
+                      alt="ProfilePicture"
+                      style={{
+                        borderRadius: 50,
+                        width: 40,
+                        height: 40,
+                        objectFit: "cover",
+                      }}
+                    />
+                    <div
+                      style={{
+                        flexDirection: "column",
+                        display: "flex",
+                        marginLeft: 10,
+                      }}
+                    >
+                      <h5
+                        style={{
+                          margin: 0,
+                          color: "white",
+                          fontSize: 16,
+                          fontWeight: "700",
+                        }}
+                      >
+                        {loggedInUser?.Username}
+                      </h5>
+                      <p
+                        style={{
+                          margin: 0,
+                          color: "white",
+                          fontSize: 12,
+                        }}
+                      >
+                        {parseInt(loggedInUser?.IsArtist)
+                          ? "Artist"
+                          : "Music lover"}
+                      </p>
+                    </div>
+                  </div>
+                </SidebarProfileSection>
+              </>
+            ) : (
+              <HamburgerContainer>
+                <HamburgerMenu toggleSidebar={showSidebar} sidebar={sidebar} />
+              </HamburgerContainer>
+            )}
           </div>
         </Nav>
-        <SidebarNav sidebar={sidebar}>
+        <SidebarNav sidebar={sidebar} ref={sidebarRef}>
           <SidebarWrap>
             <NavIcon to="#">
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
-            </NavIcon>
-            <div
-              style={{
-                justifyContent: "center",
-                alignContent: "center",
-                alignSelf: "center",
-                alignItems: "center",
-                display: "flex",
-                marginBottom: 20,
-              }}
-            >
-              <img
-                src={require("../../assets/NoBgSingnifyLogo.png")}
-                alt=""
-                style={{
-                  width: "60%",
-                  height: "60%",
-                }}
+              <AiIcons.AiOutlineClose
+                style={{ color: "white" }}
+                onClick={showSidebar}
               />
-            </div>
+            </NavIcon>
 
             {SidebarData.map((item, index) => {
               return (
@@ -258,7 +362,7 @@ const Sidebar = () => {
                   justifyContent: "center",
                 }}
               >
-                <RiLogoutBoxLine />
+                <RiLogoutBoxLine style={{ color: "white" }} />
                 <SidebarLabel>Log Out</SidebarLabel>
               </div>
             </SidebarLink>
