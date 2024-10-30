@@ -37,11 +37,15 @@ const Header = styled.div`
   }
 
   @media screen and (max-width: 2000px) {
-    width: 60%;
+    width: 85%;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 85%;
   }
 
   @media screen and (max-width: 1024px) {
-    width: 80%;
+    width: 85%;
   }
 
   @media screen and (max-width: 768px) {
@@ -53,6 +57,22 @@ const Header = styled.div`
 const Title = styled.h2`
   font-size: 1.5rem;
 
+  @media screen and (max-width: 10000px) {
+    font-size: 3rem;
+  }
+
+  @media screen and (max-width: 5000px) {
+    font-size: 2.5rem;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1.7rem;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 1rem;
   }
@@ -63,8 +83,24 @@ const SeeAll = styled.a`
   color: #4caf50;
   text-decoration: none;
 
+  @media screen and (max-width: 10000px) {
+    font-size: 32px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 25px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 20px;
+  }
+
   @media screen and (max-width: 768px) {
-    font-size: 16px;
+    font-size: 1rem;
   }
 `;
 
@@ -152,12 +188,17 @@ const GenreList = styled.div`
   }
 
   @media screen and (max-width: 2000px) {
-    width: 60%;
+    width: 80%;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 85%;
     // background: blue;
   }
 
   @media screen and (max-width: 1024px) {
-    width: 80%;
+    width: 85%;
     // background: red;
   }
 

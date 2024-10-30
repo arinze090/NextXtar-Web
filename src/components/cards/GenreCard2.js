@@ -37,30 +37,40 @@ const CardContainer = styled.div`
   justify-content: center;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
 
   @media screen and (max-width: 10000px) {
     width: 100%;
     // height: 400px;
+    margin-bottom: 0px;
   }
 
   @media screen and (max-width: 5000px) {
     width: 100%;
     // height: 300px;
+    margin-bottom: 0px;
   }
 
   @media screen and (max-width: 2000px) {
-    width: 95%;
-    // height: 200px;
+    width: 90%;
+    margin-bottom: 15px;
+    // background: green;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 90%;
+    margin-bottom: 15px;
   }
 
   @media screen and (max-width: 1024px) {
-    width: 90%;
-    // height: 150px;
+    width: 95%;
+    margin-bottom: 15px;
   }
 
   @media screen and (max-width: 768px) {
     width: 121px;
     height: 121px;
+    margin-bottom: 10px;
   }
 `;
 
