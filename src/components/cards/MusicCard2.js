@@ -28,7 +28,6 @@ const ItemCard = styled.div`
   text-align: center;
   cursor: pointer;
   overflow: visible;
-  // background: red;
   margin: 20px;
 
   @media screen and (max-width: 10000px) {
@@ -254,7 +253,7 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  // aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1;
   // height: 171px;
   background: rgba(5, 163, 11, 0.8);
   display: flex;
@@ -265,6 +264,42 @@ const Overlay = styled.div`
   flex-direction: row;
   overflow: visible;
   z-index: 10;
+
+  @media screen and (max-width: 10000px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 430px) {
+    width: 151px;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 325px) {
+    width: 131px;
+    height: 100%;
+  }
 `;
 
 const PlayIcon = styled(FaPlay)`
