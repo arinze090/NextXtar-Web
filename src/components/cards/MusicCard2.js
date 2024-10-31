@@ -8,8 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
-import { TbPoint } from "react-icons/tb";
 import { IoHeadsetOutline } from "react-icons/io5";
+import { BsDot } from "react-icons/bs";
 
 import { baseURL } from "../../utils/api-client";
 import { API_KEY } from "../../utils/devKeys";
@@ -18,28 +18,73 @@ import {
   setIsAudioPlaying,
   setIsAudioPlayingData,
 } from "../../redux/features/user/userSlice";
+import { truncateText } from "../../Library/Common";
 
 const ItemCard = styled.div`
   position: relative;
-  width: 171px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   text-align: center;
   cursor: pointer;
   overflow: visible;
+  // background: red;
+  margin: 20px;
+
+  @media screen and (max-width: 10000px) {
+    width: 100%;
+    // height: 400px;
+    margin-bottom: 0px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 100%;
+    margin-bottom: 0px;
+    margin: 10px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 85%;
+    margin-bottom: 15px;
+    margin: 2px;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 141px;
+    margin-bottom: 15px;
+    margin: 7px;
+    // background: blue;
+  }
 
   @media screen and (max-width: 768px) {
-    width: 171px;
-    height: 70%;
+    width: 90%;
+    // height: 121px;
+    margin-bottom: 10px;
+    margin: 0px;
   }
+
+  // @media screen and (max-width: 768px) {
+  //   width: 171px;
+  //   height: 171px;
+  // }
 
   @media screen and (max-width: 430px) {
     width: 151px;
-    height: 70%;
+    height: 200px;
+    margin-bottom: 10px;
+    // background: pink;
   }
 
   @media screen and (max-width: 325px) {
-    width: 141px;
-    height: 70%;
+    width: 131px;
+    height: 200px;
+    margin-bottom: 10px;
   }
 
   &:hover .overlay {
@@ -49,15 +94,49 @@ const ItemCard = styled.div`
 
 const ItemImage = styled.img`
   width: 100%;
-  height: 171px;
+  // height: 171px;
   object-fit: cover;
+  aspect-ratio: 1 / 1;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  @media screen and (max-width: 768px) {
-    width: 171px;
-    height: 171px;
+  @media screen and (max-width: 10000px) {
+    width: 100%;
+    height: 90%;
+    margin-bottom: 0px;
   }
+
+  @media screen and (max-width: 5000px) {
+    width: 95%;
+    margin-bottom: 0px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 85%;
+    height: 151px;
+    margin-bottom: 15px;
+    // background: green;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 121px;
+    height: 121px;
+    margin-bottom: 0px;
+    object-fit: contain;
+  }
+
+  // @media screen and (max-width: 768px) {
+  //   width: 171px;
+  //   height: 171px;
+  // }
 
   @media screen and (max-width: 430px) {
     width: 151px;
@@ -76,13 +155,35 @@ const ItemDetails = styled.div`
 `;
 
 const ItemName = styled.p`
-  font-size: 1rem;
+  font-size: 21px;
   font-weight: 600;
   margin: 10px 0 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  color: white;
+  max-width: 80%;
+
+  @media screen and (max-width: 10000px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const NumberOfPlays = styled.p`
@@ -90,15 +191,62 @@ const NumberOfPlays = styled.p`
   font-weight: 600;
   margin: 10px 0 5px;
   white-space: nowrap;
+  color: white;
+
+  @media screen and (max-width: 10000px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const ItemArtist = styled.p`
-  font-size: 0.9rem;
+  font-size: 21px;
   color: grey;
-  margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 80%;
+  text-align: center;
+  margin: 0 auto;
+
+  @media screen and (max-width: 10000px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const Overlay = styled.div`
@@ -106,7 +254,8 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 171px;
+  // aspect-ratio: 1 / 1;
+  // height: 171px;
   background: rgba(5, 163, 11, 0.8);
   display: flex;
   justify-content: space-around;
@@ -164,14 +313,34 @@ const SkeletonLoader = styled.div`
 `;
 
 const HeadsetIcon = styled(IoHeadsetOutline)`
-  color: black;
+  color: white;
   font-size: 16px;
   cursor: pointer;
+
+  @media screen and (max-width: 10000px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
-const PointIcon = styled(TbPoint)`
-  color: black;
-  font-size: 10px;
+const PointIcon = styled(BsDot)`
+  color: #c60303;
+  font-size: 20px;
   cursor: pointer;
 `;
 
@@ -184,6 +353,22 @@ const IconsSection = styled.div`
   text-align: center;
   align-content: center;
   justify-content: center;
+  max-width: 70%;
+  // background: blue;
+  align-self: center;
+  margin: 0 auto;
+
+  @media screen and (max-width: 10000px) {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 5000px) {
+    max-width: 90%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    max-width: 90%;
+  }
 `;
 
 function MusicCard2({ props, onEllipsisClicked }) {
@@ -197,6 +382,8 @@ function MusicCard2({ props, onEllipsisClicked }) {
   const [loading, setLoading] = useState(false);
 
   const [toggleLike, setToggleLike] = useState(false);
+
+  const isSmallScreen = window.innerWidth <= 1024;
 
   const toggleLikeMusic = async (song) => {
     setToggleLike(!toggleLike);
@@ -294,7 +481,12 @@ function MusicCard2({ props, onEllipsisClicked }) {
           <HeadsetIcon />
           <NumberOfPlays>{props?.no_plays + " "}</NumberOfPlays>
           <PointIcon />
-          <ItemName>{" " + props?.track_name}</ItemName>
+
+          {!isSmallScreen ? (
+            <ItemName>{" " + truncateText(props?.track_name, 8)}</ItemName>
+          ) : (
+            <ItemName>{" " + truncateText(props?.track_name, 6)}</ItemName>
+          )}
         </IconsSection>
         <ItemArtist>{props?.label}</ItemArtist>
       </ItemDetails>

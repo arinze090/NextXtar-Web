@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import GenreCard2 from "../cards/GenreCard2";
 
 const Container = styled.div`
-  // background: green;
   padding: 20px;
   width: auto;
   margin: 20px;
@@ -56,6 +55,7 @@ const Header = styled.div`
 
 const Title = styled.h2`
   font-size: 1.5rem;
+  color: white;
 
   @media screen and (max-width: 10000px) {
     font-size: 3rem;
@@ -66,11 +66,11 @@ const Title = styled.h2`
   }
 
   @media screen and (max-width: 2000px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   @media screen and (max-width: 1024px) {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -92,15 +92,15 @@ const SeeAll = styled.a`
   }
 
   @media screen and (max-width: 2000px) {
-    font-size: 25px;
+    font-size: 16px;
   }
 
   @media screen and (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 16px;
   }
 `;
 
@@ -172,7 +172,6 @@ const GenreList = styled.div`
   // background: green;
   width: 100%;
   padding: 0px;
-
   margin: 0 auto;
 
   @media screen and (max-width: 10000px) {

@@ -10,7 +10,8 @@ import FormButton from "../../components/form/FormButton";
 const SliderContainer = styled.div`
   width: 95%;
   margin: auto;
-  padding-top: 120px;
+  // padding-top: 120px;
+  // background: black;
 `;
 
 const CarouselContainer = styled.div`

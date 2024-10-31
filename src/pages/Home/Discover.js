@@ -11,6 +11,12 @@ import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
 import DiscvoverCarousel from "./DiscvoverCarousel";
 import { setDiscoverTracks } from "../../redux/features/discover/discoverSlice";
+import { COLORS } from "../../theme/theme";
+
+const DiscoverContainer = styled.div`
+  background: ${COLORS.black};
+  padding-top: 120px;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -20,6 +26,7 @@ const Container = styled.div`
   gap: 20px;
   margin-bottom: 10px;
   margin-top: 20px;
+  background: black;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -36,6 +43,11 @@ const SideContainer = styled.div`
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    height: 60%;
   }
 `;
 
@@ -383,7 +395,7 @@ function Discover() {
   }, []);
 
   return (
-    <>
+    <DiscoverContainer>
       <DiscvoverCarousel props={carouselTracks} />
       <Container>
         <TopTracks topTracksData={reduxTopTracks} />
@@ -433,7 +445,7 @@ function Discover() {
             );
           }
         })}
-    </>
+    </DiscoverContainer>
   );
 }
 

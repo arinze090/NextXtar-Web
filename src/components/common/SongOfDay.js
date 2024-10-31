@@ -23,6 +23,10 @@ const Container = styled.div`
     width: 90%;
     justify-content: center;
   }
+
+  @media screen and (max-width: 425px) {
+    height: 60%;
+  }
 `;
 
 const Overlay = styled.div`

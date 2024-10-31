@@ -5,6 +5,18 @@ export const truncateText = (text, maxLetters) => {
   return text;
 };
 
+export function truncateWords(str) {
+  return str
+    .split(" ") // Split the string into an array of words
+    .map((word) => {
+      if (word.length > 6) {
+        return word.slice(0, 6) + "..."; // Truncate and append '...'
+      }
+      return word; // Return the word if it's not longer than 6 characters
+    })
+    .join(" "); // Join the array of words back into a string
+}
+
 export const formatTime = (timeInSeconds) => {
   const minutes = Math?.floor(timeInSeconds / 60);
   const seconds = Math?.floor(timeInSeconds % 60);
@@ -43,14 +55,12 @@ export const shareOnWhatsApp = (url, text) => {
   window.location.href = whatsappUrl;
 };
 
-
 export const shareOnFacebook = (url, text) => {
   const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(text);
   const facebookAppUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
   window.location.href = facebookAppUrl;
 };
-
 
 export const shareOnInstagram = (url) => {
   // Instagram does not have a direct share URL scheme, usually shares are done via mobile apps.

@@ -19,7 +19,7 @@ import {
 import Ellipsis from "../modal/Ellipsis";
 
 const Container = styled.div`
-  // background: red;
+  background: black;
   border-radius: 21px;
   padding: 20px;
   width: 100%;
@@ -35,14 +35,15 @@ const Container = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 90%;
-    height: 525px;
-    overflow-y: auto;
+    height: auto;
+    // overflow-y: auto;
   }
 `;
 
 const Title = styled.h2`
   font-size: 1.5rem;
   margin-bottom: 10px;
+  color: white;
 `;
 
 const TrackList = styled.ul`
@@ -55,7 +56,7 @@ const TrackItem = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #333;
 `;
 
 const TrackInfo = styled.div`
@@ -69,7 +70,6 @@ const TrackImageContainer = styled.div`
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
-  background: red;
   position: relative;
 
   &:hover .overlay {
@@ -138,6 +138,17 @@ const TrackDetails = styled.div`
 const TrackName = styled.p`
   margin: 0;
   font-weight: 600;
+  color: white;
+
+  @media screen and (max-width: 768px) {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 325px) {
+    font-weight: 500;
+    font-size: 12px;
+  }
 `;
 
 const TrackArtist = styled.p`
@@ -146,6 +157,10 @@ const TrackArtist = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @media screen and (max-width: 325px) {
+    font-size: 12px;
+  }
 `;
 
 const TrackActions = styled.div`
@@ -156,15 +171,17 @@ const TrackActions = styled.div`
 
 const TrackDuration = styled.span`
   margin-right: 10px;
+  color: white;
 `;
 
 const ActionIcon = styled.span`
   margin-right: 5px;
   cursor: pointer;
+  color: white;
 `;
 
 const HeadsetIcon = styled(IoHeadsetOutline)`
-  color: black;
+  color: white;
   font-size: 16px;
   cursor: pointer;
 `;
@@ -176,7 +193,7 @@ const PointIcon = styled(BsDot)`
 `;
 
 const LikeIcon = styled(CiHeart)`
-  color: black;
+  color: white;
   font-size: 2rem;
   cursor: pointer;
 `;
@@ -281,7 +298,7 @@ const TopTracks = ({ topTracksData }) => {
                         />
                       )}
                     </ImageOverlay>
-                  </ImageOverlayContainer>{" "}
+                  </ImageOverlayContainer>
                 </TrackImageContainer>
                 <TrackDetails>
                   <IconsSection>

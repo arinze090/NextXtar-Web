@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import YouTube from "react-youtube";
@@ -17,16 +17,64 @@ const SectionContainer = styled.div`
 const SectionHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 10000px) {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 4000px) {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 3px;
+  }
 `;
 
 const SectionTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: bold;
+  color: white;
+
+  @media screen and (max-width: 10000px) {
+    font-size: 3rem;
+  }
+
+  @media screen and (max-width: 5000px) {
+    font-size: 2.5rem;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1.5rem;
+  }
 
   @media screen and (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `;
 
@@ -47,6 +95,22 @@ const SeeMoreLink = styled(Link)`
     text-decoration: underline;
   }
 
+  @media screen and (max-width: 10000px) {
+    font-size: 32px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
@@ -55,95 +119,144 @@ const SeeMoreLink = styled(Link)`
 // Grid for the items
 const ItemGrid = styled.div`
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
-  overflow-x: hidden;
-  padding-bottom: 4px;
-  width: 95%;
-  padding: 20px;
+  gap: 5px;
   justify-content: center;
   align-content: center;
-  align-items: center;
   align-self: center;
+  align-items: center;
+
+  flex-direction: row;
+  overflow-x: hidden;
+  // background: green;
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 10000px) {
+    width: 45%;
+    margin-bottom: 70px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 45%;
+    margin-bottom: 70px;
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 80%;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 85%;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 85%;
+    // background: red;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    // background: red;
+  }
 
   // Hide the scrollbar
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
-
-  @media screen and (max-width: 768px) {
-    gap: 0px;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    flex-wrap: wrap;
-    overflow-x: hidden;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  @media screen and (max-width: 430px) {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    overflow-x: hidden;
-    padding-bottom: 4px;
-    width: 100%;
-    padding: 20px;
-  }
-
-  @media screen and (max-width: 375px) {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    overflow-x: hidden;
-    padding-bottom: 4px;
-    width: 100%;
-    padding: 20px;
-  }
-
-  // @media screen and (max-width: 375px) {
-  //   width: 100%;
-  //   overflow-x: auto;
-  //   overflow-y: auto;
-  //   flex-wrap: nowrap;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   gap: 10px;
-  // }
 `;
 
 const ItemContainer = styled.div`
-  flex: 1 1 20%;
-  max-width: 18%;
-  // min-width: 100px;
-  box-sizing: border-box;
-  // background-color: red;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  // background: pink;
   justify-content: center;
-  align-content: center;
   align-items: center;
-  align-self: center;
   display: flex;
 
-  @media screen and (max-width: 768px) {
-    flex: 1 1 45%; // Adjust for medium screens (2 items per row)
-    // background: green;
-    max-width: 30%;
+  // Adjust width to make the items more compact
+  flex: 1 1 calc(20% - 20px);
+  // max-width: calc(20% - 10px);
+
+  @media screen and (max-width: 10000px) {
+    // width: 100%;
+    // background: indigo;
+    flex: 1 1 calc(20% - 20px);
   }
 
-  @media screen and (max-width: 430px) {
-    flex: 1 1 100%; // Full width on smaller screens
+  @media screen and (max-width: 3000px) {
+    width: 100%;
     // background: blue;
-    max-width: 45%;
+    flex: 1 1 calc(20% - 20px);
   }
 
-  @media screen and (max-width: 375px) {
-    flex: 1 1 100%; // Full width on smaller screens
-    // background: yellow;
-    max-width: 45%;
+  @media screen and (max-width: 2000px) {
+    // width: 100%;
+    // background: purple;
+    flex: 1 1 calc(22% - 40px);
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    // background: green;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 768px) {
+    // width: 100%;
+    // background: green;
+    flex: 1 1 calc(20% - 20px);
+  }
+`;
+
+const ItemCardWrapper = styled.div`
+  margin-bottom: 5px;
+  margin-right: 5px;
+  // background: pink;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  // Adjust width to make the items more compact
+  flex: 1 1 calc(20% - 20px);
+  // max-width: calc(20% - 10px);
+
+  @media screen and (max-width: 10000px) {
+    // width: 100%;
+    // background: indigo;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 100%;
+    // background: blue;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 2000px) {
+    // width: 100%;
+    // background: purple;
+    flex: 1 1 calc(22% - 40px);
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    // background: green;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 768px) {
+    // width: 100%;
+    // background: green;
+    flex: 1 1 calc(20% - 20px);
   }
 `;
 
@@ -166,7 +279,28 @@ function MusicPlatformSections({ title, items }) {
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state);
-  // console.log("state", state);
+
+  const [itemsToShow, setItemsToShow] = useState(10);
+
+  // Adjust the number of items based on screen width
+  useEffect(() => {
+    const updateItemsToShow = () => {
+      if (window.innerWidth >= 770 && window.innerWidth <= 1000) {
+        setItemsToShow(8); // Show 8 items between 770px and 1024px
+      } else {
+        setItemsToShow(10); // Default to 10 items
+      }
+    };
+
+    // Initial check
+    updateItemsToShow();
+
+    // Add event listener to adjust on window resize
+    window.addEventListener("resize", updateItemsToShow);
+
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", updateItemsToShow);
+  }, []);
 
   return (
     <SectionContainer>
@@ -176,17 +310,15 @@ function MusicPlatformSections({ title, items }) {
           (cur?.image && cur?.track_name && cur?.label)
       )?.length > 0 && (
         <SectionHeader>
-          <div>
-            <SectionTitle>
-              {title == "video_data" ? "Videos" : title}
-            </SectionTitle>
-          </div>
+          <SectionTitle>
+            {title == "video_data" ? "Videos" : title}
+          </SectionTitle>
           <SeeMoreLink to={`/discover/${title}`}>See more</SeeMoreLink>
         </SectionHeader>
       )}
 
       <ItemGrid>
-        {items?.slice(0, 10)?.map((cur, i) => (
+        {items?.slice(0, itemsToShow)?.map((cur, i) => (
           <ItemContainer key={i}>
             {title == "video_data" && cur?.VideoID ? (
               <VideoCard>
