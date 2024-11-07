@@ -1,79 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
-import genre1 from "../../assets/genre1.png";
-import genre2 from "../../assets/genre2.png";
-import genre3 from "../../assets/genre3.png";
-import genre4 from "../../assets/genre4.png";
-import genre5 from "../../assets/genre5.png";
-import genre6 from "../../assets/genre6.png";
-import genre7 from "../../assets/genre7.png";
-import genre8 from "../../assets/genre8.png";
 import LandingPageTopTracksCard from "../../components/cards/LandingPageTopTracksCard";
-
-const dummyTopTracks = [
-  {
-    id: 1,
-    image: genre1,
-    artist: "Kabza The Mindless",
-    track: "Felicit",
-  },
-  {
-    id: 2,
-    image: genre2,
-    artist: "Ayo_voice",
-    track: "Oluwaseun",
-  },
-  {
-    id: 3,
-    image: genre3,
-    artist: "Dj Wonzy",
-    track: "Its Over",
-  },
-  {
-    id: 4,
-    image: genre4,
-    artist: "Charles Vincent blesi jr",
-    track: "Baby pain",
-  },
-  {
-    id: 5,
-    image: genre5,
-    artist: "Urban PlayBoy",
-    track: "Salawo",
-  },
-  {
-    id: 6,
-    image: genre6,
-    artist: "Cpl Gomez HD",
-    track: "The Queens Royal Fete Instrumental",
-  },
-  {
-    id: 7,
-    image: genre7,
-    artist: "Barco k,Jeff Paul & Bad..",
-    track: "Twesangeyo",
-  },
-  {
-    id: 8,
-    image: genre8,
-    artist: "Cpl Gomez HD",
-    track: "Miami wants to party",
-  },
-  {
-    id: 9,
-    image: genre1,
-    artist: "Cpl. Gomez HD",
-    track: "Vaccination Rhythm",
-  },
-  {
-    id: 10,
-    image: genre2,
-    artist: "Kabza The Mindless",
-    track: "Felicit",
-  },
-];
 
 const Container = styled.div`
   display: flex;
@@ -105,7 +34,7 @@ const Title = styled.h2`
 `;
 
 const Subtitle = styled.p`
-  margin-bottom: 0px;
+  margin-bottom: 40px;
   margin-top: 0px;
   text-align: center;
   font-size: 20px;
@@ -136,6 +65,41 @@ const MusicCardsContainer = styled.div`
   //   background: red;
   justify-content: center;
   margin-top: 80px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 10000px) {
+    width: 45%;
+    margin-bottom: 70px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 45%;
+    margin-bottom: 70px;
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 80%;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 85%;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 85%;
+    // background: red;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    // background: red;
+  }
 `;
 
 const MusicCardWrapper = styled.div`
@@ -151,6 +115,28 @@ function ToptracksLandingSection() {
   const reduxTopTracks = state?.discover?.topTracks;
   // console.log("reduxTopTracks", reduxTopTracks);
 
+  const [itemsToShow, setItemsToShow] = useState(10);
+
+  // Adjust the number of items based on screen width
+  useEffect(() => {
+    const updateItemsToShow = () => {
+      if (window.innerWidth >= 770 && window.innerWidth <= 1000) {
+        setItemsToShow(8); // Show 8 items between 770px and 1024px
+      } else {
+        setItemsToShow(10); // Default to 10 items
+      }
+    };
+
+    // Initial check
+    updateItemsToShow();
+
+    // Add event listener to adjust on window resize
+    window.addEventListener("resize", updateItemsToShow);
+
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", updateItemsToShow);
+  }, []);
+
   return (
     <Container>
       <Title>The Singnify Top Tracks of the Week</Title>
@@ -160,7 +146,7 @@ function ToptracksLandingSection() {
       </Subtitle>
 
       <MusicCardsContainer>
-        {reduxTopTracks?.map((cur, i) => (
+        {reduxTopTracks?.slice(0, itemsToShow)?.map((cur, i) => (
           <MusicCardWrapper key={i}>
             <LandingPageTopTracksCard
               artistName={cur?.label}

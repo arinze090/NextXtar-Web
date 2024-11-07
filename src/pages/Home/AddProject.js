@@ -14,12 +14,14 @@ import FormTextArea from "../../components/form/FormTextArea";
 import UploadCard from "../../components/cards/UploadCard";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
+import { COLORS } from "../../theme/theme";
 
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
   border-radius: 8px;
+  background: ${COLORS.black};
+  padding-top: 120px;
 `;
 
 function AddProject() {

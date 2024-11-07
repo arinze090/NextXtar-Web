@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 import contactImage from "../../assets/contactImage.png";
 import TransparentBtn from "../../components/form/TransparentBtn";
+import { COLORS } from "../../theme/theme";
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 10rem;
-  background-color: #f9f9f9;
+  background: ${COLORS.black};
+  padding-top: 120px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -48,7 +50,7 @@ const TextWrapper = styled.div`
 const Heading = styled.h2`
   font-size: 42px;
   margin-bottom: 0px;
-  color: #000;
+  color: ${COLORS.white};
   font-weight: bold;
   text-align: left;
 
@@ -60,7 +62,7 @@ const Heading = styled.h2`
 
 const Paragraph = styled.p`
   font-size: 24px;
-  color: #434343;
+  color: ${COLORS.white};
   margin-bottom: 30px;
   text-align: left;
   margin-top: 5px;

@@ -292,7 +292,7 @@ const GenreCardWrapper = styled.div`
   }
 `;
 
-const Genres = ({ genres }) => {
+const Genres = ({ genres, genreTitle, seeMoreTitle }) => {
   const navigate = useNavigate();
 
   // Determine the max words based on screen size
@@ -302,8 +302,10 @@ const Genres = ({ genres }) => {
   return (
     <Container>
       <Header>
-        <Title>All Genres</Title>
-        <SeeAll href="/genres">See more</SeeAll>
+        <Title>{genreTitle ? genreTitle : ""}</Title>
+        <SeeAll href="/genres">
+          {seeMoreTitle ? seeMoreTitle : ""}
+        </SeeAll>
       </Header>
       <GenreList>
         {genres?.slice(0, 10)?.map((genre, i) => (

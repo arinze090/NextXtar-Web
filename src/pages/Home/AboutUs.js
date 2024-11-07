@@ -6,6 +6,7 @@ import about2 from "../../assets/about2.png";
 import about3 from "../../assets/about3.png";
 import about4 from "../../assets/about4.png";
 import ContactSection from "./ContactSection";
+import { COLORS } from "../../theme/theme";
 
 const Container = styled.div`
   display: flex;
@@ -14,6 +15,8 @@ const Container = styled.div`
   padding: 5rem;
   background-color: ${({ bgColor }) => (bgColor ? bgColor : "white")};
   margin-top: 0px;
+  background: ${COLORS.black};
+  padding-top: 120px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -48,7 +51,7 @@ const TextWrapper = styled.div`
 const Heading = styled.h2`
   font-size: 90px;
   margin-bottom: 1rem;
-  color: #000;
+  color: ${COLORS.white};
   font-weight: bold;
 
   @media (max-width: 768px) {
@@ -59,7 +62,7 @@ const Heading = styled.h2`
 
 const Paragraph = styled.p`
   font-size: 24px;
-  color: #000;
+  color: ${COLORS.white};
   margin-bottom: 1rem;
   text-align: left;
 

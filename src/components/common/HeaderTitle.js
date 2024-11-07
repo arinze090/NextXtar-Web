@@ -43,7 +43,10 @@ const TitleOverlay = styled.div`
 function HeaderTitle({ title, imgSrc, imgAlt }) {
   return (
     <ImageContainer>
-      <Gif src={SingnifyLogo} alt={imgAlt} />
+      <Gif
+        src={imgSrc ? imgSrc : require("../../assets/gif12.gif")}
+        alt={imgAlt}
+      />
       <TitleOverlay>{title}</TitleOverlay>
     </ImageContainer>
   );

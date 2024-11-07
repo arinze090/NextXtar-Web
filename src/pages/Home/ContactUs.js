@@ -4,14 +4,15 @@ import styled from "styled-components";
 import FormInput from "../../components/form/FormInput";
 import FormTextArea from "../../components/form/FormTextArea";
 import FormButton from "../../components/form/FormButton";
+import { COLORS } from "../../theme/theme";
 
 const Container = styled.div`
   display: flex;
   height: auto;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  padding-top: 80px;
+  background-color: ${COLORS.white};
+  padding-top: 120px;
   margin-bottom: 60px;
   align-content: center;
   flex-direction: column;
@@ -79,6 +80,7 @@ const Title = styled.h2`
   font-size: 3rem;
   margin-bottom: 1rem;
   text-align: center;
+  color: ${COLORS.white};
 `;
 
 const Subtitle = styled.p`
@@ -91,6 +93,7 @@ const Subtitle = styled.p`
   justify-content: center;
   align-items: center;
   align-content: center;
+  color: ${COLORS.whitesmoke};
 
   @media screen and (max-width: 768px) {
     font-size: 15px;

@@ -129,16 +129,21 @@ const NavLink = styled(Link)`
   color: #fff;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   list-style: none;
   height: 20px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 13px;
   white-space: nowrap;
 
   &:hover {
     cursor: pointer;
     border-bottom: 2px solid green;
+  }
+
+  @media screen and (min-width: 2000px) {
+    font-size: 18px;
+    padding: 20px;
   }
 `;
 
@@ -247,7 +252,7 @@ const Sidebar = () => {
               justifyContent: "space-between",
               // backgroundColor: "red",
               display: "flex",
-              width: "100%",
+              width: "90%",
               alignContent: "center",
               alignItems: "center",
               paddingRight: 10,
@@ -261,7 +266,7 @@ const Sidebar = () => {
                       {cur?.title}
                     </NavLink>
                   ))}
-                  <SearchBar width={"500px"} />
+                  <SearchBar width={"400px"} />
                 </SidebarNavLinks>
                 <SidebarProfileSection>
                   {!hiddenUploadPaths?.includes(location?.pathname) && (

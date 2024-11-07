@@ -111,7 +111,7 @@ function GenresLandingPageSection() {
         waiting to be explored by you.
       </Subtitle>
 
-      <Genres genres={genresListing} />
+      <Genres genres={genresListing} genreTitle={""} seeMoreTitle={""} />
     </Container>
   );
 }

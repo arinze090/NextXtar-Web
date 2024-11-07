@@ -27,6 +27,33 @@ const Container = styled.div`
   margin-bottom: 10px;
   margin-top: 20px;
   background: black;
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+
+  @media screen and (max-width: 10000px) {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 4000px) {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 85%;
+  }
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -408,7 +435,11 @@ function Discover() {
           />
         </SideContainer>
       </Container>
-      <Genres genres={genresListing} />
+      <Genres
+        genres={genresListing}
+        genreTitle={"All Genres"}
+        seeMoreTitle={"See more"}
+      />
 
       {/* Recently Uploaded Tracks section */}
       {recentlyUploadedTracks &&
