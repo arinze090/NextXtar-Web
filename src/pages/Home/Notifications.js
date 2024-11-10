@@ -16,7 +16,7 @@ import SkeletonLoader from "../../components/common/SkeletonLoader";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
 `;
 
@@ -25,7 +25,7 @@ const ModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: #000;
   border-radius: 8px;
 `;
 
@@ -40,12 +40,13 @@ const AlbumImage = styled.img`
 const AlbumTitle = styled.h2`
   font-size: 1rem;
   margin-bottom: 0rem;
+  color: white;
 `;
 
 const AlbumSubtitle = styled.h3`
   font-size: 0.9rem;
   font-weight: normal;
-  color: #555;
+  color: white;
   margin-bottom: 1rem;
 `;
 

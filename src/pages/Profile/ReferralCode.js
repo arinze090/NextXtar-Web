@@ -11,14 +11,21 @@ import { API_KEY } from "../../utils/devKeys";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
+  padding-top: 80px;
 `;
 
 const Title = styled.p`
   color: #003018;
   font-size: 20px;
   font-weight: 700;
+`;
+
+const Description = styled.p`
+  font-size: 14px;
+  margin-top: 3px;
+  color: #ccc;
 `;
 
 function ReferralCode() {
@@ -70,7 +77,7 @@ function ReferralCode() {
         imgAlt={"Referral Image"}
       />
       <Title>Referral Earnings: $0.00</Title>
-      <p>You earn $1.00 per person you refer to Singnify.</p>
+      <Description>You earn $1.00 per person you refer to Singnify.</Description>
 
       <FormInput
         type={"text"}

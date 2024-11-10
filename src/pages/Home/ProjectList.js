@@ -7,7 +7,7 @@ import HeaderTitle from "../../components/common/HeaderTitle";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
 `;
 
@@ -22,7 +22,14 @@ function ProjectList() {
         imgAlt={"Projects Image"}
       />
 
-      <h4 style={{ width: "100%", textAlign: "center", fontSize: 20 }}>
+      <h4
+        style={{
+          width: "100%",
+          textAlign: "center",
+          fontSize: 20,
+          color: "white",
+        }}
+      >
         You don't any Project yet
       </h4>
     </Container>

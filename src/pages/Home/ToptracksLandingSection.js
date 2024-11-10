@@ -61,11 +61,15 @@ const Subtitle = styled.p`
 const MusicCardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  //   background: red;
+  gap: 5px;
+  // background: red;
   justify-content: center;
+  align-content: center;
+  align-self: center;
+  align-items: center;
   margin-top: 80px;
   margin: 0 auto;
+  width: 100%;
 
   @media screen and (max-width: 10000px) {
     width: 45%;
@@ -82,7 +86,7 @@ const MusicCardsContainer = styled.div`
   }
 
   @media screen and (max-width: 2000px) {
-    width: 80%;
+    width: 70%;
     // background: blue;
   }
 
@@ -92,21 +96,62 @@ const MusicCardsContainer = styled.div`
   }
 
   @media screen and (max-width: 1024px) {
-    width: 85%;
+    width: 75%;
     // background: red;
+    margin-top: 50px;
   }
 
   @media screen and (max-width: 768px) {
     width: 100%;
     // background: red;
+    margin-top: 50px;
   }
 `;
 
 const MusicCardWrapper = styled.div`
-  //   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
+  margin-right: 5px;
   // background: green;
-  margin-right: 30px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 calc(20% - 20px);
+
+  @media screen and (max-width: 10000px) {
+    // background: indigo;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 100%;
+    // background: blue;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 2000px) {
+    // width: 100%;
+    // background: purple;
+    flex: 1 1 calc(20% - 40px);
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    // background: blue;
+    flex: 1 1 calc(20% - 50px);
+  }
+
+  @media screen and (max-width: 768px) {
+    // width: 90%;
+    // background: pink;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 425px) {
+    // width: 90%;
+    flex: 1 1 calc(20% - 20px);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
 `;
 
 function ToptracksLandingSection() {
@@ -149,6 +194,7 @@ function ToptracksLandingSection() {
         {reduxTopTracks?.slice(0, itemsToShow)?.map((cur, i) => (
           <MusicCardWrapper key={i}>
             <LandingPageTopTracksCard
+              props={cur}
               artistName={cur?.label}
               title={cur?.track_name}
               imageUrl={cur?.image}

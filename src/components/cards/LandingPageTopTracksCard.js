@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { truncateText } from "../../Library/Common";
+import { FaPlay, FaPause } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  setIsAudioPlaying,
+  setIsAudioPlayingData,
+} from "../../redux/features/user/userSlice";
 
 const ItemCard = styled.div`
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  //   height: 280px;
+  //   height: 300px;
+  // width: 225px;
   overflow: hidden;
   text-align: left;
   cursor: pointer;
-  padding: 25px;
+  padding: 20px;
   border-radius: 10px;
   background-color: #131313;
   overflow: visible;
-  margin: 20px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 10000px) {
     width: 100%;
@@ -23,33 +33,31 @@ const ItemCard = styled.div`
   }
 
   @media screen and (max-width: 5000px) {
-    width: 100%;
+    width: 85%;
     margin-bottom: 0px;
     margin: 10px;
     // background: green;
   }
 
   @media screen and (max-width: 2000px) {
-    width: 85%;
+    width: 80%;
     margin-bottom: 15px;
     margin: 2px;
-    // background: blue;
   }
 
   @media screen and (max-width: 1440px) {
-    width: 90%;
+    width: 80%;
     margin-bottom: 15px;
   }
 
   @media screen and (max-width: 1024px) {
     width: 141px;
     margin-bottom: 15px;
-    margin: 7px;
-    // background: blue;
+    padding: 10px;
   }
 
   @media screen and (max-width: 768px) {
-    width: 90%;
+    width: 85%;
     margin-bottom: 10px;
     margin: 0px;
   }
@@ -58,7 +66,6 @@ const ItemCard = styled.div`
     width: 151px;
     height: 200px;
     margin-bottom: 10px;
-    // background: pink;
   }
 
   @media screen and (max-width: 325px) {
@@ -76,33 +83,35 @@ const ItemImage = styled.img`
   width: 100%;
   // height: 171px;
   object-fit: cover;
-  // aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   @media screen and (max-width: 10000px) {
-    width: 100%;
+    width: 95%;
     height: 90%;
     margin-bottom: 0px;
   }
 
   @media screen and (max-width: 5000px) {
     width: 95%;
-    margin-bottom: 0px;
+    height: 90%;
   }
 
   @media screen and (max-width: 2000px) {
     width: 90%;
+    height: 80%;
   }
 
   @media screen and (max-width: 1440px) {
-    width: 90%;
+    width: 175px;
+    height: 175px;
   }
 
   @media screen and (max-width: 1024px) {
-    width: 85%;
-    height: 151px;
-    margin-bottom: 15px;
+    width: 141px;
+    height: 145px;
+    margin-bottom: 0px;
     // background: green;
   }
 
@@ -128,6 +137,60 @@ const ItemImage = styled.img`
   }
 `;
 
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  // height: 171px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  flex-direction: row;
+  overflow: visible;
+  z-index: 10;
+
+  @media screen and (max-width: 10000px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 430px) {
+    width: 151px;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 325px) {
+    width: 131px;
+    height: 100%;
+  }
+`;
+
 const ItemDetails = styled.div`
   padding: 5px;
 `;
@@ -141,7 +204,7 @@ const ItemName = styled.p`
   text-overflow: ellipsis;
   text-align: center;
   color: white;
-  max-width: 80%;
+  max-width: 90%;
 
   @media screen and (max-width: 10000px) {
     font-size: 22px;
@@ -170,7 +233,7 @@ const ItemArtist = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 80%;
+  max-width: 90%;
   text-align: center;
   margin: 0 auto;
 
@@ -199,7 +262,20 @@ const ItemArtist = styled.p`
   }
 `;
 
+const PlayIcon = styled(FaPlay)`
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+`;
+
+const PauseIcon = styled(FaPause)`
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+`;
+
 function LandingPageTopTracksCard({
+  props,
   imageUrl,
   imageUrlAlt,
   title,
@@ -207,13 +283,48 @@ function LandingPageTopTracksCard({
 }) {
   const isSmallScreen = window.innerWidth <= 1024;
 
+  const dispatch = useDispatch();
+
+  const state = useSelector((state) => state);
+  const isAudioPlayingData = state?.user?.isAudioPlayingData;
+  const isAudioPlaying = state?.user?.isAudioPlaying;
+
+  const onPlayClicked = (selectedTrack) => {
+    console.log("selectedTrack", selectedTrack);
+    // just send the data to redux
+    dispatch(setIsAudioPlaying(true));
+    dispatch(setIsAudioPlayingData(selectedTrack));
+  };
+
+  const pausedClicked = (selectedTrack) => {
+    // just send the data to redux
+    dispatch(setIsAudioPlaying(false));
+    dispatch(setIsAudioPlayingData(selectedTrack));
+  };
+
   return (
     <ItemCard>
+      <ItemImage src={imageUrl} alt={imageUrlAlt} />
+      <Overlay className="overlay">
+        {isAudioPlaying && isAudioPlayingData?.id === props?.id ? (
+          <PauseIcon
+            onClick={() => {
+              pausedClicked(props);
+            }}
+          />
+        ) : (
+          <PlayIcon
+            onClick={() => {
+              onPlayClicked(props);
+            }}
+          />
+        )}
+      </Overlay>
       <ItemDetails>
         {!isSmallScreen ? (
           <ItemName>{truncateText(title, 8)}</ItemName>
         ) : (
-          <ItemName>{truncateText(title, 6)}</ItemName>
+          <ItemName>{truncateText(title, 9)}</ItemName>
         )}
         {!isSmallScreen ? (
           <ItemArtist>{truncateText(artistName, 8)}</ItemArtist>

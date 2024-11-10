@@ -24,6 +24,8 @@ const Container = styled.div`
   padding: 2rem;
   flex-wrap: wrap;
   flex-direction: column;
+  background: black;
+  padding-top: 80px;
 
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;

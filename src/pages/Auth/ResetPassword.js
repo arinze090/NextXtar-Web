@@ -22,7 +22,7 @@ const Container = styled.div`
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: #000;
   padding-top: 130px;
   // margin-bottom: 130px;
   align-content: center;
@@ -39,7 +39,7 @@ const FormContainer = styled.div`
   width: 80%;
   max-width: 1200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #000;
   border-radius: 10px;
   overflow: hidden;
 `;
@@ -94,10 +94,12 @@ const FormSection = styled.div`
 const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: white;
 `;
 
 const Subtitle = styled.p`
   margin-bottom: 5rem;
+  color: white;
 
   @media screen and (max-width: 768px) {
     font-size: 0.7rem;

@@ -79,7 +79,7 @@ function Upload({ title, description, formats, uploadBtnTitle, handleClick }) {
           marginTop={10}
           btnIcon={
             <MdFileUpload
-              style={{ color: "black", marginRight: 7, fontSize: 16 }}
+              style={{ color: "white", marginRight: 7, fontSize: 16 }}
             />
           }
         />

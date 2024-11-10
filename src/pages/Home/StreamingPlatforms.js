@@ -7,7 +7,7 @@ import HeaderTitle from "../../components/common/HeaderTitle";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
 `;
 
@@ -25,7 +25,9 @@ function StreamingPlatforms() {
       />
 
       {reduxStreamingPlatforms?.map((cur, i) => (
-        <p key={i}>{cur?.Stream}</p>
+        <p key={i} style={{ color: "white" }}>
+          {cur?.Stream}
+        </p>
       ))}
     </Container>
   );

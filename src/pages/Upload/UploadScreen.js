@@ -12,6 +12,8 @@ const Container = styled.div`
   padding: 20px;
   flex-wrap: wrap;
   margin-bottom: 90px;
+  background: black;
+  padding-top: 80px;
 
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;

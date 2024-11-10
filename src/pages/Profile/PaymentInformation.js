@@ -6,8 +6,9 @@ import HeaderTitle from "../../components/common/HeaderTitle";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
+  padding-top: 80px;
 `;
 function PaymentInformation() {
   return (
@@ -17,7 +18,7 @@ function PaymentInformation() {
         imgSrc={require("../../assets/singnifySplashLogo.png")}
         imgAlt={"Payment Image"}
       />
-      <p style={{ lineHeight: 2, fontSize: 18 }}>
+      <p style={{ lineHeight: 2, fontSize: 18, color: "white" }}>
         1. Singnify updates all payment accounts quarterly, this means every
         ninety days (90 Days), these are in line with the digital stores we work
         with. <br />

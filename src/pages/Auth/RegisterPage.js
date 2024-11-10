@@ -10,9 +10,9 @@ const Container = styled.div`
   height: auto;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: black;
   padding-top: 130px;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
   align-content: center;
 
   @media screen and (max-width: 768px) {
@@ -27,7 +27,7 @@ const FormContainer = styled.div`
   width: 80%;
   max-width: 1200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #000;
   border-radius: 10px;
   overflow: hidden;
 `;
@@ -78,6 +78,7 @@ const Title = styled.h2`
   margin-bottom: 1rem;
   text-align: center;
   margin-bottom: 70px;
+  color: white;
 `;
 
 const RegisterScreen = () => {
@@ -89,7 +90,7 @@ const RegisterScreen = () => {
         <ImageSection />
         <FormSection>
           <Title>Welcome to Singnify Music Distribution Company</Title>
-          <p style={{ textAlign: "center" }}>Register as</p>
+          <p style={{ textAlign: "center", color: "white" }}>Register as</p>
 
           <FormButton
             title={"Music Lover"}
@@ -101,7 +102,7 @@ const RegisterScreen = () => {
             marginTop={20}
           />
 
-          <p style={{ textAlign: "center" }}>Or an</p>
+          <p style={{ textAlign: "center", color: "white" }}>Or an</p>
 
           <TransparentBtn
             title={"Artist"}

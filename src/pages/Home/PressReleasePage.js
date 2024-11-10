@@ -15,13 +15,14 @@ import { FaRegEdit } from "react-icons/fa";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
 `;
 
 const FullWidthMessage = styled.p`
   width: 100%;
   text-align: center;
+  color: white;
 `;
 
 function PressReleasePage() {

@@ -16,8 +16,21 @@ import SkeletonLoader from "../../components/common/SkeletonLoader";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
+`;
+
+const Title = styled.h4`
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0px;
+`;
+
+const Description = styled.p`
+  font-size: 14px;
+  margin-top: 3px;
+  color: #ccc;
 `;
 
 function SocialMediaDistribution() {
@@ -154,7 +167,7 @@ function SocialMediaDistribution() {
         onClose={closeModal}
         title="Deliver to all Digital Music Stores within 24 hours"
       >
-        <h4>Express Delivery Fee: $12.00</h4>
+        <Title>Express Delivery Fee: $12.00</Title>
         <FormSelect
           formTitle={"Select Your Express Delivery Type"}
           selectId={"delivery-type"}
@@ -205,8 +218,8 @@ function SocialMediaDistribution() {
         </div>
       </Modal>
 
-      <h4>Premium Services:</h4>
-      <p>
+      <Title>Premium Services:</Title>
+      <Description>
         These services include: <br /> <br /> 1. 7 Digital <br /> 2. Audible
         Magic <br /> 3. Facebook/Instagram (Meta) <br /> 4. FLO <br />
         5. Netease, <br /> 6. SoundCloud, <br />
@@ -214,12 +227,12 @@ function SocialMediaDistribution() {
         9. TikTok <br />
         10. Vibe (which is under YG Plus) <br />
         11. YouTube Content ID/Audio Fingerprint
-      </p>
+      </Description>
 
-      <h4>
+      <Title>
         Things you should know about YouTube content ID and Audio fingerprint
-      </h4>
-      <p>
+      </Title>
+      <Description>
         Singnify will protect your intellectual property rights by using audio
         fingerprint technology and YouTube content ID. Audio fingerprinting and
         YouTube content ID allow Singnify to identify and track your music and
@@ -238,7 +251,7 @@ function SocialMediaDistribution() {
         and promote the songs as they see fit. The artist agrees to release
         Singnify from any liability related to the distribution and promotion of
         their songs."
-      </p>
+      </Description>
     </Container>
   );
 }

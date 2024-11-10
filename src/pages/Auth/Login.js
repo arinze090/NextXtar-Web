@@ -21,9 +21,9 @@ const Container = styled.div`
   height: auto;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  background: black;
   padding-top: 130px;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
   align-content: center;
 
   @media screen and (max-width: 768px) {
@@ -84,6 +84,7 @@ const Logo = styled.img`
 const FormSection = styled.div`
   flex: 1;
   padding: 2rem;
+  background: black;
 
   @media screen and (max-width: 768px) {
     padding: 1rem;
@@ -93,6 +94,7 @@ const FormSection = styled.div`
 const Title = styled.h2`
   font-size: 1.5rem;
   margin-bottom: 2rem;
+  color: white;
 
   @media screen and (max-width: 768px) {
     font-size: 1.5rem;
@@ -267,7 +269,13 @@ function Login() {
             loading={loading}
             errorMessage={formError}
           />
-          <p style={{ justifyContent: "center", textAlign: "center" }}>
+          <p
+            style={{
+              justifyContent: "center",
+              textAlign: "center",
+              color: "white",
+            }}
+          >
             Or continue with
           </p>
           <div
@@ -278,14 +286,15 @@ function Login() {
               justifyContent: "center",
             }}
           >
-            <FaFacebook style={{ padding: 10, fontSize: 30 }} />
-            <FaXTwitter style={{ padding: 10, fontSize: 30 }} />
+            <FaFacebook style={{ padding: 10, fontSize: 30, color: "white" }} />
+            <FaXTwitter style={{ padding: 10, fontSize: 30, color: "white" }} />
             <FcGoogle style={{ padding: 10, fontSize: 30 }} />
           </div>
           <p
             style={{
               justifyContent: "center",
               textAlign: "center",
+              color: "white",
             }}
           >
             Don't have an account?{" "}

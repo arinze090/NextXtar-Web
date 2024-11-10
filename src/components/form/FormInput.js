@@ -32,7 +32,7 @@ function FormInput({
   return (
     <InputContainer width={width}>
       <label
-        style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}
+        style={{ marginBottom: "0.5rem", fontSize: "0.9rem", color: "white" }}
         htmlFor="referral-code"
       >
         {formTitle}

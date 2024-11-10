@@ -26,7 +26,7 @@ function FormTextArea({
   return (
     <InputContainer width={width}>
       <label
-        style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}
+        style={{ marginBottom: "0.5rem", fontSize: "0.9rem", color: "white" }}
         htmlFor="referral-code"
       >
         {formTitle}
@@ -43,6 +43,7 @@ function FormTextArea({
           fontSize: "1rem",
           borderColor: "gray",
           borderRadius: "5px",
+          backgroundColor: "#ccc",
         }}
       />
       <ErrorMessage message={errorMessage} />

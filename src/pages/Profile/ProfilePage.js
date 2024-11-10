@@ -22,8 +22,9 @@ import ProfileHeader2 from "../../components/common/ProfileHeader2";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #ffffff;
+  background: #000;
   border-radius: 8px;
+  padding-top: 80px;
 `;
 
 const ProfileContainer = styled.div`
@@ -84,7 +85,7 @@ const Title = styled.p`
 `;
 
 const Description = styled.p`
-  color: #000;
+  color: #ccc;
   font-size: 18px;
   font-weight: 500;
   margin-left: 10px;
@@ -144,6 +145,7 @@ const TrackTitle = styled.p`
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
+  color: white;
 `;
 
 function ProfilePage() {
@@ -400,27 +402,33 @@ function ProfilePage() {
         <SideContainer>
           <Title>About</Title>
           <AboutDetails>
-            <IoPerson />
+            <IoPerson style={{ color: "white" }} />
             <Description>{user?.Gender}</Description>
           </AboutDetails>
           <AboutDetails>
-            <MdLocationOn />
+            <MdLocationOn style={{ color: "white" }} />
             <Description>{user?.Country}</Description>
           </AboutDetails>
           <AboutDetails>
-            <MdEmail />
+            <MdEmail style={{ color: "white" }} />
             <Description>{user?.EmailAddress}</Description>
           </AboutDetails>
           <AboutDetails>
-            <IoCallSharp />
+            <IoCallSharp style={{ color: "white" }} />
             <Description>{user?.Phone}</Description>
           </AboutDetails>
           <Title>Socials</Title>
           <div>
-            <FaXTwitter style={{ fontSize: 30, marginRight: 10 }} />
-            <FaFacebook style={{ fontSize: 30, marginRight: 10 }} />
-            <FaWhatsapp style={{ fontSize: 30, marginRight: 10 }} />
-            <FaInstagram style={{ fontSize: 30 }} />
+            <FaXTwitter
+              style={{ fontSize: 30, marginRight: 10, color: "white" }}
+            />
+            <FaFacebook
+              style={{ fontSize: 30, marginRight: 10, color: "white" }}
+            />
+            <FaWhatsapp
+              style={{ fontSize: 30, marginRight: 10, color: "white" }}
+            />
+            <FaInstagram style={{ fontSize: 30, color: "white" }} />
           </div>
         </SideContainer>
       </ProfileContainer>

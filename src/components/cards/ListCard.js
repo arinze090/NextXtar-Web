@@ -6,7 +6,7 @@ const ItemContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: #000;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -26,11 +26,11 @@ const IconContainer = styled.div`
 const Label = styled.span`
   margin-left: 1rem;
   font-size: 1rem;
-  color: ${({ labelColor }) => (labelColor ? labelColor : "#333")};
+  color: ${({ labelColor }) => (labelColor ? labelColor : "#fff")};
 `;
 
 const ArrowIcon = styled(IoMdArrowDropright)`
-  color: #333;
+  color: #ccc;
 `;
 
 function ListCard({

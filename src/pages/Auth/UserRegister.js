@@ -24,9 +24,9 @@ const Container = styled.div`
   height: auto;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: #000;
   padding-top: 130px;
-  margin-bottom: 90px;
+  padding-bottom: 90px;
   align-content: center;
 
   @media screen and (max-width: 768px) {
@@ -89,6 +89,7 @@ const Logo = styled.img`
 const FormSection = styled.div`
   flex: 1;
   padding: 2rem;
+  background: black;
 
   @media screen and (max-width: 768px) {
     padding: 1rem;
@@ -99,10 +100,12 @@ const FormSection = styled.div`
 const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: white;
 `;
 
 const Subtitle = styled.p`
   margin-bottom: 2rem;
+  color: white;
 `;
 
 const CheckboxGroup = styled.div`
@@ -412,7 +415,7 @@ function UserRegister() {
 
           <CheckboxGroup>
             <input type="checkbox" id="terms" />
-            <label htmlFor="terms">
+            <label htmlFor="terms" style={{ color: "white" }}>
               By clicking Sign Up, I agree to the{" "}
               <Link rel="stylesheet" href="/terms-of-service">
                 Terms of Service
@@ -427,12 +430,24 @@ function UserRegister() {
             errorMessage={formError}
             loading={loading}
           />
-          <p style={{ justifyContent: "center", textAlign: "center" }}>
+          <p
+            style={{
+              justifyContent: "center",
+              textAlign: "center",
+              color: "white",
+            }}
+          >
             <Link rel="stylesheet" href="/register-as-an-artist">
               Or Signup as an artist
             </Link>
           </p>
-          <p style={{ justifyContent: "center", textAlign: "center" }}>
+          <p
+            style={{
+              justifyContent: "center",
+              textAlign: "center",
+              color: "white",
+            }}
+          >
             Already have an account?{" "}
             <Link rel="stylesheet" href="/login">
               Sign In

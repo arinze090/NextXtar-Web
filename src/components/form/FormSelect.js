@@ -18,6 +18,7 @@ const StyledLabel = styled.label`
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   font-family: "ClashDisplay", sans-serif;
+  color: white;
 `;
 
 const StyledSelectContainer = styled.div`

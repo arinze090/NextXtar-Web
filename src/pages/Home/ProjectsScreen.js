@@ -9,8 +9,21 @@ import TransparentBtn from "../../components/form/TransparentBtn";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
+`;
+
+const Title = styled.h4`
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0px;
+`;
+
+const Description = styled.p`
+  font-size: 14px;
+  margin-top: 3px;
+  color: #ccc;
 `;
 
 function ProjectsScreen() {
@@ -23,7 +36,7 @@ function ProjectsScreen() {
         imgSrc={require("../../assets/projects.png")}
         imgAlt={"Projects Image"}
       />
-      <p>
+      <Description>
         Singnify will be sponsoring projects across all sections of
         entertainment, mainly in songwriting, skit creation, comedy, singing,
         unique ideas, short movie productions, News caster and producers. <br />
@@ -48,7 +61,7 @@ function ProjectsScreen() {
         <br />
         This is an opportunity to showcase your talent to the world. Singnify
         unlimited Possibilities
-      </p>
+      </Description>
 
       <TransparentBtn
         title={"Submit a Project"}

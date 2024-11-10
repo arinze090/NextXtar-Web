@@ -9,7 +9,8 @@ import HeaderTitle from "../../components/common/HeaderTitle";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: black;
+  padding-top: 80px;
   border-radius: 8px;
 `;
 
@@ -46,6 +47,7 @@ function BankAccountPage() {
           key={index}
           icon={item.icon}
           label={item.label}
+          iconColor={"white"}
           onClick={() => handleClick(item.navigateTo)}
         />
       ))}

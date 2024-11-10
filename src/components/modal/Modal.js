@@ -15,7 +15,7 @@ const Overlay = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  background: white;
+  background: black;
   padding: 20px;
   border-radius: 8px;
   width: 90%;
@@ -40,6 +40,7 @@ const ModalHeader = styled.div`
 const ModalTitle = styled.h2`
   margin: 0;
   font-size: 1.2rem;
+  color: white;
 `;
 
 const CloseButton = styled.button`
@@ -47,6 +48,7 @@ const CloseButton = styled.button`
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  color: white;
 `;
 
 const ModalContent = styled.div`

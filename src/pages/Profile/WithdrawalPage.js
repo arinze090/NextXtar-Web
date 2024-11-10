@@ -7,8 +7,22 @@ import Modal from "../../components/modal/Modal";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
+  padding-top: 80px;
+`;
+
+const Title = styled.h4`
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0px;
+`;
+
+const Description = styled.p`
+  font-size: 14px;
+  margin-top: 3px;
+  color: #ccc;
 `;
 
 function WithdrawalPage() {
@@ -41,11 +55,11 @@ function WithdrawalPage() {
         onClose={closeModal}
         title="Withdraw From Your Royalties"
       >
-        <h4>Available Royalty Earnings: $0.0000</h4>
-        <p>
+        <Title>Available Royalty Earnings: $0.0000</Title>
+        <Description>
           You need to have at least $100 to withdraw from your available
           royalties.
-        </p>
+        </Description>
       </Modal>
     </Container>
   );

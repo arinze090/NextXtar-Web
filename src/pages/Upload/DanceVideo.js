@@ -8,14 +8,21 @@ import FormButton from "../../components/form/FormButton";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
-  border-radius: 8px;
+  background: black;
+  padding-top: 80px;
 `;
 
 const Title = styled.p`
-  color: #003018;
+  color: #005903;
   font-size: 20px;
   font-weight: 700;
+  margin-bottom: 0px;
+`;
+
+const Description = styled.p`
+  font-size: 14px;
+  margin-top: 3px;
+  color: #ccc;
 `;
 
 function DanceVideo() {
@@ -29,7 +36,7 @@ function DanceVideo() {
         imgAlt={"Dance Video Image"}
       />
       <Title>Upload Your Dance Video</Title>
-      <p>
+      <Description>
         Singnify DanceVideo, for all Singnify users, Singnify organized a
         DanceVideo creation contest called "Singnify Tiktok DanceVideo." Let's
         show off our creativity and share prizes up to $2,000 <br /> <br />{" "}
@@ -38,8 +45,8 @@ function DanceVideo() {
         prizes in four special categories — Most Referral, Most Creative, Most
         Shares and Most likes. <br /> <br />
         Campaign Period Soon to be announce (GMT)
-      </p>
-      <p>
+      </Description>
+      <Description>
         Prices <br /> <br />
         - Main Prize: The 30 users with the highest total views will receive
         $50/user. <br />- Special Category Prizes: The user that has the most
@@ -49,10 +56,10 @@ function DanceVideo() {
         - The video has the most likes: $50 <br />- Excellent videos can be used
         as Singnify TikTok official video creators, and the videos will be
         forwarded by our official account or announced as official videos.
-      </p>
+      </Description>
 
       <Title>How to Participate</Title>
-      <p>
+      <Description>
         - Download Singnify App from Android and iOS store, complete your
         registration.
         <br /> <br />
@@ -70,19 +77,19 @@ function DanceVideo() {
         your content on, Tiktok, follow @Singnify_Ent on Tiktok and share it
         with your other channels, such as Twitter, Instagram, and Facebook if
         possible, this will give you more chances to win..
-      </p>
+      </Description>
 
       <Title>Winners will be evaluated based on the following:</Title>
       <Title>Main Prize</Title>
-      <p>
+      <Description>
         - Most views & likes on Social Media(70%) <br /> - Evaluation by the
         Singnify team (30%) <br />- Have at least three successful referrals.
-      </p>
+      </Description>
       <Title>Special Category Prizes</Title>
-      <p>Evaluation by the Singnify Team.</p>
+      <Description>Evaluation by the Singnify Team.</Description>
 
       <Title>Terms and Conditions:</Title>
-      <p>
+      <Description>
         1. Only videos that meet all the requirements can be counted as a valid
         video; <br />
         2. The video cannot be deleted. Videos that have been used in other
@@ -95,7 +102,7 @@ function DanceVideo() {
         bring disrespect to the Singnify brand is strictly prohibited; <br /> 5.
         Singnify reserves all rights to the DanceVideo including the final
         explanation.
-      </p>
+      </Description>
       <FormButton
         title={"Proceed"}
         marginTop={40}

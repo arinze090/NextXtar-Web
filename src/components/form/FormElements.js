@@ -39,7 +39,7 @@ export const TransparentFormBtn = styled.button`
   background: transparent;
   padding: 10px 22px;
   width: ${({ width }) => (width ? width : "122px")};
-  color: ${({ color }) => (color ? color : "#fff")};
+  color: ${({ color }) => (color ? "#fff" : "#fff")};
   font-size: 18;
   font-weight: 600;
   border: 2px solid #05a30b;
@@ -55,7 +55,8 @@ export const TransparentFormBtn = styled.button`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    color: ${({ hoverColor }) => (hoverColor ? hoverColor : "#000")};
+    color: ${({ hoverColor }) => (hoverColor ? "#fff" : "#fff")};
+    border: 2px solid #ccc;
   }
 
   @media screen and (max-width: 768px) {
