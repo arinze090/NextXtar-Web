@@ -24,7 +24,7 @@ const Container = styled.div`
   //   justify-content: space-between;
   padding: 20px;
   gap: 20px;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   margin-top: 20px;
   background: black;
   width: 100%;

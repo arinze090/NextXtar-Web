@@ -11,9 +11,9 @@ const Container = styled.div`
   height: auto;
   justify-content: center;
   align-items: center;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.black};
   padding-top: 120px;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
   align-content: center;
   flex-direction: column;
 
@@ -29,7 +29,7 @@ const FormContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f2f2f2;
+  background-color: ${COLORS.black};
   border-radius: 10px;
   overflow: hidden;
   margin-top: 30px;

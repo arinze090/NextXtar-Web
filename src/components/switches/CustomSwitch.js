@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   margin: 0 auto;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
 `;
 
@@ -27,8 +27,8 @@ const NavItem = styled.button`
   padding: 0.5rem 1rem;
   border: 2px solid #05a30b;
   border-radius: 20px;
-  background: ${(props) => (props.active ? "#05A30B" : "#fff")};
-  color: ${(props) => (props.active ? "#fff" : "#000")};
+  background: ${(props) => (props.active ? "#05A30B" : "#000")};
+  color: ${(props) => (props.active ? "#fff" : "#fff")};
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;

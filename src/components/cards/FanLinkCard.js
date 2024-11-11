@@ -23,7 +23,7 @@ import FormInput from "../form/FormInput";
 const CardContainer = styled.div`
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #000;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -68,6 +68,7 @@ const ContentWrapper = styled.div`
 const Title = styled.h2`
   font-size: 20px;
   margin-bottom: 10px;
+  color: white;
 
   @media (max-width: 768px) {
     margin-bottom: 0px;
@@ -77,8 +78,8 @@ const Title = styled.h2`
 
 const Subtitle = styled.h3`
   font-size: 16px;
-  color: #555;
   margin-bottom: 10px;
+  color: #ccc;
 
   @media (max-width: 768px) {
     margin-top: 0px;
@@ -166,11 +167,21 @@ function FanLinkCard({ props, btnTitle, onBtnClicked, editBtnIcon, shareUrl }) {
 
       <Modal isOpen={isShareModalOpen} onClose={closeShareModal} title="Share">
         <SocialButtons>
-          <FaWhatsapp onClick={() => shareOnWhatsApp(shareUrl)} />
-          <FaFacebook onClick={() => shareOnFacebook(shareUrl)} />
-          <FaInstagram onClick={() => shareOnInstagram(shareUrl)} />
+          <FaWhatsapp
+            onClick={() => shareOnWhatsApp(shareUrl)}
+            style={{ color: "white" }}
+          />
+          <FaFacebook
+            onClick={() => shareOnFacebook(shareUrl)}
+            style={{ color: "white" }}
+          />
+          <FaInstagram
+            onClick={() => shareOnInstagram(shareUrl)}
+            style={{ color: "white" }}
+          />
           <FaXTwitter
             onClick={() => shareOnTwitter(shareUrl, "Check this out!")}
+            style={{ color: "white" }}
           />
         </SocialButtons>
         <FormInput type={"text"} value={shareUrl} />

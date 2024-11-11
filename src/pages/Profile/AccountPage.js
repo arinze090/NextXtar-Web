@@ -25,7 +25,6 @@ const Container = styled.div`
   padding: 2rem;
   background: black;
   padding-top: 80px;
-  border-radius: 8px;
 `;
 
 const items = [

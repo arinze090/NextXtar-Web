@@ -19,7 +19,7 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
   background: #000;
-  border-radius: 8px;
+  padding-top: 80px;
 `;
 
 const FullWidthMessage = styled.p`

@@ -12,12 +12,11 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
   background: #000;
-  border-radius: 8px;
   padding-top: 80px;
 `;
 
 const Title = styled.p`
-  color: #003018;
+  color: #005903;
   font-size: 20px;
   font-weight: 700;
 `;

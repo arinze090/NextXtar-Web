@@ -14,7 +14,7 @@ const ItemContainer = styled.div`
   cursor: pointer;
 
   &:hover {
-    background: #f0f0f0;
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 

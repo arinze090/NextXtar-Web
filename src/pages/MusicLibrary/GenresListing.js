@@ -26,8 +26,8 @@ const images = [genre1, genre2, genre3, genre4, genre5, genre6, genre7, genre8];
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
-  border-radius: 8px;
+  background: #000;
+  padding-top: 80px;
 `;
 
 const GenreHeader = styled.div`

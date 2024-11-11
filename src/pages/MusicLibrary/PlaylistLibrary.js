@@ -18,8 +18,8 @@ import Modal from "../../components/modal/Modal";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #f9f9f9;
-  border-radius: 8px;
+  background: #000;
+  padding-top: 80px;
   height: 100%;
 
   @media (max-width: 768px) {
@@ -32,6 +32,7 @@ const SwitchSection = styled.div`
   justify-content: flex-end;
   display: flex;
   margin-bottom: 20px;
+  background: #000;
 `;
 
 const GridContainer = styled.div`

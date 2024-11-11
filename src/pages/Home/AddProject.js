@@ -19,7 +19,6 @@ import { COLORS } from "../../theme/theme";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  border-radius: 8px;
   background: ${COLORS.black};
   padding-top: 120px;
 `;

@@ -10,6 +10,7 @@ const DottedBorderContainer = styled.div`
   cursor: pointer;
   border-radius: 8px;
   margin: 20px 0;
+  color: white;
 `;
 
 const FilePreviewContainer = styled.div`
@@ -53,7 +54,7 @@ const CancelIcon = styled.div`
   top: 5px;
   right: 5px;
   cursor: pointer;
-  color: #aaa;
+  color: #ccc;
 `;
 
 function FileUpload({
@@ -77,7 +78,7 @@ function FileUpload({
         selectedFile?.type?.startsWith("video/") ? (
           <FilePreviewContainer>
             <CancelIcon onClick={handleCancel}>
-              <IoCloseSharp size={20} color="black" />
+              <IoCloseSharp size={20} color="white" />
             </CancelIcon>
             <VideoPreview controls>
               <source src={previewUrl} type={selectedFile.type} />
@@ -96,7 +97,7 @@ function FileUpload({
         ) : selectedFile?.type?.startsWith("image/") ? (
           <FilePreviewContainer>
             <CancelIcon onClick={handleCancel}>
-              <IoCloseSharp size={20} color="black" />
+              <IoCloseSharp size={20} color="white" />
             </CancelIcon>
             {previewUrl && <PreviewImage src={previewUrl} alt="Preview" />}
             <PreviewText>{selectedFile.name}</PreviewText>

@@ -6,7 +6,7 @@ const ItemContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: #000;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -14,7 +14,7 @@ const ItemContainer = styled.div`
   cursor: pointer;
 
   &:hover {
-    background: #f0f0f0;
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -26,7 +26,7 @@ const IconContainer = styled.div`
 const Label = styled.span`
   margin-left: 1rem;
   font-size: 1rem;
-  color: #333;
+  color: #fff;
 
   @media screen and (max-width: 768px) {
     font-size: 0.8rem;
