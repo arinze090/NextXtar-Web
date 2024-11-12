@@ -15,6 +15,7 @@ const HeaderTitle = styled.h2`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: white;
 `;
 
 const IconsSection = styled.div`
@@ -25,13 +26,13 @@ const IconsSection = styled.div`
 `;
 
 const ArrowBack = styled(IoIosArrowRoundBack)`
-  color: black;
+  color: white;
   font-size: 2rem;
   cursor: pointer;
 `;
 
 const ArrowForward = styled(IoIosArrowRoundForward)`
-  color: black;
+  color: white;
   font-size: 2rem;
   cursor: pointer;
 `;

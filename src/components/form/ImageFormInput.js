@@ -62,6 +62,8 @@ function ImageFormInput({
           borderRadius: 5,
           fontSize: "1rem",
           border: "1px solid grey",
+          backgroundColor: "black",
+          color: "white",
         }}
       />
       {copyIcon ? (
@@ -73,7 +75,7 @@ function ImageFormInput({
             top: "50%",
             transform: "translateY(-50%)",
             cursor: "pointer",
-            color: "gray",
+            color: "#ccc",
           }}
         />
       ) : null}

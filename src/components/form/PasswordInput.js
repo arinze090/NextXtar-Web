@@ -37,6 +37,8 @@ const PasswordInput = ({ formTitle, width, value, onChange, errorMessage }) => {
           borderColor: "gray",
           borderRadius: "5px",
           border: "1px solid grey",
+          backgroundColor: "black",
+          color: "white",
         }}
       />
       {passwordVisible ? (
@@ -48,7 +50,7 @@ const PasswordInput = ({ formTitle, width, value, onChange, errorMessage }) => {
             top: "60%",
             transform: "translateY(-50%)",
             cursor: "pointer",
-            color: "gray",
+            color: "#ccc",
           }}
         />
       ) : (
@@ -60,7 +62,7 @@ const PasswordInput = ({ formTitle, width, value, onChange, errorMessage }) => {
             top: "60%",
             transform: "translateY(-50%)",
             cursor: "pointer",
-            color: "gray",
+            color: "#ccc",
           }}
         />
       )}

@@ -53,8 +53,8 @@ function FormInput({
           fontFamily: "ClashDisplay, sans-serif",
           backgroundColor: inputBackgroundColor
             ? inputBackgroundColor
-            : "white",
-          color: inputColor ? inputColor : "black",
+            : "black",
+          color: inputColor ? inputColor : "white",
         }}
       />
       {copyIcon ? (

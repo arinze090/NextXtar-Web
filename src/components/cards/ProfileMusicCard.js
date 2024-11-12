@@ -11,7 +11,7 @@ import {
 
 const Container = styled.div`
   display: flex;
-  //   background: black;
+  background: black;
   margin-bottom: 20px;
   flex-direction: column;
   margin-top: 20px;
@@ -60,11 +60,12 @@ const ItemName = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: white;
 `;
 
 const ItemArtist = styled.p`
   font-size: 16px;
-  color: grey;
+  color: white;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -94,6 +95,7 @@ const IconsSection = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: white;
 `;
 
 const HeadsetIcon = styled(TbHeadphonesFilled)`
@@ -114,7 +116,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 163, 11, 0.8);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -181,8 +183,8 @@ function ProfileMusicCard({ props }) {
             <ItemArtist>{props?.artist_name}</ItemArtist>
           </TrackDetails>
           <IconsSection>
-            <LikeIcon /> {props?.no_downloads}
-            <HeadsetIcon /> {props?.no_plays}
+            <LikeIcon style={{ color: "white" }} /> {props?.no_downloads}
+            <HeadsetIcon style={{ color: "white" }} /> {props?.no_plays}
           </IconsSection>
         </TrackInfo>
       </InsideContainer>

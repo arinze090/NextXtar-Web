@@ -36,7 +36,8 @@ const StyledSelect = styled.select`
   -moz-appearance: none; /* Remove default styling on Firefox */
   appearance: none; /* Remove default styling on other browsers */
   background-image: none; /* Remove default dropdown arrow */
-  color: black;
+  color: white;
+  background: black;
   width: 100%;
 
   &:focus {

@@ -22,6 +22,8 @@ function FormTextArea({
   placeholder,
   errorMessage,
   maxLength,
+  inputBackgroundColor,
+  inputColor,
 }) {
   return (
     <InputContainer width={width}>
@@ -43,7 +45,10 @@ function FormTextArea({
           fontSize: "1rem",
           borderColor: "gray",
           borderRadius: "5px",
-          backgroundColor: "#ccc",
+          backgroundColor: inputBackgroundColor
+            ? inputBackgroundColor
+            : "black",
+          color: inputColor ? inputColor : "white",
         }}
       />
       <ErrorMessage message={errorMessage} />

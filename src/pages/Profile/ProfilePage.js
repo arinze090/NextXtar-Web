@@ -18,6 +18,7 @@ import SkeletonLoader from "../../components/common/SkeletonLoader";
 import ProfileMusicCard from "../../components/cards/ProfileMusicCard";
 import ProfileInfoTitle from "../../components/common/ProfileInfoTitle";
 import ProfileHeader2 from "../../components/common/ProfileHeader2";
+import { COLORS } from "../../theme/theme";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -43,7 +44,7 @@ const ProfileContainer = styled.div`
 `;
 
 const LeftContainer = styled.div`
-  background: white;
+  background: ${COLORS.footerColor};
   border-radius: 15px;
   padding: 20px;
   width: 100%;
@@ -60,7 +61,7 @@ const SideContainer = styled.div`
   width: 30%;
   height: auto;
   padding: 20px;
-  background: #fff;
+  background: ${COLORS.footerColor};
   border-radius: 15px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 
@@ -78,13 +79,13 @@ const AboutDetails = styled.div`
 `;
 
 const Title = styled.p`
-  color: #003018;
+  color: #005903;
   font-size: 20px;
   font-weight: 700;
 `;
 
 const Description = styled.p`
-  color: #ccc;
+  color: #fff;
   font-size: 18px;
   font-weight: 500;
   margin-left: 10px;

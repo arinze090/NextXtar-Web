@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { IoMdArrowDropright } from "react-icons/io";
+import { COLORS } from "../../theme/theme";
 
 const ItemContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #000;
+  background: ${COLORS.footerColor};
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -15,6 +16,7 @@ const ItemContainer = styled.div`
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
+    border: 1px solid ${COLORS.footerColor};
   }
 `;
 

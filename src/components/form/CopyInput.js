@@ -44,6 +44,8 @@ function CopyInput({
           borderColor: "gray",
           borderRadius: "5px",
           border: "1px solid grey",
+          backgroundColor: "black",
+          color: "white",
         }}
       />
       {copyIcon ? (
@@ -55,7 +57,7 @@ function CopyInput({
             top: "50%",
             transform: "translateY(-50%)",
             cursor: "pointer",
-            color: "gray",
+            color: "#ccc",
           }}
         />
       ) : null}
