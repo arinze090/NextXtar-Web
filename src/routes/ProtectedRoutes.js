@@ -56,6 +56,7 @@ import WithdrawalPage from "../pages/Profile/WithdrawalPage";
 import UserVerification from "../pages/Profile/UserVerification";
 import DiscoverCategoryList from "../pages/MusicLibrary/DiscoverCategoryList";
 import MusicPlayer from "../components/musicPlayer/MusicPlayer";
+import Promotions from "../pages/Profile/Promotions";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -147,6 +148,7 @@ function ProtectedRoutes() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/news" element={<News />} />
         <Route path="/earn-points" element={<EarnPoints />} />
+        <Route path="/promotions" element={<Promotions />} />
 
         {/*  Music section */}
         <Route path="/playlist" element={<PlaylistLibrary />} />
