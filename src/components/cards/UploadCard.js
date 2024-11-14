@@ -7,7 +7,7 @@ import TransparentBtn from "../form/TransparentBtn";
 import ErrorMessage from "../form/ErrorMessage";
 
 const Card = styled.div`
-  border: 1px solid #e0e0e0;
+  border: 1px solid #333;
   border-radius: 8px;
   padding: 20px;
   flex: 1;
@@ -28,7 +28,7 @@ const Title = styled.h2`
 `;
 
 const UploadArea = styled.div`
-  border: 2px dashed #e0e0e0;
+  border: 2px dashed #333;
   border-radius: 8px;
   padding: 40px;
   margin-bottom: 20px;
@@ -36,7 +36,7 @@ const UploadArea = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f2f2f2;
+  background: #000;
 `;
 
 const UploadText = styled.p`
