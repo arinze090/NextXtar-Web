@@ -60,7 +60,7 @@ const ProfilePictureUpload = ({ profileImg, handleFileChange }) => {
         )}
       </ImagePreview>
       <UploadButton onClick={handleClick}>
-        <span>Upload Picture</span>
+        <span style={{ color: "white" }}>Upload Picture</span>
       </UploadButton>
       <HiddenInput
         type="file"

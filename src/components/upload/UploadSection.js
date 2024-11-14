@@ -7,7 +7,7 @@ const Section = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 2rem;
-  background: #f9f9f9;
+  background: #000;
   border-radius: 8px;
   margin-bottom: 2rem;
   flex-direction: column;
@@ -101,10 +101,12 @@ function UploadSection({
       </Content>
       {rules && (
         <Rules>
-          <h4>Rules</h4>
+          <h4 style={{ color: "white" }}>Rules</h4>
           <ul>
             {rules?.map((rule, index) => (
-              <li key={index}>{rule}</li>
+              <li key={index} style={{ color: "white" }}>
+                {rule}
+              </li>
             ))}
           </ul>
         </Rules>

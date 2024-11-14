@@ -19,7 +19,7 @@ const Card = styled.div`
 `;
 
 const Title = styled.h2`
-  color: #0a4827;
+  color: #005903;
   font-size: 24px;
   margin-bottom: 20px;
 `;
@@ -33,12 +33,12 @@ const UploadArea = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f2f2f2;
+  background: #000;
 `;
 
 const UploadText = styled.p`
   margin: 0;
-  color: #555;
+  color: #fff;
 `;
 
 const UploadIcon = styled(MdFileUpload)`

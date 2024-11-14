@@ -14,6 +14,7 @@ const Card = styled.div`
   margin: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: black;
 
   @media (max-width: 768px) {
     width: 80%;
@@ -40,7 +41,7 @@ const UploadArea = styled.div`
 
 const UploadText = styled.p`
   margin: 0;
-  color: #555;
+  color: #fff;
 `;
 
 const UploadIcon = styled(MdFileUpload)`

@@ -57,6 +57,7 @@ import UserVerification from "../pages/Profile/UserVerification";
 import DiscoverCategoryList from "../pages/MusicLibrary/DiscoverCategoryList";
 import MusicPlayer from "../components/musicPlayer/MusicPlayer";
 import Promotions from "../pages/Profile/Promotions";
+import TakedownSongsPage from "../pages/Profile/TakedownSongsPage";
 
 function ProtectedRoutes() {
   const dispatch = useDispatch();
@@ -149,6 +150,7 @@ function ProtectedRoutes() {
         <Route path="/news" element={<News />} />
         <Route path="/earn-points" element={<EarnPoints />} />
         <Route path="/promotions" element={<Promotions />} />
+        <Route path="/takedown-song" element={<TakedownSongsPage />} />
 
         {/*  Music section */}
         <Route path="/playlist" element={<PlaylistLibrary />} />

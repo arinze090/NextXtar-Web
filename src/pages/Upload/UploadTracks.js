@@ -27,7 +27,7 @@ const Container = styled.div`
   padding: 40px;
   flex-wrap: wrap;
   background: black;
-  padding-top: 80px;
+  padding-top: 120px;
 
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;
@@ -55,6 +55,7 @@ const Subtitle = styled.p`
   justify-content: flex-start;
   align-items: flex-start;
   padding: 20px;
+  color: white;
 `;
 
 const HiddenInput = styled.input`
@@ -1135,7 +1136,7 @@ const UploadTracks = () => {
         )}
 
         {activeStep === 2 && (
-          <>
+          <Container>
             <UploadContainer>
               <UploadSection
                 title="Cover Art"
@@ -1307,7 +1308,7 @@ const UploadTracks = () => {
                 onClick={handleBack}
               />
             </div>
-          </>
+          </Container>
         )}
       </div>
     </div>

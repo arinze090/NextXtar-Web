@@ -14,6 +14,7 @@ import UploadSection from "../../components/upload/UploadSection";
 import { API_KEY } from "../../utils/devKeys";
 import { baseURL } from "../../utils/api-client";
 import { listOfCountries } from "../../data/dummyData";
+import HeaderTitle from "../../components/common/HeaderTitle";
 
 const Container = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ const Container = styled.div`
   padding: 40px;
   flex-wrap: wrap;
   background: black;
-  padding-top: 80px;
+  padding-top: 120px;
 
   @media screen and (max-width: 768px) {
     flex-wrap: wrap;
@@ -263,6 +264,11 @@ function UploadVideo() {
 
   return (
     <Container>
+      <HeaderTitle
+        title={"Upload Video"}
+        imgSrc={require("../../assets/gif1.gif")}
+        imgAlt={"Upload Image"}
+      />
       <RowContent>
         <FormInput
           formTitle={"Artist Name"}
@@ -308,7 +314,6 @@ function UploadVideo() {
           errorMessage={emailError}
         />
       </RowContent>
-
       <RowContent>
         <FormInput
           formTitle={"What language is the track name in?"}
@@ -338,7 +343,6 @@ function UploadVideo() {
           errorMessage={genreError}
         />
       </RowContent>
-
       <RowContent>
         <FormInput
           formTitle={"Phone Number"}
@@ -368,7 +372,6 @@ function UploadVideo() {
           errorMessage={countryError}
         />
       </RowContent>
-
       <FormTextArea
         formTitle={"Description"}
         row={5}
@@ -381,7 +384,6 @@ function UploadVideo() {
         }}
         width={"100%"}
       />
-
       <UploadSection
         title="Video Recording"
         uploadTitle="Video"
@@ -404,7 +406,6 @@ function UploadVideo() {
         isFileUploaded={uploadedVideoUrl?.link}
         uploadPercentage={progress}
       />
-
       <div
         style={{
           justifyContent: "center",
