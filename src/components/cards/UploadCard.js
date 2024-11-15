@@ -22,7 +22,7 @@ const Card = styled.div`
 `;
 
 const Title = styled.h2`
-  color: #0a4827;
+  color: #05a30b;
   font-size: 24px;
   margin-bottom: 20px;
 `;
@@ -211,7 +211,7 @@ const UploadCard = ({
           onDrop={handleDrop}
           onDragLeave={handleDragLeave}
         >
-          <UploadIcon style={{ fontSize: 48, color: "#0a4827" }} />
+          <UploadIcon style={{ fontSize: 48, color: "#05a30b" }} />
           <UploadText>
             Drag & drop files or <a href="#,">Browse</a>
           </UploadText>

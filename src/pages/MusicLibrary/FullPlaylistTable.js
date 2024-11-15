@@ -37,18 +37,19 @@ const Table = styled.table`
 const TableHeader = styled.th`
   text-align: left;
   font-size: 1rem;
-  color: #666;
+  color: #fff;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
 `;
 
 const TableRow = styled.tr`
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
 `;
 
 const TableCell = styled.td`
   padding: 10px;
   vertical-align: middle;
+  color: #fff;
 `;
 
 const AlbumImage = styled.img`
@@ -125,14 +126,14 @@ const FullTableView = ({ playlist, onClick }) => {
     <TableContainer>
       <Table>
         <thead>
-          <tr>
+          <TableRow>
             <TableHeader>#</TableHeader>
             <TableHeader>Title</TableHeader>
             <TableHeader>Album</TableHeader>
             <TableHeader>Date added</TableHeader>
             <TableHeader>Time</TableHeader>
             <TableHeader>Actions</TableHeader>
-          </tr>
+          </TableRow>
         </thead>
         <tbody>
           {playlistTracks?.map((song, index) => (
@@ -143,10 +144,10 @@ const FullTableView = ({ playlist, onClick }) => {
                   <AlbumImage src={song?.image} alt={song?.track_name} />
                   <div>
                     <div>{song?.track_name}</div>
-                    <div style={{ color: "#666" }}>{song?.label}</div>
+                    <div style={{ color: "#ccc" }}>{song?.label}</div>
                     <div
                       style={{
-                        color: "#666",
+                        color: "#ccc",
                         display: "flex",
                         alignItems: "center",
                       }}
@@ -173,11 +174,10 @@ const FullTableView = ({ playlist, onClick }) => {
                       onPlayClicked(song);
                     }}
                   >
-                    {isAudioPlaying &&
-                    isAudioPlayingData?.id === song?.id ? (
-                      <FaPause />
+                    {isAudioPlaying && isAudioPlayingData?.id === song?.id ? (
+                      <FaPause style={{ fontSize: 20, color: "white" }} />
                     ) : (
-                      <FaPlay />
+                      <FaPlay style={{ fontSize: 20, color: "white" }} />
                     )}
                   </IconWrapper>
                   <IconWrapper
@@ -186,7 +186,9 @@ const FullTableView = ({ playlist, onClick }) => {
                       console.log("song", song);
                     }}
                   >
-                    <MdOutlinePlaylistRemove style={{ fontSize: 20 }} />
+                    <MdOutlinePlaylistRemove
+                      style={{ fontSize: 20, color: "white" }}
+                    />
                   </IconWrapper>
                   <IconWrapper>
                     <Ellipsis playlistItem={song} />

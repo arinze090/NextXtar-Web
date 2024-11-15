@@ -9,8 +9,8 @@ import { formatTimestampToDate, getTotalDuration } from "../../Library/Common";
 const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  background: #fff;
-  border-radius: 8px;
+  background: #000;
+  padding-top: 120px;
 `;
 
 const ImageContainer = styled.div`

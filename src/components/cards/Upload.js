@@ -19,7 +19,7 @@ const Card = styled.div`
 `;
 
 const Title = styled.h2`
-  color: #0a4827;
+  color: #05a30b;
   font-size: 24px;
   margin-bottom: 20px;
 `;

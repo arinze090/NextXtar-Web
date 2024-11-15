@@ -5,7 +5,7 @@ import { MdFileUpload } from "react-icons/md";
 import TransparentBtn from "../form/TransparentBtn";
 
 const Card = styled.div`
-  border: 1px solid #e0e0e0;
+  border: 1px solid #333;
   border-radius: 8px;
   padding: 20px;
   flex: 1;
@@ -19,13 +19,13 @@ const Card = styled.div`
 `;
 
 const Title = styled.h2`
-  color: #005903;
+  color: #05a30b;
   font-size: 24px;
   margin-bottom: 20px;
 `;
 
 const UploadArea = styled.div`
-  border: 2px dashed #e0e0e0;
+  border: 2px dashed #333;
   border-radius: 8px;
   padding: 40px;
   margin-bottom: 20px;

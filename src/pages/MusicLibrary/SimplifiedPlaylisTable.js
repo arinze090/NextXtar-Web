@@ -31,9 +31,9 @@ const Table = styled.table`
 const TableHeader = styled.th`
   text-align: left;
   font-size: 1rem;
-  color: #666;
+  color: #fff;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
 
   @media (max-width: 768px) {
     font-size: 0.8rem;
@@ -42,12 +42,13 @@ const TableHeader = styled.th`
 `;
 
 const TableRow = styled.tr`
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
 `;
 
 const TableCell = styled.td`
   padding: 10px;
   vertical-align: middle;
+  color: #fff;
 
   @media (max-width: 768px) {
     font-size: 0.8rem;
@@ -150,11 +151,11 @@ const SimplifiedView = ({ playlist, onClick }) => {
     <TableContainer>
       <Table>
         <thead>
-          <tr>
+          <TableRow>
             <TableHeader>#</TableHeader>
             <TableHeader>Title</TableHeader>
             <TableHeader>Actions</TableHeader>
-          </tr>
+          </TableRow>
         </thead>
         <tbody>
           {playlistTracks?.map((song, index) => (
@@ -164,8 +165,8 @@ const SimplifiedView = ({ playlist, onClick }) => {
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <AlbumImage src={song?.image} alt={song?.track_name} />
                   <div>
-                    <div>{song?.track_name}</div>
-                    <div style={{ color: "#666" }}>{song?.label}</div>
+                    <div style={{ color: "#ccc" }}>{song?.track_name}</div>
+                    <div style={{ color: "#ccc" }}>{song?.label}</div>
                   </div>
                 </div>
               </TableCell>
@@ -184,7 +185,9 @@ const SimplifiedView = ({ playlist, onClick }) => {
                       removeTrackFromPlaylist(song);
                     }}
                   >
-                    <MdOutlinePlaylistRemove style={{ fontSize: 20 }} />
+                    <MdOutlinePlaylistRemove
+                      style={{ fontSize: 20, color: "white" }}
+                    />
                   </IconWrapper>
                   <IconWrapper>
                     <Ellipsis playlistItem={song} />
