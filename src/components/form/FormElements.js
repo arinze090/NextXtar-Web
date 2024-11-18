@@ -18,7 +18,7 @@ export const FormBtn = styled.button`
   justify-content: center;
   align-content: center;
   display: flex;
-  font-family: "ClashDisplay", sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   /* Second Nav */
   //   &:hover {
@@ -51,7 +51,7 @@ export const TransparentFormBtn = styled.button`
   justify-content: center;
   align-content: center;
   display: flex;
-  font-family: "ClashDisplay", sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   &:hover {
     transition: all 0.2s ease-in-out;

@@ -17,7 +17,7 @@ const InputContainer = styled.div`
 const StyledLabel = styled.label`
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  font-family: "ClashDisplay", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
 `;
 
@@ -30,7 +30,7 @@ const StyledSelect = styled.select`
   padding: 0.75rem;
   border-radius: 5px;
   font-size: 1rem;
-  font-family: "ClashDisplay", sans-serif;
+  font-family: "Montserrat", sans-serif;
   border: 1px solid grey;
   -webkit-appearance: none; /* Remove default styling on Safari */
   -moz-appearance: none; /* Remove default styling on Firefox */
