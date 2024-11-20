@@ -388,7 +388,7 @@ const MusicPlayer = ({}) => {
     isAudioPlayingData ? isAudioPlayingData : null
   );
 
-  const [volume, setVolume] = useState(0);
+  const [volume, setVolume] = useState(30);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [audioDuration, setAudioDuration] = useState(0);

@@ -10,8 +10,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: black;
-  padding-top: 50px;
-  padding-bottom: 120px;
+  padding-top: 120px;
+  padding-bottom: 30px;
   align-content: center;
   flex-direction: column;
 
@@ -165,7 +165,7 @@ function ToptracksLandingSection() {
   // Adjust the number of items based on screen width
   useEffect(() => {
     const updateItemsToShow = () => {
-      if (window.innerWidth >= 770 && window.innerWidth <= 1000) {
+      if (window.innerWidth >= 770 && window.innerWidth <= 1024) {
         setItemsToShow(8); // Show 8 items between 770px and 1024px
       } else {
         setItemsToShow(10); // Default to 10 items

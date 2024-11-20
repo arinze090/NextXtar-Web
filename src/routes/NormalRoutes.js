@@ -21,6 +21,7 @@ import AboutUs from "../pages/Home/AboutUs";
 import ScrollToTop from "../components/scrollToTop/ScrollToTop";
 import TermsAndCondition from "../pages/Support/TermsAndCondition";
 import Support from "../pages/Support/Support";
+import GenresListing from "../pages/MusicLibrary/GenresListing";
 
 function NormalRoutes() {
   return (
@@ -41,6 +42,9 @@ function NormalRoutes() {
         <Route path="/resend-verififcation" element={<ResendVerification />} />
         <Route path="/user-verififcation" element={<UserVerification />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+
+        {/*  Genres listing section */}
+        <Route path="/genres" element={<GenresListing />} />
 
         {/*  Support section */}
         <Route path="/contact-us" element={<ContactUs />} />

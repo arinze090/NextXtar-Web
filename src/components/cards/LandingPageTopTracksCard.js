@@ -155,39 +155,47 @@ const Overlay = styled.div`
   z-index: 10;
 
   @media screen and (max-width: 10000px) {
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 90%;
+    margin-bottom: 0px;
   }
 
   @media screen and (max-width: 5000px) {
-    width: 100%;
+    width: 95%;
+    height: 90%;
   }
 
   @media screen and (max-width: 2000px) {
-    width: 100%;
+    width: 90%;
+    height: 80%;
   }
 
   @media screen and (max-width: 1440px) {
-    width: 100%;
+    width: 90%;
+    height: 80%;
   }
 
   @media screen and (max-width: 1024px) {
-    width: 100%;
+    width: 141px;
+    height: 145px;
+    margin-bottom: 0px;
+    // background: green;
   }
 
   @media screen and (max-width: 768px) {
-    width: 100%;
-    height: 100%;
+    width: 121px;
+    height: 121px;
+    margin-bottom: 0px;
+    object-fit: contain;
   }
 
   @media screen and (max-width: 430px) {
     width: 151px;
-    height: 100%;
+    height: 70%;
   }
-
   @media screen and (max-width: 325px) {
     width: 131px;
-    height: 100%;
+    height: 70%;
   }
 `;
 
