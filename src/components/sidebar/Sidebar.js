@@ -204,7 +204,7 @@ const Sidebar = () => {
     navigate("/");
   }
 
-  const isSmallScreen = window.innerWidth <= 1024;
+  const isSmallScreen = window.innerWidth <= 1300;
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);

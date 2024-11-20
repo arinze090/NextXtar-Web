@@ -312,22 +312,24 @@ function LandingPageTopTracksCard({
 
   return (
     <ItemCard>
-      <ItemImage src={imageUrl} alt={imageUrlAlt} />
-      <Overlay className="overlay">
-        {isAudioPlaying && isAudioPlayingData?.id === props?.id ? (
-          <PauseIcon
-            onClick={() => {
-              pausedClicked(props);
-            }}
-          />
-        ) : (
-          <PlayIcon
-            onClick={() => {
-              onPlayClicked(props);
-            }}
-          />
-        )}
-      </Overlay>
+      <ItemImage src={imageUrl} alt={imageUrlAlt}>
+        <Overlay className="overlay">
+          {isAudioPlaying && isAudioPlayingData?.id === props?.id ? (
+            <PauseIcon
+              onClick={() => {
+                pausedClicked(props);
+              }}
+            />
+          ) : (
+            <PlayIcon
+              onClick={() => {
+                onPlayClicked(props);
+              }}
+            />
+          )}
+        </Overlay>
+      </ItemImage>
+
       <ItemDetails>
         {!isSmallScreen ? (
           <ItemName>{truncateText(title, 8)}</ItemName>

@@ -42,7 +42,7 @@ const GenreHeader = styled.div`
 `;
 
 const Title = styled.p`
-  color: #005903;
+  color: #05a30b;
   font-size: 20px;
   font-weight: 700;
 `;
@@ -106,6 +106,106 @@ const GenreItem = styled.div`
     width: 100%;
     margin: 10px;
     height: 10%;
+  }
+`;
+
+const ItemGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+
+  flex-direction: row;
+  overflow-x: hidden;
+  // background: green;
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 10000px) {
+    width: 45%;
+    margin-bottom: 70px;
+  }
+
+  @media screen and (max-width: 5000px) {
+    width: 45%;
+    margin-bottom: 70px;
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 2000px) {
+    width: 80%;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 85%;
+    // background: blue;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 85%;
+    // background: red;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    // background: red;
+  }
+
+  // Hide the scrollbar
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+`;
+
+const ItemContainer = styled.div`
+  margin-bottom: 5px;
+  margin-right: 5px;
+  // background: pink;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  // Adjust width to make the items more compact
+  flex: 1 1 calc(20% - 20px);
+  // max-width: calc(20% - 10px);
+
+  @media screen and (max-width: 10000px) {
+    // width: 100%;
+    // background: indigo;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 3000px) {
+    width: 100%;
+    // background: blue;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 2000px) {
+    // width: 100%;
+    // background: purple;
+    flex: 1 1 calc(22% - 40px);
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    // background: green;
+    flex: 1 1 calc(20% - 20px);
+  }
+
+  @media screen and (max-width: 768px) {
+    // width: 100%;
+    // background: green;
+    flex: 1 1 calc(20% - 20px);
   }
 `;
 
@@ -255,14 +355,14 @@ function GenresListing() {
 
       {loading && <SkeletonLoader />}
 
-      <MusicCardsContainer>
+      <ItemGrid>
         {selectedGenreTracks &&
           selectedGenreTracks?.map((cur, i) => (
-            <MusicCardWrapper key={i}>
+            <ItemContainer key={i}>
               <MusicCard2 props={cur} key={i} />
-            </MusicCardWrapper>
+            </ItemContainer>
           ))}
-      </MusicCardsContainer>
+      </ItemGrid>
     </Container>
   );
 }

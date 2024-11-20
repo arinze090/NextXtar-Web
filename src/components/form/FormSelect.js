@@ -52,7 +52,7 @@ const DropdownArrow = styled.div`
   transform: translateY(-50%);
   pointer-events: none;
   font-size: 1rem;
-  color: black;
+  color: white;
 `;
 
 function FormSelect({
@@ -77,7 +77,7 @@ function FormSelect({
           ))}
         </StyledSelect>
         <DropdownArrow>
-          <IoIosArrowDown />
+          <IoIosArrowDown color="white" />
         </DropdownArrow>
         {/* Custom arrow */}
       </StyledSelectContainer>
