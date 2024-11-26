@@ -154,7 +154,7 @@ const ProgressBarContainer = styled.div`
   height: 4px;
   // background-color: blue;
   border-radius: 2px;
-  margin-top: 10px;
+  // margin-top: 10px;
   // flex-direction: "row";
   // justify-content: "space-between";
 `;
@@ -183,7 +183,7 @@ const ProgressBar = styled.div`
     `linear-gradient(to right, #4caf50 ${progressValue}%, #ccc ${progressValue}%)`};
   width: ${({ progress }) => `${progress}%`};
   border-radius: 2px;
-  width: 75%;
+  width: 100%;
   z-index: 2;
   cursor: pointer;
   border-radius: 2px;
