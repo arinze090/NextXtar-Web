@@ -171,7 +171,7 @@ const ProgressSection = styled.div`
 
 const TrackDuration = styled.p`
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: "600";
   // background-color: blue;
 `;
@@ -182,7 +182,7 @@ const ProgressBar = styled.div`
     `linear-gradient(to right, #4caf50 ${progressValue}%, #ccc ${progressValue}%)`};
   width: ${({ progress }) => `${progress}%`};
   border-radius: 2px;
-  width: 100%;
+  width: 80%;
   z-index: 2;
   cursor: pointer;
   border-radius: 2px;
@@ -326,7 +326,7 @@ const PlaySection = styled.div`
 
 const ShuffleIcon = styled(IoShuffle)`
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
 `;
 
@@ -338,13 +338,13 @@ const SpeakerIcon = styled(HiMiniSpeakerWave)`
 
 const SkipBackIcon = styled(IoPlaySkipBack)`
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
 `;
 
 const SkipForwardIcon = styled(IoPlaySkipForward)`
   color: ${({ isDisabled }) => (isDisabled ? "#ccc" : "#fff")};
-  font-size: 30px;
+  font-size: 20px;
   cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
   pointer-events: ${({ isDisabled }) => (isDisabled ? "none" : "auto")};
 `;
@@ -364,7 +364,7 @@ const PauseIcon = styled(IoPauseOutline)`
 
 const RepeatIcon = styled(RiRepeat2Fill)`
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
 `;
 
@@ -668,13 +668,12 @@ const MusicPlayer = ({}) => {
 
             {/* Progress Bar */}
             <ProgressSection>
+              <TrackDuration>{formatTime(currentTime)}</TrackDuration>
               <ProgressBarContainer>
                 {/* The input range for progress control */}
                 <ProgressBar progress={progress} progressValue={progress} />
               </ProgressBarContainer>
-              <TrackDuration>
-                {formatTime(currentTime)} / {formatTime(audioDuration)}
-              </TrackDuration>
+              <TrackDuration>{formatTime(audioDuration)}</TrackDuration>
             </ProgressSection>
           </ControlsSection>
 

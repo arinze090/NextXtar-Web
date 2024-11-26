@@ -109,6 +109,7 @@ const CancelIcon = styled.div`
   right: 5px;
   cursor: pointer;
   color: #aaa;
+  background: white;
 `;
 
 const UploadCard = ({
@@ -213,7 +214,10 @@ const UploadCard = ({
         >
           <UploadIcon style={{ fontSize: 48, color: "#05a30b" }} />
           <UploadText>
-            Drag & drop files or <a href="#,">Browse</a>
+            Drag & drop files or{" "}
+            <a href="#," style={{ color: "#05a30b" }}>
+              Browse
+            </a>
           </UploadText>
           <UploadText>Maximum file size should be 100mb</UploadText>
         </UploadArea>

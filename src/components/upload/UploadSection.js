@@ -66,6 +66,18 @@ function UploadSection({
 }) {
   return (
     <Section>
+      {rules && (
+        <Rules>
+          <h4 style={{ color: "white" }}>Rules</h4>
+          <ul>
+            {rules?.map((rule, index) => (
+              <li key={index} style={{ color: "white" }}>
+                {rule}
+              </li>
+            ))}
+          </ul>
+        </Rules>
+      )}
       <Content>
         {showTrackInput ? (
           <FormInput
@@ -99,18 +111,6 @@ function UploadSection({
           fileUploadErrorMessage={fileUploadErrorMessage}
         />
       </Content>
-      {rules && (
-        <Rules>
-          <h4 style={{ color: "white" }}>Rules</h4>
-          <ul>
-            {rules?.map((rule, index) => (
-              <li key={index} style={{ color: "white" }}>
-                {rule}
-              </li>
-            ))}
-          </ul>
-        </Rules>
-      )}
     </Section>
   );
 }

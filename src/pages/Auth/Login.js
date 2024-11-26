@@ -248,7 +248,9 @@ function Login() {
           >
             <CheckboxGroup>
               <input type="checkbox" id="terms" />
-              <label htmlFor="terms">Remember me</label>
+              <label style={{ color: "grey" }} htmlFor="terms">
+                Remember me
+              </label>
             </CheckboxGroup>
 
             <ForgetPasswordLink
