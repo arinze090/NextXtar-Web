@@ -162,10 +162,11 @@ const ProgressBarContainer = styled.div`
 const ProgressSection = styled.div`
   flex-direction: row;
   // background-color: pink;
-  width: 100%;
+  width: 80%;
   justify-content: space-between;
   display: flex;
   align-items: center;
+  align-contents: center;
   height: 20px;
 `;
 
@@ -182,7 +183,7 @@ const ProgressBar = styled.div`
     `linear-gradient(to right, #4caf50 ${progressValue}%, #ccc ${progressValue}%)`};
   width: ${({ progress }) => `${progress}%`};
   border-radius: 2px;
-  width: 80%;
+  width: 75%;
   z-index: 2;
   cursor: pointer;
   border-radius: 2px;
@@ -307,8 +308,8 @@ const PlaySection = styled.div`
   justify-content: center;
   background: #05a30b;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   align-self: center;
 
   @media (max-width: 768px) {
@@ -351,14 +352,14 @@ const SkipForwardIcon = styled(IoPlaySkipForward)`
 
 const PlayIcon = styled(FaPlay)`
   color: white;
-  font-size: 1.5rem;
+  font-size: 20px;
   cursor: pointer;
   // background: #005903;
 `;
 
 const PauseIcon = styled(IoPauseOutline)`
   color: white;
-  font-size: 2rem;
+  font-size: 20px;
   cursor: pointer;
 `;
 
