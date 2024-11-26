@@ -165,7 +165,7 @@ function ToptracksLandingSection() {
   // Adjust the number of items based on screen width
   useEffect(() => {
     const updateItemsToShow = () => {
-      if (window.innerWidth >= 770 && window.innerWidth <= 1024) {
+      if (window.innerWidth >= 770 && window.innerWidth <= 1300) {
         setItemsToShow(8); // Show 8 items between 770px and 1024px
       } else {
         setItemsToShow(10); // Default to 10 items

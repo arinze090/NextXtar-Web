@@ -589,6 +589,9 @@ const MusicPlayer = ({}) => {
           (audioRef.current.currentTime / audioRef.current.duration) * 100;
         console.log("progressPercentage", percentage.toFixed(2));
 
+        if (percentage > 0) {
+          dispatch(setIsAudioPlaying(true));
+        }
         setProgress(percentage);
       };
 
