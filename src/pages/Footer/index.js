@@ -134,8 +134,8 @@ const Footer = () => {
       <FooterSection>
         <Link to={"/"}>
           <Logo
-            src={require("../../assets/NoBgSingnifyLogo.png")}
-            alt="Singnify"
+            src={require("../../assets/supatunezLogo.jpeg")}
+            alt="SupaTunez"
           />
         </Link>
         <AppStoreBadges>

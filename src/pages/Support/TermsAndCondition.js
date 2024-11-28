@@ -28,7 +28,7 @@ function TermsAndCondition() {
     <Container>
       <HeaderTitle
         title={"Terms Of Service"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"T&C Image"}
       />
       <Title>1. Introduction:</Title>

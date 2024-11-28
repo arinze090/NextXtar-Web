@@ -44,7 +44,7 @@ const RadioPlayer = () => {
       <div id="radio-player-container"></div>
       <HeaderTitle
         title={"Radio"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Radio Image"}
       />
     </Container>

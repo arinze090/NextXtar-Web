@@ -299,7 +299,7 @@ function PlaylistLibrary() {
         userPlaylist.map((playlist, index) => (
           <PlaylistItem
             key={index}
-            bgImage={require("../../assets/singnifySplashLogo.png")}
+            bgImage={require("../../assets/supatunezLogo.jpeg")}
             onClick={() => {
               navigateToSelectedPlaylist(playlist);
             }}
@@ -319,7 +319,7 @@ function PlaylistLibrary() {
         userAlbums?.map((album, index) => (
           <PlaylistItem
             key={index}
-            bgImage={require("../../assets/singnifySplashLogo.png")}
+            bgImage={require("../../assets/supatunezLogo.jpeg")}
           >
             <PlaylistDiv>
               <PlaylistTitle>{album?.playlist}</PlaylistTitle>

@@ -15,7 +15,7 @@ function TakedownSongsPage() {
     <Container>
       <HeaderTitle
         title={"Takedown Songs"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Takedown Image"}
       />
     </Container>

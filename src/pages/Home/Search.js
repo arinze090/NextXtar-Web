@@ -61,7 +61,7 @@ function Search() {
     <Container>
       <HeaderTitle
         title={"Search"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Search Image"}
       />
       <SearchBar

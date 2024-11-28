@@ -22,7 +22,7 @@ const FormImageContainer = styled.img`
     `url(${
       props.backgroundImage
         ? props.backgroundImage
-        : require("../../assets/singnifySplashLogo.png")
+        : require("../../assets/supatunezLogo.jpeg")
     }) no-repeat center center`};
 
   background-size: cover;

@@ -72,11 +72,13 @@ function ReferralCode() {
     <Container>
       <HeaderTitle
         title={"Referral Earnings"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Referral Image"}
       />
       <Title>Referral Earnings: $0.00</Title>
-      <Description>You earn $1.00 per person you refer to Singnify.</Description>
+      <Description>
+        You earn $1.00 per person you refer to Singnify.
+      </Description>
 
       <FormInput
         type={"text"}

@@ -45,7 +45,7 @@ function WithdrawalPage() {
     <Container>
       <HeaderTitle
         title={"Withdrawal"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Withdrawal Image"}
       />
 

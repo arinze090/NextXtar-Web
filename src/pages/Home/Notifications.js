@@ -119,8 +119,8 @@ function Notifications() {
       <Modal isOpen={isModalOpen} onClose={closeModal} title="">
         <ImageContainer>
           <Logo
-            src={require("../../assets/NoBgSingnifyLogo.png")}
-            alt="SingnifyLogo"
+            src={require("../../assets/supatunezLogo.jpeg")}
+            alt="SupaTunez"
           />
         </ImageContainer>
         <ModalContent>

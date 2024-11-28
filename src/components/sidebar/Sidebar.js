@@ -16,7 +16,7 @@ import { MdFileUpload } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { signOutUser } from "../../redux/features/user/userSlice";
 import { clearLastFetchTime } from "../../redux/features/discover/discoverSlice";
-import SingnifyLogo from "../../assets/NoBgSingnifyLogo.png";
+import SingnifyLogo from "../../assets/supatunezLogo.jpeg";
 
 const Nav = styled.div`
   background: #0b0b0b;

@@ -28,7 +28,7 @@ function PrivacyPolicy() {
     <Container>
       <HeaderTitle
         title={"Privacy Policy"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"PrivacyPolicy Image"}
       />
       <Title>1. The Information We Collect</Title>

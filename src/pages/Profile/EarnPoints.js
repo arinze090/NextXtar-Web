@@ -34,7 +34,7 @@ function EarnPoints() {
     <Container>
       <HeaderTitle
         title={"Earn Points"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Earn Points Image"}
       />
       <Description>
@@ -53,19 +53,19 @@ function EarnPoints() {
       <br />
       <br />
       <Description>
-        <Title>TWITTER</Title> Share your songs/albums via twitter and tag Singnify,
-        you EARN 5 POINTS, you will also be featured on our Twitter stories and
-        benefits, remember the more points you earn, the more you keep featuring
-        on Singnify slideshow. <br />
+        <Title>TWITTER</Title> Share your songs/albums via twitter and tag
+        Singnify, you EARN 5 POINTS, you will also be featured on our Twitter
+        stories and benefits, remember the more points you earn, the more you
+        keep featuring on Singnify slideshow. <br />
         <br /> Follow Us For More
       </Description>
       <Image src={require("../../assets/twitter.png")} alt="facebook" />
       <br />
       <br />
       <Description>
-        <Title>INSTAGRAM</Title> Share your on instagram, and tag Singnify and EARN 5
-        POINTS, instagram is a good place to promote your songs/albums because
-        of its huge potential among the youths.. Follow Us For More
+        <Title>INSTAGRAM</Title> Share your on instagram, and tag Singnify and
+        EARN 5 POINTS, instagram is a good place to promote your songs/albums
+        because of its huge potential among the youths.. Follow Us For More
       </Description>
       <Image src={require("../../assets/instagram.png")} alt="facebook" />
       <br />
@@ -76,7 +76,7 @@ function EarnPoints() {
         EARN 10 POINTS.
       </Description>
       <Image
-        src={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         alt="facebook"
       />
       <br />

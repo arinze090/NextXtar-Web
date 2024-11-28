@@ -189,63 +189,6 @@ const ProgressBar = styled.div`
   border-radius: 2px;
 `;
 
-// const ProgressInputRange = styled.input`
-//   width: 100%;
-//   position: absolute;
-//   top: -4px; /* Move thumb to sit on top of the line */
-//   left: 0;
-//   height: 6px; /* Height matches the thumb size */
-//   appearance: none;
-//   background: ${({ progressValue }) =>
-//     `linear-gradient(to right, #4caf50 ${progressValue}%, #ccc ${progressValue}%)`};
-//   z-index: 2;
-//   cursor: pointer;
-//   border-radius: 2px;
-
-//   &::-webkit-slider-thumb {
-//     appearance: none;
-//     width: 10px;
-//     height: 10px;
-//     border-radius: 50%;
-//     background: #000;
-//     cursor: pointer;
-//     margin-top: -4px; /* Center the thumb on the line */
-//   }
-
-//   &::-moz-range-thumb {
-//     width: 12px;
-//     height: 12px;
-//     border-radius: 50%;
-//     background: #05a30b;
-//     cursor: pointer;
-//   }
-
-//   &::-ms-thumb {
-//     width: 12px;
-//     height: 12px;
-//     border-radius: 50%;
-//     background: #4caf50;
-//     cursor: pointer;
-//   }
-
-//   &::-webkit-slider-runnable-track {
-//     height: 2px; /* Thin line for the track */
-//     background: transparent;
-//   }
-
-//   &::-moz-range-track {
-//     height: 4px;
-//     background: transparent;
-//   }
-
-//   &::-ms-track {
-//     height: 4px;
-//     background: transparent;
-//     border-color: transparent;
-//     color: transparent;
-//   }
-// `;
-
 const VolumeInputRange = styled.input`
   width: 100%;
   top: -4px;
@@ -316,14 +259,6 @@ const PlaySection = styled.div`
     font-size: 1rem;
   }
 `;
-
-// const CurrentTime = styled.span`
-//   font-size: 12px;
-//   color: #ffffff;
-//   margin-right: 10px;
-//   width: 40px;
-//   text-align: right;
-// `;
 
 const ShuffleIcon = styled(IoShuffle)`
   color: #fff;

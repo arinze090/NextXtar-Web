@@ -13,6 +13,7 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { FaHandshakeAngle } from "react-icons/fa6";
 import { FaLink, FaBell } from "react-icons/fa";
 import { IoIosRemoveCircle } from "react-icons/io";
+import { MdFileUpload } from "react-icons/md";
 
 export const SidebarData = [
   // {
@@ -34,6 +35,11 @@ export const SidebarData = [
     title: "Settings",
     path: "/edit-profile",
     icon: <IoSettingsOutline />,
+  },
+  {
+    title: "Upload Music",
+    path: "/upload",
+    icon: <MdFileUpload />,
   },
   {
     title: "Account",

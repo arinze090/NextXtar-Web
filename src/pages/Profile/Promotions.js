@@ -15,7 +15,7 @@ function Promotions() {
     <Container>
       <HeaderTitle
         title={"Promotions"}
-        imgSrc={require("../../assets/singnifySplashLogo.png")}
+        imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Promotions Image"}
       />
     </Container>
