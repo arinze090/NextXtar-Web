@@ -18,6 +18,13 @@ const Gif = styled.img`
   background: black;
 `;
 
+const GifLogo = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: black;
+`;
+
 const TitleOverlay = styled.div`
   position: absolute;
   bottom: 0;
@@ -43,10 +50,15 @@ const TitleOverlay = styled.div`
 function HeaderTitle({ title, imgSrc, imgAlt }) {
   return (
     <ImageContainer>
-      <Gif
-        src={imgSrc ? imgSrc : require("../../assets/gif12.gif")}
-        alt={imgAlt}
-      />
+      {imgSrc ? (
+        <Gif src={imgSrc} alt={imgAlt} />
+      ) : (
+        <GifLogo
+          src={require("../../assets/supatunezLogo.jpeg")}
+          alt={imgAlt}
+        />
+      )}
+
       <TitleOverlay>{title}</TitleOverlay>
     </ImageContainer>
   );

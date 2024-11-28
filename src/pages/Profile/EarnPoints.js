@@ -34,7 +34,7 @@ function EarnPoints() {
     <Container>
       <HeaderTitle
         title={"Earn Points"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Earn Points Image"}
       />
       <Description>

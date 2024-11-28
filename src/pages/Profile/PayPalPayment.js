@@ -78,7 +78,7 @@ function PayPalPayment() {
     <Container>
       <HeaderTitle
         title={"PayPal Payment"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Payment Image"}
       />
 

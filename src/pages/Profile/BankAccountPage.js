@@ -39,7 +39,7 @@ function BankAccountPage() {
     <Container>
       <HeaderTitle
         title={"Bank Account Information"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Payment Image"}
       />
       {items.map((item, index) => (

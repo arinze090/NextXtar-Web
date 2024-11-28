@@ -28,7 +28,7 @@ function Support() {
     <Container>
       <HeaderTitle
         title={"Support"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Support Image"}
       />
       <Description>

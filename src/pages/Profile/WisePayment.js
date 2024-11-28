@@ -80,7 +80,7 @@ function WisePayment() {
     <Container>
       <HeaderTitle
         title={"Wise Payment"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Wise Image"}
       />
 

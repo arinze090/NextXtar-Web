@@ -28,7 +28,7 @@ function FAQs() {
     <Container>
       <HeaderTitle
         title={"FAQs"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"FAQs Image"}
       />
       <Title>Distribution Timeline</Title>

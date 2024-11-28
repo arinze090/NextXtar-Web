@@ -125,7 +125,7 @@ function InternationalPayment() {
     <Container>
       <HeaderTitle
         title={"(Swift) International Payment"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Payment Image"}
       />
 

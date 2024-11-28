@@ -36,7 +36,7 @@ function Payments() {
     <Container>
       <HeaderTitle
         title={"Payments"}
-        imgSrc={require("../../assets/supatunezLogo.jpeg")}
+        // imgSrc={require("../../assets/supatunezLogo.jpeg")}
         imgAlt={"Payment Image"}
       />
       {items.map((item, index) => (
