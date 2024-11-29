@@ -154,18 +154,18 @@ const Carousel = () => {
       playStoreLink:
         "https://play.google.com/store/apps/details?id=com.nextxtar.app",
     },
-    {
-      src: require("../../assets/landingSlider3.gif"),
-      appStoreImage: require("../../assets/AppStore.png"),
-      playStoreImage: require("../../assets/PlayStore.png"),
-      alt: "Slide 3",
-      title: "Distribute your songs Globally",
-      description:
-        "ITunes,Spotify,Deezer, TIDAL, SoundCloud, Spotify,YouTube music etc.",
-      appStoreLink: "https://apps.apple.com/us/app/nextxtar/id1544401047",
-      playStoreLink:
-        "https://play.google.com/store/apps/details?id=com.nextxtar.app",
-    },
+    // {
+    //   src: require("../../assets/landingSlider3.gif"),
+    //   appStoreImage: require("../../assets/AppStore.png"),
+    //   playStoreImage: require("../../assets/PlayStore.png"),
+    //   alt: "Slide 3",
+    //   title: "Distribute your songs Globally",
+    //   description:
+    //     "ITunes,Spotify,Deezer, TIDAL, SoundCloud, Spotify,YouTube music etc.",
+    //   appStoreLink: "https://apps.apple.com/us/app/nextxtar/id1544401047",
+    //   playStoreLink:
+    //     "https://play.google.com/store/apps/details?id=com.nextxtar.app",
+    // },
   ];
 
   return (

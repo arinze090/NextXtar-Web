@@ -58,20 +58,29 @@ const Navbar = () => {
 
         <Sidebar isOpen={isOpen}>
           {/* Sidebar content */}
-          <img
-            src={SingnifyLogo}
-            alt="Singnify-Logo"
+          <div
             style={{
-              width: 150,
-              // height: 65,
-              objectFit: "contain",
-              justifyContent: "center",
               display: "flex",
-              alignContent: "center",
               alignItems: "center",
-              alignSelf: "center",
+              justifyContent: "center",
             }}
-          />
+          >
+            <img
+              src={SingnifyLogo}
+              alt="Singnify-Logo"
+              style={{
+                width: 150,
+                height: "auto",
+                objectFit: "contain",
+                // justifyContent: "center",
+                // display: "flex",
+                // alignContent: "center",
+                // alignItems: "center",
+                // alignSelf: "center",
+              }}
+            />
+          </div>
+
           <ul
             style={{
               listStyleType: "none",
