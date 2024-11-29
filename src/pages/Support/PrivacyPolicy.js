@@ -83,9 +83,9 @@ function PrivacyPolicy() {
       <Description>
         We may integrate with third party sources from time to time and may
         receive information about you from them. <br />
-        If you choose to use features provided by Singnify that connect to your
+        If you choose to use features provided by SupaTunes that connect to your
         third-party online profiles, accounts or services, we may collect
-        information upon your approval. For example, if you prelove a Singnify
+        information upon your approval. For example, if you prelove a SupaTunes
         release on Spotify, we may collect information from Spotify about your
         listening activity.
       </Description>
@@ -109,7 +109,7 @@ function PrivacyPolicy() {
         within or outside the Service. <br />- to process your payouts and
         prevent or detect fraud <br />- to enforce this Privacy Policy, the
         Terms of Use and any other terms that you have agreed to, including to
-        protect the rights, property, or safety of Singnify, its users, or any
+        protect the rights, property, or safety of SupaTunes, its users, or any
         other person, or the copyright-protected content of the Service. as
         otherwise stated in this Privacy Policy.
       </Description>
@@ -136,7 +136,7 @@ function PrivacyPolicy() {
         <br />- Artist name and full name <br />- Name of contributors (if
         applicable) <br />- Marketing and advertising <br />
         We may share your information with advertising partners in order to send
-        you promotional communications about Singnify.
+        you promotional communications about SupaTunes.
       </Description>
 
       <Title>Service providers and others</Title>
@@ -160,7 +160,7 @@ function PrivacyPolicy() {
         enforce the Agreements and any other terms that you have agreed to;
         <br />- to address fraud, security, or technical issues; <br />- to
         publish anonymized or pseudonymized data about the use of the Service;
-        and to allow other companies in the Singnify group to use your
+        and to allow other companies in the SupaTunes group to use your
         information as specified in this Privacy Policy
       </Description>
 

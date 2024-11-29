@@ -115,10 +115,10 @@ function DownloadSection() {
     <Container>
       <TextWrapper>
         <Heading>
-          Download and listen to your favourite songs and artists with Singnify
+          Download and listen to your favourite songs and artists with SupaTunes
         </Heading>
         <Paragraph>
-          Singnify is available on Web, iOS and Android for download
+          SupaTunes is available on Web, iOS and Android for download
         </Paragraph>
 
         <DownloadIconSection>

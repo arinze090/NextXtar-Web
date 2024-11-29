@@ -37,13 +37,13 @@ function FaceVideo() {
       />
       <Title>Upload Your FaceVideo</Title>
       <Description>
-        "Singnify FaceVideo" is a way to promote Singnify artiste and make them
+        "SupaTunes FaceVideo" is a way to promote SupaTunes artiste and make them
         go viral, we have reached agreement with some providers with over 1
         million YouTube Subscribers, this are just some of our efforts to help
         all the artiste who use our services. <br /> <br /> FaceVideo: Use your
-        phone record yourself singing your songs and upload it on "Singnify
+        phone record yourself singing your songs and upload it on "SupaTunes
         FaceVideo" the most viewed video, on Facebook, Instagram and YouTube,
-        within a 60 days period, get an instant Animated Video, Singnify
+        within a 60 days period, get an instant Animated Video, SupaTunes
         Steppers Dancers Video, plus a bonus to choose from our promotional
         list. <br /> <br />
         Challenge yourself and upload as many videos of your song as you can,
@@ -53,7 +53,7 @@ function FaceVideo() {
         How to participate <br /> <br />
         1. Play your song <br />
         2. Use your phone to mimic your song and record yourself <br />
-        3. After recording, upload the video to "Singnify FaceVideo" <br />
+        3. After recording, upload the video to "SupaTunes FaceVideo" <br />
         4. You will get notification of approval and a link <br /> <br />
         For more information send an email to facevideo@singnify.com
       </Description>

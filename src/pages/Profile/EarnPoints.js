@@ -38,14 +38,14 @@ function EarnPoints() {
         imgAlt={"Earn Points Image"}
       />
       <Description>
-        Share your song on all social media platforms and earn points, Singnify
+        Share your song on all social media platforms and earn points, SupaTunes
         app will calculate where you shared your songs/albums and you will earn
         points, there is no limit to your points or share. <br />
         <br />
         <Title>FACEBOOK</Title>
         If you share your songs/albums via Facebook you will EARN 5 POINTS,
-        apart from making yourself relevant, Singnify will feature your song on
-        our Facebook stories, make sure you are following Singnify on Facebook,
+        apart from making yourself relevant, SupaTunes will feature your song on
+        our Facebook stories, make sure you are following SupaTunes on Facebook,
         so you can benefit fully from these massive ways to promote your
         songs/albums. Follow Us For More
       </Description>
@@ -54,16 +54,16 @@ function EarnPoints() {
       <br />
       <Description>
         <Title>TWITTER</Title> Share your songs/albums via twitter and tag
-        Singnify, you EARN 5 POINTS, you will also be featured on our Twitter
+        SupaTunes, you EARN 5 POINTS, you will also be featured on our Twitter
         stories and benefits, remember the more points you earn, the more you
-        keep featuring on Singnify slideshow. <br />
+        keep featuring on SupaTunes slideshow. <br />
         <br /> Follow Us For More
       </Description>
       <Image src={require("../../assets/twitter.png")} alt="facebook" />
       <br />
       <br />
       <Description>
-        <Title>INSTAGRAM</Title> Share your on instagram, and tag Singnify and
+        <Title>INSTAGRAM</Title> Share your on instagram, and tag SupaTunes and
         EARN 5 POINTS, instagram is a good place to promote your songs/albums
         because of its huge potential among the youths.. Follow Us For More
       </Description>
@@ -71,8 +71,8 @@ function EarnPoints() {
       <br />
       <br />
       <Description>
-        <Title>SHARE Singnify APP</Title>
-        Share Singnify app, and give Singnify rating on Google and iOS store you
+        <Title>SHARE SupaTunes APP</Title>
+        Share SupaTunes app, and give SupaTunes rating on Google and iOS store you
         EARN 10 POINTS.
       </Description>
       <Image
@@ -82,7 +82,7 @@ function EarnPoints() {
       <br />
       <br />
       <Description>
-        <Title>WHATSAPP</Title> Share Singnify on to all your contact and EARN 2
+        <Title>WHATSAPP</Title> Share SupaTunes on to all your contact and EARN 2
         POINTS, for each contact, with all your contacts, make your song
         popular, it take just a second to share your songs/albums.
       </Description>
@@ -90,7 +90,7 @@ function EarnPoints() {
 
       <Description>
         <Title>TIKTOK</Title>
-        Do a DanceVideo on Tiktok and tag Singnify, and EARN 5 POINTS, TitTok is
+        Do a DanceVideo on Tiktok and tag SupaTunes, and EARN 5 POINTS, TitTok is
         more like a mini personal television station that gives you total
         control, of acts, it have a lot of potential to promote your
         songs/albums using all it advantages. Follow Us For More
@@ -100,13 +100,13 @@ function EarnPoints() {
       <br />
       <Description>
         <Title>BENEFITS</Title>
-        1. You can use your Singnify points to get massive airplay on Singnify
+        1. You can use your SupaTunes points to get massive airplay on SupaTunes
         Online Radio <br /> <br />
         2. You can convert your points to dollar and withdraw it <br /> <br />
-        3. Use your points for promotional services on Singnify, including
+        3. Use your points for promotional services on SupaTunes, including
         express delivery <br /> <br />
         4. Become relevant on social media <br /> <br />
-        5. Get a one hour interview on Singnify online Radio, and request an
+        5. Get a one hour interview on SupaTunes online Radio, and request an
         airplay within the interview
       </Description>
     </Container>

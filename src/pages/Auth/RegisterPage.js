@@ -89,7 +89,7 @@ const RegisterScreen = () => {
       <FormContainer>
         <ImageSection />
         <FormSection>
-          <Title>Welcome to Singnify Music Distribution Company</Title>
+          <Title>Welcome to SupaTunes Music Distribution Company</Title>
           <p style={{ textAlign: "center", color: "white" }}>Register as</p>
 
           <FormButton

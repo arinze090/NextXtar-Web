@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { COLORS } from "../../theme/theme";
+import SingnifyLogo from "../../assets/supatunezNoBg.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import FormInput from "../../components/form/FormInput";
 import FormButton from "../../components/form/FormButton";
@@ -133,10 +134,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterSection>
         <Link to={"/"}>
-          <Logo
-            src={require("../../assets/supatunezLogo.jpeg")}
-            alt="SupaTunez"
-          />
+          <Logo src={SingnifyLogo} alt="SupaTunez" />
         </Link>
         <AppStoreBadges>
           <a href="https://play.google.com/store/apps/details?id=com.nextxtar.app">
@@ -212,7 +210,7 @@ const Footer = () => {
       </FooterSection>
 
       <Copyright>
-        © {currentYear} Copyright. Singnify, All rights reserved.
+        © {currentYear} Copyright. SupaTunes, All rights reserved.
       </Copyright>
     </FooterContainer>
   );

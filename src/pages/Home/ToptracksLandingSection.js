@@ -184,9 +184,9 @@ function ToptracksLandingSection() {
 
   return (
     <Container>
-      <Title>The Singnify Top Tracks of the Week</Title>
+      <Title>The SupaTunes Top Tracks of the Week</Title>
       <Subtitle>
-        Access the most streamed tracks of the week on Singnify and follow your
+        Access the most streamed tracks of the week on SupaTunes and follow your
         Favourite Artist
       </Subtitle>
 

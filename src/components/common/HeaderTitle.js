@@ -53,10 +53,7 @@ function HeaderTitle({ title, imgSrc, imgAlt }) {
       {imgSrc ? (
         <Gif src={imgSrc} alt={imgAlt} />
       ) : (
-        <GifLogo
-          src={require("../../assets/supatunezLogo.jpeg")}
-          alt={imgAlt}
-        />
+        <GifLogo src={require("../../assets/supatunezNoBg.png")} alt={imgAlt} />
       )}
 
       <TitleOverlay>{title}</TitleOverlay>

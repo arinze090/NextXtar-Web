@@ -19,7 +19,7 @@ function PaymentInformation() {
         imgAlt={"Payment Image"}
       />
       <p style={{ lineHeight: 2, fontSize: 18, color: "white" }}>
-        1. Singnify updates all payment accounts quarterly, this means every
+        1. SupaTunes updates all payment accounts quarterly, this means every
         ninety days (90 Days), these are in line with the digital stores we work
         with. <br />
         2. We update accounts four times a year, 24th of February, 24th of May,

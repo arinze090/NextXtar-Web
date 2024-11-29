@@ -83,8 +83,8 @@ const rules1 = [
 
 const rules2 = [
   "Audio files must be 16-bit, 44.1 kHz MP3 files of good quality. If you do not follow these rules, your release will be rejected.",
-  "By uploading your songs or albums on Singnify, you can not request for takedown within 6 months of upload, or a payment of $12 will be charge for takedown, if your upload is not up to 6 months Singnify uses audio Fingerprint, to collectively protect our artist content.",
-  "I have read the Terms of Use which includes Distribution, Publishing and Licensing Agreements. I understand that my choice to select this box gives Singnify, at their sole discretion, exclusive rights to Distribute, Publish and License my songs and videos worldwide.",
+  "By uploading your songs or albums on SupaTunes, you can not request for takedown within 6 months of upload, or a payment of $12 will be charge for takedown, if your upload is not up to 6 months SupaTunes uses audio Fingerprint, to collectively protect our artist content.",
+  "I have read the Terms of Use which includes Distribution, Publishing and Licensing Agreements. I understand that my choice to select this box gives SupaTunes, at their sole discretion, exclusive rights to Distribute, Publish and License my songs and videos worldwide.",
 ];
 
 const videoRecordRules = [
@@ -376,7 +376,7 @@ function UploadAlbum() {
               <Subtitle>
                 Make a one minute Video of the song you uploaded, with your
                 Phone, and upload it here, you will get 100 Point Bonues, 24/7
-                Singnify Radio Airplay, and One Day Social Media Promotion.{" "}
+                SupaTunes Radio Airplay, and One Day Social Media Promotion.{" "}
               </Subtitle>
 
               <UploadSection

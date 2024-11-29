@@ -33,10 +33,10 @@ function TermsAndCondition() {
       />
       <Title>1. Introduction:</Title>
       <Description>
-        Thank you for choosing Singnify (“Singnify”, “we”, “us”, “our”). By
-        signing up to or otherwise using the Singnify platform, app, service,
-        websites, and software applications (together, the “Singnify Service” or
-        “Service”), you are entering into a binding contract with Singnify.{" "}
+        Thank you for choosing SupaTunes (“SupaTunes”, “we”, “us”, “our”). By
+        signing up to or otherwise using the SupaTunes platform, app, service,
+        websites, and software applications (together, the “SupaTunes Service” or
+        “Service”), you are entering into a binding contract with SupaTunes.{" "}
         <br /> <br /> Your agreement with us includes these Terms of Use (“Terms
         of Use”), our Privacy Policy, and relevant supplemental terms
         (“Supplemental Terms”) that apply to your interaction with each specific
@@ -44,8 +44,8 @@ function TermsAndCondition() {
         carefully. You acknowledge that you have read, understood, and accepted
         these Agreements and agree to be bound by them. If you don’t agree with
         (or cannot comply with) the Agreements that apply to the services with
-        which you interact, then don’t access or use the Singnify Service.{" "}
-        <br /> <br /> In order to access and use the Singnify Service, you need
+        which you interact, then don’t access or use the SupaTunes Service.{" "}
+        <br /> <br /> In order to access and use the SupaTunes Service, you need
         to be at least 16 years old and have the power to enter a binding
         contract with us and not be prevented from doing so under any law. If
         you are under 16, you must be able to provide proof of your guardian’s
@@ -62,10 +62,10 @@ function TermsAndCondition() {
       <Title>2. Definitions: </Title>
       <Description>
         “Recordings” shall mean any and all audio/Video recordings that you
-        submit to Singnify by uploading through the Services. <br /> <br />{" "}
+        submit to SupaTunes by uploading through the Services. <br /> <br />{" "}
         “Stores” shall mean any and all, now known or future, digital Internet
         consumer stores (such as Spotify, Deezer, iTunes, and Amazon, etc.),
-        and/or any other digital retailers of music which Singnify has, from
+        and/or any other digital retailers of music which SupaTunes has, from
         time to time, entered into an agreement with. <br /> <br /> “Metadata”
         shall mean the music metadata, the information embedded in an audio file
         that is used to identify the content. This includes, but is not limited
@@ -91,15 +91,15 @@ function TermsAndCondition() {
         of making use of the Recordings. <br /> <br /> The right to sell, make
         sales promotion clips of, copy and otherwise, to the extent necessary
         under this Agreement, make use of and alter the Recordings and Metadata,
-        by all means, and media, of which you submit to Singnify, through any
+        by all means, and media, of which you submit to SupaTunes, through any
         and all Stores now available and operational and also the right to
         sublicense or otherwise transfer such rights to the Stores. <br />{" "}
         <br /> The non-exclusive right to use your name(s), photographs,
         likenesses, cover artwork, biographical and other information
-        attributable to you, which you have submitted to Singnify. The right for
-        Singnify to sublicense or otherwise transfers the above rights to any
+        attributable to you, which you have submitted to SupaTunes. The right for
+        SupaTunes to sublicense or otherwise transfers the above rights to any
         and all Stores. The above does not constitute a transfer of ownership to
-        any of the material you have uploaded or submitted to Singnify. Any and
+        any of the material you have uploaded or submitted to SupaTunes. Any and
         all rights granted to us above are granted on a royalty license basis.
         This includes the use of any lyrics of the Recordings if you have
         submitted any.
@@ -306,14 +306,14 @@ function TermsAndCondition() {
         one default shall exceed two (2) years.
       </Description>
 
-      <Title>4. Your Singnify Account:</Title>
+      <Title>4. Your SupaTunes Account:</Title>
       <Description>
         In order to access certain features of the Service, you must create
-        and/or sign in to a user account (“Singnify Account”) of your own.
+        and/or sign in to a user account (“SupaTunes Account”) of your own.
         Creating an account is completely free. Use of another’s account is not
         permitted. When creating your account, you must provide accurate and
         complete information. <br /> <br /> You are solely responsible for the
-        activity that occurs in your Singnify Account. You are also responsible
+        activity that occurs in your SupaTunes Account. You are also responsible
         for maintaining the security of your account password, as well as the
         passwords of any third-party services that you may have elected to link
         to your account. <br /> <br /> Please review our fully transparent
@@ -348,33 +348,33 @@ function TermsAndCondition() {
         <br /> <br />- No Social media logos or handles No Brand logos
         <br /> <br />- Any text except for artist names and/or the name of the
         release will be rejected.
-        <br /> <br />- Any song uploaded on Singnify and was approved cannot be
+        <br /> <br />- Any song uploaded on SupaTunes and was approved cannot be
         taken down within six months of upload. We urge you to read our terms of
-        use before uploading songs and videos on Singnify. If the artist chooses
+        use before uploading songs and videos on SupaTunes. If the artist chooses
         to take his or her songs/Videos down immediately, a fee of $100 is
         charged in order for a takedown to proceed.
       </Description>
 
       <Title>7. Payment and Fees: </Title>
       <Description>
-        Singnify shall pay to you or Company: a) Distribution. Sixty percent
-        (60%) of all gross receipts actually received by Singnify from its
+        SupaTunes shall pay to you or Company: a) Distribution. Sixty percent
+        (60%) of all gross receipts actually received by SupaTunes from its
         Licensees deriving from sales of the Recordings to end consumers, and
         from any monies recovered, <br /> <br /> (b) Collections. Seventy
-        percent (70%) of Singnify’s receipts solely with respect to collections
+        percent (70%) of SupaTunes’s receipts solely with respect to collections
         described in paragraph 1(b) above. <br /> (c) Synchronization Licenses.
         Fifty percent (50%) with respect to synchronization licenses pursuant to
         paragraph 1(c) above. <br />
         (d) Special Products and Other Promotional Uses. Forty percent (40%) of
-        gross receipts received by Singnify from Licensees in the form of
+        gross receipts received by SupaTunes from Licensees in the form of
         end-consumer redemptions of the Recordings under programs conducted by
-        other companies to whom Singnify licenses the Recordings to both promote
+        other companies to whom SupaTunes licenses the Recordings to both promote
         the Recordings and help sell and/or promote such companies’ products or
         brands, including, for instance, customer acquisition and retention
         programs, gift-with-purchase and purchase-with-purchase programs, etc.{" "}
         <br /> (e) Compilation Albums. Thirty percent (30%) with respect to
         compilation album licenses pursuant. <br /> <br />
-        Singnify updates the account quarterly, four times a year, 24th of
+        SupaTunes updates the account quarterly, four times a year, 24th of
         February, 24th of May, 24th of August, and 24th of November. Accounts
         are automatically updated, according to the details of sales directly
         from digital stores. You can withdraw your fund anytime, as long as you
@@ -382,21 +382,21 @@ function TermsAndCondition() {
         account is verified.
       </Description>
 
-      <Title>8. Singnify Copyright. </Title>
+      <Title>8. SupaTunes Copyright. </Title>
       <Description>
-        When you upload your songs/videos on Singnify, Singnify will place
+        When you upload your songs/videos on SupaTunes, SupaTunes will place
         copyright ownership on your songs/Videos, on your behalf this does not
-        mean you transferred ownership of your songs/Video to Singnify, it
-        simply means Singnify put a protective claim over it on your behalf, you
+        mean you transferred ownership of your songs/Video to SupaTunes, it
+        simply means SupaTunes put a protective claim over it on your behalf, you
         own your songs/Videos and materials 100%
       </Description>
 
       <Title>9. Stores: </Title>
       <Description>
         We have entered into agreements with different Stores for the purpose of
-        Distributing, Licensing, and Publishing. The agreements that Singnify
+        Distributing, Licensing, and Publishing. The agreements that SupaTunes
         enter with the Stores shall determine the terms on which you’re
-        Recordings are promoted or made available. Singnify assumes no liability
+        Recordings are promoted or made available. SupaTunes assumes no liability
         for any interruptions, delays, errors, or any suspensions of access,
         neither in whole nor in part. When you upload your Recordings through
         Our Service, we will send your Recording to all territories worldwide.
@@ -416,7 +416,7 @@ function TermsAndCondition() {
         advocate or assist in any illegal activity. Threaten, harass, upset, or
         alarm any other person or invade their privacy. Impersonate any person.{" "}
         <br /> <br />
-        Singnify reserves the right to, in its sole discretion, determine if a
+        SupaTunes reserves the right to, in its sole discretion, determine if a
         Recording or if you have breached the above or any other section of the
         Agreements. If we find that a breach has been made, we take such and any
         action we deem appropriate. We might, but are not limited to,
@@ -425,41 +425,41 @@ function TermsAndCondition() {
       </Description>
       <Title>11. Third Party Applications. </Title>
       <Description>
-        The Singnify Service may be integrated with third-party applications,
+        The SupaTunes Service may be integrated with third-party applications,
         websites, and services (“Third Party Applications”) to make the Services
         available to you. These Third-Party Applications may have their own
         terms and conditions and privacy policies and your use of these
         Third-Party Applications will be governed by and subject to such terms
         and conditions and privacy policies. You understand and agree that
-        Singnify does not endorse and is not responsible or liable for the
+        SupaTunes does not endorse and is not responsible or liable for the
         behavior, features, or content of any Third-Party Application or for any
         transaction you may enter into with the provider of any such Third-Party
         Applications.
       </Description>
-      <Title>12. Your Use of the Singnify Service: </Title>
+      <Title>12. Your Use of the SupaTunes Service: </Title>
       <Description>
-        The Singnify Service may be used and accessed solely for lawful
+        The SupaTunes Service may be used and accessed solely for lawful
         purposes. You agree to abide by all applicable laws and regulations in
         connection with your use of the Service. You agree and warrant that you
-        will not use the Singnify Service to transmit, distribute, route,
+        will not use the SupaTunes Service to transmit, distribute, route,
         provide connections to or store any material that infringes copyrighted
         works or otherwise violates or promotes the violation of the
         intellectual property rights of any third party <br /> <br /> Your
-        Singnify Account shall be used solely by you and may not be transferred
+        SupaTunes Account shall be used solely by you and may not be transferred
         or shared with any third party. You acknowledge that you are exclusively
-        responsible for all usage or activity on your Singnify Account. You
-        shall immediately notify Singnify of any breach of security or
-        unauthorized use of your Singnify account. Any fraudulent, abusive, or
+        responsible for all usage or activity on your SupaTunes Account. You
+        shall immediately notify SupaTunes of any breach of security or
+        unauthorized use of your SupaTunes account. Any fraudulent, abusive, or
         otherwise illegal account activity shall constitute a basis to terminate
-        your account. You agree to indemnify Singnify against any liability and
-        costs arising from such improper use of your Singnify Account.
+        your account. You agree to indemnify SupaTunes against any liability and
+        costs arising from such improper use of your SupaTunes Account.
       </Description>
       <Title>13. Your Liability and Warranties: </Title>
       <Description>
         You agree and warrant that you will not distribute, transmit or store
         any files or material that might infringe copyrighted works. You also
         agree that you will not promote violation of a third party’s
-        intellectual property rights. If you do, you acknowledge that Singnify
+        intellectual property rights. If you do, you acknowledge that SupaTunes
         may at any time, and in its sole discretion, remove your Recordings,
         disable access to the Services without notifying you, <br /> <br /> You
         also agree that: You are not under any disability, restriction or
@@ -478,27 +478,27 @@ function TermsAndCondition() {
         able to present this consent to us. The Recordings are original and do
         not contain any samples which have not been cleared or else infringe
         upon the right of any person or third party. <br /> You shall not commit
-        any act which might damage the reputation of Singnify or might inhibit,
+        any act which might damage the reputation of SupaTunes or might inhibit,
         restrict or interfere with the exploitations of the Recordings. If
         you’re not the artist/owner of the Recordings, you have a valid and
         presentable agreement with the Artist that grants you all the rights to
         ent <br /> Moreover, you agree not to: Distribute, alter or modify any
         part of or parts of the Service; Circumvent any technology used by
-        Singnify, its licensors, or any third party to protect the Service or
+        SupaTunes, its licensors, or any third party to protect the Service or
         any content on the Service; Sell, rent, sublicense or lease any part of
         the Service; Provide your password to any other person or using any
         other person’s username and password;
       </Description>
       <Title>14. Infringement and Reporting of Content: </Title>
       <Description>
-        Singnify respects the rights of intellectual property owners. If you
+        SupaTunes respects the rights of intellectual property owners. If you
         believe that any content on the Service infringes your intellectual
         property rights or other rights, please contact customer support. If
-        Singnify is notified by a copyright holder that any Content infringes a
-        copyright, Singnify may in its sole discretion take actions without
+        SupaTunes is notified by a copyright holder that any Content infringes a
+        copyright, SupaTunes may in its sole discretion take actions without
         prior notification to the provider of that content. If the provider
         believes that the content is not infringing, the provider may submit a
-        counter-notification to Singnify with a request to restore the removed
+        counter-notification to SupaTunes with a request to restore the removed
         content. If you believe that any content infringes any other
         intellectual property rights or does not comply with these Terms of Use,
         please contact Customer Support.
@@ -513,13 +513,13 @@ function TermsAndCondition() {
       </Description>
       <Title>16. Our Intellectual Property: </Title>
       <Description>
-        The Singnify Service, including but not limited to, all related
-        technology, data, tools, and design is the property of Singnify and its
+        The SupaTunes Service, including but not limited to, all related
+        technology, data, tools, and design is the property of SupaTunes and its
         subsidiaries or its licensors. We grant you a limited, non-exclusive,
-        revocable license to make use of the Singnify Service. <br /> <br /> The
-        Singnify trademarks, service marks, trade names, logos, domain names,
-        and any other features of the Singnify brand are the sole property of
-        Singnify and its subsidiaries. The Agreements do not grant you any
+        revocable license to make use of the SupaTunes Service. <br /> <br /> The
+        SupaTunes trademarks, service marks, trade names, logos, domain names,
+        and any other features of the SupaTunes brand are the sole property of
+        SupaTunes and its subsidiaries. The Agreements do not grant you any
         rights to use any Brand Features whether for commercial or
         non-commercial use. <br /> <br /> We value hearing from our users and
         are always interested in learning about ways we can improve the Service.
@@ -529,27 +529,27 @@ function TermsAndCondition() {
       </Description>
       <Title>17. Service Limitations and Modifications: </Title>
       <Description>
-        Singnify will make reasonable efforts to keep the Singnify Service
+        SupaTunes will make reasonable efforts to keep the SupaTunes Service
         operational. However, certain technical difficulties or maintenance may,
-        from time to time, result in temporary interruptions. Singnify reserves
+        from time to time, result in temporary interruptions. SupaTunes reserves
         the right, periodically and at any time, to modify or discontinue,
-        temporarily or permanently, functions and features of the Singnify
+        temporarily or permanently, functions and features of the SupaTunes
         Service, with or without notice, all without liability to you, except
         where prohibited by law, for any interruption, modification, or
-        discontinuation of the Singnify Service or any function or feature
+        discontinuation of the SupaTunes Service or any function or feature
         thereof.
       </Description>
       <Title>18. Term and Termination: </Title>
       <Description>
         The terms of this Agreement shall commence and continue (the “Term”)
         unless terminated by either Party under the Agreements. You may at any
-        time terminate and cancel the Singnify Services by contacting Customer
+        time terminate and cancel the SupaTunes Services by contacting Customer
         Support <br /> <br />
-        Singnify may terminate the Agreements or suspend your access to the
-        Singnify Service at any time for any and no reason, including in the
-        event of your actual or suspected unauthorized use of the Singnify
+        SupaTunes may terminate the Agreements or suspend your access to the
+        SupaTunes Service at any time for any and no reason, including in the
+        event of your actual or suspected unauthorized use of the SupaTunes
         Service and/or any content, or non-compliance with the Agreements. You
-        may terminate your Singnify Account at any time by submitting a
+        may terminate your SupaTunes Account at any time by submitting a
         termination request to Customer Support. Bear in mind, when you submit a
         request for termination, from the date you submit this request, it will
         take us one year (365 days), to completely remove all your materials we
@@ -563,10 +563,10 @@ function TermsAndCondition() {
       <Title>19. Warranty and Disclaimer: </Title>
       <Description>
         WE ENDEAVOUR TO PROVIDE THE BEST SERVICE WE CAN, BUT YOU UNDERSTAND AND
-        AGREE THAT THE Singnify SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE”,
+        AGREE THAT THE SupaTunes SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE”,
         WITHOUT EXPRESS OR IMPLIED WARRANTY OR CONDITION OF ANY KIND. YOU USE
-        THE Singnify SERVICE AT YOUR OWN RISK. TO THE FULLEST EXTENT PERMITTED
-        BY APPLICABLE LAW, Singnify MAKES NO REPRESENTATIONS AND DISCLAIMS ANY
+        THE SupaTunes SERVICE AT YOUR OWN RISK. TO THE FULLEST EXTENT PERMITTED
+        BY APPLICABLE LAW, SupaTunes MAKES NO REPRESENTATIONS AND DISCLAIMS ANY
         WARRANTIES OR CONDITIONS OF SATISFACTORY QUALITY, MERCHANTABILITY,
         FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
       </Description>
@@ -574,22 +574,22 @@ function TermsAndCondition() {
       <Description>
         YOU AGREE THAT, TO THE EXTENT PERMITTED BY APPLICABLE LAW, YOU’RE SOLE
         AND EXCLUSIVE REMEDY FOR ANY PROBLEMS OR DISSATISFACTION WITH THE
-        Singnify SERVICE IS TO UNINSTALL ANY Singnify SOFTWARE AND TO STOP USING
-        THE Singnify SERVICE.
+        SupaTunes SERVICE IS TO UNINSTALL ANY SupaTunes SOFTWARE AND TO STOP USING
+        THE SupaTunes SERVICE.
         <br /> <br />
-        TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL Singnify, ITS
+        TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL SupaTunes, ITS
         OFFICERS, SHAREHOLDERS, EMPLOYEES, AGENTS, DIRECTORS, SUBSIDIARIES,
         AFFILIATES, SUCCESSORS, ASSIGNS, SUPPLIERS, OR LICENSORS BE LIABLE FOR
         (1) ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, EXEMPLARY, OR
         CONSEQUENTIAL DAMAGES; (2) ANY LOSS OF USE, DATA, BUSINESS, OR PROFITS
         (WHETHER DIRECT OR INDIRECT), IN ALL CASES, ARISING OUT OF THE USE OR
-        INABILITY TO USE THE Singnify SERVICE, REGARDLESS OF LEGAL THEORY,
-        WITHOUT REGARD TO WHETHER Singnify HAS BEEN WARNED OF THE POSSIBILITY OF
+        INABILITY TO USE THE SupaTunes SERVICE, REGARDLESS OF LEGAL THEORY,
+        WITHOUT REGARD TO WHETHER SupaTunes HAS BEEN WARNED OF THE POSSIBILITY OF
         THOSE DAMAGES, AND EVEN IF A REMEDY FAILS OF ITS ESSENTIAL PURPOSE; OR
-        (3) AGGREGATE LIABILITY FOR ALL CLAIMS RELATING TO THE Singnify SERVICE,
+        (3) AGGREGATE LIABILITY FOR ALL CLAIMS RELATING TO THE SupaTunes SERVICE,
         THIRD PARTY APPLICATIONS, OR THIRD PARTY APPLICATION CONTENT MORE THAN
         $1,000 (one-thousand USD), TO THE EXTENT PERMISSIBLE BY APPLICABLE LAW.
-        <br /> <br /> YOU SHALL INDEMNIFY AND HOLD HARMLESS Singnify, ITS
+        <br /> <br /> YOU SHALL INDEMNIFY AND HOLD HARMLESS SupaTunes, ITS
         SUBSIDIARIES AND AFFILIATES (INCLUDING ANY DIRECTORS, MEMBERS,
         EMPLOYEES, MEMBERS, AND OTHER REPRESENTATIVES) AND THE STORES FROM AND
         AGAINST ANY AND ALL CLAIMS, LOSSES, DAMAGES, LIABILITIES, COSTS AND
@@ -601,8 +601,8 @@ function TermsAndCondition() {
       <Title>21. Entire Agreement: </Title>
       <Description>
         Other than as stated in this section or as explicitly agreed upon in
-        writing between you and Singnify, the Agreements constitute all the
-        terms and conditions agreed upon between you and Singnify and supersede
+        writing between you and SupaTunes, the Agreements constitute all the
+        terms and conditions agreed upon between you and SupaTunes and supersede
         any prior agreements in relation to the subject matter of these
         Agreements, whether written or oral.
       </Description>
@@ -613,13 +613,13 @@ function TermsAndCondition() {
         extent, such invalidity or unenforceability shall not in any manner
         affect or render invalid or unenforceable the remaining provisions of
         the Agreements, and the application of that provision shall be enforced
-        to the extent permitted by law. Any failure by Singnify to enforce the
-        Agreements or any provision thereof shall not waive Singnify’s or the
+        to the extent permitted by law. Any failure by SupaTunes to enforce the
+        Agreements or any provision thereof shall not waive SupaTunes’s or the
         applicable third-party beneficiary’s right to do so.
       </Description>
       <Title>23. Assignment: </Title>
       <Description>
-        Singnify may assign the Agreements or any part of them, and Singnify may
+        SupaTunes may assign the Agreements or any part of them, and SupaTunes may
         delegate any of its obligations under the Agreements. You may not assign
         the Agreements or any part of them, nor transfer or sub-license your
         rights under the Agreements, to any third party.
@@ -627,17 +627,17 @@ function TermsAndCondition() {
       <Title>24. Indemnification: </Title>
       <Description>
         To the fullest extent permitted by applicable law, you agree to
-        indemnify and hold Singnify harmless from and against all damages,
+        indemnify and hold SupaTunes harmless from and against all damages,
         losses, and expenses of any kind (including reasonable attorney fees and
         costs) arising out of: (1) your breach of this Agreement; (2) any
         content submitted by you to the Service; (3) any activity in which you
-        engage on or through the Singnify Service; and (4) your violation of any
+        engage on or through the SupaTunes Service; and (4) your violation of any
         law or the rights of a third party.
       </Description>
       <Title>25. Force Majeure: </Title>
       <Description>
-        Singnify takes no liability or responsibility for failures in providing
-        any of our Services if they are caused by an event outside Singnify’s
+        SupaTunes takes no liability or responsibility for failures in providing
+        any of our Services if they are caused by an event outside SupaTunes’s
         control. Force Majeure means an event beyond our control that prevents
         us from complying with any obligations under this Agreement. These
         events include, but are not limited to, fires, earthquakes, tidal waves,
@@ -645,7 +645,7 @@ function TermsAndCondition() {
         riot, strikes, lockouts, acts or threats of terrorism, commotion, and
         failures of public or private telecommunication networks, third party
         force majeure and an epidemic. Should an event of Force Majeure occur,
-        Singnify will notify you as soon as reasonable and give an estimate when
+        SupaTunes will notify you as soon as reasonable and give an estimate when
         due fulfillment can be expected. You may cancel your Services with us if
         your Service is affected by Force Majeure and if it has continued for
         more than 90 days.
@@ -669,7 +669,7 @@ function TermsAndCondition() {
       </Description>
       <Title>28. Contact Us: </Title>
       <Description>
-        If you have any questions concerning the Singnify Service or the
+        If you have any questions concerning the SupaTunes Service or the
         Agreements, please contact our Customer Support. info@singnify.com,
         contact@singnify.com dispute@singnify.com Publishing and Licensing
         Agreement

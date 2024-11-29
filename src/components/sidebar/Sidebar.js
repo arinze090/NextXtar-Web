@@ -16,7 +16,7 @@ import { MdFileUpload } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { signOutUser } from "../../redux/features/user/userSlice";
 import { clearLastFetchTime } from "../../redux/features/discover/discoverSlice";
-import SingnifyLogo from "../../assets/supatunezLogo.jpeg";
+import SingnifyLogo from "../../assets/supatunezNoBg.png";
 
 const Nav = styled.div`
   background: #0b0b0b;
@@ -231,7 +231,7 @@ const Sidebar = () => {
           <NavIcon to="#">
             <img
               src={SingnifyLogo}
-              alt="Singnify-Logo"
+              alt="SupaTunes-Logo"
               style={{
                 width: "100%",
                 height: 65,

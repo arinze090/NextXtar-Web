@@ -10,7 +10,7 @@ import {
   Sidebar,
   Times,
 } from "./NavbarElements";
-import SingnifyLogo from "../../assets/supatunezLogo.jpeg";
+import SingnifyLogo from "../../assets/supatunezNoBg.png";
 import FormButton from "../../components/form/FormButton";
 import TransparentBtn from "../../components/form/TransparentBtn";
 

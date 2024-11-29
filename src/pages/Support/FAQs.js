@@ -33,7 +33,7 @@ function FAQs() {
       />
       <Title>Distribution Timeline</Title>
       <Description>
-        Singnify gets your music on all the major digital platforms in a maximum
+        SupaTunes gets your music on all the major digital platforms in a maximum
         of 7 days. If you're in a hurry, we offer express delivery, which takes
         just 48 hours.
       </Description>
@@ -41,7 +41,7 @@ function FAQs() {
       <Title>Platform Coverage</Title>
       <Description>
         2. Will my song be available on iTunes and Spotify? <br />
-        Absolutely! Singnify puts your music on a bunch of platforms, including
+        Absolutely! SupaTunes puts your music on a bunch of platforms, including
         iTunes, Spotify, Amazon, Deezer, Tidal, Apple Music, Boomplay,
         Audiomack, TikTok, Facebook, Instagram, and more than 100 other global
         digital music stores.
@@ -49,7 +49,7 @@ function FAQs() {
 
       <Title>Royalty Payments</Title>
       <Description>
-        3. Will Singnify pay royalties for songs streamed on digital stores?{" "}
+        3. Will SupaTunes pay royalties for songs streamed on digital stores?{" "}
         <br /> You bet! We pay out royalties every 90 days on February 24th, May
         24th, August 24th, and November 24th. Artists have full access to
         withdraw their earnings whenever they want, no strings attached.
@@ -57,7 +57,7 @@ function FAQs() {
 
       <Title>Artwork Modifications</Title>
       <Description>
-        Why did Singnify change my artwork? <br />
+        Why did SupaTunes change my artwork? <br />
         Sometimes, stores might not like the artwork you provided, and that
         could cause delays. In those cases, our graphic designers step in and
         create improved artwork. Don't worry, though; you can always update your
@@ -84,26 +84,26 @@ function FAQs() {
 
       <Title>Promotion</Title>
       <Description>
-        Can Singnify promote my song? <br />
-        Absolutely! Singnify has some great tools to help artists promote their
+        Can SupaTunes promote my song? <br />
+        Absolutely! SupaTunes has some great tools to help artists promote their
         music globally. We have a substantial following on our social media
         accounts, and you can use these platforms, along with other features in
-        the Singnify App, to get your music out there.
+        the SupaTunes App, to get your music out there.
       </Description>
 
       <Title>Artwork and Audio Requirements</Title>
       <Description>
         I am having trouble uploading my artwork and audio. <br />
-        No worries! Singnify accepts artwork with dimensions ranging from 3000 x
+        No worries! SupaTunes accepts artwork with dimensions ranging from 3000 x
         3000 pixels to 5000 x 5000 pixels, and we take audio in MP3 or WAV
         formats. Just make sure your files meet these specs before you upload
-        them to Singnify.
+        them to SupaTunes.
       </Description>
 
       <Title>Release Processing</Title>
       <Description>
         What happens after I upload my release? <br />
-        Once you've successfully uploaded your music, Singnify reviews the music
+        Once you've successfully uploaded your music, SupaTunes reviews the music
         itself, the metadata, and the artwork. If we have any questions, we'll
         get in touch with you. This whole process ensures that everything aligns
         with the guidelines set by the digital music stores and blogs.
@@ -113,7 +113,7 @@ function FAQs() {
       <Description>
         Can I make changes to an upload? <br />
         Sure thing! You can make changes to your upload before it's approved on
-        the Singnify App. Once it's been distributed to the digital music
+        the SupaTunes App. Once it's been distributed to the digital music
         platforms, though, it takes about a month before any changes can be
         implemented.
       </Description>
@@ -146,7 +146,7 @@ function FAQs() {
 
       <Title>Song promotion</Title>
       <Description>
-        Can you promote my new song? Of course! Singnify offers promotion
+        Can you promote my new song? Of course! SupaTunes offers promotion
         services for songs on various platforms, including our app
       </Description>
 
@@ -170,7 +170,7 @@ function FAQs() {
       <Description>
         How Can I Close My Account? <br />
         We are always sorry to lose clients, but simply email
-        contact@singnify.com and we’ll act on your request
+        contact@SupaTunes.com and we’ll act on your request
       </Description>
     </Container>
   );

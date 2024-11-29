@@ -293,7 +293,7 @@ function AddProject() {
       />
 
       <FormTextArea
-        formTitle="Why Singnify should sponsor your project"
+        formTitle="Why SupaTunes should sponsor your project"
         row={5}
         placeholder={""}
         value={projectSponsor}

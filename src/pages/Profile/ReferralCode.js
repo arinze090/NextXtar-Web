@@ -77,7 +77,7 @@ function ReferralCode() {
       />
       <Title>Referral Earnings: $0.00</Title>
       <Description>
-        You earn $1.00 per person you refer to Singnify.
+        You earn $1.00 per person you refer to SupaTunes.
       </Description>
 
       <FormInput

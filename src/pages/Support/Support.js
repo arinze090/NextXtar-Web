@@ -32,19 +32,19 @@ function Support() {
         imgAlt={"Support Image"}
       />
       <Description>
-        Welcome to Singnify official website, we love to support our teaming
+        Welcome to SupaTunes official website, we love to support our teaming
         members, in the best ways possible.
       </Description>
 
       <Description>
-        <Title>Singnify: </Title>
+        <Title>SupaTunes: </Title>
         is a place perfectly built to help upcoming artiste, upload their songs
         and videos, in the comfort of your home while we do the shouting for
         you, we help in promoting them in the best possible ways, for more
         information, you can send us email on info@singnify.com
       </Description>
 
-      <Title>SINGNIFY RECORDS AND LABELS DEAL:</Title>
+      <Title>SupaTunes RECORDS AND LABELS DEAL:</Title>
       <Description>
         We also sign artist we believed in, we have dedicated team who are
         professional in the areas of STRATEGIES PLANNING, MARKETING, BRANDING,
@@ -52,8 +52,8 @@ function Support() {
         with, over 10 record labels and Executives, that are looking for
         promising artists to sign on their labels, and equally market globally,
         if we find a label for any artiste on our platform, we will pass the
-        said artiste to the label’s executive with 20% commission for Singnify
-        Inc. the chances of been sign is very high with Singnify, a platform
+        said artiste to the label’s executive with 20% commission for SupaTunes
+        Inc. the chances of been sign is very high with SupaTunes, a platform
         like never seen before, for more information about our Record deals and
         others, email us at support@singnify.com
       </Description>
@@ -85,7 +85,7 @@ function Support() {
         upcoming artiste, and we are commitment in carry out this task with
         utmost sincerity, in the cause of promoting an artiste, in over 500
         music stores and online streaming, if the artiste makes any money, 50%
-        of the money will be paid directly to the artiste, and 50% to Singnify
+        of the money will be paid directly to the artiste, and 50% to SupaTunes
         Inc., payment can only be made if an artiste makes $100 and above. For
         more information about this kindly read our terms of use, or send us an
         email, info@singnify.com
@@ -108,7 +108,7 @@ function Support() {
         A portal has been created for music executives, label owners, Marketers,
         movie producers, independent artiste, record labels, etc. to upload all
         their artists or movies and equally monitors the sales on quarterly
-        bases. <br /> <br /> Advantages to work with Singnify, we will promote
+        bases. <br /> <br /> Advantages to work with SupaTunes, we will promote
         and place your products on the front burner, to generate quick income
         for your organization. <br /> <br /> Prompt quarterly payment. We work
         with the best in the music world, we made it easier, simple go to our

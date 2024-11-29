@@ -77,9 +77,9 @@ function AboutUs() {
     <>
       <Container>
         <TextWrapper>
-          <Heading>Welcome to Singnify</Heading>
+          <Heading>Welcome to SupaTunes</Heading>
           <Paragraph>
-            Singnify is changing the way music is distributed, licensed, and
+            SupaTunes is changing the way music is distributed, licensed, and
             published worldwide through its established partner collaborations
             with Sony Music, Amazon, Orchard, 51 Lex Records, iTunes, Spotify,
             Tidal, and Pandora..
@@ -97,7 +97,7 @@ function AboutUs() {
       <Container bgColor={"#F2F2F2"}>
         <TextWrapper>
           <Paragraph>
-            At Singnify, we're all about music. We absolutely love it! We've
+            At SupaTunes, we're all about music. We absolutely love it! We've
             partnered up with the big players like Apple Music, iTunes, Spotify,
             Tidal, Pandora, Facebook, TikTok, Instagram, YouTube, and more to
             help musicians get their music out there for free, all around the
@@ -114,7 +114,7 @@ function AboutUs() {
         </ImageWrapper>
         <TextWrapper>
           <Paragraph>
-            At Singnify, we're all about music. We absolutely love it! We've
+            At SupaTunes, we're all about music. We absolutely love it! We've
             partnered up with the big players like Apple Music, iTunes, Spotify,
             Tidal, Pandora, Facebook, TikTok, Instagram, YouTube, and more to
             help musicians get their music out there for free, all around the

@@ -37,8 +37,8 @@ function DanceVideo() {
       />
       <Title>Upload Your Dance Video</Title>
       <Description>
-        Singnify DanceVideo, for all Singnify users, Singnify organized a
-        DanceVideo creation contest called "Singnify Tiktok DanceVideo." Let's
+        SupaTunes DanceVideo, for all SupaTunes users, SupaTunes organized a
+        DanceVideo creation contest called "SupaTunes Tiktok DanceVideo." Let's
         show off our creativity and share prizes up to $2,000 <br /> <br />{" "}
         There will be a total of 30 prizes for the top 30 users with the highest
         total views. On top of that, users will also stand a chance to win
@@ -54,25 +54,25 @@ function DanceVideo() {
         - Most Creative: $80 <br />
         - Most Shares on social media: $70 <br />
         - The video has the most likes: $50 <br />- Excellent videos can be used
-        as Singnify TikTok official video creators, and the videos will be
+        as SupaTunes TikTok official video creators, and the videos will be
         forwarded by our official account or announced as official videos.
       </Description>
 
       <Title>How to Participate</Title>
       <Description>
-        - Download Singnify App from Android and iOS store, complete your
+        - Download SupaTunes App from Android and iOS store, complete your
         registration.
         <br /> <br />
         - Create Your DanceVideo. The number of videos is unlimited, and the
         total views will be calculated as the sum of the views of all videos.
         Therefore, the more videos you have, the more chances you have to win
-        prizes. On the Singnify app download any song of your choice, decide on
+        prizes. On the SupaTunes app download any song of your choice, decide on
         your video concept before creating your content. You can check out our
         questionnaire for more information. <br /> <br />- Publish and upload
-        your DanceVideo on Singnify, App (DanceVideo) Tiktok, and share on all
+        your DanceVideo on SupaTunes, App (DanceVideo) Tiktok, and share on all
         Social Media channels To qualify for rewards, all participants will have
-        to do the following: The title of the video must have the word Singnify
-        and Hashtag about Singnify, #Singnify #51lexrecords etc on your video.
+        to do the following: The title of the video must have the word SupaTunes
+        and Hashtag about SupaTunes, #SupaTunes #51lexrecords etc on your video.
         Show your referral link in the video or registration number. Publish
         your content on, Tiktok, follow @Singnify_Ent on Tiktok and share it
         with your other channels, such as Twitter, Instagram, and Facebook if
@@ -83,24 +83,24 @@ function DanceVideo() {
       <Title>Main Prize</Title>
       <Description>
         - Most views & likes on Social Media(70%) <br /> - Evaluation by the
-        Singnify team (30%) <br />- Have at least three successful referrals.
+        SupaTunes team (30%) <br />- Have at least three successful referrals.
       </Description>
       <Title>Special Category Prizes</Title>
-      <Description>Evaluation by the Singnify Team.</Description>
+      <Description>Evaluation by the SupaTunes Team.</Description>
 
       <Title>Terms and Conditions:</Title>
       <Description>
         1. Only videos that meet all the requirements can be counted as a valid
         video; <br />
         2. The video cannot be deleted. Videos that have been used in other
-        cooperative events for Singnify will not be counted in this program;{" "}
+        cooperative events for SupaTunes will not be counted in this program;{" "}
         <br />
         3. All submissions must be original works of the submitting participant.
-        Re-submissions of videos from previous Singnify competitions are NOT
+        Re-submissions of videos from previous SupaTunes competitions are NOT
         eligible for this program; <br />
-        4. With Singnify terms & conditions. Any content or actions that could
-        bring disrespect to the Singnify brand is strictly prohibited; <br /> 5.
-        Singnify reserves all rights to the DanceVideo including the final
+        4. With SupaTunes terms & conditions. Any content or actions that could
+        bring disrespect to the SupaTunes brand is strictly prohibited; <br /> 5.
+        SupaTunes reserves all rights to the DanceVideo including the final
         explanation.
       </Description>
       <FormButton

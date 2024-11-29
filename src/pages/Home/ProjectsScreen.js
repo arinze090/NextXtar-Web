@@ -32,22 +32,22 @@ function ProjectsScreen() {
   return (
     <Container>
       <HeaderTitle
-        title={"Singnify Projects"}
+        title={"SupaTunes Projects"}
         imgSrc={require("../../assets/projects.png")}
         imgAlt={"Projects Image"}
       />
       <Description>
-        Singnify will be sponsoring projects across all sections of
+        SupaTunes will be sponsoring projects across all sections of
         entertainment, mainly in songwriting, skit creation, comedy, singing,
         unique ideas, short movie productions, News caster and producers. <br />
         <br />
-        1. To participate you have to download Singnify App, in Google play
+        1. To participate you have to download SupaTunes App, in Google play
         store or Apple iOS store. <br />
         2. Read the guidelines, and follow the instructions <br /> 3. Create a 2
         minutes video of your ideas , fill the form and upload your video <br />{" "}
-        4. Follow Singnify on all social media account <br />
-        5. Singnify has total right to use any video or content uploaded without
-        any restriction <br />
+        4. Follow SupaTunes on all social media account <br />
+        5. SupaTunes has total right to use any video or content uploaded
+        without any restriction <br />
         6. You can upload has many projects as you can <br />
         <br /> We will chose a project which is most acceptable in terms of
         views, like and comments, there is no time limit because it is a
@@ -56,10 +56,10 @@ function ProjectsScreen() {
         Remember rejection is not the end, it only means you work harder and
         better, and your project might be accepted.
         <br />
-        <br /> Any project which is accepted, Singnify will fully sponsor such
+        <br /> Any project which is accepted, SupaTunes will fully sponsor such
         project no matter the cost. <br />
         <br />
-        This is an opportunity to showcase your talent to the world. Singnify
+        This is an opportunity to showcase your talent to the world. SupaTunes
         unlimited Possibilities
       </Description>
 
