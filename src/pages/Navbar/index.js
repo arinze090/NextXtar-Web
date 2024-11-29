@@ -63,7 +63,7 @@ const Navbar = () => {
             alt="Singnify-Logo"
             style={{
               width: 150,
-              height: 65,
+              // height: 65,
               objectFit: "contain",
               justifyContent: "center",
               display: "flex",
