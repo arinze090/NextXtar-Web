@@ -618,7 +618,6 @@ const MusicPlayer = ({}) => {
                 <SkipBackIcon />
               </IconWrapper>
 
-              <SkipBackIcon onClick={playPreviousTrack} />
               <PlaySection onClick={handlePlayPause}>
                 {isAudioPlaying ? (
                   <IconWrapper data-title="Pause">
